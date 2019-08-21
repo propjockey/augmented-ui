@@ -231,147 +231,147 @@
 
 .tlNotchX {
   --tl: 35px;
-  --tlX: var(--tlWidth, var(--tl));
   --tlY: var(--tlHeight, var(--tl));
-  --tlNotch: var(--tlY); /* how far the notch extends past width */
+  --tlNotch: var(--tlY); /* how much of width is the notch */
+  --tlX: var(--tlWidth, calc(var(--tl) + var(--tlNotch)));
   --tlPath: 0px var(--tlY),
-            var(--tlX) var(--tlY),
-            calc(var(--tlX) + var(--tlNotch)) 0px;
+            calc(var(--tlX) - var(--tlNotch)) var(--tlY),
+            var(--tlX) 0px;
   --tlInsetOffset: calc(var(--tlY) + var(--w));
   --tlPathInset: var(--w) var(--tlInsetOffset),
-                 calc(var(--w) / 2 + var(--tlX)) var(--tlInsetOffset),
-                 calc(var(--w) / 2 + var(--tlX) + var(--tlNotch)) var(--w);
+                 calc(var(--w) / 2 + var(--tlX) - var(--tlNotch)) var(--tlInsetOffset),
+                 calc(var(--w) / 2 + var(--tlX)) var(--w);
   --wd: calc(var(--w, 0px) + var(--d));
   --tlInsetOffsetMore: calc(var(--tlY) + var(--wd));
   --tlPathInsetMore: var(--wd) var(--tlInsetOffsetMore),
-                 calc(var(--wd) / 2 + var(--tlX)) var(--tlInsetOffsetMore),
-                 calc(var(--wd) / 2 + var(--tlX) + var(--tlNotch)) var(--wd);
+                 calc(var(--wd) / 2 + var(--tlX) - var(--tlNotch)) var(--tlInsetOffsetMore),
+                 calc(var(--wd) / 2 + var(--tlX)) var(--wd);
 }
 .trNotchX {
   --tr: 35px;
-  --trX: var(--trWidth, var(--tr));
   --trY: var(--trHeight, var(--tr));
-  --trNotch: var(--trY); /* how far the notch extends before width */
-  --trPath: calc(100% - var(--trX) - var(--trNotch)) 0px,
-            calc(100% - var(--trX)) var(--trY),
+  --trNotch: var(--trY); /* how much of width is the notch */
+  --trX: var(--trWidth, calc(var(--tr) + var(--trNotch)));
+  --trPath: calc(100% - var(--trX)) 0px,
+            calc(100% - var(--trX) + var(--trNotch)) var(--trY),
             100% var(--trY);
   --trInsetOffset: calc(var(--trY) + var(--w));
-  --trPathInset: calc(100% - var(--w) / 2 - var(--trX) - var(--trNotch)) var(--w),
-                calc(100% - var(--w) / 2 - var(--trX)) var(--trInsetOffset),
+  --trPathInset: calc(100% - var(--w) / 2 - var(--trX)) var(--w),
+                calc(100% - var(--w) / 2 - var(--trX) + var(--trNotch)) var(--trInsetOffset),
                 calc(100% - var(--w)) var(--trInsetOffset);
   --wd: calc(var(--w, 0px) + var(--d));
   --trInsetOffsetMore: calc(var(--trY) + var(--wd));
-  --trPathInsetMore: calc(100% - var(--wd) / 2 - var(--trX) - var(--trNotch)) var(--wd),
-                    calc(100% - var(--wd) / 2 - var(--trX)) var(--trInsetOffsetMore),
+  --trPathInsetMore: calc(100% - var(--wd) / 2 - var(--trX)) var(--wd),
+                    calc(100% - var(--wd) / 2 - var(--trX) + var(--trNotch)) var(--trInsetOffsetMore),
                     calc(100% - var(--wd)) var(--trInsetOffsetMore);
 }
 .brNotchX {
   --br: 35px; /* size */
-  --brX: var(--brWidth, var(--br));
   --brY: var(--brHeight, var(--br));
-  --brNotch: var(--brY); /* how far the notch extends before width */
+  --brNotch: var(--brY); /* how much of width is the notch */
+  --brX: var(--brWidth, calc(var(--br) + var(--brNotch)));
   --brPath: 100% calc(100% - var(--brY)),
-            calc(100% - var(--brX)) calc(100% - var(--brY)),
-            calc(100% - var(--brX) - var(--brNotch)) 100%;
+            calc(100% - var(--brX) + var(--brNotch)) calc(100% - var(--brY)),
+            calc(100% - var(--brX)) 100%;
   --brInsetOffset: calc(var(--brY) + var(--w));
   --brPathInset: calc(100% - var(--w)) calc(100% - var(--brInsetOffset)),
-                 calc(100% - var(--w) / 2 - var(--brX)) calc(100% - var(--brInsetOffset)),
-                 calc(100% - var(--w) / 2 - var(--brX) - var(--brNotch)) calc(100% - var(--w));
+                 calc(100% - var(--w) / 2 - var(--brX) + var(--brNotch)) calc(100% - var(--brInsetOffset)),
+                 calc(100% - var(--w) / 2 - var(--brX)) calc(100% - var(--w));
   --wd: calc(var(--w, 0px) + var(--d));
   --brInsetOffsetMore: calc(var(--brY) + var(--wd));
   --brPathInsetMore: calc(100% - var(--wd)) calc(100% - var(--brInsetOffsetMore)),
-                     calc(100% - var(--wd) / 2 - var(--brX)) calc(100% - var(--brInsetOffsetMore)),
-                     calc(100% - var(--wd) / 2 - var(--brX) - var(--brNotch)) calc(100% - var(--wd));
+                     calc(100% - var(--wd) / 2 - var(--brX) + var(--brNotch)) calc(100% - var(--brInsetOffsetMore)),
+                     calc(100% - var(--wd) / 2 - var(--brX)) calc(100% - var(--wd));
 }
 .blNotchX {
   --bl: 35px; /* size */
-  --blX: var(--blWidth, var(--bl));
   --blY: var(--blHeight, var(--bl));
-  --blNotch: var(--blY); /* how far the notch extends past width */
-  --blPath: calc(var(--blX) + var(--blNotch)) 100%,
-            var(--blX) calc(100% - var(--blY)),
+  --blNotch: var(--blY); /* how much of width is the notch */
+  --blX: var(--blWidth, calc(var(--bl) + var(--blNotch)));
+  --blPath: var(--blX) 100%,
+            calc(var(--blX) - var(--blNotch)) calc(100% - var(--blY)),
             0px calc(100% - var(--blY));
   --blInsetOffset: calc(var(--blY) + var(--w));
-  --blPathInset: calc(var(--blX) + var(--w) / 2 + var(--blNotch)) calc(100% - var(--w)),
-                 calc(var(--blX) + var(--w) / 2) calc(100% - var(--blInsetOffset)),
+  --blPathInset: calc(var(--blX) + var(--w) / 2) calc(100% - var(--w)),
+                 calc(var(--blX) + var(--w) / 2 - var(--blNotch)) calc(100% - var(--blInsetOffset)),
                  var(--w) calc(100% - var(--blInsetOffset));
   --wd: calc(var(--w, 0px) + var(--d));
   --blInsetOffsetMore: calc(var(--blY) + var(--wd));
-  --blPathInsetMore: calc(var(--blX) + var(--wd) / 2 + var(--blNotch)) calc(100% - var(--wd)),
-                     calc(var(--blX) + var(--wd) / 2) calc(100% - var(--blInsetOffsetMore)),
+  --blPathInsetMore: calc(var(--blX) + var(--wd) / 2) calc(100% - var(--wd)),
+                     calc(var(--blX) + var(--wd) / 2 - var(--blNotch)) calc(100% - var(--blInsetOffsetMore)),
                      var(--wd) calc(100% - var(--blInsetOffsetMore));
 }
 
 .tlNotchY {
   --tl: 35px; /* size */
   --tlX: var(--tlWidth, var(--tl));
-  --tlY: var(--tlHeight, var(--tl));
-  --tlNotch: var(--tlX); /* how far the notch extends under height */
-  --tlPath: 0px calc(var(--tlY) + var(--tlNotch)),
-            var(--tlX) var(--tlY),
+  --tlNotch: var(--tlX); /* how much of height is the notch */
+  --tlY: var(--tlHeight, calc(var(--tl) + var(--tlNotch)));
+  --tlPath: 0px var(--tlY),
+            var(--tlX) calc(var(--tlY) - var(--tlNotch)),
             var(--tlX) 0px;
-  --tlInsetOffset: calc(var(--tlY) + var(--w) / 2 + var(--tlNotch));
+  --tlInsetOffset: calc(var(--tlY) + var(--w) / 2);
   --tlPathInset: var(--w) var(--tlInsetOffset),
-                 calc(var(--w) + var(--tlX)) calc(var(--tlY) + var(--w) / 2),
+                 calc(var(--w) + var(--tlX)) calc(var(--tlInsetOffset) - var(--tlNotch)),
                  calc(var(--w) + var(--tlX)) var(--w);
   --wd: calc(var(--w, 0px) + var(--d));
-  --tlInsetOffsetMore: calc(var(--tlY) + var(--wd) / 2 + var(--tlNotch));
+  --tlInsetOffsetMore: calc(var(--tlY) + var(--wd) / 2);
   --tlPathInsetMore: var(--wd) var(--tlInsetOffsetMore),
-                 calc(var(--wd) + var(--tlX)) calc(var(--tlY) + var(--wd) / 2),
+                 calc(var(--wd) + var(--tlX)) calc(var(--tlInsetOffsetMore) - var(--tlNotch)),
                  calc(var(--wd) + var(--tlX)) var(--wd);
 }
 .trNotchY {
   --tr: 35px; /* size */
   --trX: var(--trWidth, var(--tr));
-  --trY: var(--trHeight, var(--tr));
-  --trNotch: var(--trX); /* how far the notch extends under height */
+  --trNotch: var(--trX); /* how much of height is the notch */
+  --trY: var(--trHeight, calc(var(--tr) + var(--trNotch)));
   --trPath: calc(100% - var(--trX)) 0px,
-            calc(100% - var(--trX)) var(--trY),
-            100% calc(var(--trY) + var(--trNotch));
-  --trInsetOffset: calc(var(--trY) + var(--w) / 2 + var(--trNotch));
+            calc(100% - var(--trX)) calc(var(--trY) - var(--trNotch)),
+            100% var(--trY);
+  --trInsetOffset: calc(var(--trY) + var(--w) / 2);
   --trPathInset: calc(100% - var(--w) - var(--trX)) var(--w),
-                calc(100% - var(--w) - var(--trX)) calc(var(--trY) + var(--w) / 2),
+                calc(100% - var(--w) - var(--trX)) calc(var(--trInsetOffset) - var(--trNotch)),
                 calc(100% - var(--w)) var(--trInsetOffset);
   --wd: calc(var(--w, 0px) + var(--d));
-  --trInsetOffsetMore: calc(var(--trY) + var(--wd) / 2 + var(--trNotch));
+  --trInsetOffsetMore: calc(var(--trY) + var(--wd) / 2);
   --trPathInsetMore: calc(100% - var(--wd) - var(--trX)) var(--wd),
-                    calc(100% - var(--wd) - var(--trX)) calc(var(--trY) + var(--wd) / 2),
+                    calc(100% - var(--wd) - var(--trX)) calc(var(--trInsetOffsetMore) - var(--trNotch)),
                     calc(100% - var(--wd)) var(--trInsetOffsetMore);
 }
 .brNotchY {
   --br: 35px; /* size */
   --brX: var(--brWidth, var(--br));
-  --brY: var(--brHeight, var(--br));
-  --brNotch: var(--brX); /* how far the notch extends above height */
-  --brPath: 100% calc(100% - var(--brY) - var(--brNotch)),
-            calc(100% - var(--brX)) calc(100% - var(--brY)),
+  --brNotch: var(--brX); /* how much of height is the notch */
+  --brY: var(--brHeight, calc(var(--br) + var(--brNotch)));
+  --brPath: 100% calc(100% - var(--brY)),
+            calc(100% - var(--brX)) calc(100% - var(--brY) + var(--brNotch)),
             calc(100% - var(--brX)) 100%;
-  --brInsetOffset: calc(var(--brY) + var(--w) / 2 + var(--brNotch));
+  --brInsetOffset: calc(var(--brY) + var(--w) / 2);
   --brPathInset: calc(100% - var(--w)) calc(100% - var(--brInsetOffset)),
-                 calc(100% - var(--w) - var(--brX)) calc(100% - (var(--brY) + var(--w) / 2)),
+                 calc(100% - var(--w) - var(--brX)) calc(100% - var(--brInsetOffset) + var(--brNotch)),
                  calc(100% - var(--w) - var(--brX)) calc(100% - var(--w));
   --wd: calc(var(--w, 0px) + var(--d));
-  --brInsetOffsetMore: calc(var(--brY) + var(--wd) / 2 + var(--brNotch));
+  --brInsetOffsetMore: calc(var(--brY) + var(--wd) / 2);
   --brPathInsetMore: calc(100% - var(--wd)) calc(100% - var(--brInsetOffsetMore)),
-                     calc(100% - var(--wd) - var(--brX)) calc(100% - (var(--brY) + var(--wd) / 2)),
+                     calc(100% - var(--wd) - var(--brX)) calc(100% - var(--brInsetOffsetMore) + var(--brNotch)),
                      calc(100% - var(--wd) - var(--brX)) calc(100% - var(--wd));
 }
 .blNotchY {
   --bl: 35px; /* size */
   --blX: var(--blWidth, var(--bl));
-  --blY: var(--blHeight, var(--bl));
-  --blNotch: var(--blX); /* how far the notch extends above height */
+  --blNotch: var(--blX); /* how much of height is the notch */
+  --blY: var(--blHeight, calc(var(--bl) + var(--blNotch)));
   --blPath: var(--blX) 100%,
-            var(--blX) calc(100% - var(--blY)),
-            0px calc(100% - var(--blY) - var(--blNotch));
-  --blInsetOffset: calc(var(--blY) + var(--w) / 2 + var(--blNotch));
+            var(--blX) calc(100% - var(--blY) + var(--blNotch)),
+            0px calc(100% - var(--blY));
+  --blInsetOffset: calc(var(--blY) + var(--w) / 2);
   --blPathInset: calc(var(--blX) + var(--w)) calc(100% - var(--w)),
-                 calc(var(--blX) + var(--w)) calc(100% - (var(--blY) + var(--w) / 2)),
+                 calc(var(--blX) + var(--w)) calc(100% - var(--blInsetOffset) + var(--blNotch)),
                  var(--w) calc(100% - var(--blInsetOffset));
   --wd: calc(var(--w, 0px) + var(--d));
-  --blInsetOffsetMore: calc(var(--blY) + var(--wd) / 2 + var(--blNotch));
+  --blInsetOffsetMore: calc(var(--blY) + var(--wd) / 2);
   --blPathInsetMore: calc(var(--blX) + var(--wd)) calc(100% - var(--wd)),
-                     calc(var(--blX) + var(--wd)) calc(100% - (var(--blY) + var(--wd) / 2)),
+                     calc(var(--blX) + var(--wd)) calc(100% - var(--blInsetOffsetMore) + var(--blNotch)),
                      var(--wd) calc(100% - var(--blInsetOffsetMore));
 }
 
