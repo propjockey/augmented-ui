@@ -25,8 +25,8 @@
       const step1End = 3000
       const step2End = 7000
       const introAnimation = new PropJockey({
-        repeat: () => true,
-        repeatDelay: () => 4000,
+        repeat: true,
+        repeatDelay: 4000,
         props: {
           presentationAugs: {
             slide: noopSlide,
@@ -85,14 +85,76 @@
       })
       introAnimation.play(document.getElementById("demoEl"))
 
+
+      const fpsCallback = (function () {
+        const rollingAverage = (function () {
+          const entries = []
+          const sum = (t, v) => t + v
+          const avg = () => entries.reduce(sum, 0) / entries.length
+          return num => {
+            entries.unshift(num)
+            entries.splice(10)
+            return avg()
+          }
+        })()
+        let lastFPS = 0
+        let lastClass = "great-fps"
+        let awfulCount = 0
+        let haulted = false
+        // let lastMS = Date.now()
+        const bgFPSEl = document.getElementById("bgFPS")
+        return (animation, objectInProgress, animationInstanceState) => {
+          if (haulted) {
+            return
+          }
+          // const deltaTime = Date.now() - lastMS
+          const deltaTime = animation.config.timingPool.deltaTime
+          // lastMS = Date.now()
+          const currentFPS = 1000 / deltaTime
+          const fpsAvg = Math.round(rollingAverage(currentFPS))
+          if (lastFPS !== fpsAvg) {
+            bgFPSEl.innerHTML = fpsAvg
+            lastFPS = fpsAvg
+            let newClass = ""
+            if (fpsAvg > 59) {
+              newClass = "great-fps"
+            } else if (fpsAvg > 44) {
+              newClass = "good-fps"
+            } else if (fpsAvg > 29) {
+              newClass = "fair-fps"
+            } else if (fpsAvg > 19) {
+              newClass = "bad-fps"
+            } else {
+              newClass = "awful-fps"
+            }
+            if (newClass !== lastClass) {
+              bgFPSEl.parentNode.classList.remove(lastClass)
+              bgFPSEl.parentNode.classList.add(newClass)
+              lastClass = newClass
+            }
+          }
+          if (fpsAvg < 20) {
+            awfulCount++
+            if (awfulCount > 50) {
+              bgFPSEl.parentNode.classList.add("awful-fps-hault")
+              document.body.classList.add("background-haulted")
+              animation.pause(objectInProgress)
+              haulted = true
+            }
+          }
+        }
+      })()
+
       // chrome near plane clipping bug that causes the bad/broken render on a few frames of a couple elements close to the "camera"
       // https://bugs.chromium.org/p/chromium/issues/detail?id=224618
       const pjdAnimationPropContainer = document.getElementById("propjockeyDOMinionM")
       const loopTime = 25000
       const pjdAnimation3D = new PropJockey({
-        repeat: () => true,
+        // onAfterFrame: fpsCallback,
+        repeat: true,
+        maxFPS: 90,
         defaultEase: "ease.linear",
-        defaultSetter: "setter.element.cssVar.unit",
+        defaultSetter: (obj, propName, newVal, prop) => obj.style.setProperty(propName, newVal.toPrecision(6) + prop.unit),
         props: {
           "--pjAnimVar1":  { unit: "deg", keyframes: [ { position: 0, value:   1 + 359 }, { position: loopTime, value:   1       } ] },
           "--pjAnimVar2":  { unit: "deg", keyframes: [ { position: 0, value: 181 + 359 }, { position: loopTime, value: 181       } ] },
@@ -104,6 +166,7 @@
           "--pjAnimVar8":  { unit: "deg", keyframes: [ { position: 0, value: 185 + 359 }, { position: loopTime, value: 185       } ] },
           "--pjAnimVar9":  { unit: "deg", keyframes: [ { position: 0, value:   8       }, { position: loopTime, value:   8 + 359 } ] },
           "--pjAnimVar10": { unit: "deg", keyframes: [ { position: 0, value:  91 + 359 }, { position: loopTime, value:  91       } ] },
+          "wtf": { setter: () => fpsCallback(pjdAnimation3D, pjdAnimationPropContainer), keyframes: [ { position: 0, value:0 }, { position: loopTime, value: 1 } ] }
         }
       })
       pjdAnimation3D.play(pjdAnimationPropContainer)
@@ -111,7 +174,7 @@
     <style>
       * {
         box-sizing: border-box;
-        font-family: serif;
+        font-family: sans-serif;
         font-size: 16px;
         margin: 0px;
         padding: 0px;
@@ -123,10 +186,8 @@
         --clientWidth: 1920;
         --s: calc(var(--clientWidth) / 1920);
         /* background: linear-gradient(to right, #000000, #333726, #454023, #333726, #000000); */
-        background: black;
       }
       .header-animation-container {
-        opacity: 0.25;
         position: absolute;
         top: 0px;
         left: 0px;
@@ -135,9 +196,25 @@
         overflow: hidden;
         max-height: calc(var(--clientWidth) * 9px / 16);
         pointer-events: none;
+        background: #000000;
+        --tl: 30px;
+        --tlWidth: 170px;
+        --bl: 20px;
+        --blWidth: 40%;
+        --br: 20px;
+        --brWidth: 40%;
+        --d: 0px;
+        --insetBg: #000000cc;
+      }
+      .header-animation-container:before {
+        z-index: 2;
+      }
+      body.background-haulted .header-animation-container {
+        --insetBg: linear-gradient(to bottom, #ff000033, #000000cc, #ff000033), #000000cc;
       }
 
       .demo-presentation {
+        pointer-events: none;
         position: absolute;
         top: 0px;
         left: 0px;
@@ -148,6 +225,7 @@
       }
 
       .presentation-focus {
+        pointer-events: all;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -162,7 +240,6 @@
         width: 530px;
         padding: 70px;
         font-size: 35px;
-        font-family: serif;
         text-shadow: 0px 0px 32px #000000CC;
         color: white;
         --borderBg: linear-gradient(to bottom right, #333726, #ffd700, #333726);
@@ -173,10 +250,109 @@
         background: #9b9988;
       }
 
+      .bg-controls-container {
+        pointer-events: all;
+        position: absolute;
+        bottom: 45px;
+        left: 25px;
+        height: 50px;
+        width: 300px;
+        transform-origin: 0 50%;
+        transform: rotateY(5deg);
+      }
+
+      .bg-controls {
+        padding: 10px;
+        --d: 3px;
+        --insetBg: #00000044;
+        --w: 2px;
+        --borderBg: #ffd70088;
+        --tl: 6px;
+        --br: 6px;
+        --bl: 25px;
+        --tr: 25px;
+        height: 100%;
+        width: 100%;
+      }
+
+      .diagnostics-info {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        width: 190px;
+        color: #ffffff88;
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      .performance-detail:after {
+        content: "";
+        color: gold;
+      }
+      .great-fps .performance-detail:after { content: "GREAT"; }
+      .good-fps .performance-detail:after { content: "GOOD"; }
+      .fair-fps .performance-detail:after { content: "FAIR"; }
+      .bad-fps .performance-detail:after { content: "BAD"; color: #ffaaaa; }
+      .awful-fps .performance-detail:after { content: "AWFUL"; color: #ff8888; }
+      .awful-fps-hault .performance-detail:after { content: "HAULTED"; color: #ff0000; }
+      .performance-detail {
+        font-size: 12px;
+        opacity: 0.65;
+      }
+
+      #bgFPS {
+        background: #ffd700;
+        color: #ffffff;
+        text-shadow: 0px 0px 32px #000000CC;
+        height: 60px;
+        width: 45px;
+        position: absolute;
+        left: 25px;
+        bottom: 20px;
+        --tl: 3px;
+        --br: 3px;
+        --bl: 10px;
+        --tr: 10px;
+        font-size: 25px;
+        text-align: center;
+        padding-top: 10px;
+      }
+      .awful-fps-hault #bgFPS {
+        background: linear-gradient(to right, #ff000033, #ff000033), #ffd700;
+      }
+
+      .fps-label {
+        background: #000000;
+        color: #ffffff;
+        height: 20px;
+        width: 35px;
+        position: absolute;
+        left: 42px;
+        bottom: 14px;
+        --bl: 7px;
+        --tr: 7px;
+        font-size: 11px;
+        text-align: center;
+        --w: 1px;
+        --borderBg: #ffffff88;
+        padding-top: 5px;
+        letter-spacing: 1px;
+        line-height: 11px;
+      }
+
       .header-gap {
-        height: var(--headerHeight, 1080px);
+        height: calc(var(--headerHeight, 1080px) - 20px);
         width: 100%;
         pointer-events: none;
+      }
+
+      h1.top-left {
+        padding: 5px;
+        padding-left: 15px;
+        background: gold;
+        color: #312307;
+        width: 200px;
+        height: 100px;
       }
 
       .section-1 {
@@ -369,7 +545,7 @@
     </style>
   </head>
   <body>
-    <div class="header-animation-container">
+    <div class="header-animation-container tlNotchX blNotchX brNotchX augmented insetBg">
       <div id="propjockeyDOMinionM"><div id="pjdMAR"><div id="pjdMC"><div id="pjdMZ"><div id="pjdMCR"><div id="pjdMGP">
         <div id="pjd1"><div id="pjd2"></div><div id="pjd3"></div><div id="pjd4"></div><div id="pjd5"></div><div id="pjd6"></div><div id="pjd7"></div></div><div id="pjd8"><div id="pjd9"></div><div id="pjda"></div><div id="pjdb"></div><div id="pjdc"></div><div id="pjdd"></div><div id="pjde"></div><div id="pjdf"></div><div id="pjdg"></div><div id="pjdh"></div><div id="pjdi"></div><div id="pjdj"></div><div id="pjdk"></div><div id="pjdl"></div><div id="pjdm"></div><div id="pjdn"></div><div id="pjdo"></div><div id="pjdp"></div><div id="pjdq"></div></div><div id="pjdr"><div id="pjds"></div><div id="pjdt"></div><div id="pjdu"></div><div id="pjdv"></div><div id="pjdw"></div><div id="pjdx"></div><div id="pjdy"></div><div id="pjdz"></div><div id="pjd10"></div><div id="pjd11"></div><div id="pjd12"></div><div id="pjd13"></div><div id="pjd14"></div><div id="pjd15"></div><div id="pjd16"></div><div id="pjd17"></div><div id="pjd18"></div><div id="pjd19"></div></div><div id="pjd1a"></div><div id="pjd1b"></div><div id="pjd1c"></div><div id="pjd1d"></div><div id="pjd1e"></div><div id="pjd1f"></div><div id="pjd1g"><div id="pjd1h"></div><div id="pjd1i"></div><div id="pjd1j"></div><div id="pjd1k"></div><div id="pjd1l"></div><div id="pjd1m"></div><div id="pjd1n"></div><div id="pjd1o"></div><div id="pjd1p"></div><div id="pjd1q"></div><div id="pjd1r"></div></div><div id="pjd1s"><div id="pjd1t"></div><div id="pjd1u"></div><div id="pjd1v"></div><div id="pjd1w"></div><div id="pjd1x"></div><div id="pjd1y"></div><div id="pjd1z"></div><div id="pjd20"></div><div id="pjd21"></div><div id="pjd22"></div><div id="pjd23"></div></div><div id="pjd24"><div id="pjd25"></div><div id="pjd26"></div><div id="pjd27"></div><div id="pjd28"></div><div id="pjd29"></div><div id="pjd2a"></div><div id="pjd2b"></div><div id="pjd2c"></div><div id="pjd2d"></div><div id="pjd2e"></div><div id="pjd2f"></div><div id="pjd2g"></div><div id="pjd2h"></div><div id="pjd2i"></div></div><div id="pjd2j"><div id="pjd2k"></div><div id="pjd2l"></div><div id="pjd2m"></div><div id="pjd2n"></div><div id="pjd2o"></div><div id="pjd2p"></div><div id="pjd2q"></div><div id="pjd2r"></div><div id="pjd2s"></div><div id="pjd2t"></div><div id="pjd2u"></div><div id="pjd2v"></div><div id="pjd2w"></div><div id="pjd2x"></div></div>
       </div></div></div></div></div></div>
@@ -389,14 +565,30 @@
     <div class="demo-presentation">
       <div class="presentation-focus">
         <div id="demoEl" class="test sadNormalDiv">
-          Hello World. Coming soon.
+          Hello World.
         </div>
       </div>
+      <div class="bg-controls-container">
+        <div class="bg-controls tlRound trClip brRound blClip augmented bordered insetBg">
+          <div class="diagnostics-info">
+            BACKGROUND DIAGNOSTICS<br>
+            <span class="performance-detail">PERFORMANCE: </span>
+          </div>
+        </div>
+        <span id="bgFPS" class="tlRound trClip brRound blClip augmented"></span>
+        <span class="fps-label trClip blClip augmented bordered">FPS</span>
+      </div>
     </div>
-    <div class="header-gap"></div>
+    <div class="header-gap">
+      <h1 class="top-left">augmented-ui</h1>
+    </div>
     <div class="section-1">
       Section 1
-      <br>todo
+      <br>
+      <div class="blNotchX brNotchX augmented" style="margin: 50px; background: gold; width: 100px; height: 100px;">
+        <div class="blNotchX brNotchX augmented" style="width: 50%; background: white; height: 50%;">
+        </div>
+      </div>
     </div>
   </body>
 </html>
