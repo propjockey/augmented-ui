@@ -1,451 +1,585 @@
 /*
+  augmented-ui
   BSD 2-Clause License
   Copyright (c) James0x57, PropJockey, 2019
 */
-.tlClip {
-  --tl: 35px; /* clip size */
-  --tlX: var(--tlWidth, var(--tl));
-  --tlY: var(--tlHeight, var(--tl));
-  --tlPath: 0px var(--tlY), var(--tlX) 0px;
-  --tlInsetOffset: calc(var(--tlY) + var(--w) / 2);
-  --tlPathInset: var(--w) var(--tlInsetOffset), calc(var(--tlX) + var(--w) / 2) var(--w);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --tlInsetOffsetMore: calc(var(--tlY) + var(--wd) / 2);
-  --tlPathInsetMore: var(--wd) var(--tlInsetOffsetMore), calc(var(--tlX) + var(--wd) / 2) var(--wd);
+.aug-tl-none {
+  --aug-tl: 0px; /* no size */
+  --aug-_TlX: 0px;
+  --aug-_TlY: 0px;
+  --aug-_TlPath: 0px 0px;
+  --aug-_TlInsetOffset: var(--aug-_W);
+  --aug-_TlPathInset: var(--aug-_W) var(--aug-_W);
+  --aug-_TlInsetOffsetMore: var(--aug-_WD);
+  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_WD);
 }
-.trClip {
-  --tr: 35px; /* clip size */
-  --trX: var(--trWidth, var(--tr));
-  --trY: var(--trHeight, var(--tr));
-  --trPath: calc(100% - var(--trX)) 0px, 100% var(--trY);
-  --trInsetOffset: calc(var(--trY) + var(--w) / 2);
-  --trPathInset: calc(100% - (var(--trX) + var(--w) / 2)) var(--w), calc(100% - var(--w)) var(--trInsetOffset);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --trInsetOffsetMore: calc(var(--trY) + var(--wd) / 2);
-  --trPathInsetMore: calc(100% - (var(--trX) + var(--wd) / 2)) var(--wd), calc(100% - var(--wd)) var(--trInsetOffsetMore);
+.aug-tr-none {
+  --aug-tr: 0px; /* no size */
+  --aug-_TrX: 0px;
+  --aug-_TrY: 0px;
+  --aug-_TrPath: 100% 0px;
+  --aug-_TrInsetOffset: var(--aug-_W);
+  --aug-_TrPathInset: calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
+  --aug-_TrInsetOffsetMore: var(--aug-_WD);
+  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
 }
-.brClip {
-  --br: 35px; /* clip size */
-  --brX: var(--brWidth, var(--br));
-  --brY: var(--brHeight, var(--br));
-  --brPath: 100% calc(100% - var(--brY)), calc(100% - var(--brX)) 100%;
-  --brInsetOffset: calc(var(--brY) + var(--w) / 2);
-  --brPathInset: calc(100% - var(--w)) calc(100% - var(--brInsetOffset)), calc(100% - (var(--brX) + var(--w) / 2)) calc(100% - var(--w));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --brInsetOffsetMore: calc(var(--brY) + var(--wd) / 2);
-  --brPathInsetMore: calc(100% - var(--wd)) calc(100% - var(--brInsetOffsetMore)), calc(100% - (var(--brX) + var(--wd) / 2)) calc(100% - var(--wd));
+.aug-br-none {
+  --aug-br: 0px; /* no size */
+  --aug-_BrX: 0px;
+  --aug-_BrY: 0px;
+  --aug-_BrPath: 100% 100%;
+  --aug-_BrInsetOffset: var(--aug-_W);
+  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_W));
+  --aug-_BrInsetOffsetMore: var(--aug-_WD);
+  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_WD));
 }
-.blClip {
-  --bl: 35px; /* clip size */
-  --blX: var(--blWidth, var(--bl));
-  --blY: var(--blHeight, var(--bl));
-  --blPath: var(--blX) 100%, 0px calc(100% - var(--blY));
-  --blInsetOffset: calc(var(--blY) + var(--w) / 2);
-  --blPathInset: calc(var(--blX) + var(--w) / 2) calc(100% - var(--w)), var(--w) calc(100% - var(--blInsetOffset));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --blInsetOffsetMore: calc(var(--blY) + var(--wd) / 2);
-  --blPathInsetMore: calc(var(--blX) + var(--wd) / 2) calc(100% - var(--wd)), var(--wd) calc(100% - var(--blInsetOffsetMore));
+.aug-bl-none {
+  --aug-bl: 0px; /* no size */
+  --aug-_BlX: 0px;
+  --aug-_BlY: 0px;
+  --aug-_BlPath: 0px 100%;
+  --aug-_BlInsetOffset: var(--aug-_W);
+  --aug-_BlPathInset: var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
+  --aug-_BlInsetOffsetMore: var(--aug-_WD);
+  --aug-_BlPathInsetMore: var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
 }
 
-.tlRound {
-  --tl: 35px; /* radius */
-  --sin18cos72: 0.30901699437;
-  --sin36cos54: 0.58778525229;
-  --sin54cos36: 0.80901699437;
-  --sin72cos18: 0.95105651629;
-  --tlPath: 0px var(--tl),
-            calc(var(--tl) - var(--sin72cos18) * var(--tl)) calc(var(--tl) - var(--sin18cos72) * var(--tl)),
-            calc(var(--tl) - var(--sin54cos36) * var(--tl)) calc(var(--tl) - var(--sin36cos54) * var(--tl)),
-            calc(var(--tl) - var(--sin36cos54) * var(--tl)) calc(var(--tl) - var(--sin54cos36) * var(--tl)),
-            calc(var(--tl) - var(--sin18cos72) * var(--tl)) calc(var(--tl) - var(--sin72cos18) * var(--tl)),
-            var(--tl) 0px;
-  --tlInsetOffset: var(--tl);
-  --tlPathInset: var(--w) var(--tlInsetOffset),
-                calc(var(--tl) - var(--sin72cos18) * (var(--tl) - var(--w))) calc(var(--tl) - var(--sin18cos72) * (var(--tl) - var(--w))),
-                calc(var(--tl) - var(--sin54cos36) * (var(--tl) - var(--w))) calc(var(--tl) - var(--sin36cos54) * (var(--tl) - var(--w))),
-                calc(var(--tl) - var(--sin36cos54) * (var(--tl) - var(--w))) calc(var(--tl) - var(--sin54cos36) * (var(--tl) - var(--w))),
-                calc(var(--tl) - var(--sin18cos72) * (var(--tl) - var(--w))) calc(var(--tl) - var(--sin72cos18) * (var(--tl) - var(--w))),
-                var(--tlInsetOffset) var(--w);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --tlInsetOffsetMore: calc(var(--tl) + var(--wd));
-  --tlPathInsetMore: var(--wd) var(--tlInsetOffsetMore),
-                    calc(var(--tl) - var(--sin72cos18) * (var(--tl) - var(--wd))) calc(var(--tl) - var(--sin18cos72) * (var(--tl) - var(--wd))),
-                    calc(var(--tl) - var(--sin54cos36) * (var(--tl) - var(--wd))) calc(var(--tl) - var(--sin36cos54) * (var(--tl) - var(--wd))),
-                    calc(var(--tl) - var(--sin36cos54) * (var(--tl) - var(--wd))) calc(var(--tl) - var(--sin54cos36) * (var(--tl) - var(--wd))),
-                    calc(var(--tl) - var(--sin18cos72) * (var(--tl) - var(--wd))) calc(var(--tl) - var(--sin72cos18) * (var(--tl) - var(--wd))),
-                    var(--tlInsetOffsetMore) var(--wd);
-}
-.trRound {
-  --tr: 35px; /* radius */
-  --sin18cos72: 0.30901699437;
-  --sin36cos54: 0.58778525229;
-  --sin54cos36: 0.80901699437;
-  --sin72cos18: 0.95105651629;
-  --trPath: calc(100% - var(--tr)) 0px,
-            calc(100% - var(--tr) + var(--sin18cos72) * var(--tr)) calc(var(--tr) - var(--sin72cos18) * var(--tr)),
-            calc(100% - var(--tr) + var(--sin36cos54) * var(--tr)) calc(var(--tr) - var(--sin54cos36) * var(--tr)),
-            calc(100% - var(--tr) + var(--sin54cos36) * var(--tr)) calc(var(--tr) - var(--sin36cos54) * var(--tr)),
-            calc(100% - var(--tr) + var(--sin72cos18) * var(--tr)) calc(var(--tr) - var(--sin18cos72) * var(--tr)),
-            100% var(--tr);
-  --trInsetOffset: var(--tr);
-  --trPathInset: calc(100% - var(--trInsetOffset)) var(--w),
-                calc(100% - var(--tr) + var(--sin18cos72) * (var(--tr) - var(--w))) calc(var(--tr) - var(--sin72cos18) * (var(--tr) - var(--w))),
-                calc(100% - var(--tr) + var(--sin36cos54) * (var(--tr) - var(--w))) calc(var(--tr) - var(--sin54cos36) * (var(--tr) - var(--w))),
-                calc(100% - var(--tr) + var(--sin54cos36) * (var(--tr) - var(--w))) calc(var(--tr) - var(--sin36cos54) * (var(--tr) - var(--w))),
-                calc(100% - var(--tr) + var(--sin72cos18) * (var(--tr) - var(--w))) calc(var(--tr) - var(--sin18cos72) * (var(--tr) - var(--w))),
-                calc(100% - var(--w)) var(--trInsetOffset);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --trInsetOffsetMore: calc(var(--tr) + var(--wd));
-  --trPathInsetMore: calc(100% - var(--trInsetOffsetMore)) var(--wd),
-                    calc(100% - var(--tr) + var(--sin18cos72) * (var(--tr) - var(--wd))) calc(var(--tr) - var(--sin72cos18) * (var(--tr) - var(--wd))),
-                    calc(100% - var(--tr) + var(--sin36cos54) * (var(--tr) - var(--wd))) calc(var(--tr) - var(--sin54cos36) * (var(--tr) - var(--wd))),
-                    calc(100% - var(--tr) + var(--sin54cos36) * (var(--tr) - var(--wd))) calc(var(--tr) - var(--sin36cos54) * (var(--tr) - var(--wd))),
-                    calc(100% - var(--tr) + var(--sin72cos18) * (var(--tr) - var(--wd))) calc(var(--tr) - var(--sin18cos72) * (var(--tr) - var(--wd))),
-                    calc(100% - var(--wd)) var(--trInsetOffsetMore);
-}
-.brRound {
-  --br: 35px; /* radius */
-  --sin18cos72: 0.30901699437;
-  --sin36cos54: 0.58778525229;
-  --sin54cos36: 0.80901699437;
-  --sin72cos18: 0.95105651629;
-  --brPath: 100% calc(100% - var(--br)),
-            calc(100% - var(--br) + var(--sin72cos18) * var(--br)) calc(100% - var(--br) + var(--sin18cos72) * var(--br)),
-            calc(100% - var(--br) + var(--sin54cos36) * var(--br)) calc(100% - var(--br) + var(--sin36cos54) * var(--br)),
-            calc(100% - var(--br) + var(--sin36cos54) * var(--br)) calc(100% - var(--br) + var(--sin54cos36) * var(--br)),
-            calc(100% - var(--br) + var(--sin18cos72) * var(--br)) calc(100% - var(--br) + var(--sin72cos18) * var(--br)),
-            calc(100% - var(--br)) 100%;
-  --brInsetOffset: calc(var(--br) + var(--w));
-  --brPathInset: calc(100% - var(--w)) calc(100% - var(--brInsetOffset)),
-                calc(100% - var(--br) + var(--sin72cos18) * (var(--br) - var(--w))) calc(100% - var(--br) + var(--sin18cos72) * (var(--br) - var(--w))),
-                calc(100% - var(--br) + var(--sin54cos36) * (var(--br) - var(--w))) calc(100% - var(--br) + var(--sin36cos54) * (var(--br) - var(--w))),
-                calc(100% - var(--br) + var(--sin36cos54) * (var(--br) - var(--w))) calc(100% - var(--br) + var(--sin54cos36) * (var(--br) - var(--w))),
-                calc(100% - var(--br) + var(--sin18cos72) * (var(--br) - var(--w))) calc(100% - var(--br) + var(--sin72cos18) * (var(--br) - var(--w))),
-                calc(100% - var(--brInsetOffset)) calc(100% - var(--w));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --brInsetOffsetMore: calc(var(--br) + var(--wd));
-  --brPathInsetMore: calc(100% - var(--wd)) calc(100% - var(--brInsetOffsetMore)),
-                    calc(100% - var(--br) + var(--sin72cos18) * (var(--br) - var(--wd))) calc(100% - var(--br) + var(--sin18cos72) * (var(--br) - var(--wd))),
-                    calc(100% - var(--br) + var(--sin54cos36) * (var(--br) - var(--wd))) calc(100% - var(--br) + var(--sin36cos54) * (var(--br) - var(--wd))),
-                    calc(100% - var(--br) + var(--sin36cos54) * (var(--br) - var(--wd))) calc(100% - var(--br) + var(--sin54cos36) * (var(--br) - var(--wd))),
-                    calc(100% - var(--br) + var(--sin18cos72) * (var(--br) - var(--wd))) calc(100% - var(--br) + var(--sin72cos18) * (var(--br) - var(--wd))),
-                    calc(100% - var(--brInsetOffsetMore)) calc(100% - var(--wd));
-}
-.blRound {
-  --bl: 35px; /* radius */
-  --sin18cos72: 0.30901699437;
-  --sin36cos54: 0.58778525229;
-  --sin54cos36: 0.80901699437;
-  --sin72cos18: 0.95105651629;
-  --blPath: var(--bl) 100%,
-            calc(var(--bl) - var(--sin18cos72) * var(--bl)) calc(100% - var(--bl) + var(--sin72cos18) * var(--bl)),
-            calc(var(--bl) - var(--sin36cos54) * var(--bl)) calc(100% - var(--bl) + var(--sin54cos36) * var(--bl)),
-            calc(var(--bl) - var(--sin54cos36) * var(--bl)) calc(100% - var(--bl) + var(--sin36cos54) * var(--bl)),
-            calc(var(--bl) - var(--sin72cos18) * var(--bl)) calc(100% - var(--bl) + var(--sin18cos72) * var(--bl)),
-            0px calc(100% - var(--bl));
-  --blInsetOffset: calc(var(--bl) + var(--w));
-  --blPathInset: var(--blInsetOffset) calc(100% - var(--w)),
-                calc(var(--bl) - var(--sin18cos72) * (var(--bl) - var(--w))) calc(100% - var(--bl) + var(--sin72cos18) * (var(--bl) - var(--w))),
-                calc(var(--bl) - var(--sin36cos54) * (var(--bl) - var(--w))) calc(100% - var(--bl) + var(--sin54cos36) * (var(--bl) - var(--w))),
-                calc(var(--bl) - var(--sin54cos36) * (var(--bl) - var(--w))) calc(100% - var(--bl) + var(--sin36cos54) * (var(--bl) - var(--w))),
-                calc(var(--bl) - var(--sin72cos18) * (var(--bl) - var(--w))) calc(100% - var(--bl) + var(--sin18cos72) * (var(--bl) - var(--w))),
-                var(--w) calc(100% - var(--blInsetOffset));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --blInsetOffsetMore: calc(var(--bl) + var(--wd));
-  --blPathInsetMore: var(--blInsetOffsetMore) calc(100% - var(--wd)),
-                    calc(var(--bl) - var(--sin18cos72) * (var(--bl) - var(--wd))) calc(100% - var(--bl) + var(--sin72cos18) * (var(--bl) - var(--wd))),
-                    calc(var(--bl) - var(--sin36cos54) * (var(--bl) - var(--wd))) calc(100% - var(--bl) + var(--sin54cos36) * (var(--bl) - var(--wd))),
-                    calc(var(--bl) - var(--sin54cos36) * (var(--bl) - var(--wd))) calc(100% - var(--bl) + var(--sin36cos54) * (var(--bl) - var(--wd))),
-                    calc(var(--bl) - var(--sin72cos18) * (var(--bl) - var(--wd))) calc(100% - var(--bl) + var(--sin18cos72) * (var(--bl) - var(--wd))),
-                    var(--wd) calc(100% - var(--blInsetOffsetMore));
+.aug-all-none,
+.aug-corners-none {
+  --aug-tl: 0px; /* no size */
+  --aug-_TlX: 0px;
+  --aug-_TlY: 0px;
+  --aug-_TlPath: 0px 0px;
+  --aug-_TlInsetOffset: var(--aug-_W);
+  --aug-_TlPathInset: var(--aug-_W) var(--aug-_W);
+  --aug-_TlInsetOffsetMore: var(--aug-_WD);
+  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_WD);
+  --aug-tr: 0px; /* no size */
+  --aug-_TrX: 0px;
+  --aug-_TrY: 0px;
+  --aug-_TrPath: 100% 0px;
+  --aug-_TrInsetOffset: var(--aug-_W);
+  --aug-_TrPathInset: calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
+  --aug-_TrInsetOffsetMore: var(--aug-_WD);
+  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+  --aug-br: 0px; /* no size */
+  --aug-_BrX: 0px;
+  --aug-_BrY: 0px;
+  --aug-_BrPath: 100% 100%;
+  --aug-_BrInsetOffset: var(--aug-_W);
+  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_W));
+  --aug-_BrInsetOffsetMore: var(--aug-_WD);
+  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_WD));
+  --aug-bl: 0px; /* no size */
+  --aug-_BlX: 0px;
+  --aug-_BlY: 0px;
+  --aug-_BlPath: 0px 100%;
+  --aug-_BlInsetOffset: var(--aug-_W);
+  --aug-_BlPathInset: var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
+  --aug-_BlInsetOffsetMore: var(--aug-_WD);
+  --aug-_BlPathInsetMore: var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
 }
 
-.tlRect {
-  --tl: 35px; /* size */
-  --tlX: var(--tlWidth, var(--tl));
-  --tlY: var(--tlHeight, var(--tl));
-  --tlPath: 0px var(--tlY),
-            var(--tlX) var(--tlY),
-            var(--tlX) 0px;
-  --tlInsetOffset: calc(var(--tlY) + var(--w));
-  --tlPathInset: var(--w) var(--tlInsetOffset),
-                 calc(var(--w) + var(--tlX)) var(--tlInsetOffset),
-                 calc(var(--w) + var(--tlX)) var(--w);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --tlInsetOffsetMore: calc(var(--tlY) + var(--wd));
-  --tlPathInsetMore: var(--wd) var(--tlInsetOffsetMore),
-                 calc(var(--wd) + var(--tlX)) var(--tlInsetOffsetMore),
-                 calc(var(--wd) + var(--tlX)) var(--wd);
+.aug-tl-clip {
+  --aug-tl: 15px; /* clip size */
+  --aug-_TlX: var(--aug-tl-width, var(--aug-tl));
+  --aug-_TlY: var(--aug-tl-height, var(--aug-tl));
+  --aug-_TlPath: 0px var(--aug-_TlY), var(--aug-_TlX) 0px;
+  --aug-_TlInsetOffset: calc(var(--aug-_TlY) + var(--aug-_W) / 2);
+  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset), calc(var(--aug-_TlX) + var(--aug-_W) / 2) var(--aug-_W);
+  --aug-_TlInsetOffsetMore: calc(var(--aug-_TlY) + var(--aug-_WD) / 2);
+  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore), calc(var(--aug-_TlX) + var(--aug-_WD) / 2) var(--aug-_WD);
 }
-.trRect {
-  --tr: 35px; /* size */
-  --trX: var(--trWidth, var(--tr));
-  --trY: var(--trHeight, var(--tr));
-  --trPath: calc(100% - var(--trX)) 0px,
-            calc(100% - var(--trX)) var(--trY),
-            100% var(--trY);
-  --trInsetOffset: calc(var(--trY) + var(--w));
-  --trPathInset: calc(100% - var(--w) - var(--trX)) var(--w),
-                calc(100% - var(--w) - var(--trX)) var(--trInsetOffset),
-                calc(100% - var(--w)) var(--trInsetOffset);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --trInsetOffsetMore: calc(var(--trY) + var(--wd));
-  --trPathInsetMore: calc(100% - var(--wd) - var(--trX)) var(--wd),
-                    calc(100% - var(--wd) - var(--trX)) var(--trInsetOffsetMore),
-                    calc(100% - var(--wd)) var(--trInsetOffsetMore);
+.aug-tr-clip {
+  --aug-tr: 15px; /* clip size */
+  --aug-_TrX: var(--aug-tr-width, var(--aug-tr));
+  --aug-_TrY: var(--aug-tr-height, var(--aug-tr));
+  --aug-_TrPath: calc(100% - var(--aug-_TrX)) 0px, 100% var(--aug-_TrY);
+  --aug-_TrInsetOffset: calc(var(--aug-_TrY) + var(--aug-_W) / 2);
+  --aug-_TrPathInset: calc(100% - (var(--aug-_TrX) + var(--aug-_W) / 2)) var(--aug-_W), calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
+  --aug-_TrInsetOffsetMore: calc(var(--aug-_TrY) + var(--aug-_WD) / 2);
+  --aug-_TrPathInsetMore: calc(100% - (var(--aug-_TrX) + var(--aug-_WD) / 2)) var(--aug-_WD), calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
 }
-.brRect {
-  --br: 35px; /* size */
-  --brX: var(--brWidth, var(--br));
-  --brY: var(--brHeight, var(--br));
-  --brPath: 100% calc(100% - var(--brY)),
-            calc(100% - var(--brX)) calc(100% - var(--brY)),
-            calc(100% - var(--brX)) 100%;
-  --brInsetOffset: calc(var(--brY) + var(--w));
-  --brPathInset: calc(100% - var(--w)) calc(100% - var(--brInsetOffset)),
-                 calc(100% - var(--w) - var(--brX)) calc(100% - var(--brInsetOffset)),
-                 calc(100% - var(--w) - var(--brX)) calc(100% - var(--w));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --brInsetOffsetMore: calc(var(--brY) + var(--wd));
-  --brPathInsetMore: calc(100% - var(--wd)) calc(100% - var(--brInsetOffsetMore)),
-                     calc(100% - var(--wd) - var(--brX)) calc(100% - var(--brInsetOffsetMore)),
-                     calc(100% - var(--wd) - var(--brX)) calc(100% - var(--wd));
+.aug-br-clip {
+  --aug-br: 15px; /* clip size */
+  --aug-_BrX: var(--aug-br-width, var(--aug-br));
+  --aug-_BrY: var(--aug-br-height, var(--aug-br));
+  --aug-_BrPath: 100% calc(100% - var(--aug-_BrY)), calc(100% - var(--aug-_BrX)) 100%;
+  --aug-_BrInsetOffset: calc(var(--aug-_BrY) + var(--aug-_W) / 2);
+  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)), calc(100% - (var(--aug-_BrX) + var(--aug-_W) / 2)) calc(100% - var(--aug-_W));
+  --aug-_BrInsetOffsetMore: calc(var(--aug-_BrY) + var(--aug-_WD) / 2);
+  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)), calc(100% - (var(--aug-_BrX) + var(--aug-_WD) / 2)) calc(100% - var(--aug-_WD));
 }
-.blRect {
-  --bl: 35px; /* size */
-  --blX: var(--blWidth, var(--bl));
-  --blY: var(--blHeight, var(--bl));
-  --blPath: var(--blX) 100%,
-            var(--blX) calc(100% - var(--blY)),
-            0px calc(100% - var(--blY));
-  --blInsetOffset: calc(var(--blY) + var(--w));
-  --blPathInset: calc(var(--blX) + var(--w)) calc(100% - var(--w)),
-                 calc(var(--blX) + var(--w)) calc(100% - var(--blInsetOffset)),
-                 var(--w) calc(100% - var(--blInsetOffset));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --blInsetOffsetMore: calc(var(--blY) + var(--wd));
-  --blPathInsetMore: calc(var(--blX) + var(--wd)) calc(100% - var(--wd)),
-                     calc(var(--blX) + var(--wd)) calc(100% - var(--blInsetOffsetMore)),
-                     var(--wd) calc(100% - var(--blInsetOffsetMore));
+.aug-bl-clip {
+  --aug-bl: 15px; /* clip size */
+  --aug-_BlX: var(--aug-bl-width, var(--aug-bl));
+  --aug-_BlY: var(--aug-bl-height, var(--aug-bl));
+  --aug-_BlPath: var(--aug-_BlX) 100%, 0px calc(100% - var(--aug-_BlY));
+  --aug-_BlInsetOffset: calc(var(--aug-_BlY) + var(--aug-_W) / 2);
+  --aug-_BlPathInset: calc(var(--aug-_BlX) + var(--aug-_W) / 2) calc(100% - var(--aug-_W)), var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
+  --aug-_BlInsetOffsetMore: calc(var(--aug-_BlY) + var(--aug-_WD) / 2);
+  --aug-_BlPathInsetMore: calc(var(--aug-_BlX) + var(--aug-_WD) / 2) calc(100% - var(--aug-_WD)), var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
 }
 
-.tlNotchX {
-  --tl: 35px;
-  --tlY: var(--tlHeight, var(--tl));
-  --tlNotch: var(--tlY); /* how much of width is the notch */
-  --tlX: var(--tlWidth, calc(var(--tl) + var(--tlNotch)));
-  --tlPath: 0px var(--tlY),
-            calc(var(--tlX) - var(--tlNotch)) var(--tlY),
-            var(--tlX) 0px;
-  --tlInsetOffset: calc(var(--tlY) + var(--w));
-  --tlPathInset: var(--w) var(--tlInsetOffset),
-                 calc(var(--w) / 2 + var(--tlX) - var(--tlNotch)) var(--tlInsetOffset),
-                 calc(var(--w) / 2 + var(--tlX)) var(--w);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --tlInsetOffsetMore: calc(var(--tlY) + var(--wd));
-  --tlPathInsetMore: var(--wd) var(--tlInsetOffsetMore),
-                 calc(var(--wd) / 2 + var(--tlX) - var(--tlNotch)) var(--tlInsetOffsetMore),
-                 calc(var(--wd) / 2 + var(--tlX)) var(--wd);
+.aug-tl-round {
+  --aug-tl: 15px; /* radius */
+  --aug-_Sin18cos72: 0.30901699437;
+  --aug-_Sin36cos54: 0.58778525229;
+  --aug-_Sin54cos36: 0.80901699437;
+  --aug-_Sin72cos18: 0.95105651629;
+  --aug-_TlPath: 0px var(--aug-tl),
+            calc(var(--aug-tl) - var(--aug-_Sin72cos18) * var(--aug-tl)) calc(var(--aug-tl) - var(--aug-_Sin18cos72) * var(--aug-tl)),
+            calc(var(--aug-tl) - var(--aug-_Sin54cos36) * var(--aug-tl)) calc(var(--aug-tl) - var(--aug-_Sin36cos54) * var(--aug-tl)),
+            calc(var(--aug-tl) - var(--aug-_Sin36cos54) * var(--aug-tl)) calc(var(--aug-tl) - var(--aug-_Sin54cos36) * var(--aug-tl)),
+            calc(var(--aug-tl) - var(--aug-_Sin18cos72) * var(--aug-tl)) calc(var(--aug-tl) - var(--aug-_Sin72cos18) * var(--aug-tl)),
+            var(--aug-tl) 0px;
+  --aug-_TlInsetOffset: var(--aug-tl);
+  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset),
+                calc(var(--aug-tl) - var(--aug-_Sin72cos18) * (var(--aug-tl) - var(--aug-_W))) calc(var(--aug-tl) - var(--aug-_Sin18cos72) * (var(--aug-tl) - var(--aug-_W))),
+                calc(var(--aug-tl) - var(--aug-_Sin54cos36) * (var(--aug-tl) - var(--aug-_W))) calc(var(--aug-tl) - var(--aug-_Sin36cos54) * (var(--aug-tl) - var(--aug-_W))),
+                calc(var(--aug-tl) - var(--aug-_Sin36cos54) * (var(--aug-tl) - var(--aug-_W))) calc(var(--aug-tl) - var(--aug-_Sin54cos36) * (var(--aug-tl) - var(--aug-_W))),
+                calc(var(--aug-tl) - var(--aug-_Sin18cos72) * (var(--aug-tl) - var(--aug-_W))) calc(var(--aug-tl) - var(--aug-_Sin72cos18) * (var(--aug-tl) - var(--aug-_W))),
+                var(--aug-_TlInsetOffset) var(--aug-_W);
+  --aug-_TlInsetOffsetMore: calc(var(--aug-tl) + var(--aug-_WD));
+  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore),
+                    calc(var(--aug-tl) - var(--aug-_Sin72cos18) * (var(--aug-tl) - var(--aug-_WD))) calc(var(--aug-tl) - var(--aug-_Sin18cos72) * (var(--aug-tl) - var(--aug-_WD))),
+                    calc(var(--aug-tl) - var(--aug-_Sin54cos36) * (var(--aug-tl) - var(--aug-_WD))) calc(var(--aug-tl) - var(--aug-_Sin36cos54) * (var(--aug-tl) - var(--aug-_WD))),
+                    calc(var(--aug-tl) - var(--aug-_Sin36cos54) * (var(--aug-tl) - var(--aug-_WD))) calc(var(--aug-tl) - var(--aug-_Sin54cos36) * (var(--aug-tl) - var(--aug-_WD))),
+                    calc(var(--aug-tl) - var(--aug-_Sin18cos72) * (var(--aug-tl) - var(--aug-_WD))) calc(var(--aug-tl) - var(--aug-_Sin72cos18) * (var(--aug-tl) - var(--aug-_WD))),
+                    var(--aug-_TlInsetOffsetMore) var(--aug-_WD);
 }
-.trNotchX {
-  --tr: 35px;
-  --trY: var(--trHeight, var(--tr));
-  --trNotch: var(--trY); /* how much of width is the notch */
-  --trX: var(--trWidth, calc(var(--tr) + var(--trNotch)));
-  --trPath: calc(100% - var(--trX)) 0px,
-            calc(100% - var(--trX) + var(--trNotch)) var(--trY),
-            100% var(--trY);
-  --trInsetOffset: calc(var(--trY) + var(--w));
-  --trPathInset: calc(100% - var(--w) / 2 - var(--trX)) var(--w),
-                calc(100% - var(--w) / 2 - var(--trX) + var(--trNotch)) var(--trInsetOffset),
-                calc(100% - var(--w)) var(--trInsetOffset);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --trInsetOffsetMore: calc(var(--trY) + var(--wd));
-  --trPathInsetMore: calc(100% - var(--wd) / 2 - var(--trX)) var(--wd),
-                    calc(100% - var(--wd) / 2 - var(--trX) + var(--trNotch)) var(--trInsetOffsetMore),
-                    calc(100% - var(--wd)) var(--trInsetOffsetMore);
+.aug-tr-round {
+  --aug-tr: 15px; /* radius */
+  --aug-_Sin18cos72: 0.30901699437;
+  --aug-_Sin36cos54: 0.58778525229;
+  --aug-_Sin54cos36: 0.80901699437;
+  --aug-_Sin72cos18: 0.95105651629;
+  --aug-_TrPath: calc(100% - var(--aug-tr)) 0px,
+            calc(100% - var(--aug-tr) + var(--aug-_Sin18cos72) * var(--aug-tr)) calc(var(--aug-tr) - var(--aug-_Sin72cos18) * var(--aug-tr)),
+            calc(100% - var(--aug-tr) + var(--aug-_Sin36cos54) * var(--aug-tr)) calc(var(--aug-tr) - var(--aug-_Sin54cos36) * var(--aug-tr)),
+            calc(100% - var(--aug-tr) + var(--aug-_Sin54cos36) * var(--aug-tr)) calc(var(--aug-tr) - var(--aug-_Sin36cos54) * var(--aug-tr)),
+            calc(100% - var(--aug-tr) + var(--aug-_Sin72cos18) * var(--aug-tr)) calc(var(--aug-tr) - var(--aug-_Sin18cos72) * var(--aug-tr)),
+            100% var(--aug-tr);
+  --aug-_TrInsetOffset: var(--aug-tr);
+  --aug-_TrPathInset: calc(100% - var(--aug-_TrInsetOffset)) var(--aug-_W),
+                calc(100% - var(--aug-tr) + var(--aug-_Sin18cos72) * (var(--aug-tr) - var(--aug-_W))) calc(var(--aug-tr) - var(--aug-_Sin72cos18) * (var(--aug-tr) - var(--aug-_W))),
+                calc(100% - var(--aug-tr) + var(--aug-_Sin36cos54) * (var(--aug-tr) - var(--aug-_W))) calc(var(--aug-tr) - var(--aug-_Sin54cos36) * (var(--aug-tr) - var(--aug-_W))),
+                calc(100% - var(--aug-tr) + var(--aug-_Sin54cos36) * (var(--aug-tr) - var(--aug-_W))) calc(var(--aug-tr) - var(--aug-_Sin36cos54) * (var(--aug-tr) - var(--aug-_W))),
+                calc(100% - var(--aug-tr) + var(--aug-_Sin72cos18) * (var(--aug-tr) - var(--aug-_W))) calc(var(--aug-tr) - var(--aug-_Sin18cos72) * (var(--aug-tr) - var(--aug-_W))),
+                calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
+  --aug-_TrInsetOffsetMore: calc(var(--aug-tr) + var(--aug-_WD));
+  --aug-_TrPathInsetMore: calc(100% - var(--aug-_TrInsetOffsetMore)) var(--aug-_WD),
+                    calc(100% - var(--aug-tr) + var(--aug-_Sin18cos72) * (var(--aug-tr) - var(--aug-_WD))) calc(var(--aug-tr) - var(--aug-_Sin72cos18) * (var(--aug-tr) - var(--aug-_WD))),
+                    calc(100% - var(--aug-tr) + var(--aug-_Sin36cos54) * (var(--aug-tr) - var(--aug-_WD))) calc(var(--aug-tr) - var(--aug-_Sin54cos36) * (var(--aug-tr) - var(--aug-_WD))),
+                    calc(100% - var(--aug-tr) + var(--aug-_Sin54cos36) * (var(--aug-tr) - var(--aug-_WD))) calc(var(--aug-tr) - var(--aug-_Sin36cos54) * (var(--aug-tr) - var(--aug-_WD))),
+                    calc(100% - var(--aug-tr) + var(--aug-_Sin72cos18) * (var(--aug-tr) - var(--aug-_WD))) calc(var(--aug-tr) - var(--aug-_Sin18cos72) * (var(--aug-tr) - var(--aug-_WD))),
+                    calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
 }
-.brNotchX {
-  --br: 35px; /* size */
-  --brY: var(--brHeight, var(--br));
-  --brNotch: var(--brY); /* how much of width is the notch */
-  --brX: var(--brWidth, calc(var(--br) + var(--brNotch)));
-  --brPath: 100% calc(100% - var(--brY)),
-            calc(100% - var(--brX) + var(--brNotch)) calc(100% - var(--brY)),
-            calc(100% - var(--brX)) 100%;
-  --brInsetOffset: calc(var(--brY) + var(--w));
-  --brPathInset: calc(100% - var(--w)) calc(100% - var(--brInsetOffset)),
-                 calc(100% - var(--w) / 2 - var(--brX) + var(--brNotch)) calc(100% - var(--brInsetOffset)),
-                 calc(100% - var(--w) / 2 - var(--brX)) calc(100% - var(--w));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --brInsetOffsetMore: calc(var(--brY) + var(--wd));
-  --brPathInsetMore: calc(100% - var(--wd)) calc(100% - var(--brInsetOffsetMore)),
-                     calc(100% - var(--wd) / 2 - var(--brX) + var(--brNotch)) calc(100% - var(--brInsetOffsetMore)),
-                     calc(100% - var(--wd) / 2 - var(--brX)) calc(100% - var(--wd));
+.aug-br-round {
+  --aug-br: 15px; /* radius */
+  --aug-_Sin18cos72: 0.30901699437;
+  --aug-_Sin36cos54: 0.58778525229;
+  --aug-_Sin54cos36: 0.80901699437;
+  --aug-_Sin72cos18: 0.95105651629;
+  --aug-_BrPath: 100% calc(100% - var(--aug-br)),
+            calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * var(--aug-br)) calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * var(--aug-br)),
+            calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * var(--aug-br)) calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * var(--aug-br)),
+            calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * var(--aug-br)) calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * var(--aug-br)),
+            calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * var(--aug-br)) calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * var(--aug-br)),
+            calc(100% - var(--aug-br)) 100%;
+  --aug-_BrInsetOffset: calc(var(--aug-br) + var(--aug-_W));
+  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)),
+                calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * (var(--aug-br) - var(--aug-_W))) calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * (var(--aug-br) - var(--aug-_W))),
+                calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * (var(--aug-br) - var(--aug-_W))) calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * (var(--aug-br) - var(--aug-_W))),
+                calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * (var(--aug-br) - var(--aug-_W))) calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * (var(--aug-br) - var(--aug-_W))),
+                calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * (var(--aug-br) - var(--aug-_W))) calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * (var(--aug-br) - var(--aug-_W))),
+                calc(100% - var(--aug-_BrInsetOffset)) calc(100% - var(--aug-_W));
+  --aug-_BrInsetOffsetMore: calc(var(--aug-br) + var(--aug-_WD));
+  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)),
+                    calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * (var(--aug-br) - var(--aug-_WD))) calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * (var(--aug-br) - var(--aug-_WD))),
+                    calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * (var(--aug-br) - var(--aug-_WD))) calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * (var(--aug-br) - var(--aug-_WD))),
+                    calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * (var(--aug-br) - var(--aug-_WD))) calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * (var(--aug-br) - var(--aug-_WD))),
+                    calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * (var(--aug-br) - var(--aug-_WD))) calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * (var(--aug-br) - var(--aug-_WD))),
+                    calc(100% - var(--aug-_BrInsetOffsetMore)) calc(100% - var(--aug-_WD));
 }
-.blNotchX {
-  --bl: 35px; /* size */
-  --blY: var(--blHeight, var(--bl));
-  --blNotch: var(--blY); /* how much of width is the notch */
-  --blX: var(--blWidth, calc(var(--bl) + var(--blNotch)));
-  --blPath: var(--blX) 100%,
-            calc(var(--blX) - var(--blNotch)) calc(100% - var(--blY)),
-            0px calc(100% - var(--blY));
-  --blInsetOffset: calc(var(--blY) + var(--w));
-  --blPathInset: calc(var(--blX) + var(--w) / 2) calc(100% - var(--w)),
-                 calc(var(--blX) + var(--w) / 2 - var(--blNotch)) calc(100% - var(--blInsetOffset)),
-                 var(--w) calc(100% - var(--blInsetOffset));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --blInsetOffsetMore: calc(var(--blY) + var(--wd));
-  --blPathInsetMore: calc(var(--blX) + var(--wd) / 2) calc(100% - var(--wd)),
-                     calc(var(--blX) + var(--wd) / 2 - var(--blNotch)) calc(100% - var(--blInsetOffsetMore)),
-                     var(--wd) calc(100% - var(--blInsetOffsetMore));
-}
-
-.tlNotchY {
-  --tl: 35px; /* size */
-  --tlX: var(--tlWidth, var(--tl));
-  --tlNotch: var(--tlX); /* how much of height is the notch */
-  --tlY: var(--tlHeight, calc(var(--tl) + var(--tlNotch)));
-  --tlPath: 0px var(--tlY),
-            var(--tlX) calc(var(--tlY) - var(--tlNotch)),
-            var(--tlX) 0px;
-  --tlInsetOffset: calc(var(--tlY) + var(--w) / 2);
-  --tlPathInset: var(--w) var(--tlInsetOffset),
-                 calc(var(--w) + var(--tlX)) calc(var(--tlInsetOffset) - var(--tlNotch)),
-                 calc(var(--w) + var(--tlX)) var(--w);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --tlInsetOffsetMore: calc(var(--tlY) + var(--wd) / 2);
-  --tlPathInsetMore: var(--wd) var(--tlInsetOffsetMore),
-                 calc(var(--wd) + var(--tlX)) calc(var(--tlInsetOffsetMore) - var(--tlNotch)),
-                 calc(var(--wd) + var(--tlX)) var(--wd);
-}
-.trNotchY {
-  --tr: 35px; /* size */
-  --trX: var(--trWidth, var(--tr));
-  --trNotch: var(--trX); /* how much of height is the notch */
-  --trY: var(--trHeight, calc(var(--tr) + var(--trNotch)));
-  --trPath: calc(100% - var(--trX)) 0px,
-            calc(100% - var(--trX)) calc(var(--trY) - var(--trNotch)),
-            100% var(--trY);
-  --trInsetOffset: calc(var(--trY) + var(--w) / 2);
-  --trPathInset: calc(100% - var(--w) - var(--trX)) var(--w),
-                calc(100% - var(--w) - var(--trX)) calc(var(--trInsetOffset) - var(--trNotch)),
-                calc(100% - var(--w)) var(--trInsetOffset);
-  --wd: calc(var(--w, 0px) + var(--d));
-  --trInsetOffsetMore: calc(var(--trY) + var(--wd) / 2);
-  --trPathInsetMore: calc(100% - var(--wd) - var(--trX)) var(--wd),
-                    calc(100% - var(--wd) - var(--trX)) calc(var(--trInsetOffsetMore) - var(--trNotch)),
-                    calc(100% - var(--wd)) var(--trInsetOffsetMore);
-}
-.brNotchY {
-  --br: 35px; /* size */
-  --brX: var(--brWidth, var(--br));
-  --brNotch: var(--brX); /* how much of height is the notch */
-  --brY: var(--brHeight, calc(var(--br) + var(--brNotch)));
-  --brPath: 100% calc(100% - var(--brY)),
-            calc(100% - var(--brX)) calc(100% - var(--brY) + var(--brNotch)),
-            calc(100% - var(--brX)) 100%;
-  --brInsetOffset: calc(var(--brY) + var(--w) / 2);
-  --brPathInset: calc(100% - var(--w)) calc(100% - var(--brInsetOffset)),
-                 calc(100% - var(--w) - var(--brX)) calc(100% - var(--brInsetOffset) + var(--brNotch)),
-                 calc(100% - var(--w) - var(--brX)) calc(100% - var(--w));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --brInsetOffsetMore: calc(var(--brY) + var(--wd) / 2);
-  --brPathInsetMore: calc(100% - var(--wd)) calc(100% - var(--brInsetOffsetMore)),
-                     calc(100% - var(--wd) - var(--brX)) calc(100% - var(--brInsetOffsetMore) + var(--brNotch)),
-                     calc(100% - var(--wd) - var(--brX)) calc(100% - var(--wd));
-}
-.blNotchY {
-  --bl: 35px; /* size */
-  --blX: var(--blWidth, var(--bl));
-  --blNotch: var(--blX); /* how much of height is the notch */
-  --blY: var(--blHeight, calc(var(--bl) + var(--blNotch)));
-  --blPath: var(--blX) 100%,
-            var(--blX) calc(100% - var(--blY) + var(--blNotch)),
-            0px calc(100% - var(--blY));
-  --blInsetOffset: calc(var(--blY) + var(--w) / 2);
-  --blPathInset: calc(var(--blX) + var(--w)) calc(100% - var(--w)),
-                 calc(var(--blX) + var(--w)) calc(100% - var(--blInsetOffset) + var(--blNotch)),
-                 var(--w) calc(100% - var(--blInsetOffset));
-  --wd: calc(var(--w, 0px) + var(--d));
-  --blInsetOffsetMore: calc(var(--blY) + var(--wd) / 2);
-  --blPathInsetMore: calc(var(--blX) + var(--wd)) calc(100% - var(--wd)),
-                     calc(var(--blX) + var(--wd)) calc(100% - var(--blInsetOffsetMore) + var(--blNotch)),
-                     var(--wd) calc(100% - var(--blInsetOffsetMore));
+.aug-bl-round {
+  --aug-bl: 15px; /* radius */
+  --aug-_Sin18cos72: 0.30901699437;
+  --aug-_Sin36cos54: 0.58778525229;
+  --aug-_Sin54cos36: 0.80901699437;
+  --aug-_Sin72cos18: 0.95105651629;
+  --aug-_BlPath: var(--aug-bl) 100%,
+            calc(var(--aug-bl) - var(--aug-_Sin18cos72) * var(--aug-bl)) calc(100% - var(--aug-bl) + var(--aug-_Sin72cos18) * var(--aug-bl)),
+            calc(var(--aug-bl) - var(--aug-_Sin36cos54) * var(--aug-bl)) calc(100% - var(--aug-bl) + var(--aug-_Sin54cos36) * var(--aug-bl)),
+            calc(var(--aug-bl) - var(--aug-_Sin54cos36) * var(--aug-bl)) calc(100% - var(--aug-bl) + var(--aug-_Sin36cos54) * var(--aug-bl)),
+            calc(var(--aug-bl) - var(--aug-_Sin72cos18) * var(--aug-bl)) calc(100% - var(--aug-bl) + var(--aug-_Sin18cos72) * var(--aug-bl)),
+            0px calc(100% - var(--aug-bl));
+  --aug-_BlInsetOffset: calc(var(--aug-bl) + var(--aug-_W));
+  --aug-_BlPathInset: var(--aug-_BlInsetOffset) calc(100% - var(--aug-_W)),
+                calc(var(--aug-bl) - var(--aug-_Sin18cos72) * (var(--aug-bl) - var(--aug-_W))) calc(100% - var(--aug-bl) + var(--aug-_Sin72cos18) * (var(--aug-bl) - var(--aug-_W))),
+                calc(var(--aug-bl) - var(--aug-_Sin36cos54) * (var(--aug-bl) - var(--aug-_W))) calc(100% - var(--aug-bl) + var(--aug-_Sin54cos36) * (var(--aug-bl) - var(--aug-_W))),
+                calc(var(--aug-bl) - var(--aug-_Sin54cos36) * (var(--aug-bl) - var(--aug-_W))) calc(100% - var(--aug-bl) + var(--aug-_Sin36cos54) * (var(--aug-bl) - var(--aug-_W))),
+                calc(var(--aug-bl) - var(--aug-_Sin72cos18) * (var(--aug-bl) - var(--aug-_W))) calc(100% - var(--aug-bl) + var(--aug-_Sin18cos72) * (var(--aug-bl) - var(--aug-_W))),
+                var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
+  --aug-_BlInsetOffsetMore: calc(var(--aug-bl) + var(--aug-_WD));
+  --aug-_BlPathInsetMore: var(--aug-_BlInsetOffsetMore) calc(100% - var(--aug-_WD)),
+                    calc(var(--aug-bl) - var(--aug-_Sin18cos72) * (var(--aug-bl) - var(--aug-_WD))) calc(100% - var(--aug-bl) + var(--aug-_Sin72cos18) * (var(--aug-bl) - var(--aug-_WD))),
+                    calc(var(--aug-bl) - var(--aug-_Sin36cos54) * (var(--aug-bl) - var(--aug-_WD))) calc(100% - var(--aug-bl) + var(--aug-_Sin54cos36) * (var(--aug-bl) - var(--aug-_WD))),
+                    calc(var(--aug-bl) - var(--aug-_Sin54cos36) * (var(--aug-bl) - var(--aug-_WD))) calc(100% - var(--aug-bl) + var(--aug-_Sin36cos54) * (var(--aug-bl) - var(--aug-_WD))),
+                    calc(var(--aug-bl) - var(--aug-_Sin72cos18) * (var(--aug-bl) - var(--aug-_WD))) calc(100% - var(--aug-bl) + var(--aug-_Sin18cos72) * (var(--aug-bl) - var(--aug-_WD))),
+                    var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
 }
 
-.tlBorderFix:after {
-  /* if --w <= --tl */
+.aug-tl-rect {
+  --aug-tl: 15px; /* size */
+  --aug-_TlX: var(--aug-tl-width, var(--aug-tl));
+  --aug-_TlY: var(--aug-tl-height, var(--aug-tl));
+  --aug-_TlPath: 0px var(--aug-_TlY),
+            var(--aug-_TlX) var(--aug-_TlY),
+            var(--aug-_TlX) 0px;
+  --aug-_TlInsetOffset: calc(var(--aug-_TlY) + var(--aug-_W));
+  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset),
+                 calc(var(--aug-_W) + var(--aug-_TlX)) var(--aug-_TlInsetOffset),
+                 calc(var(--aug-_W) + var(--aug-_TlX)) var(--aug-_W);
+  --aug-_TlInsetOffsetMore: calc(var(--aug-_TlY) + var(--aug-_WD));
+  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore),
+                 calc(var(--aug-_WD) + var(--aug-_TlX)) var(--aug-_TlInsetOffsetMore),
+                 calc(var(--aug-_WD) + var(--aug-_TlX)) var(--aug-_WD);
+}
+.aug-tr-rect {
+  --aug-tr: 15px; /* size */
+  --aug-_TrX: var(--aug-tr-width, var(--aug-tr));
+  --aug-_TrY: var(--aug-tr-height, var(--aug-tr));
+  --aug-_TrPath: calc(100% - var(--aug-_TrX)) 0px,
+            calc(100% - var(--aug-_TrX)) var(--aug-_TrY),
+            100% var(--aug-_TrY);
+  --aug-_TrInsetOffset: calc(var(--aug-_TrY) + var(--aug-_W));
+  --aug-_TrPathInset: calc(100% - var(--aug-_W) - var(--aug-_TrX)) var(--aug-_W),
+                calc(100% - var(--aug-_W) - var(--aug-_TrX)) var(--aug-_TrInsetOffset),
+                calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
+  --aug-_TrInsetOffsetMore: calc(var(--aug-_TrY) + var(--aug-_WD));
+  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD) - var(--aug-_TrX)) var(--aug-_WD),
+                    calc(100% - var(--aug-_WD) - var(--aug-_TrX)) var(--aug-_TrInsetOffsetMore),
+                    calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+}
+.aug-br-rect {
+  --aug-br: 15px; /* size */
+  --aug-_BrX: var(--aug-br-width, var(--aug-br));
+  --aug-_BrY: var(--aug-br-height, var(--aug-br));
+  --aug-_BrPath: 100% calc(100% - var(--aug-_BrY)),
+            calc(100% - var(--aug-_BrX)) calc(100% - var(--aug-_BrY)),
+            calc(100% - var(--aug-_BrX)) 100%;
+  --aug-_BrInsetOffset: calc(var(--aug-_BrY) + var(--aug-_W));
+  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)),
+                 calc(100% - var(--aug-_W) - var(--aug-_BrX)) calc(100% - var(--aug-_BrInsetOffset)),
+                 calc(100% - var(--aug-_W) - var(--aug-_BrX)) calc(100% - var(--aug-_W));
+  --aug-_BrInsetOffsetMore: calc(var(--aug-_BrY) + var(--aug-_WD));
+  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)),
+                     calc(100% - var(--aug-_WD) - var(--aug-_BrX)) calc(100% - var(--aug-_BrInsetOffsetMore)),
+                     calc(100% - var(--aug-_WD) - var(--aug-_BrX)) calc(100% - var(--aug-_WD));
+}
+.aug-bl-rect {
+  --aug-bl: 15px; /* size */
+  --aug-_BlX: var(--aug-bl-width, var(--aug-bl));
+  --aug-_BlY: var(--aug-bl-height, var(--aug-bl));
+  --aug-_BlPath: var(--aug-_BlX) 100%,
+            var(--aug-_BlX) calc(100% - var(--aug-_BlY)),
+            0px calc(100% - var(--aug-_BlY));
+  --aug-_BlInsetOffset: calc(var(--aug-_BlY) + var(--aug-_W));
+  --aug-_BlPathInset: calc(var(--aug-_BlX) + var(--aug-_W)) calc(100% - var(--aug-_W)),
+                 calc(var(--aug-_BlX) + var(--aug-_W)) calc(100% - var(--aug-_BlInsetOffset)),
+                 var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
+  --aug-_BlInsetOffsetMore: calc(var(--aug-_BlY) + var(--aug-_WD));
+  --aug-_BlPathInsetMore: calc(var(--aug-_BlX) + var(--aug-_WD)) calc(100% - var(--aug-_WD)),
+                     calc(var(--aug-_BlX) + var(--aug-_WD)) calc(100% - var(--aug-_BlInsetOffsetMore)),
+                     var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+}
+
+.aug-tl-notch-x {
+  --aug-tl: 15px;
+  --aug-_TlY: var(--aug-tl-height, var(--aug-tl));
+  --aug-_TlNotch: var(--aug-_TlY); /* how much of width is the notch */
+  --aug-_TlX: var(--aug-tl-width, calc(var(--aug-tl) + var(--aug-_TlNotch)));
+  --aug-_TlPath: 0px var(--aug-_TlY),
+            calc(var(--aug-_TlX) - var(--aug-_TlNotch)) var(--aug-_TlY),
+            var(--aug-_TlX) 0px;
+  --aug-_TlInsetOffset: calc(var(--aug-_TlY) + var(--aug-_W));
+  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset),
+                 calc(var(--aug-_W) / 2 + var(--aug-_TlX) - var(--aug-_TlNotch)) var(--aug-_TlInsetOffset),
+                 calc(var(--aug-_W) / 2 + var(--aug-_TlX)) var(--aug-_W);
+  --aug-_TlInsetOffsetMore: calc(var(--aug-_TlY) + var(--aug-_WD));
+  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore),
+                 calc(var(--aug-_WD) / 2 + var(--aug-_TlX) - var(--aug-_TlNotch)) var(--aug-_TlInsetOffsetMore),
+                 calc(var(--aug-_WD) / 2 + var(--aug-_TlX)) var(--aug-_WD);
+}
+.aug-tr-notch-x {
+  --aug-tr: 15px;
+  --aug-_TrY: var(--aug-tr-height, var(--aug-tr));
+  --aug-_TrNotch: var(--aug-_TrY); /* how much of width is the notch */
+  --aug-_TrX: var(--aug-tr-width, calc(var(--aug-tr) + var(--aug-_TrNotch)));
+  --aug-_TrPath: calc(100% - var(--aug-_TrX)) 0px,
+            calc(100% - var(--aug-_TrX) + var(--aug-_TrNotch)) var(--aug-_TrY),
+            100% var(--aug-_TrY);
+  --aug-_TrInsetOffset: calc(var(--aug-_TrY) + var(--aug-_W));
+  --aug-_TrPathInset: calc(100% - var(--aug-_W) / 2 - var(--aug-_TrX)) var(--aug-_W),
+                calc(100% - var(--aug-_W) / 2 - var(--aug-_TrX) + var(--aug-_TrNotch)) var(--aug-_TrInsetOffset),
+                calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
+  --aug-_TrInsetOffsetMore: calc(var(--aug-_TrY) + var(--aug-_WD));
+  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD) / 2 - var(--aug-_TrX)) var(--aug-_WD),
+                    calc(100% - var(--aug-_WD) / 2 - var(--aug-_TrX) + var(--aug-_TrNotch)) var(--aug-_TrInsetOffsetMore),
+                    calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+}
+.aug-br-notch-x {
+  --aug-br: 15px; /* size */
+  --aug-_BrY: var(--aug-br-height, var(--aug-br));
+  --aug-_BrNotch: var(--aug-_BrY); /* how much of width is the notch */
+  --aug-_BrX: var(--aug-br-width, calc(var(--aug-br) + var(--aug-_BrNotch)));
+  --aug-_BrPath: 100% calc(100% - var(--aug-_BrY)),
+            calc(100% - var(--aug-_BrX) + var(--aug-_BrNotch)) calc(100% - var(--aug-_BrY)),
+            calc(100% - var(--aug-_BrX)) 100%;
+  --aug-_BrInsetOffset: calc(var(--aug-_BrY) + var(--aug-_W));
+  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)),
+                 calc(100% - var(--aug-_W) / 2 - var(--aug-_BrX) + var(--aug-_BrNotch)) calc(100% - var(--aug-_BrInsetOffset)),
+                 calc(100% - var(--aug-_W) / 2 - var(--aug-_BrX)) calc(100% - var(--aug-_W));
+  --aug-_BrInsetOffsetMore: calc(var(--aug-_BrY) + var(--aug-_WD));
+  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)),
+                     calc(100% - var(--aug-_WD) / 2 - var(--aug-_BrX) + var(--aug-_BrNotch)) calc(100% - var(--aug-_BrInsetOffsetMore)),
+                     calc(100% - var(--aug-_WD) / 2 - var(--aug-_BrX)) calc(100% - var(--aug-_WD));
+}
+.aug-bl-notch-x {
+  --aug-bl: 15px; /* size */
+  --aug-_BlY: var(--aug-bl-height, var(--aug-bl));
+  --aug-_BlNotch: var(--aug-_BlY); /* how much of width is the notch */
+  --aug-_BlX: var(--aug-bl-width, calc(var(--aug-bl) + var(--aug-_BlNotch)));
+  --aug-_BlPath: var(--aug-_BlX) 100%,
+            calc(var(--aug-_BlX) - var(--aug-_BlNotch)) calc(100% - var(--aug-_BlY)),
+            0px calc(100% - var(--aug-_BlY));
+  --aug-_BlInsetOffset: calc(var(--aug-_BlY) + var(--aug-_W));
+  --aug-_BlPathInset: calc(var(--aug-_BlX) + var(--aug-_W) / 2) calc(100% - var(--aug-_W)),
+                 calc(var(--aug-_BlX) + var(--aug-_W) / 2 - var(--aug-_BlNotch)) calc(100% - var(--aug-_BlInsetOffset)),
+                 var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
+  --aug-_BlInsetOffsetMore: calc(var(--aug-_BlY) + var(--aug-_WD));
+  --aug-_BlPathInsetMore: calc(var(--aug-_BlX) + var(--aug-_WD) / 2) calc(100% - var(--aug-_WD)),
+                     calc(var(--aug-_BlX) + var(--aug-_WD) / 2 - var(--aug-_BlNotch)) calc(100% - var(--aug-_BlInsetOffsetMore)),
+                     var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+}
+
+.aug-tl-notch-y {
+  --aug-tl: 15px; /* size */
+  --aug-_TlX: var(--aug-tl-width, var(--aug-tl));
+  --aug-_TlNotch: var(--aug-_TlX); /* how much of height is the notch */
+  --aug-_TlY: var(--aug-tl-height, calc(var(--aug-tl) + var(--aug-_TlNotch)));
+  --aug-_TlPath: 0px var(--aug-_TlY),
+            var(--aug-_TlX) calc(var(--aug-_TlY) - var(--aug-_TlNotch)),
+            var(--aug-_TlX) 0px;
+  --aug-_TlInsetOffset: calc(var(--aug-_TlY) + var(--aug-_W) / 2);
+  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset),
+                 calc(var(--aug-_W) + var(--aug-_TlX)) calc(var(--aug-_TlInsetOffset) - var(--aug-_TlNotch)),
+                 calc(var(--aug-_W) + var(--aug-_TlX)) var(--aug-_W);
+  --aug-_TlInsetOffsetMore: calc(var(--aug-_TlY) + var(--aug-_WD) / 2);
+  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore),
+                 calc(var(--aug-_WD) + var(--aug-_TlX)) calc(var(--aug-_TlInsetOffsetMore) - var(--aug-_TlNotch)),
+                 calc(var(--aug-_WD) + var(--aug-_TlX)) var(--aug-_WD);
+}
+.aug-tr-notch-y {
+  --aug-tr: 15px; /* size */
+  --aug-_TrX: var(--aug-tr-width, var(--aug-tr));
+  --aug-_TrNotch: var(--aug-_TrX); /* how much of height is the notch */
+  --aug-_TrY: var(--aug-tr-height, calc(var(--aug-tr) + var(--aug-_TrNotch)));
+  --aug-_TrPath: calc(100% - var(--aug-_TrX)) 0px,
+            calc(100% - var(--aug-_TrX)) calc(var(--aug-_TrY) - var(--aug-_TrNotch)),
+            100% var(--aug-_TrY);
+  --aug-_TrInsetOffset: calc(var(--aug-_TrY) + var(--aug-_W) / 2);
+  --aug-_TrPathInset: calc(100% - var(--aug-_W) - var(--aug-_TrX)) var(--aug-_W),
+                calc(100% - var(--aug-_W) - var(--aug-_TrX)) calc(var(--aug-_TrInsetOffset) - var(--aug-_TrNotch)),
+                calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
+  --aug-_TrInsetOffsetMore: calc(var(--aug-_TrY) + var(--aug-_WD) / 2);
+  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD) - var(--aug-_TrX)) var(--aug-_WD),
+                    calc(100% - var(--aug-_WD) - var(--aug-_TrX)) calc(var(--aug-_TrInsetOffsetMore) - var(--aug-_TrNotch)),
+                    calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+}
+.aug-br-notch-y {
+  --aug-br: 15px; /* size */
+  --aug-_BrX: var(--aug-br-width, var(--aug-br));
+  --aug-_BrNotch: var(--aug-_BrX); /* how much of height is the notch */
+  --aug-_BrY: var(--aug-br-height, calc(var(--aug-br) + var(--aug-_BrNotch)));
+  --aug-_BrPath: 100% calc(100% - var(--aug-_BrY)),
+            calc(100% - var(--aug-_BrX)) calc(100% - var(--aug-_BrY) + var(--aug-_BrNotch)),
+            calc(100% - var(--aug-_BrX)) 100%;
+  --aug-_BrInsetOffset: calc(var(--aug-_BrY) + var(--aug-_W) / 2);
+  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)),
+                 calc(100% - var(--aug-_W) - var(--aug-_BrX)) calc(100% - var(--aug-_BrInsetOffset) + var(--aug-_BrNotch)),
+                 calc(100% - var(--aug-_W) - var(--aug-_BrX)) calc(100% - var(--aug-_W));
+  --aug-_BrInsetOffsetMore: calc(var(--aug-_BrY) + var(--aug-_WD) / 2);
+  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)),
+                     calc(100% - var(--aug-_WD) - var(--aug-_BrX)) calc(100% - var(--aug-_BrInsetOffsetMore) + var(--aug-_BrNotch)),
+                     calc(100% - var(--aug-_WD) - var(--aug-_BrX)) calc(100% - var(--aug-_WD));
+}
+.aug-bl-notch-y {
+  --aug-bl: 15px; /* size */
+  --aug-_BlX: var(--aug-bl-width, var(--aug-bl));
+  --aug-_BlNotch: var(--aug-_BlX); /* how much of height is the notch */
+  --aug-_BlY: var(--aug-bl-height, calc(var(--aug-bl) + var(--aug-_BlNotch)));
+  --aug-_BlPath: var(--aug-_BlX) 100%,
+            var(--aug-_BlX) calc(100% - var(--aug-_BlY) + var(--aug-_BlNotch)),
+            0px calc(100% - var(--aug-_BlY));
+  --aug-_BlInsetOffset: calc(var(--aug-_BlY) + var(--aug-_W) / 2);
+  --aug-_BlPathInset: calc(var(--aug-_BlX) + var(--aug-_W)) calc(100% - var(--aug-_W)),
+                 calc(var(--aug-_BlX) + var(--aug-_W)) calc(100% - var(--aug-_BlInsetOffset) + var(--aug-_BlNotch)),
+                 var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
+  --aug-_BlInsetOffsetMore: calc(var(--aug-_BlY) + var(--aug-_WD) / 2);
+  --aug-_BlPathInsetMore: calc(var(--aug-_BlX) + var(--aug-_WD)) calc(100% - var(--aug-_WD)),
+                     calc(var(--aug-_BlX) + var(--aug-_WD)) calc(100% - var(--aug-_BlInsetOffsetMore) + var(--aug-_BlNotch)),
+                     var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+}
+
+.aug-tl-border-el-clean,
+.aug-tl-border-clean::after {
+  /* if --aug-_W <= --aug-tl */
   /* if border width is less than top-left effect size, don't apply an effect on the inner part of the tl border effect */
-  --tlPathInset: var(--w) var(--w);
+  --aug-_TlPathInset: var(--aug-_W) var(--aug-_W);
 }
-.tlInsetBgFix:before,
-.tlBorderFix:before {
-  /* if --wd <= --tl OR --w <= --tl */
+.aug-tl-inset-el-clean,
+.aug-tl-border-el-clean,
+.aug-tl-inset-clean::before,
+.aug-tl-border-clean::before {
+  /* if --aug-_WD <= --aug-tl OR --aug-_W <= --aug-tl */
   /* if border width + inset distance is less than top-left effect size,
      OR if border width alone is less than top-left effect size,
      don't apply an effect on inset more tl either
   */
-  --tlPathInsetMore: var(--wd) var(--wd);
+  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_WD);
 }
 
-.trBorderFix:after { --trPathInset: var(--w100) var(--w); }
-.trInsetBgFix:before,
-.trBorderFix:before { --trPathInsetMore: var(--wd100) var(--wd); }
+.aug-tr-border-el-clean,
+.aug-tr-border-clean::after { --aug-_TrPathInset: var(--aug-_100W) var(--aug-_W); }
+.aug-tr-inset-el-clean,
+.aug-tr-border-el-clean,
+.aug-tr-inset-clean::before,
+.aug-tr-border-clean::before { --aug-_TrPathInsetMore: var(--aug-_100WD) var(--aug-_WD); }
 
-.brBorderFix:after { --brPathInset: var(--w100) var(--w100); }
-.brInsetBgFix:before,
-.brBorderFix:before { --brPathInsetMore: var(--wd100) var(--wd100); }
+.aug-br-border-el-clean,
+.aug-br-border-clean::after { --aug-_BrPathInset: var(--aug-_100W) var(--aug-_100W); }
+.aug-br-inset-el-clean,
+.aug-br-border-el-clean,
+.aug-br-inset-clean::before,
+.aug-br-border-clean::before { --aug-_BrPathInsetMore: var(--aug-_100WD) var(--aug-_100WD); }
 
-.blBorderFix:after { --blPathInset: var(--w) var(--w100); }
-.blInsetBgFix:before,
-.blBorderFix:before { --blPathInsetMore: var(--wd) var(--wd100); }
+.aug-bl-border-el-clean,
+.aug-bl-border-clean::after { --aug-_BlPathInset: var(--aug-_W) var(--aug-_100W); }
+.aug-bl-inset-el-clean,
+.aug-bl-border-el-clean,
+.aug-bl-inset-clean::before,
+.aug-bl-border-clean::before { --aug-_BlPathInsetMore: var(--aug-_WD) var(--aug-_100WD); }
 
-.bordered {
-  --w: 10px;
-  position: relative;
-}
-.bordered:after {
+.augmented::after {
   content: "";
-  background: var(--borderBg, none);
+  display: var(--aug-_BorderBGExistance);
+}
+.aug-border-el,
+.augmented::after {
+  background: var(--aug-_BorderBGExistance);
   position: absolute;
   left: 0px;
   top: 0px;
   right: 0px;
   bottom: 0px;
-  --w100: calc(100% - var(--w));
-  --outerPath: var(--w) var(--tlInsetOffset, var(--w)), 0px var(--tlInsetOffset, var(--w)), 0px 100%, 100% 100%, 100% 0px, 0px 0px, 0px var(--tlInsetOffset, var(--w));
+  pointer-events: none;
   clip-path: polygon(
-    var(--tlPathInset, var(--w) var(--w)),
-    var(--trPathInset, var(--w100) var(--w)),
-    var(--brPathInset, var(--w100) var(--w100)),
-    var(--blPathInset, var(--w) var(--w100)),
-    var(--outerPath)
+    var(--aug-_TlPathInset, var(--aug-_W) var(--aug-_W)),
+    var(--aug-_TrPathInset, var(--aug-_100W) var(--aug-_W)),
+    var(--aug-_BrPathInset, var(--aug-_100W) var(--aug-_100W)),
+    var(--aug-_BlPathInset, var(--aug-_W) var(--aug-_100W)),
+    var(--aug-_W) var(--aug-_TlInsetOffset, var(--aug-_W)), 0px var(--aug-_TlInsetOffset, var(--aug-_W)), 0px 100%, 100% 100%, 100% 0px, 0px 0px, 0px var(--aug-_TlInsetOffset, var(--aug-_W))
   );
 }
-.insetBg {
-  --d: 10px;
-  position: relative;
-}
-.insetBg:before {
+.augmented::before {
   content: "";
-  background: var(--insetBg, none);
+  display: var(--aug-_InsetBGExistance);
+}
+.aug-inset-el,
+.augmented::before {
+  background: var(--aug-_InsetBGExistance);
   position: absolute;
   left: 0px;
   top: 0px;
   right: 0px;
   bottom: 0px;
-  --wd: calc(var(--w, 0px) + var(--d));
-  --wd100: calc(100% - var(--wd));
   clip-path: polygon(
-    var(--tlPathInsetMore, var(--wd) var(--wd)),
-    var(--trPathInsetMore, var(--wd100) var(--wd)),
-    var(--brPathInsetMore, var(--wd100) var(--wd100)),
-    var(--blPathInsetMore, var(--wd) var(--wd100))
+    var(--aug-_TlPathInsetMore, var(--aug-_WD) var(--aug-_WD)),
+    var(--aug-_TrPathInsetMore, var(--aug-_100WD) var(--aug-_WD)),
+    var(--aug-_BrPathInsetMore, var(--aug-_100WD) var(--aug-_100WD)),
+    var(--aug-_BlPathInsetMore, var(--aug-_WD) var(--aug-_100WD))
   );
   z-index: -1;
 }
-.augmented {
-  clip-path: polygon(var(--tlPath, 0px 0px), var(--trPath, 100% 0px), var(--brPath, 100% 100%), var(--blPath, 0px 100%));
+@supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) and (not (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%))) {
+  .aug-border-el,
+  .augmented::after {
+    background: transparent;
+    border: var(--aug-_W, 0px) solid;
+    border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
+    border-radius: var(--aug-border-radius-fallback, 0px);
+    transform: translateZ(0px);
+  }
+  .aug-inset-el,
+  .augmented::before {
+    left: var(--aug-_WD, 0px);
+    top: var(--aug-_WD, 0px);
+    right: var(--aug-_WD, 0px);
+    bottom: var(--aug-_WD, 0px);
+    border-radius: var(--aug-border-radius-fallback-inset, var(--aug-border-radius-fallback, 0px));
+    transform: translateZ(0px);
+  }
+  .augmented,
+  .aug-before::before,
+  .aug-after::after {
+    border-radius: var(--aug-border-radius-fallback, 0px);
+    /* clip-path causes a new stacking context, this reproduces that */
+    transform: translateZ(0px);
+  }
+}
+@supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) and (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%)) {
+  .aug-border-el,
+  .augmented::after {
+    -webkit-clip-path: polygon(
+      var(--aug-_TlPathInset, var(--aug-_W) var(--aug-_W)),
+      var(--aug-_TrPathInset, var(--aug-_100W) var(--aug-_W)),
+      var(--aug-_BrPathInset, var(--aug-_100W) var(--aug-_100W)),
+      var(--aug-_BlPathInset, var(--aug-_W) var(--aug-_100W)),
+      var(--aug-_W) var(--aug-_TlInsetOffset, var(--aug-_W)), 0px var(--aug-_TlInsetOffset, var(--aug-_W)), 0px 100%, 100% 100%, 100% 0px, 0px 0px, 0px var(--aug-_TlInsetOffset, var(--aug-_W))
+    );
+  }
+  .aug-inset-el,
+  .augmented::before {
+    -webkit-clip-path: polygon(
+      var(--aug-_TlPathInsetMore, var(--aug-_WD) var(--aug-_WD)),
+      var(--aug-_TrPathInsetMore, var(--aug-_100WD) var(--aug-_WD)),
+      var(--aug-_BrPathInsetMore, var(--aug-_100WD) var(--aug-_100WD)),
+      var(--aug-_BlPathInsetMore, var(--aug-_WD) var(--aug-_100WD))
+    );
+  }
+  .augmented,
+  .aug-before::before,
+  .aug-after::after {
+    -webkit-clip-path: polygon(var(--aug-_TlPath, 0px 0px), var(--aug-_TrPath, 100% 0px), var(--aug-_BrPath, 100% 100%), var(--aug-_BlPath, 0px 100%));
+  }
+}
+.augmented,
+.aug-before::before,
+.aug-after::after {
+  position: relative;
+  --aug-_W: var(--aug-border, 0px);
+  --aug-_D: var(--aug-inset, 0px);
+  --aug-_WD: calc(var(--aug-_W) + var(--aug-_D));
+  --aug-_100W: calc(100% - var(--aug-_W));
+  --aug-_100WD: calc(100% - var(--aug-_WD));
+  --aug-_BorderBGExistance: var(--aug-border-bg, none);
+  --aug-_InsetBGExistance: var(--aug-inset-bg, none);
+  clip-path: polygon(
+    var(--aug-_TlPath, 0px 0px),
+    var(--aug-_TrPath, 100% 0px),
+    var(--aug-_BrPath, 100% 100%),
+    var(--aug-_BlPath, 0px 100%)
+  );
 }
