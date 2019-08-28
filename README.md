@@ -4,4 +4,4 @@
 
 TODO
 
-Github.io https://propjockey.github.io/augmented-ui/
+http://augmented-ui.com/

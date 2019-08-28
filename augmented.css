@@ -3,482 +3,1359 @@
   BSD 2-Clause License
   Copyright (c) James0x57, PropJockey, 2019
 */
+[augmented-ui~="tl-none"],
+[data-augmented-ui~="tl-none"],
 .aug-tl-none {
   --aug-tl: 0px; /* no size */
-  --aug-_TlX: 0px;
-  --aug-_TlY: 0px;
+  --aug-_TlWidth: 0px;
+  --aug-_TlHeight: 0px;
+  --aug-_TlJoinBX: 0px;
+  --aug-_TlJoinBY: 0px;
+  --aug-_TlJoinRX: 0px;
+  --aug-_TlJoinRY: 0px;
   --aug-_TlPath: 0px 0px;
-  --aug-_TlInsetOffset: var(--aug-_W);
-  --aug-_TlPathInset: var(--aug-_W) var(--aug-_W);
-  --aug-_TlInsetOffsetMore: var(--aug-_WD);
-  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_WD);
+  --aug-_TlInset1JoinBX: var(--aug-_W);
+  --aug-_TlInset1JoinBY: var(--aug-_W);
+  --aug-_TlInset1JoinRX: var(--aug-_W);
+  --aug-_TlInset1JoinRY: var(--aug-_W);
+  --aug-_TlPathInset1: var(--aug-_W) var(--aug-_W);
+  --aug-_TlInset2JoinBX: var(--aug-_WD);
+  --aug-_TlInset2JoinBY: var(--aug-_WD);
+  --aug-_TlInset2JoinRX: var(--aug-_WD);
+  --aug-_TlInset2JoinRY: var(--aug-_WD);
+  --aug-_TlPathInset2: var(--aug-_WD) var(--aug-_WD);
 }
+[augmented-ui~="tr-none"],
+[data-augmented-ui~="tr-none"],
 .aug-tr-none {
   --aug-tr: 0px; /* no size */
-  --aug-_TrX: 0px;
-  --aug-_TrY: 0px;
+  --aug-_TrWidth: 0px;
+  --aug-_TrHeight: 0px;
+  --aug-_TrJoinLX: 100%;
+  --aug-_TrJoinLY: 0px;
+  --aug-_TrJoinBX: 100%;
+  --aug-_TrJoinBY: 0px;
   --aug-_TrPath: 100% 0px;
-  --aug-_TrInsetOffset: var(--aug-_W);
-  --aug-_TrPathInset: calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
-  --aug-_TrInsetOffsetMore: var(--aug-_WD);
-  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+  --aug-_TrInset1JoinLX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinLY: var(--aug-_W);
+  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinBY: var(--aug-_W);
+  --aug-_TrPathInset1: calc(100% - var(--aug-_W)) var(--aug-_W);
+  --aug-_TrInset2JoinLX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinLY: var(--aug-_WD);
+  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinBY: var(--aug-_WD);
+  --aug-_TrPathInset2: calc(100% - var(--aug-_WD)) var(--aug-_WD);
 }
+[augmented-ui~="br-none"],
+[data-augmented-ui~="br-none"],
 .aug-br-none {
   --aug-br: 0px; /* no size */
-  --aug-_BrX: 0px;
-  --aug-_BrY: 0px;
+  --aug-_BrWidth: 0px;
+  --aug-_BrHeight: 0px;
+  --aug-_BrJoinTX: 100%;
+  --aug-_BrJoinTY: 100%;
+  --aug-_BrJoinLX: 100%;
+  --aug-_BrJoinLY: 100%;
   --aug-_BrPath: 100% 100%;
-  --aug-_BrInsetOffset: var(--aug-_W);
-  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_W));
-  --aug-_BrInsetOffsetMore: var(--aug-_WD);
-  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_WD));
+  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinTY: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinLX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
+  --aug-_BrPathInset1: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_W));
+  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinTY: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinLX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
+  --aug-_BrPathInset2: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_WD));
 }
+[augmented-ui~="bl-none"],
+[data-augmented-ui~="bl-none"],
 .aug-bl-none {
   --aug-bl: 0px; /* no size */
-  --aug-_BlX: 0px;
-  --aug-_BlY: 0px;
+  --aug-_BlWidth: 0px;
+  --aug-_BlHeight: 0px;
+  --aug-_BlJoinRX: 0px;
+  --aug-_BlJoinRY: 100%;
+  --aug-_BlJoinTX: 0px;
+  --aug-_BlJoinTY: 100%;
   --aug-_BlPath: 0px 100%;
-  --aug-_BlInsetOffset: var(--aug-_W);
-  --aug-_BlPathInset: var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
-  --aug-_BlInsetOffsetMore: var(--aug-_WD);
-  --aug-_BlPathInsetMore: var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+  --aug-_BlInset1JoinRX: var(--aug-_W);
+  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
+  --aug-_BlInset1JoinTX: var(--aug-_W);
+  --aug-_BlInset1JoinTY: calc(100% - var(--aug-_W));
+  --aug-_BlPathInset1: var(--aug-_W) calc(100% - var(--aug-_W));
+  --aug-_BlInset2JoinRX: var(--aug-_WD);
+  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
+  --aug-_BlInset2JoinTX: var(--aug-_WD);
+  --aug-_BlInset2JoinTY: calc(100% - var(--aug-_WD));
+  --aug-_BlPathInset2: var(--aug-_WD) calc(100% - var(--aug-_WD));
 }
 
+[augmented-ui~="all-none"],
+[data-augmented-ui~="all-none"],
+[augmented-ui~="corners-none"],
+[data-augmented-ui~="corners-none"],
 .aug-all-none,
 .aug-corners-none {
   --aug-tl: 0px; /* no size */
-  --aug-_TlX: 0px;
-  --aug-_TlY: 0px;
+  --aug-_TlWidth: 0px;
+  --aug-_TlHeight: 0px;
+  --aug-_TlJoinBX: 0px;
+  --aug-_TlJoinBY: 0px;
+  --aug-_TlJoinRX: 0px;
+  --aug-_TlJoinRY: 0px;
   --aug-_TlPath: 0px 0px;
-  --aug-_TlInsetOffset: var(--aug-_W);
-  --aug-_TlPathInset: var(--aug-_W) var(--aug-_W);
-  --aug-_TlInsetOffsetMore: var(--aug-_WD);
-  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_WD);
+  --aug-_TlInset1JoinBX: var(--aug-_W);
+  --aug-_TlInset1JoinBY: var(--aug-_W);
+  --aug-_TlInset1JoinRX: var(--aug-_W);
+  --aug-_TlInset1JoinRY: var(--aug-_W);
+  --aug-_TlPathInset1: var(--aug-_W) var(--aug-_W);
+  --aug-_TlInset2JoinBX: var(--aug-_WD);
+  --aug-_TlInset2JoinBY: var(--aug-_WD);
+  --aug-_TlInset2JoinRX: var(--aug-_WD);
+  --aug-_TlInset2JoinRY: var(--aug-_WD);
+  --aug-_TlPathInset2: var(--aug-_WD) var(--aug-_WD);
   --aug-tr: 0px; /* no size */
-  --aug-_TrX: 0px;
-  --aug-_TrY: 0px;
+  --aug-_TrWidth: 0px;
+  --aug-_TrHeight: 0px;
+  --aug-_TrJoinLX: 100%;
+  --aug-_TrJoinLY: 0px;
+  --aug-_TrJoinBX: 100%;
+  --aug-_TrJoinBY: 0px;
   --aug-_TrPath: 100% 0px;
-  --aug-_TrInsetOffset: var(--aug-_W);
-  --aug-_TrPathInset: calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
-  --aug-_TrInsetOffsetMore: var(--aug-_WD);
-  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+  --aug-_TrInset1JoinLX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinLY: var(--aug-_W);
+  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinBY: var(--aug-_W);
+  --aug-_TrPathInset1: calc(100% - var(--aug-_W)) var(--aug-_W);
+  --aug-_TrInset2JoinLX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinLY: var(--aug-_WD);
+  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinBY: var(--aug-_WD);
+  --aug-_TrPathInset2: calc(100% - var(--aug-_WD)) var(--aug-_WD);
   --aug-br: 0px; /* no size */
-  --aug-_BrX: 0px;
-  --aug-_BrY: 0px;
+  --aug-_BrWidth: 0px;
+  --aug-_BrHeight: 0px;
+  --aug-_BrJoinTX: 100%;
+  --aug-_BrJoinTY: 100%;
+  --aug-_BrJoinLX: 100%;
+  --aug-_BrJoinLY: 100%;
   --aug-_BrPath: 100% 100%;
-  --aug-_BrInsetOffset: var(--aug-_W);
-  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_W));
-  --aug-_BrInsetOffsetMore: var(--aug-_WD);
-  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_WD));
+  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinTY: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinLX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
+  --aug-_BrPathInset1: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_W));
+  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinTY: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinLX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
+  --aug-_BrPathInset2: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_WD));
   --aug-bl: 0px; /* no size */
-  --aug-_BlX: 0px;
-  --aug-_BlY: 0px;
+  --aug-_BlWidth: 0px;
+  --aug-_BlHeight: 0px;
+  --aug-_BlJoinRX: 0px;
+  --aug-_BlJoinRY: 100%;
+  --aug-_BlJoinTX: 0px;
+  --aug-_BlJoinTY: 100%;
   --aug-_BlPath: 0px 100%;
-  --aug-_BlInsetOffset: var(--aug-_W);
-  --aug-_BlPathInset: var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
-  --aug-_BlInsetOffsetMore: var(--aug-_WD);
-  --aug-_BlPathInsetMore: var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+  --aug-_BlInset1JoinRX: var(--aug-_W);
+  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
+  --aug-_BlInset1JoinTX: var(--aug-_W);
+  --aug-_BlInset1JoinTY: calc(100% - var(--aug-_W));
+  --aug-_BlPathInset1: var(--aug-_W) calc(100% - var(--aug-_W));
+  --aug-_BlInset2JoinRX: var(--aug-_WD);
+  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
+  --aug-_BlInset2JoinTX: var(--aug-_WD);
+  --aug-_BlInset2JoinTY: calc(100% - var(--aug-_WD));
+  --aug-_BlPathInset2: var(--aug-_WD) calc(100% - var(--aug-_WD));
 }
 
+[augmented-ui~="t-none"],
+[data-augmented-ui~="t-none"],
+.aug-t-none {
+  --aug-t: 0px; /* no size */
+  --aug-_TWidth: 0px;
+  --aug-_THeight: 0px;
+  --aug-_TPath: ;
+  --aug-_TPathInset1: ;
+  --aug-_TPathInset2: ;
+}
+[augmented-ui~="r-none"],
+[data-augmented-ui~="r-none"],
+.aug-r-none {
+  --aug-r: 0px; /* no size */
+  --aug-_RWidth: 0px;
+  --aug-_RHeight: 0px;
+  --aug-_RPath: ;
+  --aug-_RPathInset1: ;
+  --aug-_RPathInset2: ;
+}
+[augmented-ui~="b-none"],
+[data-augmented-ui~="b-none"],
+.aug-b-none {
+  --aug-b: 0px; /* no size */
+  --aug-_BWidth: 0px;
+  --aug-_BHeight: 0px;
+  --aug-_BPath: ;
+  --aug-_BPathInset1: ;
+  --aug-_BPathInset2: ;
+}
+[augmented-ui~="l-none"],
+[data-augmented-ui~="l-none"],
+.aug-l-none {
+  --aug-l: 0px; /* no size */
+  --aug-_LWidth: 0px;
+  --aug-_LHeight: 0px;
+  --aug-_LPath: ;
+  --aug-_LPathInset1: ;
+  --aug-_LPathInset2: ;
+}
+
+[augmented-ui~="all-none"],
+[data-augmented-ui~="all-none"],
+[augmented-ui~="edges-none"],
+[data-augmented-ui~="edges-none"],
+.aug-all-none,
+.aug-edges-none {
+  --aug-t: 0px; /* no size */
+  --aug-_TWidth: 0px;
+  --aug-_THeight: 0px;
+  --aug-_TPath: ;
+  --aug-_TPathInset1: ;
+  --aug-_TPathInset2: ;
+  --aug-r: 0px; /* no size */
+  --aug-_RWidth: 0px;
+  --aug-_RHeight: 0px;
+  --aug-_RPath: ;
+  --aug-_RPathInset1: ;
+  --aug-_RPathInset2: ;
+  --aug-b: 0px; /* no size */
+  --aug-_BWidth: 0px;
+  --aug-_BHeight: 0px;
+  --aug-_BPath: ;
+  --aug-_BPathInset1: ;
+  --aug-_BPathInset2: ;
+  --aug-l: 0px; /* no size */
+  --aug-_LWidth: 0px;
+  --aug-_LHeight: 0px;
+  --aug-_LPath: ;
+  --aug-_LPathInset1: ;
+  --aug-_LPathInset2: ;
+}
+
+[augmented-ui~="tl-clip"],
+[data-augmented-ui~="tl-clip"],
 .aug-tl-clip {
   --aug-tl: 15px; /* clip size */
-  --aug-_TlX: var(--aug-tl-width, var(--aug-tl));
-  --aug-_TlY: var(--aug-tl-height, var(--aug-tl));
-  --aug-_TlPath: 0px var(--aug-_TlY), var(--aug-_TlX) 0px;
-  --aug-_TlInsetOffset: calc(var(--aug-_TlY) + var(--aug-_W) / 2);
-  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset), calc(var(--aug-_TlX) + var(--aug-_W) / 2) var(--aug-_W);
-  --aug-_TlInsetOffsetMore: calc(var(--aug-_TlY) + var(--aug-_WD) / 2);
-  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore), calc(var(--aug-_TlX) + var(--aug-_WD) / 2) var(--aug-_WD);
+  --aug-_TlWidth: var(--aug-tl-width, var(--aug-tl));
+  --aug-_TlHeight: var(--aug-tl-height, var(--aug-tl));
+  --aug-_TlJoinBX: 0px;
+  --aug-_TlJoinBY: var(--aug-_TlHeight);
+  --aug-_TlJoinRX: var(--aug-_TlWidth);
+  --aug-_TlJoinRY: 0px;
+  --aug-_TlPath: var(--aug-_TlJoinBX) var(--aug-_TlJoinBY), var(--aug-_TlJoinRX) var(--aug-_TlJoinRY);
+
+  --aug-_TlInset1JoinBX: var(--aug-_W);
+  --aug-_TlInset1JoinBY: calc(var(--aug-_TlHeight) + var(--aug-_W) / 2);
+  --aug-_TlInset1JoinRX: calc(var(--aug-_TlWidth) + var(--aug-_W) / 2);
+  --aug-_TlInset1JoinRY: var(--aug-_W);
+  --aug-_TlPathInset1: var(--aug-_TlInset1JoinBX) var(--aug-_TlInset1JoinBY), var(--aug-_TlInset1JoinRX) var(--aug-_TlInset1JoinRY);
+
+  --aug-_TlInset2JoinBX: var(--aug-_WD);
+  --aug-_TlInset2JoinBY: calc(var(--aug-_TlHeight) + var(--aug-_WD) / 2);
+  --aug-_TlInset2JoinRX: calc(var(--aug-_TlWidth) + var(--aug-_WD) / 2);
+  --aug-_TlInset2JoinRY: var(--aug-_WD);
+  --aug-_TlPathInset2: var(--aug-_TlInset2JoinBX) var(--aug-_TlInset2JoinBY), var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
+[augmented-ui~="tr-clip"],
+[data-augmented-ui~="tr-clip"],
 .aug-tr-clip {
   --aug-tr: 15px; /* clip size */
-  --aug-_TrX: var(--aug-tr-width, var(--aug-tr));
-  --aug-_TrY: var(--aug-tr-height, var(--aug-tr));
-  --aug-_TrPath: calc(100% - var(--aug-_TrX)) 0px, 100% var(--aug-_TrY);
-  --aug-_TrInsetOffset: calc(var(--aug-_TrY) + var(--aug-_W) / 2);
-  --aug-_TrPathInset: calc(100% - (var(--aug-_TrX) + var(--aug-_W) / 2)) var(--aug-_W), calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
-  --aug-_TrInsetOffsetMore: calc(var(--aug-_TrY) + var(--aug-_WD) / 2);
-  --aug-_TrPathInsetMore: calc(100% - (var(--aug-_TrX) + var(--aug-_WD) / 2)) var(--aug-_WD), calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+  --aug-_TrWidth: var(--aug-tr-width, var(--aug-tr));
+  --aug-_TrHeight: var(--aug-tr-height, var(--aug-tr));
+  --aug-_TrJoinLX: calc(100% - var(--aug-_TrWidth));
+  --aug-_TrJoinLY: 0px;
+  --aug-_TrJoinBX: 100%;
+  --aug-_TrJoinBY: var(--aug-_TrHeight);
+  --aug-_TrPath: var(--aug-_TrJoinLX) var(--aug-_TrJoinLY), var(--aug-_TrJoinBX) var(--aug-_TrJoinBY);
+
+  --aug-_TrInset1JoinLX: calc(100% - (var(--aug-_TrWidth) + var(--aug-_W) / 2));
+  --aug-_TrInset1JoinLY: var(--aug-_W);
+  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinBY: calc(var(--aug-_TrHeight) + var(--aug-_W) / 2);
+  --aug-_TrPathInset1: var(--aug-_TrInset1JoinLX) var(--aug-_TrInset1JoinLY), var(--aug-_TrInset1JoinBX) var(--aug-_TrInset1JoinBY);
+
+  --aug-_TrInset2JoinLX: calc(100% - (var(--aug-_TrWidth) + var(--aug-_WD) / 2));
+  --aug-_TrInset2JoinLY: var(--aug-_WD);
+  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinBY: calc(var(--aug-_TrHeight) + var(--aug-_WD) / 2);
+  --aug-_TrPathInset2: var(--aug-_TrInset2JoinLX) var(--aug-_TrInset2JoinLY), var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
+[augmented-ui~="br-clip"],
+[data-augmented-ui~="br-clip"],
 .aug-br-clip {
   --aug-br: 15px; /* clip size */
-  --aug-_BrX: var(--aug-br-width, var(--aug-br));
-  --aug-_BrY: var(--aug-br-height, var(--aug-br));
-  --aug-_BrPath: 100% calc(100% - var(--aug-_BrY)), calc(100% - var(--aug-_BrX)) 100%;
-  --aug-_BrInsetOffset: calc(var(--aug-_BrY) + var(--aug-_W) / 2);
-  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)), calc(100% - (var(--aug-_BrX) + var(--aug-_W) / 2)) calc(100% - var(--aug-_W));
-  --aug-_BrInsetOffsetMore: calc(var(--aug-_BrY) + var(--aug-_WD) / 2);
-  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)), calc(100% - (var(--aug-_BrX) + var(--aug-_WD) / 2)) calc(100% - var(--aug-_WD));
+  --aug-_BrWidth: var(--aug-br-width, var(--aug-br));
+  --aug-_BrHeight: var(--aug-br-height, var(--aug-br));
+  --aug-_BrJoinTX: 100%;
+  --aug-_BrJoinTY: calc(100% - var(--aug-_BrHeight));
+  --aug-_BrJoinLX: calc(100% - var(--aug-_BrWidth));
+  --aug-_BrJoinLY: 100%;
+  --aug-_BrPath: var(--aug-_BrJoinTX) var(--aug-_BrJoinTY), var(--aug-_BrJoinLX) var(--aug-_BrJoinLY);
+
+  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinTY: calc(100% - (var(--aug-_BrHeight) + var(--aug-_W) / 2));
+  --aug-_BrInset1JoinLX: calc(100% - (var(--aug-_BrWidth) + var(--aug-_W) / 2));
+  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
+  --aug-_BrPathInset1: var(--aug-_BrInset1JoinTX) var(--aug-_BrInset1JoinTY), var(--aug-_BrInset1JoinLX) var(--aug-_BrInset1JoinLY);
+
+  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinTY: calc(100% - (var(--aug-_BrHeight) + var(--aug-_WD) / 2));
+  --aug-_BrInset2JoinLX: calc(100% - (var(--aug-_BrWidth) + var(--aug-_WD) / 2));
+  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
+  --aug-_BrPathInset2: var(--aug-_BrInset2JoinTX) var(--aug-_BrInset2JoinTY), var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
+[augmented-ui~="bl-clip"],
+[data-augmented-ui~="bl-clip"],
 .aug-bl-clip {
   --aug-bl: 15px; /* clip size */
-  --aug-_BlX: var(--aug-bl-width, var(--aug-bl));
-  --aug-_BlY: var(--aug-bl-height, var(--aug-bl));
-  --aug-_BlPath: var(--aug-_BlX) 100%, 0px calc(100% - var(--aug-_BlY));
-  --aug-_BlInsetOffset: calc(var(--aug-_BlY) + var(--aug-_W) / 2);
-  --aug-_BlPathInset: calc(var(--aug-_BlX) + var(--aug-_W) / 2) calc(100% - var(--aug-_W)), var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
-  --aug-_BlInsetOffsetMore: calc(var(--aug-_BlY) + var(--aug-_WD) / 2);
-  --aug-_BlPathInsetMore: calc(var(--aug-_BlX) + var(--aug-_WD) / 2) calc(100% - var(--aug-_WD)), var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+  --aug-_BlWidth: var(--aug-bl-width, var(--aug-bl));
+  --aug-_BlHeight: var(--aug-bl-height, var(--aug-bl));
+  --aug-_BlJoinRX: var(--aug-_BlWidth);
+  --aug-_BlJoinRY: 100%;
+  --aug-_BlJoinTX: 0px;
+  --aug-_BlJoinTY: calc(100% - var(--aug-_BlHeight));
+  --aug-_BlPath: var(--aug-_BlJoinRX) var(--aug-_BlJoinRY), var(--aug-_BlJoinTX) var(--aug-_BlJoinTY);
+
+  --aug-_BlInset1JoinRX: calc(var(--aug-_BlWidth) + var(--aug-_W) / 2);
+  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
+  --aug-_BlInset1JoinTX: var(--aug-_W);
+  --aug-_BlInset1JoinTY: calc(100% - (var(--aug-_BlHeight) + var(--aug-_W) / 2));
+  --aug-_BlPathInset1: var(--aug-_BlInset1JoinRX) var(--aug-_BlInset1JoinRY), var(--aug-_BlInset1JoinTX) var(--aug-_BlInset1JoinTY);
+
+  --aug-_BlInset2JoinRX: calc(var(--aug-_BlWidth) + var(--aug-_WD) / 2);
+  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
+  --aug-_BlInset2JoinTX: var(--aug-_WD);
+  --aug-_BlInset2JoinTY: calc(100% - (var(--aug-_BlHeight) + var(--aug-_WD) / 2));
+  --aug-_BlPathInset2: var(--aug-_BlInset2JoinRX) var(--aug-_BlInset2JoinRY), var(--aug-_BlInset2JoinTX) var(--aug-_BlInset2JoinTY);
+}
+[augmented-ui~="t-clip"],
+[data-augmented-ui~="t-clip"],
+.aug-t-clip {
+  --aug-t: 15px; /* clip depth */
+  --aug-_TWidth: var(--aug-t-width, calc(var(--aug-t) * 2));
+  --aug-_THeight: var(--aug-t-height, var(--aug-t));
+  --aug-_TOriginX: calc(var(--aug-t-origin-x, calc(var(--aug-_TlJoinRX, 0px) / 2 + var(--aug-_TrJoinLX, 100%) / 2)) + var(--aug-t-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_TPath: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2) 0px,
+                  var(--aug-_TOriginX) var(--aug-_THeight),
+                  calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2) 0px;
+
+  --aug-_TPathInset1: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_W) / 2) var(--aug-_W),
+                      var(--aug-_TOriginX) calc(var(--aug-_THeight) + var(--aug-_W) * 1.5),
+                      calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_W) / 2) var(--aug-_W);
+
+  --aug-_TPathInset2: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_WD) / 2) var(--aug-_WD),
+                      var(--aug-_TOriginX) calc(var(--aug-_THeight) + var(--aug-_WD) * 1.5),
+                      calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD) / 2) var(--aug-_WD);
+}
+[augmented-ui~="r-clip"],
+[data-augmented-ui~="r-clip"],
+.aug-r-clip {
+  --aug-r: 15px; /* clip depth */
+  --aug-_RWidth: var(--aug-r-width, var(--aug-r));
+  --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2));
+  --aug-_ROriginY: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2 + var(--aug-_BrJoinTY, 100%) / 2)) + var(--aug-r-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_RPath: , 100% calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2),
+                  calc(100% - var(--aug-_RWidth)) var(--aug-_ROriginY),
+                  100% calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2);
+
+  --aug-_RPathInset1: , calc(100% - var(--aug-_W)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_W) / 2),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_W) * 1.5)) var(--aug-_ROriginY),
+                        calc(100% - var(--aug-_W)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_W) / 2);
+
+  --aug-_RPathInset2: , calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_WD) / 2),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_WD) * 1.5)) var(--aug-_ROriginY),
+                        calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD) / 2);
+}
+[augmented-ui~="b-clip"],
+[data-augmented-ui~="b-clip"],
+.aug-b-clip {
+  --aug-b: 15px; /* clip depth */
+  --aug-_BWidth: var(--aug-b-width, calc(var(--aug-b) * 2));
+  --aug-_BHeight: var(--aug-b-height, var(--aug-b));
+  --aug-_BOriginX: calc(var(--aug-b-origin-x, calc(var(--aug-_BlJoinRX, 0px) / 2 + var(--aug-_BrJoinLX, 100%) / 2)) + var(--aug-b-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_BPath: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2) 100%,
+                  var(--aug-_BOriginX) calc(100% - var(--aug-_BHeight)),
+                  calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2) 100%;
+
+  --aug-_BPathInset1: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_W) / 2) calc(100% - var(--aug-_W)),
+                      var(--aug-_BOriginX) calc(100% - (var(--aug-_BHeight) + var(--aug-_W) * 1.5)),
+                      calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_W) / 2) calc(100% - var(--aug-_W));
+
+  --aug-_BPathInset2: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_WD) / 2) calc(100% - var(--aug-_WD)),
+                      var(--aug-_BOriginX) calc(100% - (var(--aug-_BHeight) + var(--aug-_WD) * 1.5)),
+                      calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD) / 2) calc(100% - var(--aug-_WD));
+}
+[augmented-ui~="l-clip"],
+[data-augmented-ui~="l-clip"],
+.aug-l-clip {
+  --aug-l: 15px; /* clip depth */
+  --aug-_LWidth: var(--aug-l-width, var(--aug-l));
+  --aug-_LHeight: var(--aug-l-height, calc(var(--aug-l) * 2));
+  --aug-_LOriginY: calc(var(--aug-l-origin-y, calc(var(--aug-_TlJoinBY, 0px) / 2 + var(--aug-_BlJoinTY, 100%) / 2)) + var(--aug-l-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_LPath: , 0px calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2),
+                  var(--aug-_LWidth) var(--aug-_LOriginY),
+                  0px calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2);
+
+  --aug-_LPathInset1: , var(--aug-_W) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_W) / 2),
+                        calc(var(--aug-_LWidth) + var(--aug-_W) * 1.5) var(--aug-_LOriginY),
+                        var(--aug-_W) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_W) / 2);
+
+  --aug-_LPathInset2: , var(--aug-_WD) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_WD) / 2),
+                        calc(var(--aug-_LWidth) + var(--aug-_WD) * 1.5) var(--aug-_LOriginY),
+                        var(--aug-_WD) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_WD) / 2);
 }
 
+[augmented-ui~="tl-round"],
+[data-augmented-ui~="tl-round"],
 .aug-tl-round {
   --aug-tl: 15px; /* radius */
   --aug-_Sin18cos72: 0.30901699437;
   --aug-_Sin36cos54: 0.58778525229;
   --aug-_Sin54cos36: 0.80901699437;
   --aug-_Sin72cos18: 0.95105651629;
-  --aug-_TlPath: 0px var(--aug-tl),
+  --aug-_TlJoinBX: 0px;
+  --aug-_TlJoinBY: var(--aug-tl);
+  --aug-_TlJoinRX: var(--aug-tl);
+  --aug-_TlJoinRY: 0px;
+  --aug-_TlPath: var(--aug-_TlJoinBX) var(--aug-_TlJoinBY),
             calc(var(--aug-tl) - var(--aug-_Sin72cos18) * var(--aug-tl)) calc(var(--aug-tl) - var(--aug-_Sin18cos72) * var(--aug-tl)),
             calc(var(--aug-tl) - var(--aug-_Sin54cos36) * var(--aug-tl)) calc(var(--aug-tl) - var(--aug-_Sin36cos54) * var(--aug-tl)),
             calc(var(--aug-tl) - var(--aug-_Sin36cos54) * var(--aug-tl)) calc(var(--aug-tl) - var(--aug-_Sin54cos36) * var(--aug-tl)),
             calc(var(--aug-tl) - var(--aug-_Sin18cos72) * var(--aug-tl)) calc(var(--aug-tl) - var(--aug-_Sin72cos18) * var(--aug-tl)),
-            var(--aug-tl) 0px;
-  --aug-_TlInsetOffset: var(--aug-tl);
-  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset),
+            var(--aug-_TlJoinRX) var(--aug-_TlJoinRY);
+
+  --aug-_TlInset1JoinBX: var(--aug-_W);
+  --aug-_TlInset1JoinBY: var(--aug-tl);
+  --aug-_TlInset1JoinRX: var(--aug-tl);
+  --aug-_TlInset1JoinRY: var(--aug-_W);
+  --aug-_TlPathInset1: var(--aug-_TlInset1JoinBX) var(--aug-_TlInset1JoinBY),
                 calc(var(--aug-tl) - var(--aug-_Sin72cos18) * (var(--aug-tl) - var(--aug-_W))) calc(var(--aug-tl) - var(--aug-_Sin18cos72) * (var(--aug-tl) - var(--aug-_W))),
                 calc(var(--aug-tl) - var(--aug-_Sin54cos36) * (var(--aug-tl) - var(--aug-_W))) calc(var(--aug-tl) - var(--aug-_Sin36cos54) * (var(--aug-tl) - var(--aug-_W))),
                 calc(var(--aug-tl) - var(--aug-_Sin36cos54) * (var(--aug-tl) - var(--aug-_W))) calc(var(--aug-tl) - var(--aug-_Sin54cos36) * (var(--aug-tl) - var(--aug-_W))),
                 calc(var(--aug-tl) - var(--aug-_Sin18cos72) * (var(--aug-tl) - var(--aug-_W))) calc(var(--aug-tl) - var(--aug-_Sin72cos18) * (var(--aug-tl) - var(--aug-_W))),
-                var(--aug-_TlInsetOffset) var(--aug-_W);
-  --aug-_TlInsetOffsetMore: calc(var(--aug-tl) + var(--aug-_WD));
-  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore),
+                var(--aug-_TlInset1JoinRX) var(--aug-_TlInset1JoinRY);
+
+  --aug-_TlInset2JoinBX: var(--aug-_WD);
+  --aug-_TlInset2JoinBY: calc(var(--aug-tl) + var(--aug-_WD));
+  --aug-_TlInset2JoinRX: calc(var(--aug-tl) + var(--aug-_WD));
+  --aug-_TlInset2JoinRY: var(--aug-_WD);
+  --aug-_TlPathInset2: var(--aug-_TlInset2JoinBX) var(--aug-_TlInset2JoinBY),
                     calc(var(--aug-tl) - var(--aug-_Sin72cos18) * (var(--aug-tl) - var(--aug-_WD))) calc(var(--aug-tl) - var(--aug-_Sin18cos72) * (var(--aug-tl) - var(--aug-_WD))),
                     calc(var(--aug-tl) - var(--aug-_Sin54cos36) * (var(--aug-tl) - var(--aug-_WD))) calc(var(--aug-tl) - var(--aug-_Sin36cos54) * (var(--aug-tl) - var(--aug-_WD))),
                     calc(var(--aug-tl) - var(--aug-_Sin36cos54) * (var(--aug-tl) - var(--aug-_WD))) calc(var(--aug-tl) - var(--aug-_Sin54cos36) * (var(--aug-tl) - var(--aug-_WD))),
                     calc(var(--aug-tl) - var(--aug-_Sin18cos72) * (var(--aug-tl) - var(--aug-_WD))) calc(var(--aug-tl) - var(--aug-_Sin72cos18) * (var(--aug-tl) - var(--aug-_WD))),
-                    var(--aug-_TlInsetOffsetMore) var(--aug-_WD);
+                    var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
+[augmented-ui~="tr-round"],
+[data-augmented-ui~="tr-round"],
 .aug-tr-round {
   --aug-tr: 15px; /* radius */
   --aug-_Sin18cos72: 0.30901699437;
   --aug-_Sin36cos54: 0.58778525229;
   --aug-_Sin54cos36: 0.80901699437;
   --aug-_Sin72cos18: 0.95105651629;
-  --aug-_TrPath: calc(100% - var(--aug-tr)) 0px,
+  --aug-_TrJoinLX: calc(100% - var(--aug-tr));
+  --aug-_TrJoinLY: 0px;
+  --aug-_TrJoinBX: 100%;
+  --aug-_TrJoinBY: var(--aug-tr);
+  --aug-_TrPath: var(--aug-_TrJoinLX) var(--aug-_TrJoinLY),
             calc(100% - var(--aug-tr) + var(--aug-_Sin18cos72) * var(--aug-tr)) calc(var(--aug-tr) - var(--aug-_Sin72cos18) * var(--aug-tr)),
             calc(100% - var(--aug-tr) + var(--aug-_Sin36cos54) * var(--aug-tr)) calc(var(--aug-tr) - var(--aug-_Sin54cos36) * var(--aug-tr)),
             calc(100% - var(--aug-tr) + var(--aug-_Sin54cos36) * var(--aug-tr)) calc(var(--aug-tr) - var(--aug-_Sin36cos54) * var(--aug-tr)),
             calc(100% - var(--aug-tr) + var(--aug-_Sin72cos18) * var(--aug-tr)) calc(var(--aug-tr) - var(--aug-_Sin18cos72) * var(--aug-tr)),
-            100% var(--aug-tr);
-  --aug-_TrInsetOffset: var(--aug-tr);
-  --aug-_TrPathInset: calc(100% - var(--aug-_TrInsetOffset)) var(--aug-_W),
+            var(--aug-_TrJoinBX) var(--aug-_TrJoinBY);
+
+  --aug-_TrInset1JoinLX: calc(100% - var(--aug-tr));
+  --aug-_TrInset1JoinLY: var(--aug-_W);
+  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinBY: var(--aug-tr);
+  --aug-_TrPathInset1: var(--aug-_TrInset1JoinLX) var(--aug-_TrInset1JoinLY),
                 calc(100% - var(--aug-tr) + var(--aug-_Sin18cos72) * (var(--aug-tr) - var(--aug-_W))) calc(var(--aug-tr) - var(--aug-_Sin72cos18) * (var(--aug-tr) - var(--aug-_W))),
                 calc(100% - var(--aug-tr) + var(--aug-_Sin36cos54) * (var(--aug-tr) - var(--aug-_W))) calc(var(--aug-tr) - var(--aug-_Sin54cos36) * (var(--aug-tr) - var(--aug-_W))),
                 calc(100% - var(--aug-tr) + var(--aug-_Sin54cos36) * (var(--aug-tr) - var(--aug-_W))) calc(var(--aug-tr) - var(--aug-_Sin36cos54) * (var(--aug-tr) - var(--aug-_W))),
                 calc(100% - var(--aug-tr) + var(--aug-_Sin72cos18) * (var(--aug-tr) - var(--aug-_W))) calc(var(--aug-tr) - var(--aug-_Sin18cos72) * (var(--aug-tr) - var(--aug-_W))),
-                calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
-  --aug-_TrInsetOffsetMore: calc(var(--aug-tr) + var(--aug-_WD));
-  --aug-_TrPathInsetMore: calc(100% - var(--aug-_TrInsetOffsetMore)) var(--aug-_WD),
+                var(--aug-_TrInset1JoinBX) var(--aug-_TrInset1JoinBY);
+
+  --aug-_TrInset2JoinLX: calc(100% - (var(--aug-tr) + var(--aug-_WD)));
+  --aug-_TrInset2JoinLY: var(--aug-_WD);
+  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinBY: calc(var(--aug-tr) + var(--aug-_WD));
+  --aug-_TrPathInset2: var(--aug-_TrInset2JoinLX) var(--aug-_TrInset2JoinLY),
                     calc(100% - var(--aug-tr) + var(--aug-_Sin18cos72) * (var(--aug-tr) - var(--aug-_WD))) calc(var(--aug-tr) - var(--aug-_Sin72cos18) * (var(--aug-tr) - var(--aug-_WD))),
                     calc(100% - var(--aug-tr) + var(--aug-_Sin36cos54) * (var(--aug-tr) - var(--aug-_WD))) calc(var(--aug-tr) - var(--aug-_Sin54cos36) * (var(--aug-tr) - var(--aug-_WD))),
                     calc(100% - var(--aug-tr) + var(--aug-_Sin54cos36) * (var(--aug-tr) - var(--aug-_WD))) calc(var(--aug-tr) - var(--aug-_Sin36cos54) * (var(--aug-tr) - var(--aug-_WD))),
                     calc(100% - var(--aug-tr) + var(--aug-_Sin72cos18) * (var(--aug-tr) - var(--aug-_WD))) calc(var(--aug-tr) - var(--aug-_Sin18cos72) * (var(--aug-tr) - var(--aug-_WD))),
-                    calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+                    var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
+[augmented-ui~="br-round"],
+[data-augmented-ui~="br-round"],
 .aug-br-round {
   --aug-br: 15px; /* radius */
   --aug-_Sin18cos72: 0.30901699437;
   --aug-_Sin36cos54: 0.58778525229;
   --aug-_Sin54cos36: 0.80901699437;
   --aug-_Sin72cos18: 0.95105651629;
-  --aug-_BrPath: 100% calc(100% - var(--aug-br)),
+  --aug-_BrJoinTX: 100%;
+  --aug-_BrJoinTY: calc(100% - var(--aug-br));
+  --aug-_BrJoinLX: calc(100% - var(--aug-br));
+  --aug-_BrJoinLY: 100%;
+  --aug-_BrPath: var(--aug-_BrJoinTX) var(--aug-_BrJoinTY),
             calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * var(--aug-br)) calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * var(--aug-br)),
             calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * var(--aug-br)) calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * var(--aug-br)),
             calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * var(--aug-br)) calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * var(--aug-br)),
             calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * var(--aug-br)) calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * var(--aug-br)),
-            calc(100% - var(--aug-br)) 100%;
-  --aug-_BrInsetOffset: calc(var(--aug-br) + var(--aug-_W));
-  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)),
+            var(--aug-_BrJoinLX) var(--aug-_BrJoinLY);
+
+  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinTY: calc(100% - (var(--aug-br) + var(--aug-_W)));
+  --aug-_BrInset1JoinLX: calc(100% - (var(--aug-br) + var(--aug-_W)));
+  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
+  --aug-_BrPathInset1: var(--aug-_BrInset1JoinTX) var(--aug-_BrInset1JoinTY),
                 calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * (var(--aug-br) - var(--aug-_W))) calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * (var(--aug-br) - var(--aug-_W))),
                 calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * (var(--aug-br) - var(--aug-_W))) calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * (var(--aug-br) - var(--aug-_W))),
                 calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * (var(--aug-br) - var(--aug-_W))) calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * (var(--aug-br) - var(--aug-_W))),
                 calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * (var(--aug-br) - var(--aug-_W))) calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * (var(--aug-br) - var(--aug-_W))),
-                calc(100% - var(--aug-_BrInsetOffset)) calc(100% - var(--aug-_W));
-  --aug-_BrInsetOffsetMore: calc(var(--aug-br) + var(--aug-_WD));
-  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)),
+                var(--aug-_BrInset1JoinLX) var(--aug-_BrInset1JoinLY);
+
+  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinTY: calc(100% - (var(--aug-br) + var(--aug-_WD)));
+  --aug-_BrInset2JoinLX: calc(100% - (var(--aug-br) + var(--aug-_WD)));
+  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
+  --aug-_BrPathInset2: var(--aug-_BrInset2JoinTX) var(--aug-_BrInset2JoinTY),
                     calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * (var(--aug-br) - var(--aug-_WD))) calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * (var(--aug-br) - var(--aug-_WD))),
                     calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * (var(--aug-br) - var(--aug-_WD))) calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * (var(--aug-br) - var(--aug-_WD))),
                     calc(100% - var(--aug-br) + var(--aug-_Sin36cos54) * (var(--aug-br) - var(--aug-_WD))) calc(100% - var(--aug-br) + var(--aug-_Sin54cos36) * (var(--aug-br) - var(--aug-_WD))),
                     calc(100% - var(--aug-br) + var(--aug-_Sin18cos72) * (var(--aug-br) - var(--aug-_WD))) calc(100% - var(--aug-br) + var(--aug-_Sin72cos18) * (var(--aug-br) - var(--aug-_WD))),
-                    calc(100% - var(--aug-_BrInsetOffsetMore)) calc(100% - var(--aug-_WD));
+                    var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
+[augmented-ui~="bl-round"],
+[data-augmented-ui~="bl-round"],
 .aug-bl-round {
   --aug-bl: 15px; /* radius */
   --aug-_Sin18cos72: 0.30901699437;
   --aug-_Sin36cos54: 0.58778525229;
   --aug-_Sin54cos36: 0.80901699437;
   --aug-_Sin72cos18: 0.95105651629;
-  --aug-_BlPath: var(--aug-bl) 100%,
+  --aug-_BlJoinRX: var(--aug-bl);
+  --aug-_BlJoinRY: 100%;
+  --aug-_BlJoinTX: 0px;
+  --aug-_BlJoinTY: calc(100% - var(--aug-bl));
+  --aug-_BlPath: var(--aug-_BlJoinRX) var(--aug-_BlJoinRY),
             calc(var(--aug-bl) - var(--aug-_Sin18cos72) * var(--aug-bl)) calc(100% - var(--aug-bl) + var(--aug-_Sin72cos18) * var(--aug-bl)),
             calc(var(--aug-bl) - var(--aug-_Sin36cos54) * var(--aug-bl)) calc(100% - var(--aug-bl) + var(--aug-_Sin54cos36) * var(--aug-bl)),
             calc(var(--aug-bl) - var(--aug-_Sin54cos36) * var(--aug-bl)) calc(100% - var(--aug-bl) + var(--aug-_Sin36cos54) * var(--aug-bl)),
             calc(var(--aug-bl) - var(--aug-_Sin72cos18) * var(--aug-bl)) calc(100% - var(--aug-bl) + var(--aug-_Sin18cos72) * var(--aug-bl)),
-            0px calc(100% - var(--aug-bl));
-  --aug-_BlInsetOffset: calc(var(--aug-bl) + var(--aug-_W));
-  --aug-_BlPathInset: var(--aug-_BlInsetOffset) calc(100% - var(--aug-_W)),
+            var(--aug-_BlJoinTX) var(--aug-_BlJoinTY);
+
+  --aug-_BlInset1JoinRX: calc(var(--aug-bl) + var(--aug-_W));
+  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
+  --aug-_BlInset1JoinTX: var(--aug-_W);
+  --aug-_BlInset1JoinTY: calc(100% - (var(--aug-bl) + var(--aug-_W)));
+  --aug-_BlPathInset1: var(--aug-_BlInset1JoinRX) var(--aug-_BlInset1JoinRY),
                 calc(var(--aug-bl) - var(--aug-_Sin18cos72) * (var(--aug-bl) - var(--aug-_W))) calc(100% - var(--aug-bl) + var(--aug-_Sin72cos18) * (var(--aug-bl) - var(--aug-_W))),
                 calc(var(--aug-bl) - var(--aug-_Sin36cos54) * (var(--aug-bl) - var(--aug-_W))) calc(100% - var(--aug-bl) + var(--aug-_Sin54cos36) * (var(--aug-bl) - var(--aug-_W))),
                 calc(var(--aug-bl) - var(--aug-_Sin54cos36) * (var(--aug-bl) - var(--aug-_W))) calc(100% - var(--aug-bl) + var(--aug-_Sin36cos54) * (var(--aug-bl) - var(--aug-_W))),
                 calc(var(--aug-bl) - var(--aug-_Sin72cos18) * (var(--aug-bl) - var(--aug-_W))) calc(100% - var(--aug-bl) + var(--aug-_Sin18cos72) * (var(--aug-bl) - var(--aug-_W))),
-                var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
-  --aug-_BlInsetOffsetMore: calc(var(--aug-bl) + var(--aug-_WD));
-  --aug-_BlPathInsetMore: var(--aug-_BlInsetOffsetMore) calc(100% - var(--aug-_WD)),
+                var(--aug-_BlInset1JoinTX) var(--aug-_BlInset1JoinTY);
+
+  --aug-_BlInset2JoinRX: calc(var(--aug-bl) + var(--aug-_WD));
+  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
+  --aug-_BlInset2JoinTX: var(--aug-_WD);
+  --aug-_BlInset2JoinTY: calc(100% - (var(--aug-bl) + var(--aug-_WD)));
+  --aug-_BlPathInset2: var(--aug-_BlInset2JoinRX) var(--aug-_BlInset2JoinRY),
                     calc(var(--aug-bl) - var(--aug-_Sin18cos72) * (var(--aug-bl) - var(--aug-_WD))) calc(100% - var(--aug-bl) + var(--aug-_Sin72cos18) * (var(--aug-bl) - var(--aug-_WD))),
                     calc(var(--aug-bl) - var(--aug-_Sin36cos54) * (var(--aug-bl) - var(--aug-_WD))) calc(100% - var(--aug-bl) + var(--aug-_Sin54cos36) * (var(--aug-bl) - var(--aug-_WD))),
                     calc(var(--aug-bl) - var(--aug-_Sin54cos36) * (var(--aug-bl) - var(--aug-_WD))) calc(100% - var(--aug-bl) + var(--aug-_Sin36cos54) * (var(--aug-bl) - var(--aug-_WD))),
                     calc(var(--aug-bl) - var(--aug-_Sin72cos18) * (var(--aug-bl) - var(--aug-_WD))) calc(100% - var(--aug-bl) + var(--aug-_Sin18cos72) * (var(--aug-bl) - var(--aug-_WD))),
-                    var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+                    var(--aug-_BlInset2JoinTX) var(--aug-_BlInset2JoinTY);
 }
 
+[augmented-ui~="tl-rect"],
+[data-augmented-ui~="tl-rect"],
 .aug-tl-rect {
   --aug-tl: 15px; /* size */
-  --aug-_TlX: var(--aug-tl-width, var(--aug-tl));
-  --aug-_TlY: var(--aug-tl-height, var(--aug-tl));
-  --aug-_TlPath: 0px var(--aug-_TlY),
-            var(--aug-_TlX) var(--aug-_TlY),
-            var(--aug-_TlX) 0px;
-  --aug-_TlInsetOffset: calc(var(--aug-_TlY) + var(--aug-_W));
-  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset),
-                 calc(var(--aug-_W) + var(--aug-_TlX)) var(--aug-_TlInsetOffset),
-                 calc(var(--aug-_W) + var(--aug-_TlX)) var(--aug-_W);
-  --aug-_TlInsetOffsetMore: calc(var(--aug-_TlY) + var(--aug-_WD));
-  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore),
-                 calc(var(--aug-_WD) + var(--aug-_TlX)) var(--aug-_TlInsetOffsetMore),
-                 calc(var(--aug-_WD) + var(--aug-_TlX)) var(--aug-_WD);
+  --aug-_TlWidth: var(--aug-tl-width, var(--aug-tl));
+  --aug-_TlHeight: var(--aug-tl-height, var(--aug-tl));
+  --aug-_TlJoinBX: 0px;
+  --aug-_TlJoinBY: var(--aug-_TlHeight);
+  --aug-_TlJoinRX: var(--aug-_TlWidth);
+  --aug-_TlJoinRY: 0px;
+  --aug-_TlPath: var(--aug-_TlJoinBX) var(--aug-_TlJoinBY),
+            var(--aug-_TlWidth) var(--aug-_TlHeight),
+            var(--aug-_TlJoinRX) var(--aug-_TlJoinRY);
+
+  --aug-_TlInset1JoinBX: var(--aug-_W);
+  --aug-_TlInset1JoinBY: calc(var(--aug-_TlHeight) + var(--aug-_W));
+  --aug-_TlInset1JoinRX: calc(var(--aug-_TlWidth) + var(--aug-_W));
+  --aug-_TlInset1JoinRY: var(--aug-_W);
+  --aug-_TlPathInset1: var(--aug-_TlInset1JoinBX) var(--aug-_TlInset1JoinBY),
+                 calc(var(--aug-_W) + var(--aug-_TlWidth)) calc(var(--aug-_TlHeight) + var(--aug-_W)),
+                 var(--aug-_TlInset1JoinRX) var(--aug-_TlInset1JoinRY);
+
+  --aug-_TlInset2JoinBX: var(--aug-_WD);
+  --aug-_TlInset2JoinBY: calc(var(--aug-_TlHeight) + var(--aug-_WD));
+  --aug-_TlInset2JoinRX: calc(var(--aug-_TlWidth) + var(--aug-_WD));
+  --aug-_TlInset2JoinRY: var(--aug-_WD);
+  --aug-_TlPathInset2: var(--aug-_TlInset2JoinBX) var(--aug-_TlInset2JoinBY),
+                 calc(var(--aug-_WD) + var(--aug-_TlWidth)) calc(var(--aug-_TlHeight) + var(--aug-_WD)),
+                 var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
+[augmented-ui~="tr-rect"],
+[data-augmented-ui~="tr-rect"],
 .aug-tr-rect {
   --aug-tr: 15px; /* size */
-  --aug-_TrX: var(--aug-tr-width, var(--aug-tr));
-  --aug-_TrY: var(--aug-tr-height, var(--aug-tr));
-  --aug-_TrPath: calc(100% - var(--aug-_TrX)) 0px,
-            calc(100% - var(--aug-_TrX)) var(--aug-_TrY),
-            100% var(--aug-_TrY);
-  --aug-_TrInsetOffset: calc(var(--aug-_TrY) + var(--aug-_W));
-  --aug-_TrPathInset: calc(100% - var(--aug-_W) - var(--aug-_TrX)) var(--aug-_W),
-                calc(100% - var(--aug-_W) - var(--aug-_TrX)) var(--aug-_TrInsetOffset),
-                calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
-  --aug-_TrInsetOffsetMore: calc(var(--aug-_TrY) + var(--aug-_WD));
-  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD) - var(--aug-_TrX)) var(--aug-_WD),
-                    calc(100% - var(--aug-_WD) - var(--aug-_TrX)) var(--aug-_TrInsetOffsetMore),
-                    calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+  --aug-_TrWidth: var(--aug-tr-width, var(--aug-tr));
+  --aug-_TrHeight: var(--aug-tr-height, var(--aug-tr));
+  --aug-_TrJoinLX: calc(100% - var(--aug-_TrWidth));
+  --aug-_TrJoinLY: 0px;
+  --aug-_TrJoinBX: 100%;
+  --aug-_TrJoinBY: var(--aug-_TrHeight);
+  --aug-_TrPath: var(--aug-_TrJoinLX) var(--aug-_TrJoinLY),
+            calc(100% - var(--aug-_TrWidth)) var(--aug-_TrHeight),
+            var(--aug-_TrJoinBX) var(--aug-_TrJoinBY);
+
+  --aug-_TrInset1JoinLX: calc(100% - (var(--aug-_TrWidth) + var(--aug-_W)));
+  --aug-_TrInset1JoinLY: var(--aug-_W);
+  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinBY: calc(var(--aug-_TrHeight) + var(--aug-_W));
+  --aug-_TrPathInset1: var(--aug-_TrInset1JoinLX) var(--aug-_TrInset1JoinLY),
+                calc(100% - var(--aug-_W) - var(--aug-_TrWidth)) calc(var(--aug-_TrHeight) + var(--aug-_W)),
+                var(--aug-_TrInset1JoinBX) var(--aug-_TrInset1JoinBY);
+
+  --aug-_TrInset2JoinLX: calc(100% - (var(--aug-_TrWidth) + var(--aug-_WD)));
+  --aug-_TrInset2JoinLY: var(--aug-_WD);
+  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinBY: calc(var(--aug-_TrHeight) + var(--aug-_WD));
+  --aug-_TrPathInset2: var(--aug-_TrInset2JoinLX) var(--aug-_TrInset2JoinLY),
+                    calc(100% - var(--aug-_WD) - var(--aug-_TrWidth)) calc(var(--aug-_TrHeight) + var(--aug-_WD)),
+                    var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
+[augmented-ui~="br-rect"],
+[data-augmented-ui~="br-rect"],
 .aug-br-rect {
   --aug-br: 15px; /* size */
-  --aug-_BrX: var(--aug-br-width, var(--aug-br));
-  --aug-_BrY: var(--aug-br-height, var(--aug-br));
-  --aug-_BrPath: 100% calc(100% - var(--aug-_BrY)),
-            calc(100% - var(--aug-_BrX)) calc(100% - var(--aug-_BrY)),
-            calc(100% - var(--aug-_BrX)) 100%;
-  --aug-_BrInsetOffset: calc(var(--aug-_BrY) + var(--aug-_W));
-  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)),
-                 calc(100% - var(--aug-_W) - var(--aug-_BrX)) calc(100% - var(--aug-_BrInsetOffset)),
-                 calc(100% - var(--aug-_W) - var(--aug-_BrX)) calc(100% - var(--aug-_W));
-  --aug-_BrInsetOffsetMore: calc(var(--aug-_BrY) + var(--aug-_WD));
-  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)),
-                     calc(100% - var(--aug-_WD) - var(--aug-_BrX)) calc(100% - var(--aug-_BrInsetOffsetMore)),
-                     calc(100% - var(--aug-_WD) - var(--aug-_BrX)) calc(100% - var(--aug-_WD));
+  --aug-_BrWidth: var(--aug-br-width, var(--aug-br));
+  --aug-_BrHeight: var(--aug-br-height, var(--aug-br));
+  --aug-_BrJoinTX: 100%;
+  --aug-_BrJoinTY: calc(100% - var(--aug-_BrHeight));
+  --aug-_BrJoinLX: calc(100% - var(--aug-_BrWidth));
+  --aug-_BrJoinLY: 100%;
+  --aug-_BrPath: var(--aug-_BrJoinTX) var(--aug-_BrJoinTY),
+            calc(100% - var(--aug-_BrWidth)) calc(100% - var(--aug-_BrHeight)),
+            var(--aug-_BrJoinLX) var(--aug-_BrJoinLY);
+
+  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinTY: calc(100% - (var(--aug-_BrHeight) + var(--aug-_W)));
+  --aug-_BrInset1JoinLX: calc(100% - (var(--aug-_BrWidth) + var(--aug-_W)));
+  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
+  --aug-_BrPathInset1: var(--aug-_BrInset1JoinTX) var(--aug-_BrInset1JoinTY),
+                 calc(100% - var(--aug-_W) - var(--aug-_BrWidth)) calc(100% - (var(--aug-_BrHeight) + var(--aug-_W))),
+                 var(--aug-_BrInset1JoinLX) var(--aug-_BrInset1JoinLY);
+
+  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinTY: calc(100% - (var(--aug-_BrHeight) + var(--aug-_WD)));
+  --aug-_BrInset2JoinLX: calc(100% - (var(--aug-_BrWidth) + var(--aug-_WD)));
+  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
+  --aug-_BrPathInset2: var(--aug-_BrInset2JoinTX) var(--aug-_BrInset2JoinTY),
+                     calc(100% - var(--aug-_WD) - var(--aug-_BrWidth)) calc(100% - (var(--aug-_BrHeight) + var(--aug-_WD))),
+                     var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
+[augmented-ui~="bl-rect"],
+[data-augmented-ui~="bl-rect"],
 .aug-bl-rect {
   --aug-bl: 15px; /* size */
-  --aug-_BlX: var(--aug-bl-width, var(--aug-bl));
-  --aug-_BlY: var(--aug-bl-height, var(--aug-bl));
-  --aug-_BlPath: var(--aug-_BlX) 100%,
-            var(--aug-_BlX) calc(100% - var(--aug-_BlY)),
-            0px calc(100% - var(--aug-_BlY));
-  --aug-_BlInsetOffset: calc(var(--aug-_BlY) + var(--aug-_W));
-  --aug-_BlPathInset: calc(var(--aug-_BlX) + var(--aug-_W)) calc(100% - var(--aug-_W)),
-                 calc(var(--aug-_BlX) + var(--aug-_W)) calc(100% - var(--aug-_BlInsetOffset)),
-                 var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
-  --aug-_BlInsetOffsetMore: calc(var(--aug-_BlY) + var(--aug-_WD));
-  --aug-_BlPathInsetMore: calc(var(--aug-_BlX) + var(--aug-_WD)) calc(100% - var(--aug-_WD)),
-                     calc(var(--aug-_BlX) + var(--aug-_WD)) calc(100% - var(--aug-_BlInsetOffsetMore)),
-                     var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+  --aug-_BlWidth: var(--aug-bl-width, var(--aug-bl));
+  --aug-_BlHeight: var(--aug-bl-height, var(--aug-bl));
+  --aug-_BlJoinRX: var(--aug-_BlWidth);
+  --aug-_BlJoinRY: 100%;
+  --aug-_BlJoinTX: 0px;
+  --aug-_BlJoinTY: calc(100% - var(--aug-_BlHeight));
+  --aug-_BlPath: var(--aug-_BlJoinRX) var(--aug-_BlJoinRY),
+            var(--aug-_BlWidth) calc(100% - var(--aug-_BlHeight)),
+            var(--aug-_BlJoinTX) var(--aug-_BlJoinTY);
+
+  --aug-_BlInset1JoinRX: calc(var(--aug-_BlWidth) + var(--aug-_W));
+  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
+  --aug-_BlInset1JoinTX: var(--aug-_W);
+  --aug-_BlInset1JoinTY: calc(100% - (var(--aug-_BlHeight) + var(--aug-_W)));
+  --aug-_BlPathInset1: var(--aug-_BlInset1JoinRX) var(--aug-_BlInset1JoinRY),
+                 calc(var(--aug-_BlWidth) + var(--aug-_W)) calc(100% - (var(--aug-_BlHeight) + var(--aug-_W))),
+                 var(--aug-_BlInset1JoinTX) var(--aug-_BlInset1JoinTY);
+
+  --aug-_BlInset2JoinRX: calc(var(--aug-_BlWidth) + var(--aug-_WD));
+  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
+  --aug-_BlInset2JoinTX: var(--aug-_WD);
+  --aug-_BlInset2JoinTY: calc(100% - (var(--aug-_BlHeight) + var(--aug-_WD)));
+  --aug-_BlPathInset2: var(--aug-_BlInset2JoinRX) var(--aug-_BlInset2JoinRY),
+                     calc(var(--aug-_BlWidth) + var(--aug-_WD)) calc(100% - (var(--aug-_BlHeight) + var(--aug-_WD))),
+                     var(--aug-_BlInset2JoinTX) var(--aug-_BlInset2JoinTY);
+}
+[augmented-ui~="t-rect"],
+[data-augmented-ui~="t-rect"],
+.aug-t-rect {
+  --aug-t: 15px; /* size */
+  --aug-_TWidth: var(--aug-t-width, calc(var(--aug-t) * 2));
+  --aug-_THeight: var(--aug-t-height, var(--aug-t));
+  --aug-_TOriginX: calc(var(--aug-t-origin-x, calc(var(--aug-_TlJoinRX, 0px) / 2 + var(--aug-_TrJoinLX, 100%) / 2)) + var(--aug-t-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_TPath: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2) 0px,
+                  calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2) var(--aug-_THeight),
+                  calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2) var(--aug-_THeight),
+                  calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2) 0px;
+
+  --aug-_TPathInset1: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_W)) var(--aug-_W),
+                        calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_W)) calc(var(--aug-_THeight) + var(--aug-_W)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_W)) calc(var(--aug-_THeight) + var(--aug-_W)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_W)) var(--aug-_W);
+
+  --aug-_TPathInset2: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_WD)) var(--aug-_WD),
+                        calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_WD)) calc(var(--aug-_THeight) + var(--aug-_WD)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD)) calc(var(--aug-_THeight) + var(--aug-_WD)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD)) var(--aug-_WD);
+}
+[augmented-ui~="r-rect"],
+[data-augmented-ui~="r-rect"],
+.aug-r-rect {
+  --aug-r: 15px; /* size */
+  --aug-_RWidth: var(--aug-r-width, var(--aug-r));
+  --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2));
+  --aug-_ROriginY: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2 + var(--aug-_BrJoinTY, 100%) / 2)) + var(--aug-r-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_RPath: , 100% calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2),
+                  calc(100% - var(--aug-_RWidth)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2),
+                  calc(100% - var(--aug-_RWidth)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2),
+                  100% calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2);
+
+  --aug-_RPathInset1: , calc(100% - var(--aug-_W)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_W)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_W))) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_W)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_W))) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_W)),
+                        calc(100% - var(--aug-_W)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_W));
+
+  --aug-_RPathInset2: , calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_WD)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_WD))) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_WD)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_WD))) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD)),
+                        calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD));
+}
+[augmented-ui~="b-rect"],
+[data-augmented-ui~="b-rect"],
+.aug-b-rect {
+  --aug-b: 15px; /* size */
+  --aug-_BWidth: var(--aug-b-width, calc(var(--aug-b) * 2));
+  --aug-_BHeight: var(--aug-b-height, var(--aug-b));
+  --aug-_BOriginX: calc(var(--aug-b-origin-x, calc(var(--aug-_BlJoinRX, 0px) / 2 + var(--aug-_BrJoinLX, 100%) / 2)) + var(--aug-b-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_BPath: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2) 100%,
+                  calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2) calc(100% - var(--aug-_BHeight)),
+                  calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2) calc(100% - var(--aug-_BHeight)),
+                  calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2) 100%;
+
+  --aug-_BPathInset1: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_W)) calc(100% - var(--aug-_W)),
+                        calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_W)) calc(100% - var(--aug-_BHeight) - var(--aug-_W)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_W)) calc(100% - var(--aug-_BHeight) - var(--aug-_W)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_W)) calc(100% - var(--aug-_W));
+
+  --aug-_BPathInset2: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_WD)) calc(100% - var(--aug-_WD)),
+                        calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_WD)) calc(100% - var(--aug-_BHeight) - var(--aug-_WD)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD)) calc(100% - var(--aug-_BHeight) - var(--aug-_WD)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD)) calc(100% - var(--aug-_WD));
+}
+[augmented-ui~="l-rect"],
+[data-augmented-ui~="l-rect"],
+.aug-l-rect {
+  --aug-l: 15px; /* size */
+  --aug-_LWidth: var(--aug-l-width, var(--aug-l));
+  --aug-_LHeight: var(--aug-l-height, calc(var(--aug-l) * 2));
+  --aug-_LOriginY: calc(var(--aug-l-origin-y, calc(var(--aug-_TlJoinBY, 0px) / 2 + var(--aug-_BlJoinTY, 100%) / 2)) + var(--aug-l-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_LPath: , 0px calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2),
+                  var(--aug-_LWidth) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2),
+                  var(--aug-_LWidth) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2),
+                  0px calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2);
+
+  --aug-_LPathInset1: , var(--aug-_W) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_W)),
+                        calc(var(--aug-_LWidth) + var(--aug-_W)) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_W)),
+                        calc(var(--aug-_LWidth) + var(--aug-_W)) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_W)),
+                        var(--aug-_W) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_W));
+
+  --aug-_LPathInset2: , var(--aug-_WD) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_WD)),
+                        calc(var(--aug-_LWidth) + var(--aug-_WD)) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_WD)),
+                        calc(var(--aug-_LWidth) + var(--aug-_WD)) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_WD)),
+                        var(--aug-_WD) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_WD));
 }
 
-.aug-tl-notch-x {
+[augmented-ui~="tl-clip-x"],
+[data-augmented-ui~="tl-clip-x"],
+.aug-tl-clip-x {
   --aug-tl: 15px;
-  --aug-_TlY: var(--aug-tl-height, var(--aug-tl));
-  --aug-_TlNotch: var(--aug-_TlY); /* how much of width is the notch */
-  --aug-_TlX: var(--aug-tl-width, calc(var(--aug-tl) + var(--aug-_TlNotch)));
-  --aug-_TlPath: 0px var(--aug-_TlY),
-            calc(var(--aug-_TlX) - var(--aug-_TlNotch)) var(--aug-_TlY),
-            var(--aug-_TlX) 0px;
-  --aug-_TlInsetOffset: calc(var(--aug-_TlY) + var(--aug-_W));
-  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset),
-                 calc(var(--aug-_W) / 2 + var(--aug-_TlX) - var(--aug-_TlNotch)) var(--aug-_TlInsetOffset),
-                 calc(var(--aug-_W) / 2 + var(--aug-_TlX)) var(--aug-_W);
-  --aug-_TlInsetOffsetMore: calc(var(--aug-_TlY) + var(--aug-_WD));
-  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore),
-                 calc(var(--aug-_WD) / 2 + var(--aug-_TlX) - var(--aug-_TlNotch)) var(--aug-_TlInsetOffsetMore),
-                 calc(var(--aug-_WD) / 2 + var(--aug-_TlX)) var(--aug-_WD);
+  --aug-_TlHeight: var(--aug-tl-height, var(--aug-tl));
+  --aug-_TlNotch: var(--aug-_TlHeight); /* how much of width is the notch */
+  --aug-_TlWidth: var(--aug-tl-width, calc(var(--aug-tl) + var(--aug-_TlNotch)));
+  --aug-_TlJoinBX: 0px;
+  --aug-_TlJoinBY: var(--aug-_TlHeight);
+  --aug-_TlJoinRX: var(--aug-_TlWidth);
+  --aug-_TlJoinRY: 0px;
+  --aug-_TlPath: var(--aug-_TlJoinBX) var(--aug-_TlJoinBY),
+            calc(var(--aug-_TlWidth) - var(--aug-_TlNotch)) var(--aug-_TlHeight),
+            var(--aug-_TlJoinRX) var(--aug-_TlJoinRY);
+
+  --aug-_TlInset1JoinBX: var(--aug-_W);
+  --aug-_TlInset1JoinBY: calc(var(--aug-_TlHeight) + var(--aug-_W));
+  --aug-_TlInset1JoinRX: calc(var(--aug-_TlWidth) + var(--aug-_W) / 2);
+  --aug-_TlInset1JoinRY: var(--aug-_W);
+  --aug-_TlPathInset1: var(--aug-_TlInset1JoinBX) var(--aug-_TlInset1JoinBY),
+                 calc(var(--aug-_W) / 2 + var(--aug-_TlWidth) - var(--aug-_TlNotch)) calc(var(--aug-_TlHeight) + var(--aug-_W)),
+                 var(--aug-_TlInset1JoinRX) var(--aug-_TlInset1JoinRY);
+
+  --aug-_TlInset2JoinBX: var(--aug-_WD);
+  --aug-_TlInset2JoinBY: calc(var(--aug-_TlHeight) + var(--aug-_WD));
+  --aug-_TlInset2JoinRX: calc(var(--aug-_TlWidth) + var(--aug-_WD) / 2);
+  --aug-_TlInset2JoinRY: var(--aug-_WD);
+  --aug-_TlPathInset2: var(--aug-_TlInset2JoinBX) var(--aug-_TlInset2JoinBY),
+                 calc(var(--aug-_WD) / 2 + var(--aug-_TlWidth) - var(--aug-_TlNotch)) calc(var(--aug-_TlHeight) + var(--aug-_WD)),
+                 var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
-.aug-tr-notch-x {
+[augmented-ui~="tr-clip-x"],
+[data-augmented-ui~="tr-clip-x"],
+.aug-tr-clip-x {
   --aug-tr: 15px;
-  --aug-_TrY: var(--aug-tr-height, var(--aug-tr));
-  --aug-_TrNotch: var(--aug-_TrY); /* how much of width is the notch */
-  --aug-_TrX: var(--aug-tr-width, calc(var(--aug-tr) + var(--aug-_TrNotch)));
-  --aug-_TrPath: calc(100% - var(--aug-_TrX)) 0px,
-            calc(100% - var(--aug-_TrX) + var(--aug-_TrNotch)) var(--aug-_TrY),
-            100% var(--aug-_TrY);
-  --aug-_TrInsetOffset: calc(var(--aug-_TrY) + var(--aug-_W));
-  --aug-_TrPathInset: calc(100% - var(--aug-_W) / 2 - var(--aug-_TrX)) var(--aug-_W),
-                calc(100% - var(--aug-_W) / 2 - var(--aug-_TrX) + var(--aug-_TrNotch)) var(--aug-_TrInsetOffset),
-                calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
-  --aug-_TrInsetOffsetMore: calc(var(--aug-_TrY) + var(--aug-_WD));
-  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD) / 2 - var(--aug-_TrX)) var(--aug-_WD),
-                    calc(100% - var(--aug-_WD) / 2 - var(--aug-_TrX) + var(--aug-_TrNotch)) var(--aug-_TrInsetOffsetMore),
-                    calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+  --aug-_TrHeight: var(--aug-tr-height, var(--aug-tr));
+  --aug-_TrNotch: var(--aug-_TrHeight); /* how much of width is the notch */
+  --aug-_TrWidth: var(--aug-tr-width, calc(var(--aug-tr) + var(--aug-_TrNotch)));
+  --aug-_TrJoinLX: calc(100% - var(--aug-_TrWidth));
+  --aug-_TrJoinLY: 0px;
+  --aug-_TrJoinBX: 100%;
+  --aug-_TrJoinBY: var(--aug-_TrHeight);
+  --aug-_TrPath: var(--aug-_TrJoinLX) var(--aug-_TrJoinLY),
+            calc(100% - var(--aug-_TrWidth) + var(--aug-_TrNotch)) var(--aug-_TrHeight),
+            var(--aug-_TrJoinBX) var(--aug-_TrJoinBY);
+
+  --aug-_TrInset1JoinLX: calc(100% - (var(--aug-_TrWidth) + var(--aug-_W) / 2));
+  --aug-_TrInset1JoinLY: var(--aug-_W);
+  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinBY: calc(var(--aug-_TrHeight) + var(--aug-_W));
+  --aug-_TrPathInset1: var(--aug-_TrInset1JoinLX) var(--aug-_TrInset1JoinLY),
+                calc(100% - var(--aug-_W) / 2 - var(--aug-_TrWidth) + var(--aug-_TrNotch)) calc(var(--aug-_TrHeight) + var(--aug-_W)),
+                var(--aug-_TrInset1JoinBX) var(--aug-_TrInset1JoinBY);
+
+  --aug-_TrInset2JoinLX: calc(100% - (var(--aug-_TrWidth) + var(--aug-_WD) / 2));
+  --aug-_TrInset2JoinLY: var(--aug-_WD);
+  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinBY: calc(var(--aug-_TrHeight) + var(--aug-_WD));
+  --aug-_TrPathInset2: var(--aug-_TrInset2JoinLX) var(--aug-_TrInset2JoinLY),
+                    calc(100% - var(--aug-_WD) / 2 - var(--aug-_TrWidth) + var(--aug-_TrNotch)) calc(var(--aug-_TrHeight) + var(--aug-_WD)),
+                    var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
-.aug-br-notch-x {
+[augmented-ui~="br-clip-x"],
+[data-augmented-ui~="br-clip-x"],
+.aug-br-clip-x {
   --aug-br: 15px; /* size */
-  --aug-_BrY: var(--aug-br-height, var(--aug-br));
-  --aug-_BrNotch: var(--aug-_BrY); /* how much of width is the notch */
-  --aug-_BrX: var(--aug-br-width, calc(var(--aug-br) + var(--aug-_BrNotch)));
-  --aug-_BrPath: 100% calc(100% - var(--aug-_BrY)),
-            calc(100% - var(--aug-_BrX) + var(--aug-_BrNotch)) calc(100% - var(--aug-_BrY)),
-            calc(100% - var(--aug-_BrX)) 100%;
-  --aug-_BrInsetOffset: calc(var(--aug-_BrY) + var(--aug-_W));
-  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)),
-                 calc(100% - var(--aug-_W) / 2 - var(--aug-_BrX) + var(--aug-_BrNotch)) calc(100% - var(--aug-_BrInsetOffset)),
-                 calc(100% - var(--aug-_W) / 2 - var(--aug-_BrX)) calc(100% - var(--aug-_W));
-  --aug-_BrInsetOffsetMore: calc(var(--aug-_BrY) + var(--aug-_WD));
-  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)),
-                     calc(100% - var(--aug-_WD) / 2 - var(--aug-_BrX) + var(--aug-_BrNotch)) calc(100% - var(--aug-_BrInsetOffsetMore)),
-                     calc(100% - var(--aug-_WD) / 2 - var(--aug-_BrX)) calc(100% - var(--aug-_WD));
+  --aug-_BrHeight: var(--aug-br-height, var(--aug-br));
+  --aug-_BrNotch: var(--aug-_BrHeight); /* how much of width is the notch */
+  --aug-_BrWidth: var(--aug-br-width, calc(var(--aug-br) + var(--aug-_BrNotch)));
+  --aug-_BrJoinTX: 100%;
+  --aug-_BrJoinTY: calc(100% - var(--aug-_BrHeight));
+  --aug-_BrJoinLX: calc(100% - var(--aug-_BrWidth));
+  --aug-_BrJoinLY: 100%;
+  --aug-_BrPath: var(--aug-_BrJoinTX) var(--aug-_BrJoinTY),
+            calc(100% - var(--aug-_BrWidth) + var(--aug-_BrNotch)) calc(100% - var(--aug-_BrHeight)),
+            var(--aug-_BrJoinLX) var(--aug-_BrJoinLY);
+
+  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinTY: calc(100% - (var(--aug-_BrHeight) + var(--aug-_W)));
+  --aug-_BrInset1JoinLX: calc(100% - (var(--aug-_BrWidth) + var(--aug-_W) / 2));
+  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
+  --aug-_BrPathInset1: var(--aug-_BrInset1JoinTX) var(--aug-_BrInset1JoinTY),
+                 calc(100% - var(--aug-_W) / 2 - var(--aug-_BrWidth) + var(--aug-_BrNotch)) calc(100% - (var(--aug-_BrHeight) + var(--aug-_W))),
+                 var(--aug-_BrInset1JoinLX) var(--aug-_BrInset1JoinLY);
+
+  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinTY: calc(100% - (var(--aug-_BrHeight) + var(--aug-_WD)));
+  --aug-_BrInset2JoinLX: calc(100% - (var(--aug-_BrWidth) + var(--aug-_WD) / 2));
+  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
+  --aug-_BrPathInset2: var(--aug-_BrInset2JoinTX) var(--aug-_BrInset2JoinTY),
+                     calc(100% - var(--aug-_WD) / 2 - var(--aug-_BrWidth) + var(--aug-_BrNotch)) calc(100% - (var(--aug-_BrHeight) + var(--aug-_WD))),
+                     var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
-.aug-bl-notch-x {
+[augmented-ui~="bl-clip-x"],
+[data-augmented-ui~="bl-clip-x"],
+.aug-bl-clip-x {
   --aug-bl: 15px; /* size */
-  --aug-_BlY: var(--aug-bl-height, var(--aug-bl));
-  --aug-_BlNotch: var(--aug-_BlY); /* how much of width is the notch */
-  --aug-_BlX: var(--aug-bl-width, calc(var(--aug-bl) + var(--aug-_BlNotch)));
-  --aug-_BlPath: var(--aug-_BlX) 100%,
-            calc(var(--aug-_BlX) - var(--aug-_BlNotch)) calc(100% - var(--aug-_BlY)),
-            0px calc(100% - var(--aug-_BlY));
-  --aug-_BlInsetOffset: calc(var(--aug-_BlY) + var(--aug-_W));
-  --aug-_BlPathInset: calc(var(--aug-_BlX) + var(--aug-_W) / 2) calc(100% - var(--aug-_W)),
-                 calc(var(--aug-_BlX) + var(--aug-_W) / 2 - var(--aug-_BlNotch)) calc(100% - var(--aug-_BlInsetOffset)),
-                 var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
-  --aug-_BlInsetOffsetMore: calc(var(--aug-_BlY) + var(--aug-_WD));
-  --aug-_BlPathInsetMore: calc(var(--aug-_BlX) + var(--aug-_WD) / 2) calc(100% - var(--aug-_WD)),
-                     calc(var(--aug-_BlX) + var(--aug-_WD) / 2 - var(--aug-_BlNotch)) calc(100% - var(--aug-_BlInsetOffsetMore)),
-                     var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+  --aug-_BlHeight: var(--aug-bl-height, var(--aug-bl));
+  --aug-_BlNotch: var(--aug-_BlHeight); /* how much of width is the notch */
+  --aug-_BlWidth: var(--aug-bl-width, calc(var(--aug-bl) + var(--aug-_BlNotch)));
+  --aug-_BlJoinRX: var(--aug-_BlWidth);
+  --aug-_BlJoinRY: 100%;
+  --aug-_BlJoinTX: 0px;
+  --aug-_BlJoinTY: calc(100% - var(--aug-_BlHeight));
+  --aug-_BlPath: var(--aug-_BlJoinRX) var(--aug-_BlJoinRY),
+            calc(var(--aug-_BlWidth) - var(--aug-_BlNotch)) calc(100% - var(--aug-_BlHeight)),
+            var(--aug-_BlJoinTX) var(--aug-_BlJoinTY);
+
+  --aug-_BlInset1JoinRX: calc(var(--aug-_BlWidth) + var(--aug-_W) / 2);
+  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
+  --aug-_BlInset1JoinTX: var(--aug-_W);
+  --aug-_BlInset1JoinTY: calc(100% - (var(--aug-_BlHeight) + var(--aug-_W)));
+  --aug-_BlPathInset1: var(--aug-_BlInset1JoinRX) var(--aug-_BlInset1JoinRY),
+                 calc(var(--aug-_BlWidth) + var(--aug-_W) / 2 - var(--aug-_BlNotch)) calc(100% - (var(--aug-_BlHeight) + var(--aug-_W))),
+                 var(--aug-_BlInset1JoinTX) var(--aug-_BlInset1JoinTY);
+
+  --aug-_BlInset2JoinRX: calc(var(--aug-_BlWidth) + var(--aug-_WD) / 2);
+  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
+  --aug-_BlInset2JoinTX: var(--aug-_WD);
+  --aug-_BlInset2JoinTY: calc(100% - (var(--aug-_BlHeight) + var(--aug-_WD)));
+  --aug-_BlPathInset2: var(--aug-_BlInset2JoinRX) var(--aug-_BlInset2JoinRY),
+                     calc(var(--aug-_BlWidth) + var(--aug-_WD) / 2 - var(--aug-_BlNotch)) calc(100% - (var(--aug-_BlHeight) + var(--aug-_WD))),
+                     var(--aug-_BlInset2JoinTX) var(--aug-_BlInset2JoinTY);
+}
+[augmented-ui~="t-clip-x"],
+[data-augmented-ui~="t-clip-x"],
+.aug-t-clip-x {
+  --aug-t: 15px; /* size */
+  --aug-_THeight: var(--aug-t-height, var(--aug-t));
+  --aug-_TNotch: var(--aug-_THeight); /* how much of half the width is the notch */
+  --aug-_TWidth: var(--aug-t-width, calc(var(--aug-t) * 2 + var(--aug-_TNotch) * 2));
+  --aug-_TOriginX: calc(var(--aug-t-origin-x, calc(var(--aug-_TlJoinRX, 0px) / 2 + var(--aug-_TrJoinLX, 100%) / 2)) + var(--aug-t-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_TPath: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2) 0px,
+                  calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 + var(--aug-_TNotch)) var(--aug-_THeight),
+                  calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 - var(--aug-_TNotch)) var(--aug-_THeight),
+                  calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2) 0px;
+
+  --aug-_TPathInset1: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_W) / 2) var(--aug-_W),
+                        calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_W) / 2 + var(--aug-_TNotch)) calc(var(--aug-_THeight) + var(--aug-_W)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_W) / 2 - var(--aug-_TNotch)) calc(var(--aug-_THeight) + var(--aug-_W)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_W) / 2) var(--aug-_W);
+
+  --aug-_TPathInset2: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_WD) / 2) var(--aug-_WD),
+                        calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_WD) / 2 + var(--aug-_TNotch)) calc(var(--aug-_THeight) + var(--aug-_WD)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD) / 2 - var(--aug-_TNotch)) calc(var(--aug-_THeight) + var(--aug-_WD)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD) / 2) var(--aug-_WD);
+}
+[augmented-ui~="r-clip-x"],
+[data-augmented-ui~="r-clip-x"],
+.aug-r-clip-x {
+  --aug-r: 15px; /* size */
+  --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2));
+  --aug-_RNotch: calc(var(--aug-_RHeight) / 2); /* how much of width is the notch */
+  --aug-_RWidth: var(--aug-r-width, calc(var(--aug-r) + var(--aug-_RNotch)));
+  --aug-_ROriginY: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2 + var(--aug-_BrJoinTY, 100%) / 2)) + var(--aug-r-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_RPath: , 100% calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2),
+                  calc(100% - var(--aug-_RWidth) + var(--aug-_RNotch)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2),
+                  calc(100% - var(--aug-_RWidth)) var(--aug-_ROriginY),
+                  calc(100% - var(--aug-_RWidth) + var(--aug-_RNotch)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2),
+                  100% calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2);
+
+  --aug-_RPathInset1: , calc(100% - var(--aug-_W)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_W)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_W) / 2 - var(--aug-_RNotch))) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_W)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_W) * 1.5)) var(--aug-_ROriginY),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_W) / 2 - var(--aug-_RNotch))) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_W)),
+                        calc(100% - var(--aug-_W)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_W));
+
+  --aug-_RPathInset2: , calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_WD)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_WD) / 2 - var(--aug-_RNotch))) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_WD)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_WD) * 1.5)) var(--aug-_ROriginY),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_WD) / 2 - var(--aug-_RNotch))) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD)),
+                        calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD));
+}
+[augmented-ui~="b-clip-x"],
+[data-augmented-ui~="b-clip-x"],
+.aug-b-clip-x {
+  --aug-b: 15px; /* size */
+  --aug-_BHeight: var(--aug-b-height, var(--aug-b));
+  --aug-_BNotch: var(--aug-_BHeight); /* how much of half the width is the notch */
+  --aug-_BWidth: var(--aug-b-width, calc(var(--aug-b) * 2 + var(--aug-_BNotch) * 2));
+  --aug-_BOriginX: calc(var(--aug-b-origin-x, calc(var(--aug-_BlJoinRX, 0px) / 2 + var(--aug-_BrJoinLX, 100%) / 2)) + var(--aug-b-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_BPath: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2) 100%,
+                  calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 - var(--aug-_BNotch)) calc(100% - var(--aug-_BHeight)),
+                  calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 + var(--aug-_BNotch)) calc(100% - var(--aug-_BHeight)),
+                  calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2) 100%;
+
+  --aug-_BPathInset1: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_W) / 2) calc(100% - var(--aug-_W)),
+                        calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_W) / 2 - var(--aug-_BNotch)) calc(100% - var(--aug-_BHeight) - var(--aug-_W)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_W) / 2 + var(--aug-_BNotch)) calc(100% - var(--aug-_BHeight) - var(--aug-_W)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_W) / 2) calc(100% - var(--aug-_W));
+
+  --aug-_BPathInset2: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_WD) / 2) calc(100% - var(--aug-_WD)),
+                        calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_WD) / 2 - var(--aug-_BNotch)) calc(100% - var(--aug-_BHeight) - var(--aug-_WD)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD) / 2 + var(--aug-_BNotch)) calc(100% - var(--aug-_BHeight) - var(--aug-_WD)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD) / 2) calc(100% - var(--aug-_WD));
+}
+[augmented-ui~="l-clip-x"],
+[data-augmented-ui~="l-clip-x"],
+.aug-l-clip-x {
+  --aug-l: 15px; /* size */
+  --aug-_LHeight: var(--aug-l-height, calc(var(--aug-l) * 2));
+  --aug-_LNotch: calc(var(--aug-_LHeight) / 2); /* how much of width is the notch */
+  --aug-_LWidth: var(--aug-l-width, calc(var(--aug-l) + var(--aug-_LNotch)));
+  --aug-_LOriginY: calc(var(--aug-l-origin-y, calc(var(--aug-_TlJoinBY, 0px) / 2 + var(--aug-_BlJoinTY, 100%) / 2)) + var(--aug-l-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_LPath: , 0px calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2),
+                  calc(var(--aug-_LWidth) - var(--aug-_LNotch)) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2),
+                  calc(var(--aug-_LWidth)) var(--aug-_LOriginY),
+                  calc(var(--aug-_LWidth) - var(--aug-_LNotch)) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2),
+                  0px calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2);
+
+  --aug-_LPathInset1: , var(--aug-_W) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_W)),
+                        calc(var(--aug-_LWidth) + var(--aug-_W) / 2 - var(--aug-_LNotch)) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_W)),
+                        calc(var(--aug-_LWidth) + var(--aug-_W) * 1.5) var(--aug-_LOriginY),
+                        calc(var(--aug-_LWidth) + var(--aug-_W) / 2 - var(--aug-_LNotch)) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_W)),
+                        var(--aug-_W) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_W));
+
+  --aug-_LPathInset2: , var(--aug-_WD) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_WD)),
+                        calc(var(--aug-_LWidth) + var(--aug-_WD) / 2 - var(--aug-_LNotch)) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_WD)),
+                        calc(var(--aug-_LWidth) + var(--aug-_WD) * 1.5) var(--aug-_LOriginY),
+                        calc(var(--aug-_LWidth) + var(--aug-_WD) / 2 - var(--aug-_LNotch)) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_WD)),
+                        var(--aug-_WD) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_WD));
 }
 
-.aug-tl-notch-y {
+[augmented-ui~="tl-clip-y"],
+[data-augmented-ui~="tl-clip-y"],
+.aug-tl-clip-y {
   --aug-tl: 15px; /* size */
-  --aug-_TlX: var(--aug-tl-width, var(--aug-tl));
-  --aug-_TlNotch: var(--aug-_TlX); /* how much of height is the notch */
-  --aug-_TlY: var(--aug-tl-height, calc(var(--aug-tl) + var(--aug-_TlNotch)));
-  --aug-_TlPath: 0px var(--aug-_TlY),
-            var(--aug-_TlX) calc(var(--aug-_TlY) - var(--aug-_TlNotch)),
-            var(--aug-_TlX) 0px;
-  --aug-_TlInsetOffset: calc(var(--aug-_TlY) + var(--aug-_W) / 2);
-  --aug-_TlPathInset: var(--aug-_W) var(--aug-_TlInsetOffset),
-                 calc(var(--aug-_W) + var(--aug-_TlX)) calc(var(--aug-_TlInsetOffset) - var(--aug-_TlNotch)),
-                 calc(var(--aug-_W) + var(--aug-_TlX)) var(--aug-_W);
-  --aug-_TlInsetOffsetMore: calc(var(--aug-_TlY) + var(--aug-_WD) / 2);
-  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_TlInsetOffsetMore),
-                 calc(var(--aug-_WD) + var(--aug-_TlX)) calc(var(--aug-_TlInsetOffsetMore) - var(--aug-_TlNotch)),
-                 calc(var(--aug-_WD) + var(--aug-_TlX)) var(--aug-_WD);
+  --aug-_TlWidth: var(--aug-tl-width, var(--aug-tl));
+  --aug-_TlNotch: var(--aug-_TlWidth); /* how much of height is the notch */
+  --aug-_TlHeight: var(--aug-tl-height, calc(var(--aug-tl) + var(--aug-_TlNotch)));
+  --aug-_TlJoinBX: 0px;
+  --aug-_TlJoinBY: var(--aug-_TlHeight);
+  --aug-_TlJoinRX: var(--aug-_TlWidth);
+  --aug-_TlJoinRY: 0px;
+  --aug-_TlPath: var(--aug-_TlJoinBX) var(--aug-_TlJoinBY),
+            var(--aug-_TlWidth) calc(var(--aug-_TlHeight) - var(--aug-_TlNotch)),
+            var(--aug-_TlJoinRX) var(--aug-_TlJoinRY);
+
+  --aug-_TlInset1JoinBX: var(--aug-_W);
+  --aug-_TlInset1JoinBY: calc(var(--aug-_TlHeight) + var(--aug-_W) / 2);
+  --aug-_TlInset1JoinRX: calc(var(--aug-_TlWidth) + var(--aug-_W));
+  --aug-_TlInset1JoinRY: var(--aug-_W);
+  --aug-_TlPathInset1: var(--aug-_TlInset1JoinBX) var(--aug-_TlInset1JoinBY),
+                 calc(var(--aug-_W) + var(--aug-_TlWidth)) calc(var(--aug-_TlHeight) + var(--aug-_W) / 2 - var(--aug-_TlNotch)),
+                 var(--aug-_TlInset1JoinRX) var(--aug-_TlInset1JoinRY);
+
+  --aug-_TlInset2JoinBX: var(--aug-_WD);
+  --aug-_TlInset2JoinBY: calc(var(--aug-_TlHeight) + var(--aug-_WD) / 2);
+  --aug-_TlInset2JoinRX: calc(var(--aug-_TlWidth) + var(--aug-_WD));
+  --aug-_TlInset2JoinRY: var(--aug-_WD);
+  --aug-_TlPathInset2: var(--aug-_TlInset2JoinBX) var(--aug-_TlInset2JoinBY),
+                 calc(var(--aug-_WD) + var(--aug-_TlWidth)) calc(var(--aug-_TlHeight) + var(--aug-_WD) / 2 - var(--aug-_TlNotch)),
+                 var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
-.aug-tr-notch-y {
+[augmented-ui~="tr-clip-y"],
+[data-augmented-ui~="tr-clip-y"],
+.aug-tr-clip-y {
   --aug-tr: 15px; /* size */
-  --aug-_TrX: var(--aug-tr-width, var(--aug-tr));
-  --aug-_TrNotch: var(--aug-_TrX); /* how much of height is the notch */
-  --aug-_TrY: var(--aug-tr-height, calc(var(--aug-tr) + var(--aug-_TrNotch)));
-  --aug-_TrPath: calc(100% - var(--aug-_TrX)) 0px,
-            calc(100% - var(--aug-_TrX)) calc(var(--aug-_TrY) - var(--aug-_TrNotch)),
-            100% var(--aug-_TrY);
-  --aug-_TrInsetOffset: calc(var(--aug-_TrY) + var(--aug-_W) / 2);
-  --aug-_TrPathInset: calc(100% - var(--aug-_W) - var(--aug-_TrX)) var(--aug-_W),
-                calc(100% - var(--aug-_W) - var(--aug-_TrX)) calc(var(--aug-_TrInsetOffset) - var(--aug-_TrNotch)),
-                calc(100% - var(--aug-_W)) var(--aug-_TrInsetOffset);
-  --aug-_TrInsetOffsetMore: calc(var(--aug-_TrY) + var(--aug-_WD) / 2);
-  --aug-_TrPathInsetMore: calc(100% - var(--aug-_WD) - var(--aug-_TrX)) var(--aug-_WD),
-                    calc(100% - var(--aug-_WD) - var(--aug-_TrX)) calc(var(--aug-_TrInsetOffsetMore) - var(--aug-_TrNotch)),
-                    calc(100% - var(--aug-_WD)) var(--aug-_TrInsetOffsetMore);
+  --aug-_TrWidth: var(--aug-tr-width, var(--aug-tr));
+  --aug-_TrNotch: var(--aug-_TrWidth); /* how much of height is the notch */
+  --aug-_TrHeight: var(--aug-tr-height, calc(var(--aug-tr) + var(--aug-_TrNotch)));
+  --aug-_TrJoinLX: calc(100% - var(--aug-_TrWidth));
+  --aug-_TrJoinLY: 0px;
+  --aug-_TrJoinBX: 100%;
+  --aug-_TrJoinBY: var(--aug-_TrHeight);
+  --aug-_TrPath: var(--aug-_TrJoinLX) var(--aug-_TrJoinLY),
+            calc(100% - var(--aug-_TrWidth)) calc(var(--aug-_TrHeight) - var(--aug-_TrNotch)),
+            var(--aug-_TrJoinBX) var(--aug-_TrJoinBY);
+
+  --aug-_TrInset1JoinLX: calc(100% - (var(--aug-_TrWidth) + var(--aug-_W)));
+  --aug-_TrInset1JoinLY: var(--aug-_W);
+  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
+  --aug-_TrInset1JoinBY: calc(var(--aug-_TrHeight) + var(--aug-_W) / 2);
+  --aug-_TrPathInset1: var(--aug-_TrInset1JoinLX) var(--aug-_TrInset1JoinLY),
+                calc(100% - var(--aug-_W) - var(--aug-_TrWidth)) calc(var(--aug-_TrHeight) + var(--aug-_W) / 2 - var(--aug-_TrNotch)),
+                var(--aug-_TrInset1JoinBX) var(--aug-_TrInset1JoinBY);
+
+  --aug-_TrInset2JoinLX: calc(100% - (var(--aug-_TrWidth) + var(--aug-_WD)));
+  --aug-_TrInset2JoinLY: var(--aug-_WD);
+  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
+  --aug-_TrInset2JoinBY: calc(var(--aug-_TrHeight) + var(--aug-_WD) / 2);
+  --aug-_TrPathInset2: var(--aug-_TrInset2JoinLX) var(--aug-_TrInset2JoinLY),
+                    calc(100% - var(--aug-_WD) - var(--aug-_TrWidth)) calc(var(--aug-_TrHeight) + var(--aug-_WD) / 2 - var(--aug-_TrNotch)),
+                    var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
-.aug-br-notch-y {
+[augmented-ui~="br-clip-y"],
+[data-augmented-ui~="br-clip-y"],
+.aug-br-clip-y {
   --aug-br: 15px; /* size */
-  --aug-_BrX: var(--aug-br-width, var(--aug-br));
-  --aug-_BrNotch: var(--aug-_BrX); /* how much of height is the notch */
-  --aug-_BrY: var(--aug-br-height, calc(var(--aug-br) + var(--aug-_BrNotch)));
-  --aug-_BrPath: 100% calc(100% - var(--aug-_BrY)),
-            calc(100% - var(--aug-_BrX)) calc(100% - var(--aug-_BrY) + var(--aug-_BrNotch)),
-            calc(100% - var(--aug-_BrX)) 100%;
-  --aug-_BrInsetOffset: calc(var(--aug-_BrY) + var(--aug-_W) / 2);
-  --aug-_BrPathInset: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_BrInsetOffset)),
-                 calc(100% - var(--aug-_W) - var(--aug-_BrX)) calc(100% - var(--aug-_BrInsetOffset) + var(--aug-_BrNotch)),
-                 calc(100% - var(--aug-_W) - var(--aug-_BrX)) calc(100% - var(--aug-_W));
-  --aug-_BrInsetOffsetMore: calc(var(--aug-_BrY) + var(--aug-_WD) / 2);
-  --aug-_BrPathInsetMore: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_BrInsetOffsetMore)),
-                     calc(100% - var(--aug-_WD) - var(--aug-_BrX)) calc(100% - var(--aug-_BrInsetOffsetMore) + var(--aug-_BrNotch)),
-                     calc(100% - var(--aug-_WD) - var(--aug-_BrX)) calc(100% - var(--aug-_WD));
+  --aug-_BrWidth: var(--aug-br-width, var(--aug-br));
+  --aug-_BrNotch: var(--aug-_BrWidth); /* how much of height is the notch */
+  --aug-_BrHeight: var(--aug-br-height, calc(var(--aug-br) + var(--aug-_BrNotch)));
+  --aug-_BrJoinTX: 100%;
+  --aug-_BrJoinTY: calc(100% - var(--aug-_BrHeight));
+  --aug-_BrJoinLX: calc(100% - var(--aug-_BrWidth));
+  --aug-_BrJoinLY: 100%;
+  --aug-_BrPath: var(--aug-_BrJoinTX) var(--aug-_BrJoinTY),
+            calc(100% - var(--aug-_BrWidth)) calc(100% - var(--aug-_BrHeight) + var(--aug-_BrNotch)),
+            var(--aug-_BrJoinLX) var(--aug-_BrJoinLY);
+
+  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
+  --aug-_BrInset1JoinTY: calc(100% - (var(--aug-_BrHeight) + var(--aug-_W) / 2));
+  --aug-_BrInset1JoinLX: calc(100% - (var(--aug-_BrWidth) + var(--aug-_W)));
+  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
+  --aug-_BrPathInset1: var(--aug-_BrInset1JoinTX) var(--aug-_BrInset1JoinTY),
+                 calc(100% - var(--aug-_W) - var(--aug-_BrWidth)) calc(100% - (var(--aug-_BrHeight) + var(--aug-_W) / 2) + var(--aug-_BrNotch)),
+                 var(--aug-_BrInset1JoinLX) var(--aug-_BrInset1JoinLY);
+
+  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
+  --aug-_BrInset2JoinTY: calc(100% - (var(--aug-_BrHeight) + var(--aug-_WD) / 2));
+  --aug-_BrInset2JoinLX: calc(100% - (var(--aug-_BrWidth) + var(--aug-_WD)));
+  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
+  --aug-_BrPathInset2: var(--aug-_BrInset2JoinTX) var(--aug-_BrInset2JoinTY),
+                     calc(100% - var(--aug-_WD) - var(--aug-_BrWidth)) calc(100% - (var(--aug-_BrHeight) + var(--aug-_WD) / 2) + var(--aug-_BrNotch)),
+                     var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
-.aug-bl-notch-y {
+[augmented-ui~="bl-clip-y"],
+[data-augmented-ui~="bl-clip-y"],
+.aug-bl-clip-y {
   --aug-bl: 15px; /* size */
-  --aug-_BlX: var(--aug-bl-width, var(--aug-bl));
-  --aug-_BlNotch: var(--aug-_BlX); /* how much of height is the notch */
-  --aug-_BlY: var(--aug-bl-height, calc(var(--aug-bl) + var(--aug-_BlNotch)));
-  --aug-_BlPath: var(--aug-_BlX) 100%,
-            var(--aug-_BlX) calc(100% - var(--aug-_BlY) + var(--aug-_BlNotch)),
-            0px calc(100% - var(--aug-_BlY));
-  --aug-_BlInsetOffset: calc(var(--aug-_BlY) + var(--aug-_W) / 2);
-  --aug-_BlPathInset: calc(var(--aug-_BlX) + var(--aug-_W)) calc(100% - var(--aug-_W)),
-                 calc(var(--aug-_BlX) + var(--aug-_W)) calc(100% - var(--aug-_BlInsetOffset) + var(--aug-_BlNotch)),
-                 var(--aug-_W) calc(100% - var(--aug-_BlInsetOffset));
-  --aug-_BlInsetOffsetMore: calc(var(--aug-_BlY) + var(--aug-_WD) / 2);
-  --aug-_BlPathInsetMore: calc(var(--aug-_BlX) + var(--aug-_WD)) calc(100% - var(--aug-_WD)),
-                     calc(var(--aug-_BlX) + var(--aug-_WD)) calc(100% - var(--aug-_BlInsetOffsetMore) + var(--aug-_BlNotch)),
-                     var(--aug-_WD) calc(100% - var(--aug-_BlInsetOffsetMore));
+  --aug-_BlWidth: var(--aug-bl-width, var(--aug-bl));
+  --aug-_BlNotch: var(--aug-_BlWidth); /* how much of height is the notch */
+  --aug-_BlHeight: var(--aug-bl-height, calc(var(--aug-bl) + var(--aug-_BlNotch)));
+  --aug-_BlJoinRX: var(--aug-_BlWidth);
+  --aug-_BlJoinRY: 100%;
+  --aug-_BlJoinTX: 0px;
+  --aug-_BlJoinTY: calc(100% - var(--aug-_BlHeight));
+  --aug-_BlPath: var(--aug-_BlJoinRX) var(--aug-_BlJoinRY),
+            var(--aug-_BlWidth) calc(100% - var(--aug-_BlHeight) + var(--aug-_BlNotch)),
+            var(--aug-_BlJoinTX) var(--aug-_BlJoinTY);
+
+  --aug-_BlInset1JoinRX: calc(var(--aug-_BlWidth) + var(--aug-_W));
+  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
+  --aug-_BlInset1JoinTX: var(--aug-_W);
+  --aug-_BlInset1JoinTY: calc(100% - (var(--aug-_BlHeight) + var(--aug-_W) / 2));
+  --aug-_BlPathInset1: var(--aug-_BlInset1JoinRX) var(--aug-_BlInset1JoinRY),
+                 calc(var(--aug-_BlWidth) + var(--aug-_W)) calc(100% - (var(--aug-_BlHeight) + var(--aug-_W) / 2) + var(--aug-_BlNotch)),
+                 var(--aug-_BlInset1JoinTX) var(--aug-_BlInset1JoinTY);
+
+  --aug-_BlInset2JoinRX: calc(var(--aug-_BlWidth) + var(--aug-_WD));
+  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
+  --aug-_BlInset2JoinTX: var(--aug-_WD);
+  --aug-_BlInset2JoinTY: calc(100% - (var(--aug-_BlHeight) + var(--aug-_WD) / 2));
+  --aug-_BlPathInset2: var(--aug-_BlInset2JoinRX) var(--aug-_BlInset2JoinRY),
+                     calc(var(--aug-_BlWidth) + var(--aug-_WD)) calc(100% - (var(--aug-_BlHeight) + var(--aug-_WD) / 2) + var(--aug-_BlNotch)),
+                     var(--aug-_BlInset2JoinTX) var(--aug-_BlInset2JoinTY);
 }
 
+[augmented-ui~="t-clip-y"],
+[data-augmented-ui~="t-clip-y"],
+.aug-t-clip-y {
+  --aug-t: 15px; /* size */
+  --aug-_TWidth: var(--aug-t-width, var(--aug-t) * 2);
+  --aug-_TNotch: calc(var(--aug-_TWidth) / 2); /* how much of height is the notch */
+  --aug-_THeight: var(--aug-t-height, calc(var(--aug-t) + var(--aug-_TNotch)));
+  --aug-_TOriginX: calc(var(--aug-t-origin-x, calc(var(--aug-_TlJoinRX, 0px) / 2 + var(--aug-_TrJoinLX, 100%) / 2)) + var(--aug-t-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_TPath: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2) 0px,
+                  calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2) calc(var(--aug-_THeight) - var(--aug-_TNotch)),
+                  var(--aug-_TOriginX) var(--aug-_THeight),
+                  calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2) calc(var(--aug-_THeight) - var(--aug-_TNotch)),
+                  calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2) 0px;
+
+  --aug-_TPathInset1: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_W)) var(--aug-_W),
+                        calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_W)) calc(var(--aug-_THeight) + var(--aug-_W) / 2 - var(--aug-_TNotch)),
+                        var(--aug-_TOriginX) calc(var(--aug-_THeight) + var(--aug-_W) * 1.5),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_W)) calc(var(--aug-_THeight) + var(--aug-_W) / 2 - var(--aug-_TNotch)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_W)) var(--aug-_W);
+
+  --aug-_TPathInset2: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_WD)) var(--aug-_WD),
+                        calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2 - var(--aug-_WD)) calc(var(--aug-_THeight) + var(--aug-_WD) / 2 - var(--aug-_TNotch)),
+                        var(--aug-_TOriginX) calc(var(--aug-_THeight) + var(--aug-_WD) * 1.5),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD)) calc(var(--aug-_THeight) + var(--aug-_WD) / 2 - var(--aug-_TNotch)),
+                        calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD)) var(--aug-_WD);
+}
+[augmented-ui~="r-clip-y"],
+[data-augmented-ui~="r-clip-y"],
+.aug-r-clip-y {
+  --aug-r: 15px; /* size */
+  --aug-_RWidth: var(--aug-r-width, var(--aug-r));
+  --aug-_RNotch: var(--aug-_RWidth); /* how much of half the height is the notch */
+  --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2 + var(--aug-_RNotch) * 2));
+  --aug-_ROriginY: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2 + var(--aug-_BrJoinTY, 100%) / 2)) + var(--aug-r-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_RPath: , 100% calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2),
+                  calc(100% - var(--aug-_RWidth)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 + var(--aug-_RNotch)),
+                  calc(100% - var(--aug-_RWidth)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 - var(--aug-_RNotch)),
+                  100% calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2);
+
+  --aug-_RPathInset1: , calc(100% - var(--aug-_W)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_W) / 2),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_W))) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_W) / 2 + var(--aug-_RNotch)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_W))) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_W) / 2 - var(--aug-_RNotch)),
+                        calc(100% - var(--aug-_W)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_W) / 2);
+
+  --aug-_RPathInset2: , calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_WD) / 2),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_WD))) calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2 - var(--aug-_WD) / 2 + var(--aug-_RNotch)),
+                        calc(100% - (var(--aug-_RWidth) + var(--aug-_WD))) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD) / 2 - var(--aug-_RNotch)),
+                        calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD) / 2);
+}
+[augmented-ui~="b-clip-y"],
+[data-augmented-ui~="b-clip-y"],
+.aug-b-clip-y {
+  --aug-b: 15px; /* size */
+  --aug-_BWidth: var(--aug-b-width, var(--aug-b) * 2);
+  --aug-_BNotch: calc(var(--aug-_BWidth) / 2); /* how much of height is the notch */
+  --aug-_BHeight: var(--aug-b-height, calc(var(--aug-b) + var(--aug-_BNotch)));
+  --aug-_BOriginX: calc(var(--aug-b-origin-x, calc(var(--aug-_BlJoinRX, 0px) / 2 + var(--aug-_BrJoinLX, 100%) / 2)) + var(--aug-b-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_BPath: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2) 100%,
+                  calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2) calc(100% - var(--aug-_BHeight) + var(--aug-_BNotch)),
+                  var(--aug-_BOriginX) calc(100% - var(--aug-_BHeight)),
+                  calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2) calc(100% - var(--aug-_BHeight) + var(--aug-_BNotch)),
+                  calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2) 100%;
+
+  --aug-_BPathInset1: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_W)) calc(100% - var(--aug-_W)),
+                        calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_W)) calc(100% - (var(--aug-_BHeight) + var(--aug-_W) / 2 - var(--aug-_BNotch))),
+                        var(--aug-_BOriginX) calc(100% - (var(--aug-_BHeight) + var(--aug-_W) * 1.5)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_W)) calc(100% - (var(--aug-_BHeight) + var(--aug-_W) / 2 - var(--aug-_BNotch))),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_W)) calc(100% - var(--aug-_W));
+
+  --aug-_BPathInset2: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_WD)) calc(100% - var(--aug-_WD)),
+                        calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2 + var(--aug-_WD)) calc(100% - (var(--aug-_BHeight) + var(--aug-_WD) / 2 - var(--aug-_BNotch))),
+                        var(--aug-_BOriginX) calc(100% - (var(--aug-_BHeight) + var(--aug-_WD) * 1.5)),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD)) calc(100% - (var(--aug-_BHeight) + var(--aug-_WD) / 2 - var(--aug-_BNotch))),
+                        calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD)) calc(100% - var(--aug-_WD));
+}
+[augmented-ui~="l-clip-y"],
+[data-augmented-ui~="l-clip-y"],
+.aug-l-clip-y {
+  --aug-l: 15px; /* size */
+  --aug-_LWidth: var(--aug-l-width, var(--aug-l));
+  --aug-_LNotch: var(--aug-_LWidth); /* how much of half the height is the notch */
+  --aug-_LHeight: var(--aug-l-height, calc(var(--aug-l) * 2 + var(--aug-_LNotch) * 2));
+  --aug-_LOriginY: calc(var(--aug-l-origin-y, calc(var(--aug-_TlJoinBY, 0px) / 2 + var(--aug-_BlJoinTY, 100%) / 2)) + var(--aug-l-offset, 0px));
+  /* edge augs start with their comma path joiner - corners don't */
+  --aug-_LPath: , 0px calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2),
+                  var(--aug-_LWidth) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 - var(--aug-_LNotch)),
+                  var(--aug-_LWidth) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 + var(--aug-_LNotch)),
+                  0px calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2);
+
+  --aug-_LPathInset1: , var(--aug-_W) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_W) / 2),
+                        calc(var(--aug-_LWidth) + var(--aug-_W)) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_W) / 2 - var(--aug-_LNotch)),
+                        calc(var(--aug-_LWidth) + var(--aug-_W)) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_W) / 2 + var(--aug-_LNotch)),
+                        var(--aug-_W) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_W) / 2);
+
+  --aug-_LPathInset2: , var(--aug-_WD) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_WD) / 2),
+                        calc(var(--aug-_LWidth) + var(--aug-_WD)) calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2 + var(--aug-_WD) / 2 - var(--aug-_LNotch)),
+                        calc(var(--aug-_LWidth) + var(--aug-_WD)) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_WD) / 2 + var(--aug-_LNotch)),
+                        var(--aug-_WD) calc(var(--aug-_LOriginY) - var(--aug-_LHeight) / 2 - var(--aug-_WD) / 2);
+}
+
+[augmented-ui~="tl-border-el-clean"],
+[data-augmented-ui~="tl-border-el-clean"],
+[augmented-ui~="tl-border-clean"]::after,
+[data-augmented-ui~="tl-border-clean"]::after,
 .aug-tl-border-el-clean,
 .aug-tl-border-clean::after {
   /* if --aug-_W <= --aug-tl */
   /* if border width is less than top-left effect size, don't apply an effect on the inner part of the tl border effect */
-  --aug-_TlPathInset: var(--aug-_W) var(--aug-_W);
+  --aug-_TlPathInset1: var(--aug-_W) var(--aug-_W);
 }
+[augmented-ui~="tl-inset-el-clean"],
+[data-augmented-ui~="tl-inset-el-clean"],
+[augmented-ui~="tl-inset-clean"]::before,
+[data-augmented-ui~="tl-inset-clean"]::before,
+[augmented-ui~="tl-border-el-clean"],
+[data-augmented-ui~="tl-border-el-clean"],
+[augmented-ui~="tl-border-clean"]::after,
+[data-augmented-ui~="tl-border-clean"]::after,
 .aug-tl-inset-el-clean,
-.aug-tl-border-el-clean,
 .aug-tl-inset-clean::before,
-.aug-tl-border-clean::before {
+.aug-tl-border-el-clean,
+.aug-tl-border-clean::after {
   /* if --aug-_WD <= --aug-tl OR --aug-_W <= --aug-tl */
   /* if border width + inset distance is less than top-left effect size,
-     OR if border width alone is less than top-left effect size,
-     don't apply an effect on inset more tl either
+    OR if border width alone is less than top-left effect size,
+    don't apply an effect on inset more tl either
   */
-  --aug-_TlPathInsetMore: var(--aug-_WD) var(--aug-_WD);
+  --aug-_TlPathInset2: var(--aug-_WD) var(--aug-_WD);
 }
 
+[augmented-ui~="tr-border-el-clean"],
+[data-augmented-ui~="tr-border-el-clean"],
+[augmented-ui~="tr-border-clean"]::after,
+[data-augmented-ui~="tr-border-clean"]::after,
 .aug-tr-border-el-clean,
-.aug-tr-border-clean::after { --aug-_TrPathInset: var(--aug-_100W) var(--aug-_W); }
+.aug-tr-border-clean::after { --aug-_TrPathInset1: var(--aug-_100W) var(--aug-_W); }
+[augmented-ui~="tr-inset-el-clean"],
+[data-augmented-ui~="tr-inset-el-clean"],
+[augmented-ui~="tr-inset-clean"]::before,
+[data-augmented-ui~="tr-inset-clean"]::before,
+[augmented-ui~="tr-border-el-clean"],
+[data-augmented-ui~="tr-border-el-clean"],
+[augmented-ui~="tr-border-clean"]::after,
+[data-augmented-ui~="tr-border-clean"]::after,
 .aug-tr-inset-el-clean,
-.aug-tr-border-el-clean,
 .aug-tr-inset-clean::before,
-.aug-tr-border-clean::before { --aug-_TrPathInsetMore: var(--aug-_100WD) var(--aug-_WD); }
+.aug-tr-border-el-clean,
+.aug-tr-border-clean::after { --aug-_TrPathInset2: var(--aug-_100WD) var(--aug-_WD); }
 
+[augmented-ui~="br-border-el-clean"],
+[data-augmented-ui~="br-border-el-clean"],
+[augmented-ui~="br-border-clean"]::after,
+[data-augmented-ui~="br-border-clean"]::after,
 .aug-br-border-el-clean,
-.aug-br-border-clean::after { --aug-_BrPathInset: var(--aug-_100W) var(--aug-_100W); }
+.aug-br-border-clean::after { --aug-_BrPathInset1: var(--aug-_100W) var(--aug-_100W); }
+[augmented-ui~="br-inset-el-clean"],
+[data-augmented-ui~="br-inset-el-clean"],
+[augmented-ui~="br-inset-clean"]::before,
+[data-augmented-ui~="br-inset-clean"]::before,
+[augmented-ui~="br-border-el-clean"],
+[data-augmented-ui~="br-border-el-clean"],
+[augmented-ui~="br-border-clean"]::after,
+[data-augmented-ui~="br-border-clean"]::after,
 .aug-br-inset-el-clean,
 .aug-br-border-el-clean,
 .aug-br-inset-clean::before,
-.aug-br-border-clean::before { --aug-_BrPathInsetMore: var(--aug-_100WD) var(--aug-_100WD); }
+.aug-br-border-clean::after { --aug-_BrPathInset2: var(--aug-_100WD) var(--aug-_100WD); }
 
+[augmented-ui~="bl-border-el-clean"],
+[data-augmented-ui~="bl-border-el-clean"],
+[augmented-ui~="bl-border-clean"]::after,
+[data-augmented-ui~="bl-border-clean"]::after,
 .aug-bl-border-el-clean,
-.aug-bl-border-clean::after { --aug-_BlPathInset: var(--aug-_W) var(--aug-_100W); }
+.aug-bl-border-clean::after { --aug-_BlPathInset1: var(--aug-_W) var(--aug-_100W); }
+[augmented-ui~="bl-inset-el-clean"],
+[data-augmented-ui~="bl-inset-el-clean"],
+[augmented-ui~="bl-inset-clean"]::before,
+[data-augmented-ui~="bl-inset-clean"]::before,
+[augmented-ui~="bl-border-el-clean"],
+[data-augmented-ui~="bl-border-el-clean"],
+[augmented-ui~="bl-border-clean"]::after,
+[data-augmented-ui~="bl-border-clean"]::after,
 .aug-bl-inset-el-clean,
 .aug-bl-border-el-clean,
 .aug-bl-inset-clean::before,
-.aug-bl-border-clean::before { --aug-_BlPathInsetMore: var(--aug-_WD) var(--aug-_100WD); }
+.aug-bl-border-clean::after { --aug-_BlPathInset2: var(--aug-_WD) var(--aug-_100WD); }
 
-.augmented::after {
+[augmented-ui~="exe"]::after,
+[data-augmented-ui~="exe"]::after,
+.aug-exe::after {
   content: "";
-  display: var(--aug-_BorderBGExistance);
+  display: var(--aug-border-bg, none);
 }
+[augmented-ui~="border-el"],
+[data-augmented-ui~="border-el"],
+[augmented-ui~="exe"]::after,
+[data-augmented-ui~="exe"]::after,
 .aug-border-el,
-.augmented::after {
-  background: var(--aug-_BorderBGExistance);
+.aug-exe::after {
+  background: var(--aug-border-bg, none);
+  opacity: var(--aug-border-opacity, 1);
   position: absolute;
   left: 0px;
   top: 0px;
@@ -486,100 +1363,274 @@
   bottom: 0px;
   pointer-events: none;
   clip-path: polygon(
-    var(--aug-_TlPathInset, var(--aug-_W) var(--aug-_W)),
-    var(--aug-_TrPathInset, var(--aug-_100W) var(--aug-_W)),
-    var(--aug-_BrPathInset, var(--aug-_100W) var(--aug-_100W)),
-    var(--aug-_BlPathInset, var(--aug-_W) var(--aug-_100W)),
-    var(--aug-_W) var(--aug-_TlInsetOffset, var(--aug-_W)), 0px var(--aug-_TlInsetOffset, var(--aug-_W)), 0px 100%, 100% 100%, 100% 0px, 0px 0px, 0px var(--aug-_TlInsetOffset, var(--aug-_W))
+    var(--aug-_TlPathInset1, var(--aug-_W) var(--aug-_W))
+    var(--aug-_TPathInset1, ),
+    var(--aug-_TrPathInset1, var(--aug-_100W) var(--aug-_W))
+    var(--aug-_RPathInset1, ),
+    var(--aug-_BrPathInset1, var(--aug-_100W) var(--aug-_100W))
+    var(--aug-_BPathInset1, ),
+    var(--aug-_BlPathInset1, var(--aug-_W) var(--aug-_100W))
+    var(--aug-_LPathInset1, ),
+    var(--aug-_TlInset1JoinBX, var(--aug-_W)) var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+    0px var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+    0px 100%, 100% 100%, 100% 0px, 0px 0px,
+    0px var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+    var(--aug-_TlInset1JoinBX, var(--aug-_W)) var(--aug-_TlInset1JoinBY, var(--aug-_W))
   );
 }
-.augmented::before {
+[augmented-ui~="exe"]::before,
+[data-augmented-ui~="exe"]::before,
+.aug-exe::before {
   content: "";
-  display: var(--aug-_InsetBGExistance);
+  display: var(--aug-inset-bg, none);
 }
+[augmented-ui~="inset-el"],
+[data-augmented-ui~="inset-el"],
+[augmented-ui~="exe"]::before,
+[data-augmented-ui~="exe"]::before,
 .aug-inset-el,
-.augmented::before {
-  background: var(--aug-_InsetBGExistance);
+.aug-exe::before {
+  background: var(--aug-inset-bg, none);
+  opacity: var(--aug-inset-opacity, 1);
   position: absolute;
   left: 0px;
   top: 0px;
   right: 0px;
   bottom: 0px;
   clip-path: polygon(
-    var(--aug-_TlPathInsetMore, var(--aug-_WD) var(--aug-_WD)),
-    var(--aug-_TrPathInsetMore, var(--aug-_100WD) var(--aug-_WD)),
-    var(--aug-_BrPathInsetMore, var(--aug-_100WD) var(--aug-_100WD)),
-    var(--aug-_BlPathInsetMore, var(--aug-_WD) var(--aug-_100WD))
+    var(--aug-_TlPathInset2, var(--aug-_WD) var(--aug-_WD))
+    var(--aug-_TPathInset2, ),
+    var(--aug-_TrPathInset2, var(--aug-_100WD) var(--aug-_WD))
+    var(--aug-_RPathInset2, ),
+    var(--aug-_BrPathInset2, var(--aug-_100WD) var(--aug-_100WD))
+    var(--aug-_BPathInset2, ),
+    var(--aug-_BlPathInset2, var(--aug-_WD) var(--aug-_100WD))
+    var(--aug-_LPathInset2, )
   );
   z-index: -1;
 }
-@supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) and (not (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%))) {
-  .aug-border-el,
-  .augmented::after {
-    background: transparent;
-    border: var(--aug-_W, 0px) solid;
-    border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
-    border-radius: var(--aug-border-radius-fallback, 0px);
-    transform: translateZ(0px);
-  }
-  .aug-inset-el,
-  .augmented::before {
-    left: var(--aug-_WD, 0px);
-    top: var(--aug-_WD, 0px);
-    right: var(--aug-_WD, 0px);
-    bottom: var(--aug-_WD, 0px);
-    border-radius: var(--aug-border-radius-fallback-inset, var(--aug-border-radius-fallback, 0px));
-    transform: translateZ(0px);
-  }
-  .augmented,
-  .aug-before::before,
-  .aug-after::after {
-    border-radius: var(--aug-border-radius-fallback, 0px);
-    /* clip-path causes a new stacking context, this reproduces that */
-    transform: translateZ(0px);
-  }
-}
-@supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) and (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%)) {
-  .aug-border-el,
-  .augmented::after {
-    -webkit-clip-path: polygon(
-      var(--aug-_TlPathInset, var(--aug-_W) var(--aug-_W)),
-      var(--aug-_TrPathInset, var(--aug-_100W) var(--aug-_W)),
-      var(--aug-_BrPathInset, var(--aug-_100W) var(--aug-_100W)),
-      var(--aug-_BlPathInset, var(--aug-_W) var(--aug-_100W)),
-      var(--aug-_W) var(--aug-_TlInsetOffset, var(--aug-_W)), 0px var(--aug-_TlInsetOffset, var(--aug-_W)), 0px 100%, 100% 100%, 100% 0px, 0px 0px, 0px var(--aug-_TlInsetOffset, var(--aug-_W))
-    );
-  }
-  .aug-inset-el,
-  .augmented::before {
-    -webkit-clip-path: polygon(
-      var(--aug-_TlPathInsetMore, var(--aug-_WD) var(--aug-_WD)),
-      var(--aug-_TrPathInsetMore, var(--aug-_100WD) var(--aug-_WD)),
-      var(--aug-_BrPathInsetMore, var(--aug-_100WD) var(--aug-_100WD)),
-      var(--aug-_BlPathInsetMore, var(--aug-_WD) var(--aug-_100WD))
-    );
-  }
-  .augmented,
-  .aug-before::before,
-  .aug-after::after {
-    -webkit-clip-path: polygon(var(--aug-_TlPath, 0px 0px), var(--aug-_TrPath, 100% 0px), var(--aug-_BrPath, 100% 100%), var(--aug-_BlPath, 0px 100%));
-  }
-}
-.augmented,
+
+[augmented-ui~="exe"],
+[data-augmented-ui~="exe"],
+[augmented-ui~="before"]::before,
+[data-augmented-ui~="before"]::before,
+[augmented-ui~="after"]::after,
+[data-augmented-ui~="after"]::after,
+.aug-exe,
 .aug-before::before,
 .aug-after::after {
   position: relative;
+  --aug-border: initial;
+  --aug-border-bg: initial;
+  --aug-border-opacity: initial;
+  --aug-inset: initial;
+  --aug-inset-bg: initial;
+  --aug-inset-opacity: initial;
   --aug-_W: var(--aug-border, 0px);
   --aug-_D: var(--aug-inset, 0px);
   --aug-_WD: calc(var(--aug-_W) + var(--aug-_D));
   --aug-_100W: calc(100% - var(--aug-_W));
   --aug-_100WD: calc(100% - var(--aug-_WD));
-  --aug-_BorderBGExistance: var(--aug-border-bg, none);
-  --aug-_InsetBGExistance: var(--aug-inset-bg, none);
   clip-path: polygon(
-    var(--aug-_TlPath, 0px 0px),
-    var(--aug-_TrPath, 100% 0px),
-    var(--aug-_BrPath, 100% 100%),
+    var(--aug-_TlPath, 0px 0px)
+    var(--aug-_TPath, ),
+    var(--aug-_TrPath, 100% 0px)
+    var(--aug-_RPath, ),
+    var(--aug-_BrPath, 100% 100%)
+    var(--aug-_BPath, ),
     var(--aug-_BlPath, 0px 100%)
+    var(--aug-_LPath, )
   );
+}
+
+/* Safari */
+@supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) and (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%)) {
+  [augmented-ui~="border-el"],
+  [data-augmented-ui~="border-el"],
+  [augmented-ui~="exe"]::after,
+  [data-augmented-ui~="exe"]::after,
+  .aug-border-el,
+  .aug-exe::after {
+    -webkit-clip-path: polygon(
+      var(--aug-_TlPathInset1, var(--aug-_W) var(--aug-_W))
+      var(--aug-_TPathInset1, ),
+      var(--aug-_TrPathInset1, var(--aug-_100W) var(--aug-_W))
+      var(--aug-_RPathInset1, ),
+      var(--aug-_BrPathInset1, var(--aug-_100W) var(--aug-_100W))
+      var(--aug-_BPathInset1, ),
+      var(--aug-_BlPathInset1, var(--aug-_W) var(--aug-_100W))
+      var(--aug-_LPathInset1, ),
+      var(--aug-_TlInset1JoinBX, var(--aug-_W)) var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+      0px var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+      0px 100%, 100% 100%, 100% 0px, 0px 0px,
+      0px var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+      var(--aug-_TlInset1JoinBX, var(--aug-_W)) var(--aug-_TlInset1JoinBY, var(--aug-_W))
+    );
+  }
+  [augmented-ui~="inset-el"],
+  [data-augmented-ui~="inset-el"],
+  [augmented-ui~="exe"]::before,
+  [data-augmented-ui~="exe"]::before,
+  .aug-inset-el,
+  .aug-exe::before {
+    -webkit-clip-path: polygon(
+      var(--aug-_TlPathInset2, var(--aug-_WD) var(--aug-_WD))
+      var(--aug-_TPathInset2, ),
+      var(--aug-_TrPathInset2, var(--aug-_100WD) var(--aug-_WD))
+      var(--aug-_RPathInset2, ),
+      var(--aug-_BrPathInset2, var(--aug-_100WD) var(--aug-_100WD))
+      var(--aug-_BPathInset2, ),
+      var(--aug-_BlPathInset2, var(--aug-_WD) var(--aug-_100WD))
+      var(--aug-_LPathInset2, )
+    );
+  }
+  [augmented-ui~="exe"],
+  [data-augmented-ui~="exe"],
+  [augmented-ui~="before"]::before,
+  [data-augmented-ui~="before"]::before,
+  [augmented-ui~="after"]::after,
+  [data-augmented-ui~="after"]::after,
+  .aug-exe,
+  .aug-before::before,
+  .aug-after::after {
+    -webkit-clip-path: polygon(
+      var(--aug-_TlPath, 0px 0px)
+      var(--aug-_TPath, ),
+      var(--aug-_TrPath, 100% 0px)
+      var(--aug-_RPath, ),
+      var(--aug-_BrPath, 100% 100%)
+      var(--aug-_BPath, ),
+      var(--aug-_BlPath, 0px 100%)
+      var(--aug-_LPath, )
+    );
+  }
+}
+
+/* Edge, pre Chromium */
+@supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) and (not (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%))) {
+
+  /* vvv avoids this: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17410857/ for 5 layers of inheritance. vvv */
+    [augmented-ui~="exe"] [augmented-ui~="exe"],
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
+    .aug-exe .aug-exe {
+      --aug-_DONTSHAREVAR1-border-width: var(--aug-_W, 0px);
+      --aug-_DONTSHAREVAR1-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
+    .aug-exe .aug-exe::after {
+      border: var(--aug-_DONTSHAREVAR1-border-width) solid var(--aug-_DONTSHAREVAR1-border-color);
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"],
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
+    .aug-exe .aug-exe .aug-exe {
+      --aug-_DONTSHAREVAR2-border-width: var(--aug-_W, 0px);
+      --aug-_DONTSHAREVAR2-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
+    .aug-exe .aug-exe .aug-exe::after {
+      border: var(--aug-_DONTSHAREVAR2-border-width) solid var(--aug-_DONTSHAREVAR2-border-color);
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"],
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
+    .aug-exe .aug-exe .aug-exe .aug-exe {
+      --aug-_DONTSHAREVAR3-border-width: var(--aug-_W, 0px);
+      --aug-_DONTSHAREVAR3-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
+    .aug-exe .aug-exe .aug-exe .aug-exe::after {
+      border: var(--aug-_DONTSHAREVAR3-border-width) solid var(--aug-_DONTSHAREVAR3-border-color);
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"],
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
+    .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe {
+      --aug-_DONTSHAREVAR4-border-width: var(--aug-_W, 0px);
+      --aug-_DONTSHAREVAR4-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
+    .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe::after {
+      border: var(--aug-_DONTSHAREVAR4-border-width) solid var(--aug-_DONTSHAREVAR4-border-color);
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"],
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
+    .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe {
+      --aug-_DONTSHAREVAR5-border-width: var(--aug-_W, 0px);
+      --aug-_DONTSHAREVAR5-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
+    }
+    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
+    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
+    .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe::after {
+      border: var(--aug-_DONTSHAREVAR5-border-width) solid var(--aug-_DONTSHAREVAR5-border-color);
+    }
+  /* ^^^ avoids this: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17410857/ for 5 layers of inheritance. ^^^ */
+
+  [augmented-ui~="border-el"],
+  [data-augmented-ui~="border-el"],
+  [augmented-ui~="exe"]::after,
+  [data-augmented-ui~="exe"]::after,
+  .aug-border-el,
+  .aug-exe::after {
+    overflow: hidden;
+    transform: translateZ(0px);
+    background: transparent!important;
+    --aug-_AutoBorderRadiusFallback: var(--aug-_TlWidth, var(--aug-tl, 0px))
+                                     var(--aug-_TrWidth, var(--aug-tr, 0px))
+                                     var(--aug-_BrWidth, var(--aug-br, 0px))
+                                     var(--aug-_BlWidth, var(--aug-bl, 0px)) /
+                                     var(--aug-_TlHeight, var(--aug-tl, 0px))
+                                     var(--aug-_TrHeight, var(--aug-tr, 0px))
+                                     var(--aug-_BrHeight, var(--aug-br, 0px))
+                                     var(--aug-_BlHeight, var(--aug-bl, 0px));
+    border-radius: var(--aug-border-radius-fallback, var(--aug-_AutoBorderRadiusFallback));
+    border: var(--aug-_W, 0px) solid;
+    border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
+  }
+
+  [augmented-ui~="inset-el"],
+  [data-augmented-ui~="inset-el"],
+  [augmented-ui~="exe"]::before,
+  [data-augmented-ui~="exe"]::before,
+  .aug-inset-el,
+  .aug-exe::before {
+    left: var(--aug-_WD, 0px);
+    top: var(--aug-_WD, 0px);
+    right: var(--aug-_WD, 0px);
+    bottom: var(--aug-_WD, 0px);
+    --aug-_AutoBorderRadiusFallback: calc(var(--aug-_TlWidth, var(--aug-tl, 0px)) - var(--aug-_WD))
+                                     calc(var(--aug-_TrWidth, var(--aug-tr, 0px)) - var(--aug-_WD))
+                                     calc(var(--aug-_BrWidth, var(--aug-br, 0px)) - var(--aug-_WD))
+                                     calc(var(--aug-_BlWidth, var(--aug-bl, 0px)) - var(--aug-_WD)) /
+                                     calc(var(--aug-_TlHeight, var(--aug-tl, 0px)) - var(--aug-_WD))
+                                     calc(var(--aug-_TrHeight, var(--aug-tr, 0px)) - var(--aug-_WD))
+                                     calc(var(--aug-_BrHeight, var(--aug-br, 0px)) - var(--aug-_WD))
+                                     calc(var(--aug-_BlHeight, var(--aug-bl, 0px)) - var(--aug-_WD));
+    border-radius: var(--aug-border-radius-fallback-inset, var(--aug-border-radius-fallback, var(--aug-_AutoBorderRadiusFallback)));
+    transform: translateZ(0px);
+    overflow: hidden;
+  }
+  [augmented-ui~="exe"],
+  [data-augmented-ui~="exe"],
+  [augmented-ui~="before"]::before,
+  [data-augmented-ui~="before"]::before,
+  [augmented-ui~="after"]::after,
+  [data-augmented-ui~="after"]::after,
+  .aug-exe,
+  .aug-before::before,
+  .aug-after::after {
+    --aug-_AutoBorderRadiusFallback: var(--aug-_TlWidth, var(--aug-tl, 0px))
+                                     var(--aug-_TrWidth, var(--aug-tr, 0px))
+                                     var(--aug-_BrWidth, var(--aug-br, 0px))
+                                     var(--aug-_BlWidth, var(--aug-bl, 0px)) /
+                                     var(--aug-_TlHeight, var(--aug-tl, 0px))
+                                     var(--aug-_TrHeight, var(--aug-tr, 0px))
+                                     var(--aug-_BrHeight, var(--aug-br, 0px))
+                                     var(--aug-_BlHeight, var(--aug-bl, 0px));
+    border-radius: var(--aug-border-radius-fallback, var(--aug-_AutoBorderRadiusFallback));
+    /* clip-path causes a new stacking context and hides overflow, this reproduces that */
+    transform: translateZ(0px);
+    overflow: hidden;
+  }
 }

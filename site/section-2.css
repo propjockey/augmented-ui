@@ -1,0 +1,380 @@
+.section-2 {
+  background: linear-gradient(to bottom right, #13242c 40%, #0b1519 70%);
+  height: 600px;
+  position: relative;
+}
+
+.section-2 .left-side {
+ width: 30%;
+ position: relative;
+}
+
+.plugin-available-container {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  padding: 5px;
+  width: 70%;
+  min-width: 400px;
+  height: 80px;
+  font-weight: bold;
+  color: #fefcfe;
+  filter: drop-shadow(0px 0px 3px #fefcfe);
+  -webkit-mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
+  mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
+}
+
+.hex-indicator {
+  position: absolute;
+  left: 5px;
+  top: -10px;
+  width: 60px;
+  height: 90px;
+  transform: scaleY(0.75);
+  background: #5da1c6;
+  --aug-border: 5px;
+  --aug-border-bg: #fefcfe;
+  --aug-inset: 10px;
+  --aug-inset-bg: radial-gradient(#13242c, transparent 50%);
+  --aug-tl: 30px;
+  --aug-tr: 30px;
+  --aug-bl: 30px;
+  --aug-br: 30px;
+}
+.plugin-header {
+  position: absolute;
+  left: 70px;
+  width: 320px;
+  height: 60px;
+  padding: 15px;
+  font-size: 25px;
+  padding-left: 27px;
+  white-space: nowrap;
+  background: #13242c;
+  --aug-border: 3px;
+  --aug-border-bg: #5da1c6;
+  --aug-l: 10px;
+  --aug-l-height: 42px;
+  text-shadow: 0 0 20px #fefcfe;
+}
+
+.section-2 .left-side h2 {
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  font-size: 35px;
+  color: #fefcfe;
+  white-space: nowrap;
+}
+
+.section-2 .left-side h2 em {
+  font-size: 40px;
+  position: relative;
+}
+
+.section-2-text {
+  width: 400px;
+  position: absolute;
+  top: 235px;
+  left: 50px;
+  color: #5da1c6;
+  font-size: 20px;
+  line-height: 35px;
+}
+
+.section-2-text em {
+  font-style: normal;
+  font-size: inherit;
+  opacity: 0.75;
+}
+
+.section-2-text:first-line {
+  font-weight: bold;
+}
+
+.section-2-free {
+  width: 400px;
+  position: absolute;
+  top: 465px;
+  left: 50px;
+  color: #5da1c6;
+  font-size: 15px;
+  line-height: 30px;
+}
+.section-2-free a {
+  color: #5da1c6;
+  font-size: 15px;
+  line-height: 30px;
+  text-decoration: underline;
+}
+
+.custom-prop {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.section-2 .right-side {
+ width: calc(70% - 100px);
+ position: absolute;
+ right: calc((100% - 400px - (70% - 100px)) / 2);
+ top: 0px;
+ height: 100%;
+ padding: 50px;
+ perspective: 2077px;
+}
+
+.load-panel {
+  position: absolute;
+  left: 50px;
+  --aug-l: 10px;
+  --aug-l-height: 40%;
+  --aug-tr: 25px;
+  --aug-tr-width: 80px;
+  --aug-tl: 25px;
+  --aug-tl-width: 80px;
+  --aug-border: 5px;
+  --aug-border-bg: #5da1c6;
+  height: calc(100% - 100px);
+  width: calc(50% - 55px);
+  transform-origin: 100% 50%;
+  transform: rotateY(15deg);
+}
+.hover-panel {
+  position: absolute;
+  right: 50px;
+  --aug-r: 10px;
+  --aug-r-height: 40%;
+  --aug-tr: 25px;
+  --aug-tr-width: 80px;
+  --aug-tl: 25px;
+  --aug-tl-width: 80px;
+  --aug-border: 5px;
+  --aug-border-bg: #5da1c6;
+  height: calc(100% - 100px);
+  width: calc(50% - 55px);
+  transform-origin: 0px 50%;
+  transform: rotateY(-15deg);
+}
+
+.loading-bar {
+  position: absolute;
+  top: 4%;
+  height: 2.5%;
+  width: 20%;
+  left: 40%;
+  --aug-border: 2px;
+  --aug-border-bg: #fefcfe;
+  --aug-border-fallback-color: #fefcfe;
+  --aug-border-radius-fallback: 5px;
+  --aug-inset: 2px;
+  --aug-inset-bg: #fefcfe;
+  filter: drop-shadow(0 0 2px #fefcfe);
+}
+.loading-bar::before {
+  right: auto;
+  width: 50%;
+}
+
+.section-2 .step {
+  top: 10%;
+  height: 27%;
+  width: 80%;
+  position: relative;
+  left: 10%;
+  color: #13242c;
+  --aug-border: 2px;
+  --aug-border-bg: #5da1c6;
+  --aug-t: 10px;
+  --aug-bl: 10px;
+  --aug-br: 10px;
+  --aug-bl-width: 50%;
+  --aug-br-width: 50%;
+  --aug-border-opacity: 0.25;
+}
+
+.section-2 .step-css {
+  --aug-tl-height: 20px;
+  --aug-tl-width: 50px;
+  --aug-tr-height: 20px;
+  --aug-tr-width: 50px;
+}
+.section-2 .step-html {
+}
+.section-2 .step-result {
+  --aug-bl-height: 20px;
+  --aug-bl-width: 20px;
+  --aug-br-height: 20px;
+  --aug-br-width: 20px;
+}
+
+
+/* Glitch CSS (modified and masked), from css-tricks: https://css-tricks.com/glitch-effect-text-images-svg/ */
+.glitch {
+  display: inline-block;
+  color: #fefcfe;
+  font-style: normal;
+  position: relative;
+  margin: 0 auto;
+  -webkit-mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
+  mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
+}
+
+@keyframes noise-anim {
+  0% {
+    clip-path: inset(52% 0 49% 0);
+  }
+  5% {
+    clip-path: inset(98% 0 3% 0);
+  }
+  10% {
+    clip-path: inset(90% 0 10% 0);
+  }
+  15% {
+    clip-path: inset(75% 0 4% 0);
+  }
+  20% {
+    clip-path: inset(32% 0 34% 0);
+  }
+  25% {
+    clip-path: inset(41% 0 45% 0);
+  }
+  30% {
+    clip-path: inset(22% 0 54% 0);
+  }
+  35% {
+    clip-path: inset(11% 0 20% 0);
+  }
+  40% {
+    clip-path: inset(70% 0 5% 0);
+  }
+  45% {
+    clip-path: inset(80% 0 9% 0);
+  }
+  50% {
+    clip-path: inset(20% 0 29% 0);
+  }
+  55% {
+    clip-path: inset(33% 0 22% 0);
+  }
+  60% {
+    clip-path: inset(86% 0 13% 0);
+  }
+  65% {
+    clip-path: inset(42% 0 4% 0);
+  }
+  70% {
+    clip-path: inset(23% 0 4% 0);
+  }
+  75% {
+    clip-path: inset(50% 0 45% 0);
+  }
+  80% {
+    clip-path: inset(23% 0 58% 0);
+  }
+  85% {
+    clip-path: inset(53% 0 33% 0);
+  }
+  90% {
+    clip-path: inset(60% 0 8% 0);
+  }
+  95% {
+    clip-path: inset(45% 0 54% 0);
+  }
+  100% {
+    clip-path: inset(71% 0 5% 0);
+  }
+}
+.glitch::after {
+  content: attr(data-text);
+  display: inline-block;
+  position: absolute;
+  left: 2px;
+  text-shadow: -1px 0 #fbe806;
+  top: 0;
+  color: #fefcfe;
+  background: #13242c;
+  pointer-events: none;
+  overflow: hidden;
+  animation: noise-anim 5.25s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  0% {
+    clip-path: inset(22% 0 49% 0);
+  }
+  5% {
+    clip-path: inset(57% 0 2% 0);
+  }
+  10% {
+    clip-path: inset(21% 0 44% 0);
+  }
+  15% {
+    clip-path: inset(72% 0 14% 0);
+  }
+  20% {
+    clip-path: inset(67% 0 33% 0);
+  }
+  25% {
+    clip-path: inset(39% 0 30% 0);
+  }
+  30% {
+    clip-path: inset(68% 0 2% 0);
+  }
+  35% {
+    clip-path: inset(44% 0 54% 0);
+  }
+  40% {
+    clip-path: inset(48% 0 41% 0);
+  }
+  45% {
+    clip-path: inset(44% 0 21% 0);
+  }
+  50% {
+    clip-path: inset(33% 0 52% 0);
+  }
+  55% {
+    clip-path: inset(89% 0 11% 0);
+  }
+  60% {
+    clip-path: inset(90% 0 5% 0);
+  }
+  65% {
+    clip-path: inset(64% 0 36% 0);
+  }
+  70% {
+    clip-path: inset(29% 0 22% 0);
+  }
+  75% {
+    clip-path: inset(50% 0 45% 0);
+  }
+  80% {
+    clip-path: inset(67% 0 7% 0);
+  }
+  85% {
+    clip-path: inset(100% 0 1% 0);
+  }
+  90% {
+    clip-path: inset(96% 0 5% 0);
+  }
+  95% {
+    clip-path: inset(96% 0 3% 0);
+  }
+  100% {
+    clip-path: inset(76% 0 5% 0);
+  }
+}
+.glitch::before {
+  content: attr(data-text);
+  display: inline-block;
+  position: absolute;
+  left: -2px;
+  text-shadow: 1px 0 #5da1c6;
+  top: 0;
+  color: #fefcfe;
+  background: #13242c;
+  overflow: hidden;
+  pointer-events: none;
+  animation: noise-anim-2 2s infinite linear alternate-reverse;
+}
+/* end glitch css from css-tricks.com */
