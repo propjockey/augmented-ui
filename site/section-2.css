@@ -23,6 +23,13 @@
   -webkit-mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
   mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
 }
+.beta-label {
+  position: absolute;
+  top: 10px;
+  left: 90px;
+  font-size: 12px;
+  line-height: 12px;
+}
 
 .hex-indicator {
   position: absolute;
@@ -140,6 +147,10 @@
   transform-origin: 100% 50%;
   transform: rotateY(15deg);
 }
+.load-panel > * {
+  opacity: var(--load-panel-opacity, 1);
+  transition: opacity 0.25s ease;
+}
 .hover-panel {
   position: absolute;
   right: 50px;
@@ -155,6 +166,13 @@
   width: calc(50% - 55px);
   transform-origin: 0px 50%;
   transform: rotateY(-15deg);
+}
+.hover-panel > * {
+  opacity: 0.25;
+  transition: opacity 0.25s ease;
+}
+.hover-panel:hover > * {
+  opacity: 1;
 }
 
 .loading-bar {
@@ -173,7 +191,8 @@
 }
 .loading-bar::before {
   right: auto;
-  width: 50%;
+  width: var(--load-bar-width, 50%);
+  transition: width 0.25s ease;
 }
 
 .section-2 .step {
@@ -194,19 +213,176 @@
 }
 
 .section-2 .step-css {
+  height: 21%;
   --aug-tl-height: 20px;
   --aug-tl-width: 50px;
   --aug-tr-height: 20px;
   --aug-tr-width: 50px;
+  color: #5da1c6;
+  font-size: 0.65vw;
+  padding-top: 20px;
+  padding-left: 5vw;
+  font-family: monospace;
 }
 .section-2 .step-html {
+  height: 33%;
+  padding-top: 20px;
+  padding-left: 5vw;
+  color: #5da1c6;
+  font-size: 0.65vw;
+  font-family: monospace;
+}
+.section-2 .step-html .glitch,
+.section-2 .step-html .glitch::before,
+.section-2 .step-html .glitch::after {
+  color: #fefcfe;
+  font-size: 0.65vw;
+  font-family: monospace;
+  white-space: pre;
+}
+.section-2 .step-html .glitch::before {
+  animation: noise-anim-2 2s infinite linear alternate-reverse;
+}
+.section-2 .step-html .glitch::after {
+  animation: noise-anim 4s infinite linear alternate-reverse;
+}
+.load-panel .step-html .glitch {
+  -webkit-mask-image: none;
+  mask-image: none;
+  overflow: hidden;
+  width: var(--load-spliced-width, 0px);
 }
 .section-2 .step-result {
   --aug-bl-height: 20px;
   --aug-bl-width: 20px;
   --aug-br-height: 20px;
   --aug-br-width: 20px;
+  padding-top: 20px;
+  padding-left: 6vw;
 }
+
+.my-spliced-augs {
+  --aug-br: var(--load-br, 25px);
+  width: 30%;
+  height: 40px;
+  margin: 5px;
+  margin-top: 20px;
+  color: #13242c;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 1.25vw;
+  font-weight: bold;
+  padding: 5px;
+  padding-top: 8px;
+}
+span.my-spliced-augs {
+  background: #ff5857;
+  opacity: var(--load-span-display, 1)
+}
+input.my-spliced-augs {
+  background: #fefcfe;
+  opacity: var(--load-input-display, 1)
+}
+
+.result-detail {
+  font-size: 0.75vw;
+  color: #5da1c6;
+  position: absolute;
+  width: 100%;
+  bottom: 25px;
+  left: 0px;
+  text-align: center;
+}
+
+@keyframes load-animation {
+  0% {
+    --load-bar-width: 1%;
+    --load-spliced-width: 0%;
+    --load-span-display: 0;
+    --load-input-display: 0;
+    --load-br: 0px;
+  }
+  5% {
+    --load-bar-width: 10%;
+    --load-spliced-width: 0%;
+    --load-span-display: 0;
+    --load-input-display: 0;
+    --load-br: 0px;
+  }
+  10% {
+    --load-bar-width: 40%;
+    --load-spliced-width: 0%;
+    --load-span-display: 1;
+    --load-input-display: 0;
+    --load-br: 0px;
+  }
+  20% {
+    --load-bar-width: 70%;
+    --load-spliced-width: 0%;
+    --load-span-display: 1;
+    --load-input-display: 1;
+    --load-br: 0px;
+  }
+  25% {
+    --load-bar-width: 95%;
+    --load-spliced-width: 0%;
+    --load-span-display: 1;
+    --load-input-display: 1;
+    --load-br: 0px;
+  }
+  26% {
+    --load-bar-width: 100%;
+    --load-spliced-width: 100%;
+    --load-span-display: 1;
+    --load-input-display: 1;
+    --load-br: 25px;
+  }
+  100% {
+    --load-bar-width: 100%;
+    --load-spliced-width: 100%;
+    --load-span-display: 1;
+    --load-input-display: 1;
+    --load-br: 25px;
+  }
+}
+
+.section-2 {
+  animation: load-animation 25s infinite linear;
+}
+
+
+
+.hover-panel .my-spliced-augs {
+  --aug-br: 25px;
+  --aug-l: 10px;
+  --aug-r: 10px;
+  opacity: 1!important;
+}
+
+.hover-panel .step-css,
+.hover-panel .step-html {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.hide-on-input-hover {
+  display: inline-block;
+  font-size: inherit;
+}
+.input-hover .hide-on-input-hover {
+  display: none;
+}
+.show-on-input-hover {
+  display: none;
+}
+.input-hover .show-on-input-hover {
+  display: inline-block;
+  font-size: inherit;
+  color: #fefcfe;
+  -webkit-mask-image: repeating-linear-gradient(black, black 2px, rgba(0, 0, 0, 0.5) 3px);
+  mask-image: repeating-linear-gradient(black, black 2px, rgba(0, 0, 0, 0.5) 3px);
+}
+
 
 
 /* Glitch CSS (modified and masked), from css-tricks: https://css-tricks.com/glitch-effect-text-images-svg/ */

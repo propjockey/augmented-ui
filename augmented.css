@@ -3,251 +3,127 @@
   BSD 2-Clause License
   Copyright (c) James0x57, PropJockey, 2019
 */
-[augmented-ui~="tl-none"],
-[data-augmented-ui~="tl-none"],
-.aug-tl-none {
-  --aug-tl: 0px; /* no size */
-  --aug-_TlWidth: 0px;
-  --aug-_TlHeight: 0px;
-  --aug-_TlJoinBX: 0px;
-  --aug-_TlJoinBY: 0px;
-  --aug-_TlJoinRX: 0px;
-  --aug-_TlJoinRY: 0px;
-  --aug-_TlPath: 0px 0px;
-  --aug-_TlInset1JoinBX: var(--aug-_W);
-  --aug-_TlInset1JoinBY: var(--aug-_W);
-  --aug-_TlInset1JoinRX: var(--aug-_W);
-  --aug-_TlInset1JoinRY: var(--aug-_W);
-  --aug-_TlPathInset1: var(--aug-_W) var(--aug-_W);
-  --aug-_TlInset2JoinBX: var(--aug-_WD);
-  --aug-_TlInset2JoinBY: var(--aug-_WD);
-  --aug-_TlInset2JoinRX: var(--aug-_WD);
-  --aug-_TlInset2JoinRY: var(--aug-_WD);
-  --aug-_TlPathInset2: var(--aug-_WD) var(--aug-_WD);
-}
-[augmented-ui~="tr-none"],
-[data-augmented-ui~="tr-none"],
-.aug-tr-none {
-  --aug-tr: 0px; /* no size */
-  --aug-_TrWidth: 0px;
-  --aug-_TrHeight: 0px;
-  --aug-_TrJoinLX: 100%;
-  --aug-_TrJoinLY: 0px;
-  --aug-_TrJoinBX: 100%;
-  --aug-_TrJoinBY: 0px;
-  --aug-_TrPath: 100% 0px;
-  --aug-_TrInset1JoinLX: calc(100% - var(--aug-_W));
-  --aug-_TrInset1JoinLY: var(--aug-_W);
-  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
-  --aug-_TrInset1JoinBY: var(--aug-_W);
-  --aug-_TrPathInset1: calc(100% - var(--aug-_W)) var(--aug-_W);
-  --aug-_TrInset2JoinLX: calc(100% - var(--aug-_WD));
-  --aug-_TrInset2JoinLY: var(--aug-_WD);
-  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
-  --aug-_TrInset2JoinBY: var(--aug-_WD);
-  --aug-_TrPathInset2: calc(100% - var(--aug-_WD)) var(--aug-_WD);
-}
-[augmented-ui~="br-none"],
-[data-augmented-ui~="br-none"],
-.aug-br-none {
-  --aug-br: 0px; /* no size */
-  --aug-_BrWidth: 0px;
-  --aug-_BrHeight: 0px;
-  --aug-_BrJoinTX: 100%;
-  --aug-_BrJoinTY: 100%;
-  --aug-_BrJoinLX: 100%;
-  --aug-_BrJoinLY: 100%;
-  --aug-_BrPath: 100% 100%;
-  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
-  --aug-_BrInset1JoinTY: calc(100% - var(--aug-_W));
-  --aug-_BrInset1JoinLX: calc(100% - var(--aug-_W));
-  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
-  --aug-_BrPathInset1: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_W));
-  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
-  --aug-_BrInset2JoinTY: calc(100% - var(--aug-_WD));
-  --aug-_BrInset2JoinLX: calc(100% - var(--aug-_WD));
-  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
-  --aug-_BrPathInset2: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_WD));
-}
-[augmented-ui~="bl-none"],
-[data-augmented-ui~="bl-none"],
-.aug-bl-none {
-  --aug-bl: 0px; /* no size */
-  --aug-_BlWidth: 0px;
-  --aug-_BlHeight: 0px;
-  --aug-_BlJoinRX: 0px;
-  --aug-_BlJoinRY: 100%;
-  --aug-_BlJoinTX: 0px;
-  --aug-_BlJoinTY: 100%;
-  --aug-_BlPath: 0px 100%;
-  --aug-_BlInset1JoinRX: var(--aug-_W);
-  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
-  --aug-_BlInset1JoinTX: var(--aug-_W);
-  --aug-_BlInset1JoinTY: calc(100% - var(--aug-_W));
-  --aug-_BlPathInset1: var(--aug-_W) calc(100% - var(--aug-_W));
-  --aug-_BlInset2JoinRX: var(--aug-_WD);
-  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
-  --aug-_BlInset2JoinTX: var(--aug-_WD);
-  --aug-_BlInset2JoinTY: calc(100% - var(--aug-_WD));
-  --aug-_BlPathInset2: var(--aug-_WD) calc(100% - var(--aug-_WD));
-}
-
-[augmented-ui~="all-none"],
-[data-augmented-ui~="all-none"],
-[augmented-ui~="corners-none"],
-[data-augmented-ui~="corners-none"],
-.aug-all-none,
-.aug-corners-none {
-  --aug-tl: 0px; /* no size */
-  --aug-_TlWidth: 0px;
-  --aug-_TlHeight: 0px;
-  --aug-_TlJoinBX: 0px;
-  --aug-_TlJoinBY: 0px;
-  --aug-_TlJoinRX: 0px;
-  --aug-_TlJoinRY: 0px;
-  --aug-_TlPath: 0px 0px;
-  --aug-_TlInset1JoinBX: var(--aug-_W);
-  --aug-_TlInset1JoinBY: var(--aug-_W);
-  --aug-_TlInset1JoinRX: var(--aug-_W);
-  --aug-_TlInset1JoinRY: var(--aug-_W);
-  --aug-_TlPathInset1: var(--aug-_W) var(--aug-_W);
-  --aug-_TlInset2JoinBX: var(--aug-_WD);
-  --aug-_TlInset2JoinBY: var(--aug-_WD);
-  --aug-_TlInset2JoinRX: var(--aug-_WD);
-  --aug-_TlInset2JoinRY: var(--aug-_WD);
-  --aug-_TlPathInset2: var(--aug-_WD) var(--aug-_WD);
-  --aug-tr: 0px; /* no size */
-  --aug-_TrWidth: 0px;
-  --aug-_TrHeight: 0px;
-  --aug-_TrJoinLX: 100%;
-  --aug-_TrJoinLY: 0px;
-  --aug-_TrJoinBX: 100%;
-  --aug-_TrJoinBY: 0px;
-  --aug-_TrPath: 100% 0px;
-  --aug-_TrInset1JoinLX: calc(100% - var(--aug-_W));
-  --aug-_TrInset1JoinLY: var(--aug-_W);
-  --aug-_TrInset1JoinBX: calc(100% - var(--aug-_W));
-  --aug-_TrInset1JoinBY: var(--aug-_W);
-  --aug-_TrPathInset1: calc(100% - var(--aug-_W)) var(--aug-_W);
-  --aug-_TrInset2JoinLX: calc(100% - var(--aug-_WD));
-  --aug-_TrInset2JoinLY: var(--aug-_WD);
-  --aug-_TrInset2JoinBX: calc(100% - var(--aug-_WD));
-  --aug-_TrInset2JoinBY: var(--aug-_WD);
-  --aug-_TrPathInset2: calc(100% - var(--aug-_WD)) var(--aug-_WD);
-  --aug-br: 0px; /* no size */
-  --aug-_BrWidth: 0px;
-  --aug-_BrHeight: 0px;
-  --aug-_BrJoinTX: 100%;
-  --aug-_BrJoinTY: 100%;
-  --aug-_BrJoinLX: 100%;
-  --aug-_BrJoinLY: 100%;
-  --aug-_BrPath: 100% 100%;
-  --aug-_BrInset1JoinTX: calc(100% - var(--aug-_W));
-  --aug-_BrInset1JoinTY: calc(100% - var(--aug-_W));
-  --aug-_BrInset1JoinLX: calc(100% - var(--aug-_W));
-  --aug-_BrInset1JoinLY: calc(100% - var(--aug-_W));
-  --aug-_BrPathInset1: calc(100% - var(--aug-_W)) calc(100% - var(--aug-_W));
-  --aug-_BrInset2JoinTX: calc(100% - var(--aug-_WD));
-  --aug-_BrInset2JoinTY: calc(100% - var(--aug-_WD));
-  --aug-_BrInset2JoinLX: calc(100% - var(--aug-_WD));
-  --aug-_BrInset2JoinLY: calc(100% - var(--aug-_WD));
-  --aug-_BrPathInset2: calc(100% - var(--aug-_WD)) calc(100% - var(--aug-_WD));
-  --aug-bl: 0px; /* no size */
-  --aug-_BlWidth: 0px;
-  --aug-_BlHeight: 0px;
-  --aug-_BlJoinRX: 0px;
-  --aug-_BlJoinRY: 100%;
-  --aug-_BlJoinTX: 0px;
-  --aug-_BlJoinTY: 100%;
-  --aug-_BlPath: 0px 100%;
-  --aug-_BlInset1JoinRX: var(--aug-_W);
-  --aug-_BlInset1JoinRY: calc(100% - var(--aug-_W));
-  --aug-_BlInset1JoinTX: var(--aug-_W);
-  --aug-_BlInset1JoinTY: calc(100% - var(--aug-_W));
-  --aug-_BlPathInset1: var(--aug-_W) calc(100% - var(--aug-_W));
-  --aug-_BlInset2JoinRX: var(--aug-_WD);
-  --aug-_BlInset2JoinRY: calc(100% - var(--aug-_WD));
-  --aug-_BlInset2JoinTX: var(--aug-_WD);
-  --aug-_BlInset2JoinTY: calc(100% - var(--aug-_WD));
-  --aug-_BlPathInset2: var(--aug-_WD) calc(100% - var(--aug-_WD));
-}
-
-[augmented-ui~="t-none"],
-[data-augmented-ui~="t-none"],
-.aug-t-none {
-  --aug-t: 0px; /* no size */
-  --aug-_TWidth: 0px;
-  --aug-_THeight: 0px;
-  --aug-_TPath: ;
-  --aug-_TPathInset1: ;
-  --aug-_TPathInset2: ;
-}
-[augmented-ui~="r-none"],
-[data-augmented-ui~="r-none"],
-.aug-r-none {
-  --aug-r: 0px; /* no size */
-  --aug-_RWidth: 0px;
-  --aug-_RHeight: 0px;
-  --aug-_RPath: ;
-  --aug-_RPathInset1: ;
-  --aug-_RPathInset2: ;
-}
-[augmented-ui~="b-none"],
-[data-augmented-ui~="b-none"],
-.aug-b-none {
-  --aug-b: 0px; /* no size */
-  --aug-_BWidth: 0px;
-  --aug-_BHeight: 0px;
-  --aug-_BPath: ;
-  --aug-_BPathInset1: ;
-  --aug-_BPathInset2: ;
-}
-[augmented-ui~="l-none"],
-[data-augmented-ui~="l-none"],
-.aug-l-none {
-  --aug-l: 0px; /* no size */
-  --aug-_LWidth: 0px;
-  --aug-_LHeight: 0px;
-  --aug-_LPath: ;
-  --aug-_LPathInset1: ;
-  --aug-_LPathInset2: ;
-}
-
-[augmented-ui~="all-none"],
-[data-augmented-ui~="all-none"],
-[augmented-ui~="edges-none"],
-[data-augmented-ui~="edges-none"],
-.aug-all-none,
-.aug-edges-none {
-  --aug-t: 0px; /* no size */
-  --aug-_TWidth: 0px;
-  --aug-_THeight: 0px;
-  --aug-_TPath: ;
-  --aug-_TPathInset1: ;
-  --aug-_TPathInset2: ;
-  --aug-r: 0px; /* no size */
-  --aug-_RWidth: 0px;
-  --aug-_RHeight: 0px;
-  --aug-_RPath: ;
-  --aug-_RPathInset1: ;
-  --aug-_RPathInset2: ;
-  --aug-b: 0px; /* no size */
-  --aug-_BWidth: 0px;
-  --aug-_BHeight: 0px;
-  --aug-_BPath: ;
-  --aug-_BPathInset1: ;
-  --aug-_BPathInset2: ;
-  --aug-l: 0px; /* no size */
-  --aug-_LWidth: 0px;
-  --aug-_LHeight: 0px;
-  --aug-_LPath: ;
-  --aug-_LPathInset1: ;
-  --aug-_LPathInset2: ;
+[augmented-ui~="exe-init"],
+[augmented-ui~="exe"],
+[augmented-ui~="exe-lite"],
+[augmented-ui~="before"],
+[augmented-ui~="after"] {
+  --aug-tl: 0px;
+  --aug-tl-width: initial;
+  --aug-tl-height: initial;
+  --aug-_TlWidth: initial;
+  --aug-_TlHeight: initial;
+  --aug-_TlJoinBX: initial;
+  --aug-_TlJoinBY: initial;
+  --aug-_TlJoinRX: initial;
+  --aug-_TlJoinRY: initial;
+  --aug-_TlPath: initial;
+  --aug-_TlInset1JoinBX: initial;
+  --aug-_TlInset1JoinBY: initial;
+  --aug-_TlInset1JoinRX: initial;
+  --aug-_TlInset1JoinRY: initial;
+  --aug-_TlPathInset1: initial;
+  --aug-_TlInset2JoinBX: initial;
+  --aug-_TlInset2JoinBY: initial;
+  --aug-_TlInset2JoinRX: initial;
+  --aug-_TlInset2JoinRY: initial;
+  --aug-_TlPathInset2: initial;
+  --aug-tr: 0px;
+  --aug-tr-width: initial;
+  --aug-tr-height: initial;
+  --aug-_TrWidth: initial;
+  --aug-_TrHeight: initial;
+  --aug-_TrJoinLX: initial;
+  --aug-_TrJoinLY: initial;
+  --aug-_TrJoinBX: initial;
+  --aug-_TrJoinBY: initial;
+  --aug-_TrPath: initial;
+  --aug-_TrInset1JoinLX: initial;
+  --aug-_TrInset1JoinLY: initial;
+  --aug-_TrInset1JoinBX: initial;
+  --aug-_TrInset1JoinBY: initial;
+  --aug-_TrPathInset1: initial;
+  --aug-_TrInset2JoinLX: initial;
+  --aug-_TrInset2JoinLY: initial;
+  --aug-_TrInset2JoinBX: initial;
+  --aug-_TrInset2JoinBY: initial;
+  --aug-_TrPathInset2: initial;
+  --aug-br: 0px;
+  --aug-br-width: initial;
+  --aug-br-height: initial;
+  --aug-_BrWidth: initial;
+  --aug-_BrHeight: initial;
+  --aug-_BrJoinTX: initial;
+  --aug-_BrJoinTY: initial;
+  --aug-_BrJoinLX: initial;
+  --aug-_BrJoinLY: initial;
+  --aug-_BrPath: initial;
+  --aug-_BrInset1JoinTX: initial;
+  --aug-_BrInset1JoinTY: initial;
+  --aug-_BrInset1JoinLX: initial;
+  --aug-_BrInset1JoinLY: initial;
+  --aug-_BrPathInset1: initial;
+  --aug-_BrInset2JoinTX: initial;
+  --aug-_BrInset2JoinTY: initial;
+  --aug-_BrInset2JoinLX: initial;
+  --aug-_BrInset2JoinLY: initial;
+  --aug-_BrPathInset2: initial;
+  --aug-bl: 0px;
+  --aug-bl-width: initial;
+  --aug-bl-height: initial;
+  --aug-_BlWidth: initial;
+  --aug-_BlHeight: initial;
+  --aug-_BlJoinRX: initial;
+  --aug-_BlJoinRY: initial;
+  --aug-_BlJoinTX: initial;
+  --aug-_BlJoinTY: initial;
+  --aug-_BlPath: initial;
+  --aug-_BlInset1JoinRX: initial;
+  --aug-_BlInset1JoinRY: initial;
+  --aug-_BlInset1JoinTX: initial;
+  --aug-_BlInset1JoinTY: initial;
+  --aug-_BlPathInset1: initial;
+  --aug-_BlInset2JoinRX: initial;
+  --aug-_BlInset2JoinRY: initial;
+  --aug-_BlInset2JoinTX: initial;
+  --aug-_BlInset2JoinTY: initial;
+  --aug-_BlPathInset2: initial;
+  --aug-t: 0px;
+  --aug-t-width: initial;
+  --aug-t-height: initial;
+  --aug-_TWidth: initial;
+  --aug-_THeight: initial;
+  --aug-_TPath: initial;
+  --aug-_TPathInset1: initial;
+  --aug-_TPathInset2: initial;
+  --aug-r: 0px;
+  --aug-r-width: initial;
+  --aug-r-height: initial;
+  --aug-_RWidth: initial;
+  --aug-_RHeight: initial;
+  --aug-_RPath: initial;
+  --aug-_RPathInset1: initial;
+  --aug-_RPathInset2: initial;
+  --aug-b: 0px;
+  --aug-b-width: initial;
+  --aug-b-height: initial;
+  --aug-_BWidth: initial;
+  --aug-_BHeight: initial;
+  --aug-_BPath: initial;
+  --aug-_BPathInset1: initial;
+  --aug-_BPathInset2: initial;
+  --aug-l: 0px;
+  --aug-l-width: initial;
+  --aug-l-height: initial;
+  --aug-_LWidth: initial;
+  --aug-_LHeight: initial;
+  --aug-_LPath: initial;
+  --aug-_LPathInset1: initial;
+  --aug-_LPathInset2: initial;
 }
 
 [augmented-ui~="tl-clip"],
-[data-augmented-ui~="tl-clip"],
-.aug-tl-clip {
+[augmented-ui~="tl-clip"] > [augmented-ui~="tl-inherit"] {
   --aug-tl: 15px; /* clip size */
   --aug-_TlWidth: var(--aug-tl-width, var(--aug-tl));
   --aug-_TlHeight: var(--aug-tl-height, var(--aug-tl));
@@ -270,8 +146,7 @@
   --aug-_TlPathInset2: var(--aug-_TlInset2JoinBX) var(--aug-_TlInset2JoinBY), var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
 [augmented-ui~="tr-clip"],
-[data-augmented-ui~="tr-clip"],
-.aug-tr-clip {
+[augmented-ui~="tr-clip"] > [augmented-ui~="tr-inherit"] {
   --aug-tr: 15px; /* clip size */
   --aug-_TrWidth: var(--aug-tr-width, var(--aug-tr));
   --aug-_TrHeight: var(--aug-tr-height, var(--aug-tr));
@@ -294,8 +169,7 @@
   --aug-_TrPathInset2: var(--aug-_TrInset2JoinLX) var(--aug-_TrInset2JoinLY), var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
 [augmented-ui~="br-clip"],
-[data-augmented-ui~="br-clip"],
-.aug-br-clip {
+[augmented-ui~="br-clip"] > [augmented-ui~="br-inherit"] {
   --aug-br: 15px; /* clip size */
   --aug-_BrWidth: var(--aug-br-width, var(--aug-br));
   --aug-_BrHeight: var(--aug-br-height, var(--aug-br));
@@ -318,8 +192,7 @@
   --aug-_BrPathInset2: var(--aug-_BrInset2JoinTX) var(--aug-_BrInset2JoinTY), var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
 [augmented-ui~="bl-clip"],
-[data-augmented-ui~="bl-clip"],
-.aug-bl-clip {
+[augmented-ui~="bl-clip"] > [augmented-ui~="bl-inherit"] {
   --aug-bl: 15px; /* clip size */
   --aug-_BlWidth: var(--aug-bl-width, var(--aug-bl));
   --aug-_BlHeight: var(--aug-bl-height, var(--aug-bl));
@@ -342,8 +215,7 @@
   --aug-_BlPathInset2: var(--aug-_BlInset2JoinRX) var(--aug-_BlInset2JoinRY), var(--aug-_BlInset2JoinTX) var(--aug-_BlInset2JoinTY);
 }
 [augmented-ui~="t-clip"],
-[data-augmented-ui~="t-clip"],
-.aug-t-clip {
+[augmented-ui~="t-clip"] > [augmented-ui~="t-inherit"] {
   --aug-t: 15px; /* clip depth */
   --aug-_TWidth: var(--aug-t-width, calc(var(--aug-t) * 2));
   --aug-_THeight: var(--aug-t-height, var(--aug-t));
@@ -362,8 +234,7 @@
                       calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD) / 2) var(--aug-_WD);
 }
 [augmented-ui~="r-clip"],
-[data-augmented-ui~="r-clip"],
-.aug-r-clip {
+[augmented-ui~="r-clip"] > [augmented-ui~="r-inherit"] {
   --aug-r: 15px; /* clip depth */
   --aug-_RWidth: var(--aug-r-width, var(--aug-r));
   --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2));
@@ -382,8 +253,7 @@
                         calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD) / 2);
 }
 [augmented-ui~="b-clip"],
-[data-augmented-ui~="b-clip"],
-.aug-b-clip {
+[augmented-ui~="b-clip"] > [augmented-ui~="b-inherit"] {
   --aug-b: 15px; /* clip depth */
   --aug-_BWidth: var(--aug-b-width, calc(var(--aug-b) * 2));
   --aug-_BHeight: var(--aug-b-height, var(--aug-b));
@@ -402,8 +272,7 @@
                       calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD) / 2) calc(100% - var(--aug-_WD));
 }
 [augmented-ui~="l-clip"],
-[data-augmented-ui~="l-clip"],
-.aug-l-clip {
+[augmented-ui~="l-clip"] > [augmented-ui~="l-inherit"] {
   --aug-l: 15px; /* clip depth */
   --aug-_LWidth: var(--aug-l-width, var(--aug-l));
   --aug-_LHeight: var(--aug-l-height, calc(var(--aug-l) * 2));
@@ -423,8 +292,7 @@
 }
 
 [augmented-ui~="tl-round"],
-[data-augmented-ui~="tl-round"],
-.aug-tl-round {
+[augmented-ui~="tl-round"] > [augmented-ui~="tl-inherit"] {
   --aug-tl: 15px; /* radius */
   --aug-_Sin18cos72: 0.30901699437;
   --aug-_Sin36cos54: 0.58778525229;
@@ -464,8 +332,7 @@
                     var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
 [augmented-ui~="tr-round"],
-[data-augmented-ui~="tr-round"],
-.aug-tr-round {
+[augmented-ui~="tr-round"] > [augmented-ui~="tr-inherit"] {
   --aug-tr: 15px; /* radius */
   --aug-_Sin18cos72: 0.30901699437;
   --aug-_Sin36cos54: 0.58778525229;
@@ -505,8 +372,7 @@
                     var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
 [augmented-ui~="br-round"],
-[data-augmented-ui~="br-round"],
-.aug-br-round {
+[augmented-ui~="br-round"] > [augmented-ui~="br-inherit"] {
   --aug-br: 15px; /* radius */
   --aug-_Sin18cos72: 0.30901699437;
   --aug-_Sin36cos54: 0.58778525229;
@@ -546,8 +412,7 @@
                     var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
 [augmented-ui~="bl-round"],
-[data-augmented-ui~="bl-round"],
-.aug-bl-round {
+[augmented-ui~="bl-round"] > [augmented-ui~="bl-inherit"] {
   --aug-bl: 15px; /* radius */
   --aug-_Sin18cos72: 0.30901699437;
   --aug-_Sin36cos54: 0.58778525229;
@@ -588,8 +453,7 @@
 }
 
 [augmented-ui~="tl-rect"],
-[data-augmented-ui~="tl-rect"],
-.aug-tl-rect {
+[augmented-ui~="tl-rect"] > [augmented-ui~="tl-inherit"] {
   --aug-tl: 15px; /* size */
   --aug-_TlWidth: var(--aug-tl-width, var(--aug-tl));
   --aug-_TlHeight: var(--aug-tl-height, var(--aug-tl));
@@ -618,8 +482,7 @@
                  var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
 [augmented-ui~="tr-rect"],
-[data-augmented-ui~="tr-rect"],
-.aug-tr-rect {
+[augmented-ui~="tr-rect"] > [augmented-ui~="tr-inherit"] {
   --aug-tr: 15px; /* size */
   --aug-_TrWidth: var(--aug-tr-width, var(--aug-tr));
   --aug-_TrHeight: var(--aug-tr-height, var(--aug-tr));
@@ -648,8 +511,7 @@
                     var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
 [augmented-ui~="br-rect"],
-[data-augmented-ui~="br-rect"],
-.aug-br-rect {
+[augmented-ui~="br-rect"] > [augmented-ui~="br-inherit"] {
   --aug-br: 15px; /* size */
   --aug-_BrWidth: var(--aug-br-width, var(--aug-br));
   --aug-_BrHeight: var(--aug-br-height, var(--aug-br));
@@ -678,8 +540,7 @@
                      var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
 [augmented-ui~="bl-rect"],
-[data-augmented-ui~="bl-rect"],
-.aug-bl-rect {
+[augmented-ui~="bl-rect"] > [augmented-ui~="bl-inherit"] {
   --aug-bl: 15px; /* size */
   --aug-_BlWidth: var(--aug-bl-width, var(--aug-bl));
   --aug-_BlHeight: var(--aug-bl-height, var(--aug-bl));
@@ -708,8 +569,7 @@
                      var(--aug-_BlInset2JoinTX) var(--aug-_BlInset2JoinTY);
 }
 [augmented-ui~="t-rect"],
-[data-augmented-ui~="t-rect"],
-.aug-t-rect {
+[augmented-ui~="t-rect"] > [augmented-ui~="t-inherit"] {
   --aug-t: 15px; /* size */
   --aug-_TWidth: var(--aug-t-width, calc(var(--aug-t) * 2));
   --aug-_THeight: var(--aug-t-height, var(--aug-t));
@@ -731,8 +591,7 @@
                         calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD)) var(--aug-_WD);
 }
 [augmented-ui~="r-rect"],
-[data-augmented-ui~="r-rect"],
-.aug-r-rect {
+[augmented-ui~="r-rect"] > [augmented-ui~="r-inherit"] {
   --aug-r: 15px; /* size */
   --aug-_RWidth: var(--aug-r-width, var(--aug-r));
   --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2));
@@ -754,8 +613,7 @@
                         calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD));
 }
 [augmented-ui~="b-rect"],
-[data-augmented-ui~="b-rect"],
-.aug-b-rect {
+[augmented-ui~="b-rect"] > [augmented-ui~="b-inherit"] {
   --aug-b: 15px; /* size */
   --aug-_BWidth: var(--aug-b-width, calc(var(--aug-b) * 2));
   --aug-_BHeight: var(--aug-b-height, var(--aug-b));
@@ -777,8 +635,7 @@
                         calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD)) calc(100% - var(--aug-_WD));
 }
 [augmented-ui~="l-rect"],
-[data-augmented-ui~="l-rect"],
-.aug-l-rect {
+[augmented-ui~="l-rect"] > [augmented-ui~="l-inherit"] {
   --aug-l: 15px; /* size */
   --aug-_LWidth: var(--aug-l-width, var(--aug-l));
   --aug-_LHeight: var(--aug-l-height, calc(var(--aug-l) * 2));
@@ -801,8 +658,7 @@
 }
 
 [augmented-ui~="tl-clip-x"],
-[data-augmented-ui~="tl-clip-x"],
-.aug-tl-clip-x {
+[augmented-ui~="tl-clip-x"] > [augmented-ui~="tl-inherit"] {
   --aug-tl: 15px;
   --aug-_TlHeight: var(--aug-tl-height, var(--aug-tl));
   --aug-_TlNotch: var(--aug-_TlHeight); /* how much of width is the notch */
@@ -832,8 +688,7 @@
                  var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
 [augmented-ui~="tr-clip-x"],
-[data-augmented-ui~="tr-clip-x"],
-.aug-tr-clip-x {
+[augmented-ui~="tr-clip-x"] > [augmented-ui~="tr-inherit"] {
   --aug-tr: 15px;
   --aug-_TrHeight: var(--aug-tr-height, var(--aug-tr));
   --aug-_TrNotch: var(--aug-_TrHeight); /* how much of width is the notch */
@@ -863,8 +718,7 @@
                     var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
 [augmented-ui~="br-clip-x"],
-[data-augmented-ui~="br-clip-x"],
-.aug-br-clip-x {
+[augmented-ui~="br-clip-x"] > [augmented-ui~="br-inherit"] {
   --aug-br: 15px; /* size */
   --aug-_BrHeight: var(--aug-br-height, var(--aug-br));
   --aug-_BrNotch: var(--aug-_BrHeight); /* how much of width is the notch */
@@ -894,8 +748,7 @@
                      var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
 [augmented-ui~="bl-clip-x"],
-[data-augmented-ui~="bl-clip-x"],
-.aug-bl-clip-x {
+[augmented-ui~="bl-clip-x"] > [augmented-ui~="bl-inherit"] {
   --aug-bl: 15px; /* size */
   --aug-_BlHeight: var(--aug-bl-height, var(--aug-bl));
   --aug-_BlNotch: var(--aug-_BlHeight); /* how much of width is the notch */
@@ -925,8 +778,7 @@
                      var(--aug-_BlInset2JoinTX) var(--aug-_BlInset2JoinTY);
 }
 [augmented-ui~="t-clip-x"],
-[data-augmented-ui~="t-clip-x"],
-.aug-t-clip-x {
+[augmented-ui~="t-clip-x"] > [augmented-ui~="t-inherit"] {
   --aug-t: 15px; /* size */
   --aug-_THeight: var(--aug-t-height, var(--aug-t));
   --aug-_TNotch: var(--aug-_THeight); /* how much of half the width is the notch */
@@ -949,8 +801,7 @@
                         calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD) / 2) var(--aug-_WD);
 }
 [augmented-ui~="r-clip-x"],
-[data-augmented-ui~="r-clip-x"],
-.aug-r-clip-x {
+[augmented-ui~="r-clip-x"] > [augmented-ui~="r-inherit"] {
   --aug-r: 15px; /* size */
   --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2));
   --aug-_RNotch: calc(var(--aug-_RHeight) / 2); /* how much of width is the notch */
@@ -976,8 +827,7 @@
                         calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD));
 }
 [augmented-ui~="b-clip-x"],
-[data-augmented-ui~="b-clip-x"],
-.aug-b-clip-x {
+[augmented-ui~="b-clip-x"] > [augmented-ui~="b-inherit"] {
   --aug-b: 15px; /* size */
   --aug-_BHeight: var(--aug-b-height, var(--aug-b));
   --aug-_BNotch: var(--aug-_BHeight); /* how much of half the width is the notch */
@@ -1000,8 +850,7 @@
                         calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD) / 2) calc(100% - var(--aug-_WD));
 }
 [augmented-ui~="l-clip-x"],
-[data-augmented-ui~="l-clip-x"],
-.aug-l-clip-x {
+[augmented-ui~="l-clip-x"] > [augmented-ui~="l-inherit"] {
   --aug-l: 15px; /* size */
   --aug-_LHeight: var(--aug-l-height, calc(var(--aug-l) * 2));
   --aug-_LNotch: calc(var(--aug-_LHeight) / 2); /* how much of width is the notch */
@@ -1028,8 +877,7 @@
 }
 
 [augmented-ui~="tl-clip-y"],
-[data-augmented-ui~="tl-clip-y"],
-.aug-tl-clip-y {
+[augmented-ui~="tl-clip-y"] > [augmented-ui~="tl-inherit"] {
   --aug-tl: 15px; /* size */
   --aug-_TlWidth: var(--aug-tl-width, var(--aug-tl));
   --aug-_TlNotch: var(--aug-_TlWidth); /* how much of height is the notch */
@@ -1059,8 +907,7 @@
                  var(--aug-_TlInset2JoinRX) var(--aug-_TlInset2JoinRY);
 }
 [augmented-ui~="tr-clip-y"],
-[data-augmented-ui~="tr-clip-y"],
-.aug-tr-clip-y {
+[augmented-ui~="tr-clip-y"] > [augmented-ui~="tr-inherit"] {
   --aug-tr: 15px; /* size */
   --aug-_TrWidth: var(--aug-tr-width, var(--aug-tr));
   --aug-_TrNotch: var(--aug-_TrWidth); /* how much of height is the notch */
@@ -1090,8 +937,7 @@
                     var(--aug-_TrInset2JoinBX) var(--aug-_TrInset2JoinBY);
 }
 [augmented-ui~="br-clip-y"],
-[data-augmented-ui~="br-clip-y"],
-.aug-br-clip-y {
+[augmented-ui~="br-clip-y"] > [augmented-ui~="br-inherit"] {
   --aug-br: 15px; /* size */
   --aug-_BrWidth: var(--aug-br-width, var(--aug-br));
   --aug-_BrNotch: var(--aug-_BrWidth); /* how much of height is the notch */
@@ -1121,8 +967,7 @@
                      var(--aug-_BrInset2JoinLX) var(--aug-_BrInset2JoinLY);
 }
 [augmented-ui~="bl-clip-y"],
-[data-augmented-ui~="bl-clip-y"],
-.aug-bl-clip-y {
+[augmented-ui~="bl-clip-y"] > [augmented-ui~="bl-inherit"] {
   --aug-bl: 15px; /* size */
   --aug-_BlWidth: var(--aug-bl-width, var(--aug-bl));
   --aug-_BlNotch: var(--aug-_BlWidth); /* how much of height is the notch */
@@ -1153,8 +998,7 @@
 }
 
 [augmented-ui~="t-clip-y"],
-[data-augmented-ui~="t-clip-y"],
-.aug-t-clip-y {
+[augmented-ui~="t-clip-y"] > [augmented-ui~="t-inherit"] {
   --aug-t: 15px; /* size */
   --aug-_TWidth: var(--aug-t-width, var(--aug-t) * 2);
   --aug-_TNotch: calc(var(--aug-_TWidth) / 2); /* how much of height is the notch */
@@ -1180,8 +1024,7 @@
                         calc(var(--aug-_TOriginX) + var(--aug-_TWidth) / 2 + var(--aug-_WD)) var(--aug-_WD);
 }
 [augmented-ui~="r-clip-y"],
-[data-augmented-ui~="r-clip-y"],
-.aug-r-clip-y {
+[augmented-ui~="r-clip-y"] > [augmented-ui~="r-inherit"] {
   --aug-r: 15px; /* size */
   --aug-_RWidth: var(--aug-r-width, var(--aug-r));
   --aug-_RNotch: var(--aug-_RWidth); /* how much of half the height is the notch */
@@ -1204,8 +1047,7 @@
                         calc(100% - var(--aug-_WD)) calc(var(--aug-_ROriginY) + var(--aug-_RHeight) / 2 + var(--aug-_WD) / 2);
 }
 [augmented-ui~="b-clip-y"],
-[data-augmented-ui~="b-clip-y"],
-.aug-b-clip-y {
+[augmented-ui~="b-clip-y"] > [augmented-ui~="b-inherit"] {
   --aug-b: 15px; /* size */
   --aug-_BWidth: var(--aug-b-width, var(--aug-b) * 2);
   --aug-_BNotch: calc(var(--aug-_BWidth) / 2); /* how much of height is the notch */
@@ -1231,8 +1073,7 @@
                         calc(var(--aug-_BOriginX) - var(--aug-_BWidth) / 2 - var(--aug-_WD)) calc(100% - var(--aug-_WD));
 }
 [augmented-ui~="l-clip-y"],
-[data-augmented-ui~="l-clip-y"],
-.aug-l-clip-y {
+[augmented-ui~="l-clip-y"] > [augmented-ui~="l-inherit"] {
   --aug-l: 15px; /* size */
   --aug-_LWidth: var(--aug-l-width, var(--aug-l));
   --aug-_LNotch: var(--aug-_LWidth); /* how much of half the height is the notch */
@@ -1256,27 +1097,15 @@
 }
 
 [augmented-ui~="tl-border-el-clean"],
-[data-augmented-ui~="tl-border-el-clean"],
-[augmented-ui~="tl-border-clean"]::after,
-[data-augmented-ui~="tl-border-clean"]::after,
-.aug-tl-border-el-clean,
-.aug-tl-border-clean::after {
+[augmented-ui~="tl-border-clean"]::after {
   /* if --aug-_W <= --aug-tl */
   /* if border width is less than top-left effect size, don't apply an effect on the inner part of the tl border effect */
   --aug-_TlPathInset1: var(--aug-_W) var(--aug-_W);
 }
 [augmented-ui~="tl-inset-el-clean"],
-[data-augmented-ui~="tl-inset-el-clean"],
 [augmented-ui~="tl-inset-clean"]::before,
-[data-augmented-ui~="tl-inset-clean"]::before,
 [augmented-ui~="tl-border-el-clean"],
-[data-augmented-ui~="tl-border-el-clean"],
-[augmented-ui~="tl-border-clean"]::after,
-[data-augmented-ui~="tl-border-clean"]::after,
-.aug-tl-inset-el-clean,
-.aug-tl-inset-clean::before,
-.aug-tl-border-el-clean,
-.aug-tl-border-clean::after {
+[augmented-ui~="tl-border-clean"]::after {
   /* if --aug-_WD <= --aug-tl OR --aug-_W <= --aug-tl */
   /* if border width + inset distance is less than top-left effect size,
     OR if border width alone is less than top-left effect size,
@@ -1286,74 +1115,32 @@
 }
 
 [augmented-ui~="tr-border-el-clean"],
-[data-augmented-ui~="tr-border-el-clean"],
-[augmented-ui~="tr-border-clean"]::after,
-[data-augmented-ui~="tr-border-clean"]::after,
-.aug-tr-border-el-clean,
-.aug-tr-border-clean::after { --aug-_TrPathInset1: var(--aug-_100W) var(--aug-_W); }
+[augmented-ui~="tr-border-clean"]::after { --aug-_TrPathInset1: var(--aug-_100W) var(--aug-_W); }
 [augmented-ui~="tr-inset-el-clean"],
-[data-augmented-ui~="tr-inset-el-clean"],
 [augmented-ui~="tr-inset-clean"]::before,
-[data-augmented-ui~="tr-inset-clean"]::before,
 [augmented-ui~="tr-border-el-clean"],
-[data-augmented-ui~="tr-border-el-clean"],
-[augmented-ui~="tr-border-clean"]::after,
-[data-augmented-ui~="tr-border-clean"]::after,
-.aug-tr-inset-el-clean,
-.aug-tr-inset-clean::before,
-.aug-tr-border-el-clean,
-.aug-tr-border-clean::after { --aug-_TrPathInset2: var(--aug-_100WD) var(--aug-_WD); }
+[augmented-ui~="tr-border-clean"]::after { --aug-_TrPathInset2: var(--aug-_100WD) var(--aug-_WD); }
 
 [augmented-ui~="br-border-el-clean"],
-[data-augmented-ui~="br-border-el-clean"],
-[augmented-ui~="br-border-clean"]::after,
-[data-augmented-ui~="br-border-clean"]::after,
-.aug-br-border-el-clean,
-.aug-br-border-clean::after { --aug-_BrPathInset1: var(--aug-_100W) var(--aug-_100W); }
+[augmented-ui~="br-border-clean"]::after { --aug-_BrPathInset1: var(--aug-_100W) var(--aug-_100W); }
 [augmented-ui~="br-inset-el-clean"],
-[data-augmented-ui~="br-inset-el-clean"],
 [augmented-ui~="br-inset-clean"]::before,
-[data-augmented-ui~="br-inset-clean"]::before,
 [augmented-ui~="br-border-el-clean"],
-[data-augmented-ui~="br-border-el-clean"],
-[augmented-ui~="br-border-clean"]::after,
-[data-augmented-ui~="br-border-clean"]::after,
-.aug-br-inset-el-clean,
-.aug-br-border-el-clean,
-.aug-br-inset-clean::before,
-.aug-br-border-clean::after { --aug-_BrPathInset2: var(--aug-_100WD) var(--aug-_100WD); }
+[augmented-ui~="br-border-clean"]::after { --aug-_BrPathInset2: var(--aug-_100WD) var(--aug-_100WD); }
 
 [augmented-ui~="bl-border-el-clean"],
-[data-augmented-ui~="bl-border-el-clean"],
-[augmented-ui~="bl-border-clean"]::after,
-[data-augmented-ui~="bl-border-clean"]::after,
-.aug-bl-border-el-clean,
-.aug-bl-border-clean::after { --aug-_BlPathInset1: var(--aug-_W) var(--aug-_100W); }
+[augmented-ui~="bl-border-clean"]::after { --aug-_BlPathInset1: var(--aug-_W) var(--aug-_100W); }
 [augmented-ui~="bl-inset-el-clean"],
-[data-augmented-ui~="bl-inset-el-clean"],
 [augmented-ui~="bl-inset-clean"]::before,
-[data-augmented-ui~="bl-inset-clean"]::before,
 [augmented-ui~="bl-border-el-clean"],
-[data-augmented-ui~="bl-border-el-clean"],
-[augmented-ui~="bl-border-clean"]::after,
-[data-augmented-ui~="bl-border-clean"]::after,
-.aug-bl-inset-el-clean,
-.aug-bl-border-el-clean,
-.aug-bl-inset-clean::before,
-.aug-bl-border-clean::after { --aug-_BlPathInset2: var(--aug-_WD) var(--aug-_100WD); }
+[augmented-ui~="bl-border-clean"]::after { --aug-_BlPathInset2: var(--aug-_WD) var(--aug-_100WD); }
 
-[augmented-ui~="exe"]::after,
-[data-augmented-ui~="exe"]::after,
-.aug-exe::after {
+[augmented-ui~="exe"]::after {
   content: "";
   display: var(--aug-border-bg, none);
 }
 [augmented-ui~="border-el"],
-[data-augmented-ui~="border-el"],
-[augmented-ui~="exe"]::after,
-[data-augmented-ui~="exe"]::after,
-.aug-border-el,
-.aug-exe::after {
+[augmented-ui~="exe"]::after {
   background: var(--aug-border-bg, none);
   opacity: var(--aug-border-opacity, 1);
   position: absolute;
@@ -1378,18 +1165,12 @@
     var(--aug-_TlInset1JoinBX, var(--aug-_W)) var(--aug-_TlInset1JoinBY, var(--aug-_W))
   );
 }
-[augmented-ui~="exe"]::before,
-[data-augmented-ui~="exe"]::before,
-.aug-exe::before {
+[augmented-ui~="exe"]::before {
   content: "";
   display: var(--aug-inset-bg, none);
 }
 [augmented-ui~="inset-el"],
-[data-augmented-ui~="inset-el"],
-[augmented-ui~="exe"]::before,
-[data-augmented-ui~="exe"]::before,
-.aug-inset-el,
-.aug-exe::before {
+[augmented-ui~="exe"]::before {
   background: var(--aug-inset-bg, none);
   opacity: var(--aug-inset-opacity, 1);
   position: absolute;
@@ -1410,15 +1191,13 @@
   z-index: -1;
 }
 
+/* exe-init does not clip itself and can not spawn pseudo elements for the border/inset. It allows delegated border-el and inset-el children. */
+/* exe-lite clips itself but can not spawn pseudo elements for the border/inset. It allows delegated border-el and inset-el children. */
+[augmented-ui~="exe-init"],
 [augmented-ui~="exe"],
-[data-augmented-ui~="exe"],
+[augmented-ui~="exe-lite"],
 [augmented-ui~="before"]::before,
-[data-augmented-ui~="before"]::before,
-[augmented-ui~="after"]::after,
-[data-augmented-ui~="after"]::after,
-.aug-exe,
-.aug-before::before,
-.aug-after::after {
+[augmented-ui~="after"]::after {
   position: relative;
   --aug-border: initial;
   --aug-border-bg: initial;
@@ -1431,6 +1210,11 @@
   --aug-_WD: calc(var(--aug-_W) + var(--aug-_D));
   --aug-_100W: calc(100% - var(--aug-_W));
   --aug-_100WD: calc(100% - var(--aug-_WD));
+}
+[augmented-ui~="exe"],
+[augmented-ui~="exe-lite"],
+[augmented-ui~="before"]::before,
+[augmented-ui~="after"]::after {
   clip-path: polygon(
     var(--aug-_TlPath, 0px 0px)
     var(--aug-_TPath, ),
@@ -1446,11 +1230,7 @@
 /* Safari */
 @supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) and (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%)) {
   [augmented-ui~="border-el"],
-  [data-augmented-ui~="border-el"],
-  [augmented-ui~="exe"]::after,
-  [data-augmented-ui~="exe"]::after,
-  .aug-border-el,
-  .aug-exe::after {
+  [augmented-ui~="exe"]::after {
     -webkit-clip-path: polygon(
       var(--aug-_TlPathInset1, var(--aug-_W) var(--aug-_W))
       var(--aug-_TPathInset1, ),
@@ -1468,11 +1248,7 @@
     );
   }
   [augmented-ui~="inset-el"],
-  [data-augmented-ui~="inset-el"],
-  [augmented-ui~="exe"]::before,
-  [data-augmented-ui~="exe"]::before,
-  .aug-inset-el,
-  .aug-exe::before {
+  [augmented-ui~="exe"]::before {
     -webkit-clip-path: polygon(
       var(--aug-_TlPathInset2, var(--aug-_WD) var(--aug-_WD))
       var(--aug-_TPathInset2, ),
@@ -1485,14 +1261,8 @@
     );
   }
   [augmented-ui~="exe"],
-  [data-augmented-ui~="exe"],
   [augmented-ui~="before"]::before,
-  [data-augmented-ui~="before"]::before,
-  [augmented-ui~="after"]::after,
-  [data-augmented-ui~="after"]::after,
-  .aug-exe,
-  .aug-before::before,
-  .aug-after::after {
+  [augmented-ui~="after"]::after {
     -webkit-clip-path: polygon(
       var(--aug-_TlPath, 0px 0px)
       var(--aug-_TPath, ),
@@ -1508,74 +1278,13 @@
 
 /* Edge, pre Chromium */
 @supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) and (not (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%))) {
+  /* vvv almost all of the code here avoids this: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17410857/ for 5 layers of inheritance vvv */
 
-  /* vvv avoids this: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17410857/ for 5 layers of inheritance. vvv */
-    [augmented-ui~="exe"] [augmented-ui~="exe"],
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
-    .aug-exe .aug-exe {
-      --aug-_DONTSHAREVAR1-border-width: var(--aug-_W, 0px);
-      --aug-_DONTSHAREVAR1-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
-    .aug-exe .aug-exe::after {
-      border: var(--aug-_DONTSHAREVAR1-border-width) solid var(--aug-_DONTSHAREVAR1-border-color);
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"],
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
-    .aug-exe .aug-exe .aug-exe {
-      --aug-_DONTSHAREVAR2-border-width: var(--aug-_W, 0px);
-      --aug-_DONTSHAREVAR2-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
-    .aug-exe .aug-exe .aug-exe::after {
-      border: var(--aug-_DONTSHAREVAR2-border-width) solid var(--aug-_DONTSHAREVAR2-border-color);
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"],
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
-    .aug-exe .aug-exe .aug-exe .aug-exe {
-      --aug-_DONTSHAREVAR3-border-width: var(--aug-_W, 0px);
-      --aug-_DONTSHAREVAR3-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
-    .aug-exe .aug-exe .aug-exe .aug-exe::after {
-      border: var(--aug-_DONTSHAREVAR3-border-width) solid var(--aug-_DONTSHAREVAR3-border-color);
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"],
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
-    .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe {
-      --aug-_DONTSHAREVAR4-border-width: var(--aug-_W, 0px);
-      --aug-_DONTSHAREVAR4-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
-    .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe::after {
-      border: var(--aug-_DONTSHAREVAR4-border-width) solid var(--aug-_DONTSHAREVAR4-border-color);
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"],
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"],
-    .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe {
-      --aug-_DONTSHAREVAR5-border-width: var(--aug-_W, 0px);
-      --aug-_DONTSHAREVAR5-border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
-    }
-    [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"] [augmented-ui~="exe"]::after,
-    [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"] [data-augmented-ui~="exe"]::after,
-    .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe .aug-exe::after {
-      border: var(--aug-_DONTSHAREVAR5-border-width) solid var(--aug-_DONTSHAREVAR5-border-color);
-    }
-  /* ^^^ avoids this: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17410857/ for 5 layers of inheritance. ^^^ */
-
-  [augmented-ui~="border-el"],
-  [data-augmented-ui~="border-el"],
-  [augmented-ui~="exe"]::after,
-  [data-augmented-ui~="exe"]::after,
-  .aug-border-el,
-  .aug-exe::after {
-    overflow: hidden;
-    transform: translateZ(0px);
-    background: transparent!important;
+  /* Step 1: set up any pseduo-level vars on main elements first (setup for any el that uses them to avoid repeat, not just pseudo parents) */
+  [augmented-ui~="exe"],
+  [augmented-ui~="before"],
+  [augmented-ui~="after"],
+  [augmented-ui~="border-el"] {
     --aug-_AutoBorderRadiusFallback: var(--aug-_TlWidth, var(--aug-tl, 0px))
                                      var(--aug-_TrWidth, var(--aug-tr, 0px))
                                      var(--aug-_BrWidth, var(--aug-br, 0px))
@@ -1584,53 +1293,245 @@
                                      var(--aug-_TrHeight, var(--aug-tr, 0px))
                                      var(--aug-_BrHeight, var(--aug-br, 0px))
                                      var(--aug-_BlHeight, var(--aug-bl, 0px));
-    border-radius: var(--aug-border-radius-fallback, var(--aug-_AutoBorderRadiusFallback));
-    border: var(--aug-_W, 0px) solid;
-    border-color: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
-  }
-
-  [augmented-ui~="inset-el"],
-  [data-augmented-ui~="inset-el"],
-  [augmented-ui~="exe"]::before,
-  [data-augmented-ui~="exe"]::before,
-  .aug-inset-el,
-  .aug-exe::before {
-    left: var(--aug-_WD, 0px);
-    top: var(--aug-_WD, 0px);
-    right: var(--aug-_WD, 0px);
-    bottom: var(--aug-_WD, 0px);
-    --aug-_AutoBorderRadiusFallback: calc(var(--aug-_TlWidth, var(--aug-tl, 0px)) - var(--aug-_WD))
-                                     calc(var(--aug-_TrWidth, var(--aug-tr, 0px)) - var(--aug-_WD))
-                                     calc(var(--aug-_BrWidth, var(--aug-br, 0px)) - var(--aug-_WD))
-                                     calc(var(--aug-_BlWidth, var(--aug-bl, 0px)) - var(--aug-_WD)) /
-                                     calc(var(--aug-_TlHeight, var(--aug-tl, 0px)) - var(--aug-_WD))
-                                     calc(var(--aug-_TrHeight, var(--aug-tr, 0px)) - var(--aug-_WD))
-                                     calc(var(--aug-_BrHeight, var(--aug-br, 0px)) - var(--aug-_WD))
-                                     calc(var(--aug-_BlHeight, var(--aug-bl, 0px)) - var(--aug-_WD));
-    border-radius: var(--aug-border-radius-fallback-inset, var(--aug-border-radius-fallback, var(--aug-_AutoBorderRadiusFallback)));
-    transform: translateZ(0px);
-    overflow: hidden;
+    /* used on main el (or main el pseudo delegates) and main exe::after / border-el */
+    --aug-_PrimaryBorderRadiusFallbackResolved: var(--aug-border-radius-fallback, var(--aug-_AutoBorderRadiusFallback));
   }
   [augmented-ui~="exe"],
-  [data-augmented-ui~="exe"],
-  [augmented-ui~="before"]::before,
-  [data-augmented-ui~="before"]::before,
-  [augmented-ui~="after"]::after,
-  [data-augmented-ui~="after"]::after,
-  .aug-exe,
-  .aug-before::before,
-  .aug-after::after {
-    --aug-_AutoBorderRadiusFallback: var(--aug-_TlWidth, var(--aug-tl, 0px))
-                                     var(--aug-_TrWidth, var(--aug-tr, 0px))
-                                     var(--aug-_BrWidth, var(--aug-br, 0px))
-                                     var(--aug-_BlWidth, var(--aug-bl, 0px)) /
-                                     var(--aug-_TlHeight, var(--aug-tl, 0px))
-                                     var(--aug-_TrHeight, var(--aug-tr, 0px))
-                                     var(--aug-_BrHeight, var(--aug-br, 0px))
-                                     var(--aug-_BlHeight, var(--aug-bl, 0px));
-    border-radius: var(--aug-border-radius-fallback, var(--aug-_AutoBorderRadiusFallback));
+  [augmented-ui~="inset-el"] {
+    --aug-_InsetAutoBorderRadiusFallback: calc(var(--aug-_TlWidth, var(--aug-tl, 0px)) - var(--aug-_WD, 0px))
+                                          calc(var(--aug-_TrWidth, var(--aug-tr, 0px)) - var(--aug-_WD, 0px))
+                                          calc(var(--aug-_BrWidth, var(--aug-br, 0px)) - var(--aug-_WD, 0px))
+                                          calc(var(--aug-_BlWidth, var(--aug-bl, 0px)) - var(--aug-_WD, 0px)) /
+                                          calc(var(--aug-_TlHeight, var(--aug-tl, 0px)) - var(--aug-_WD, 0px))
+                                          calc(var(--aug-_TrHeight, var(--aug-tr, 0px)) - var(--aug-_WD, 0px))
+                                          calc(var(--aug-_BrHeight, var(--aug-br, 0px)) - var(--aug-_WD, 0px))
+                                          calc(var(--aug-_BlHeight, var(--aug-bl, 0px)) - var(--aug-_WD, 0px));
+    /* used on exe::before and inset-el */
+    --aug-_InsetBorderRadiusFallbackResolved: var(--aug-border-radius-fallback-inset, var(--aug-_InsetAutoBorderRadiusFallback));
+    --aug-_InsetDistanceResolved: var(--aug-_WD, 0px);
+    --aug-_InsetBGResolved: var(--aug-inset-bg, none);
+    --aug-_InsetOpacityResolved: var(--aug-inset-opacity, 1);
+  }
+  [augmented-ui~="exe"],
+  [augmented-ui~="border-el"] {
+    --aug-_BorderNoColorResolved: var(--aug-_W, 0px) solid;
+    --aug-_BorderColorResolved: var(--aug-border-fallback-color, var(--aug-border-bg, transparent));
+    --aug-_BorderOpacityResolved: var(--aug-border-opacity, 1);
+  }
+
+  /* Step 2: apply CSS as normal to their respective parts, using only resolved form of vars as needed */
+  [augmented-ui~="inset-el"],
+  [augmented-ui~="exe"]::before {
+    left: var(--aug-_InsetDistanceResolved);
+    top: var(--aug-_InsetDistanceResolved);
+    right: var(--aug-_InsetDistanceResolved);
+    bottom: var(--aug-_InsetDistanceResolved);
+    border-radius: var(--aug-_InsetBorderRadiusFallbackResolved, 0px);
+    background: var(--aug-_InsetBGResolved);
+    opacity: var(--aug-_InsetOpacityResolved);
     /* clip-path causes a new stacking context and hides overflow, this reproduces that */
     transform: translateZ(0px);
     overflow: hidden;
   }
+  [augmented-ui~="border-el"],
+  [augmented-ui~="exe"]::after {
+    overflow: hidden;
+    transform: translateZ(0px);
+    background: transparent!important;
+    border-radius: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+    border: var(--aug-_BorderNoColorResolved) var(--aug-_BorderColorResolved);
+    opacity: var(--aug-_BorderOpacityResolved);
+  }
+  [augmented-ui~="exe"],
+  [augmented-ui~="before"]::before,
+  [augmented-ui~="after"]::after {
+    border-radius: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+    /* clip-path causes a new stacking context and hides overflow, this reproduces that */
+    transform: translateZ(0px);
+    overflow: hidden;
+  }
+
+  /* Step 3 part 1: For any pseudo children using resoved vars,
+     create duplicate vars, with depth dependent names, of each resolved var on their parent, for the first depth,
+     then use the depth copy on pseudo children of that depth to override the broken one
+  */
+  [augmented-ui] [augmented-ui~="exe"] {
+    --aug-_CDEPTH1_BorderNoColor: var(--aug-_BorderNoColorResolved);
+    --aug-_CDEPTH1_BorderColor: var(--aug-_BorderColorResolved);
+    --aug-_CDEPTH1_InsetDistance: var(--aug-_InsetDistanceResolved);
+    --aug-_CDPETH1_PrimaryBorderRadius: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH1_InsetBorderRadius: var(--aug-_InsetBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH1_InsetBG: var(--aug-_InsetBGResolved);
+    --aug-_CDEPTH1_InsetOpacity: var(--aug-_InsetOpacityResolved);
+    --aug-_CDEPTH1_BorderOpacity: var(--aug-_BorderOpacityResolved);
+  }
+  [augmented-ui] [augmented-ui~="before"],
+  [augmented-ui] [augmented-ui~="after"] {
+    --aug-_CDPETH1_PrimaryBorderRadiusDelegated: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+  }
+  [augmented-ui] [augmented-ui~="exe"]::after {
+    border:        var(--aug-_CDEPTH1_BorderNoColor) var(--aug-_CDEPTH1_BorderColor);
+    border-radius: var(--aug-_CDPETH1_PrimaryBorderRadius);
+    opacity:       var(--aug-_CDEPTH1_BorderOpacity);
+    display:       var(--aug-_CDEPTH1_BorderColor);
+  }
+  [augmented-ui] [augmented-ui~="exe"]::before {
+    left:          var(--aug-_CDEPTH1_InsetDistance);
+    top:           var(--aug-_CDEPTH1_InsetDistance);
+    right:         var(--aug-_CDEPTH1_InsetDistance);
+    bottom:        var(--aug-_CDEPTH1_InsetDistance);
+    border-radius: var(--aug-_CDEPTH1_InsetBorderRadius);
+    background:    var(--aug-_CDEPTH1_InsetBG);
+    opacity:       var(--aug-_CDEPTH1_InsetOpacity);
+    display:       var(--aug-_CDEPTH1_InsetBG);
+  }
+  [augmented-ui] [augmented-ui~="before"]::before,
+  [augmented-ui] [augmented-ui~="after"]::after {
+    border-radius: var(--aug-_CDPETH1_PrimaryBorderRadiusDelegated);
+  }
+
+  /* Step 3 part 2: copy step 3 part 1, increase the number on the depth vars, prepend the depth selector, repeat until supported dpeth reached */
+  /* Note: preprosessor could make this painless */
+
+  /* 2 deep */
+  [augmented-ui] [augmented-ui] [augmented-ui~="exe"] {
+    --aug-_CDEPTH2_BorderNoColor: var(--aug-_BorderNoColorResolved);
+    --aug-_CDEPTH2_BorderColor: var(--aug-_BorderColorResolved);
+    --aug-_CDEPTH2_InsetDistance: var(--aug-_InsetDistanceResolved);
+    --aug-_CDPETH2_PrimaryBorderRadius: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH2_InsetBorderRadius: var(--aug-_InsetBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH2_InsetBG: var(--aug-_InsetBGResolved);
+    --aug-_CDEPTH2_InsetOpacity: var(--aug-_InsetOpacityResolved);
+    --aug-_CDEPTH2_BorderOpacity: var(--aug-_BorderOpacityResolved);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui~="before"],
+  [augmented-ui] [augmented-ui] [augmented-ui~="after"] {
+    --aug-_CDPETH2_PrimaryBorderRadiusDelegated: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui~="exe"]::after {
+    border:        var(--aug-_CDEPTH2_BorderNoColor) var(--aug-_CDEPTH2_BorderColor);
+    border-radius: var(--aug-_CDPETH2_PrimaryBorderRadius);
+    opacity:       var(--aug-_CDEPTH2_BorderOpacity);
+    display:       var(--aug-_CDEPTH2_BorderColor);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui~="exe"]::before {
+    left:          var(--aug-_CDEPTH2_InsetDistance);
+    top:           var(--aug-_CDEPTH2_InsetDistance);
+    right:         var(--aug-_CDEPTH2_InsetDistance);
+    bottom:        var(--aug-_CDEPTH2_InsetDistance);
+    border-radius: var(--aug-_CDEPTH2_InsetBorderRadius);
+    background:    var(--aug-_CDEPTH2_InsetBG);
+    opacity:       var(--aug-_CDEPTH2_InsetOpacity);
+    display:       var(--aug-_CDEPTH2_InsetBG);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui~="before"]::before,
+  [augmented-ui] [augmented-ui] [augmented-ui~="after"]::after {
+    border-radius: var(--aug-_CDPETH2_PrimaryBorderRadiusDelegated);
+  }
+  /* 3 deep */
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"] {
+    --aug-_CDEPTH3_BorderNoColor: var(--aug-_BorderNoColorResolved);
+    --aug-_CDEPTH3_BorderColor: var(--aug-_BorderColorResolved);
+    --aug-_CDEPTH3_InsetDistance: var(--aug-_InsetDistanceResolved);
+    --aug-_CDPETH3_PrimaryBorderRadius: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH3_InsetBorderRadius: var(--aug-_InsetBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH3_InsetBG: var(--aug-_InsetBGResolved);
+    --aug-_CDEPTH3_InsetOpacity: var(--aug-_InsetOpacityResolved);
+    --aug-_CDEPTH3_BorderOpacity: var(--aug-_BorderOpacityResolved);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="before"],
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="after"] {
+    --aug-_CDPETH3_PrimaryBorderRadiusDelegated: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"]::after {
+    border:        var(--aug-_CDEPTH3_BorderNoColor) var(--aug-_CDEPTH3_BorderColor);
+    border-radius: var(--aug-_CDPETH3_PrimaryBorderRadius);
+    opacity:       var(--aug-_CDEPTH3_BorderOpacity);
+    display:       var(--aug-_CDEPTH3_BorderColor);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"]::before {
+    left:          var(--aug-_CDEPTH3_InsetDistance);
+    top:           var(--aug-_CDEPTH3_InsetDistance);
+    right:         var(--aug-_CDEPTH3_InsetDistance);
+    bottom:        var(--aug-_CDEPTH3_InsetDistance);
+    border-radius: var(--aug-_CDEPTH3_InsetBorderRadius);
+    background:    var(--aug-_CDEPTH3_InsetBG);
+    opacity:       var(--aug-_CDEPTH3_InsetOpacity);
+    display:       var(--aug-_CDEPTH3_InsetBG);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="before"]::before,
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="after"]::after {
+    border-radius: var(--aug-_CDPETH3_PrimaryBorderRadiusDelegated);
+  }
+  /* 4 deep */
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"] {
+    --aug-_CDEPTH4_BorderNoColor: var(--aug-_BorderNoColorResolved);
+    --aug-_CDEPTH4_BorderColor: var(--aug-_BorderColorResolved);
+    --aug-_CDEPTH4_InsetDistance: var(--aug-_InsetDistanceResolved);
+    --aug-_CDPETH4_PrimaryBorderRadius: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH4_InsetBorderRadius: var(--aug-_InsetBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH4_InsetBG: var(--aug-_InsetBGResolved);
+    --aug-_CDEPTH4_InsetOpacity: var(--aug-_InsetOpacityResolved);
+    --aug-_CDEPTH4_BorderOpacity: var(--aug-_BorderOpacityResolved);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="before"],
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="after"] {
+    --aug-_CDPETH4_PrimaryBorderRadiusDelegated: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"]::after {
+    border:        var(--aug-_CDEPTH4_BorderNoColor) var(--aug-_CDEPTH4_BorderColor);
+    border-radius: var(--aug-_CDPETH4_PrimaryBorderRadius);
+    opacity:       var(--aug-_CDEPTH4_BorderOpacity);
+    display:       var(--aug-_CDEPTH4_BorderColor);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"]::before {
+    left:          var(--aug-_CDEPTH4_InsetDistance);
+    top:           var(--aug-_CDEPTH4_InsetDistance);
+    right:         var(--aug-_CDEPTH4_InsetDistance);
+    bottom:        var(--aug-_CDEPTH4_InsetDistance);
+    border-radius: var(--aug-_CDEPTH4_InsetBorderRadius);
+    background:    var(--aug-_CDEPTH4_InsetBG);
+    opacity:       var(--aug-_CDEPTH4_InsetOpacity);
+    display:       var(--aug-_CDEPTH4_InsetBG);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="before"]::before,
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="after"]::after {
+    border-radius: var(--aug-_CDPETH4_PrimaryBorderRadiusDelegated);
+  }
+  /* 5 deep */
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"] {
+    --aug-_CDEPTH5_BorderNoColor: var(--aug-_BorderNoColorResolved);
+    --aug-_CDEPTH5_BorderColor: var(--aug-_BorderColorResolved);
+    --aug-_CDEPTH5_InsetDistance: var(--aug-_InsetDistanceResolved);
+    --aug-_CDPETH5_PrimaryBorderRadius: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH5_InsetBorderRadius: var(--aug-_InsetBorderRadiusFallbackResolved, 0px);
+    --aug-_CDEPTH5_InsetBG: var(--aug-_InsetBGResolved);
+    --aug-_CDEPTH5_InsetOpacity: var(--aug-_InsetOpacityResolved);
+    --aug-_CDEPTH5_BorderOpacity: var(--aug-_BorderOpacityResolved);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="before"],
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="after"] {
+    --aug-_CDPETH5_PrimaryBorderRadiusDelegated: var(--aug-_PrimaryBorderRadiusFallbackResolved, 0px);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"]::after {
+    border:        var(--aug-_CDEPTH5_BorderNoColor) var(--aug-_CDEPTH5_BorderColor);
+    border-radius: var(--aug-_CDPETH5_PrimaryBorderRadius);
+    opacity:       var(--aug-_CDEPTH5_BorderOpacity);
+    display:       var(--aug-_CDEPTH5_BorderColor);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="exe"]::before {
+    left:          var(--aug-_CDEPTH5_InsetDistance);
+    top:           var(--aug-_CDEPTH5_InsetDistance);
+    right:         var(--aug-_CDEPTH5_InsetDistance);
+    bottom:        var(--aug-_CDEPTH5_InsetDistance);
+    border-radius: var(--aug-_CDEPTH5_InsetBorderRadius);
+    background:    var(--aug-_CDEPTH5_InsetBG);
+    opacity:       var(--aug-_CDEPTH5_InsetOpacity);
+    display:       var(--aug-_CDEPTH5_InsetBG);
+  }
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="before"]::before,
+  [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui] [augmented-ui~="after"]::after {
+    border-radius: var(--aug-_CDPETH5_PrimaryBorderRadiusDelegated);
+  }
+  /* ^^^ almost all of the code here avoids this: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17410857/ for 5 layers of inheritance ^^^ */
 }

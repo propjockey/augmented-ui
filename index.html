@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="/site/header.css">
     <link rel="stylesheet" type="text/css" href="/site/section-1.css">
     <link rel="stylesheet" type="text/css" href="/site/section-2.css">
+    <link rel="stylesheet" type="text/css" href="/site/section-3.css">
   </head>
   <body>
     <div class="header-animation-container" augmented-ui="tl-clip-x bl-clip-x br-clip-x exe"></div>
@@ -41,7 +42,7 @@
       <div class="bg-controls-container">
         <div class="bg-controls" augmented-ui="tl-round tr-clip br-round bl-clip exe">
           <div class="diagnostics-info">
-            BACKGROUND DIAGNOSTICS<br>
+            ANIMATION DIAGNOSTICS<br>
             <span class="performance-detail">PERFORMANCE: </span>
           </div>
         </div>
@@ -106,7 +107,7 @@
               --aug-border-fallback-color: transparent;
             }
           </style>
-          <div class="code-css" augmented-ui="tl-none r-none tr-clip br-clip bl-clip before">
+          <div class="code-css" augmented-ui="tr-clip br-clip bl-clip before">
             .<span class="info-settings">my-augfiguration</span> {<br>
             &nbsp;&nbsp;<span class="info-clip">--aug-tr: 25px;</span><br>
             &nbsp;&nbsp;<span class="info-props">--aug-br-width: 25px;</span><br>
@@ -122,7 +123,7 @@
             &nbsp;&nbsp;<span class="info-html">font-size...</span><br>
             }
           </div>
-          <div class="code-html" augmented-ui="tl-none r-none tr-clip br-clip bl-clip before">
+          <div class="code-html" augmented-ui="tr-clip br-clip bl-clip before">
             &lt;div class="<span class="info-settings">my-augfiguration</span>"<br>
             &nbsp;&nbsp;<span class="info-augs">augmented-ui</span>="<span class="info-clip">tr-clip</span>
             <span class="info-clip">bl-clip</span> <span class="info-props">br-clip-y</span>
@@ -155,13 +156,17 @@
         <h3>augmented-ui is just CSS.</h3>
         <ul>
           <li>Futuristic, cyberpunk-inspired UI shaping for any element</li>
-          <li>Only requires an attribute (or classes) to equip the augs, and a few settings for each one to make it feel just right</li>
+          <li>Add the "augmented-ui" attribute to equip the augs, and a few CSS settings for each one to make it feel just right</li>
         </ul>
         <h3>Namespaced to avoid crossing wires.</h3>
         <ul>
           <li>All custom properties begin with "--aug-"</li>
-          <li>Selectors all check for the "augmented-ui" attribute. ("data-" prefix supported too)</li>
-          <li>Prefer class names to the attirbute? Fully supported, all class names begin with "aug-"</li>
+          <li>Selectors only use the "augmented-ui" attribute</li>
+        </ul>
+        <h3>Automatic fallbacks and feature detection.</h3>
+        <ul>
+          <li>Uses the polygon() shape feature for (-webkit-)clip-path, putting full support user reach around 92%</li>
+          <li>More details below!</li>
         </ul>
         <h3>Use augmented-ui in any project, for free.</h3>
         <ul>
@@ -181,9 +186,9 @@
         <h2>aug-attr-<em class="glitch" data-text="spliced">spliced</em>.js</h2>
 
         <div class="section-2-text">
-          Skip the &lt;HTML&gt;, stick to the {CSS}<br>
+          Skip the &lt;HTML&gt;, stick to {CSS}<br>
           Import <em>aug-attr-spliced.js</em> to have the<br>
-          <em>data-augmented-ui</em> attributes automatically
+          <em>augmented-ui</em> attributes automatically
           added and updated, live, from your CSS to
           your HTML with a new custom property:<br>
           <span class="custom-prop">--augmented-ui</span>
@@ -197,13 +202,59 @@
 
       <div class="right-side">
         <div class="load-panel" augmented-ui="tl-clip-x tr-clip-x br-clip l-clip-y exe">
-          <div class="loading-bar" augmented-ui="all-none exe"></div>
-          <div class="step step-css" augmented-ui="all-none tl-clip-x tr-clip-x bl-clip-x br-clip-x exe"></div>
-          <div class="step step-html" augmented-ui="all-none t-clip bl-clip-x br-clip-x exe"></div>
-          <div class="step step-result" augmented-ui="all-none t-clip bl-clip br-clip exe"></div>
+          <div class="loading-bar" augmented-ui="exe"></div>
+          <div class="step step-css" augmented-ui="tl-clip-x tr-clip-x bl-clip-x br-clip-x exe">
+            .my-spliced-augs {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--augmented-ui: tr-clip exe;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--aug-br: 25px;<br>
+            }
+          </div>
+          <div class="step step-html" augmented-ui="t-clip bl-clip-x br-clip-x exe">
+            &lt;span class="my-spliced-augs" <span class="glitch" data-text='  augmented-ui="br-clip exe"'>&nbsp;&nbsp;augmented-ui="br-clip exe"</span>&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;NAME:<br>
+            &lt;/span&gt;<br>
+            &lt;input class="my-spliced-augs" <span class="glitch" data-text='  augmented-ui="br-clip exe"'>&nbsp;&nbsp;augmented-ui="br-clip exe"</span> /&gt;
+          </div>
+          <div class="step step-result" augmented-ui="t-clip bl-clip br-clip exe">
+            <span class="my-spliced-augs" augmented-ui="br-clip exe">NAME:</span>
+            <input class="my-spliced-augs" augmented-ui="br-clip exe">
+            <div class="result-detail">augmented as soon as the page loads, based on the CSS</div>
+          </div>
         </div>
-        <div class="hover-panel" augmented-ui="tr-clip-x tl-clip-x bl-clip r-clip-y exe">
+        <div onmouseenter="this.previousElementSibling.style.setProperty('--load-panel-opacity', 0.25)"
+             onmouseleave="this.previousElementSibling.style.setProperty('--load-panel-opacity', 1)"
+             class="hover-panel" augmented-ui="tr-clip-x tl-clip-x bl-clip r-clip-y exe"
+        >
+          <div class="step step-css" augmented-ui="tl-clip-x tr-clip-x bl-clip-x br-clip-x exe">
+            input:hover {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--augmented-ui: l-clip r-clip exe;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;--aug-l: 10px; --aug-r: 10px;<br>
+            }
+          </div>
+          <div class="step step-html" augmented-ui="t-clip bl-clip-x br-clip-x exe">
+            &lt;span class="my-spliced-augs" augmented-ui="br-clip exe"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;NAME:<br>
+            &lt;/span&gt;<br>
+            &lt;input class="my-spliced-augs"<br>
+            &nbsp;&nbsp;
+            <span class="show-on-input-hover">augmented-ui="l-clip r-clip exe"</span>
+            <span class="hide-on-input-hover">augmented-ui="br-clip exe"</span> /&gt;
+          </div>
+          <div class="step step-result" augmented-ui="t-clip bl-clip br-clip exe">
+            <span class="my-spliced-augs" augmented-ui="br-clip exe">NAME:</span>
+            <input class="my-spliced-augs" augmented-ui="br-clip exe" 
+              onmouseenter="this.parentNode.parentNode.classList.add('input-hover'); this.setAttribute('augmented-ui', 'l-clip r-clip exe');"
+              onmouseleave="this.parentNode.parentNode.classList.remove('input-hover'); this.setAttribute('augmented-ui', 'br-clip exe');"
+              value=" hover"
+            />
+            <div class="result-detail">augs applied on :hover in/out, as defined in the CSS</div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="section-3">
+      <div class="monitor" augmented-ui="tl-clip tr-clip br-clip bl-clip">
+        fallbacks and browser support
       </div>
     </div>
   </body>

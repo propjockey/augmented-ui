@@ -151,10 +151,180 @@
       .test-deep-inheritance > * > * > * > * { width: 300px; height: 200px; text-align: center; display: inline-block; }
       .test-deep-inheritance > * > * > * > * > * { width: 200px; height: 160px; text-align: center; display: inline-block; }
       .test-deep-inheritance > * > * > * > * > * > * { width: 100px; height: 100px; text-align: center; display: inline-block; }
+
+      .border-all div {
+        --aug-border: 1px;
+        --aug-border-bg: black;
+      }
+
+      .opacity-tests [augmented-ui] {
+        background: black;
+        --aug-border: 5px;
+        --aug-inset: 0px;
+        --aug-border-bg: blue;
+        --aug-inset-bg: #2a2;
+        color: white;
+      }
+
+      .test-aug-non-inheritance {
+        width: 740px;
+        height: 600px;
+        margin-left: 20px;
+      }
+
+      .test-aug-non-inheritance [augmented-ui] {
+        width: 80%;
+        height: 80%;
+        display: inline-block;
+        margin: 10px;
+        text-align: center;
+        padding-top: 20px;
+        vertical-align: top;
+        font-size: 10px;
+        font-family: sans-serif;
+        color: gold;
+        background: transparent;
+        --aug-border: 5px;
+        --aug-border-bg: black;
+        --aug-inset: 10px;
+        --aug-inset-bg: black;
+        --aug-inset-opacity: 0.33;
+      }
+      .test-aug-non-inheritance [augmented-ui] > [augmented-ui] {
+        --aug-border-bg: gold;
+        --aug-inset-bg: gold;
+        color: black;
+      }
+      .test-aug-non-inheritance [augmented-ui] > [augmented-ui] > [augmented-ui] {
+        --aug-border-bg: black;
+        --aug-inset-bg: black;
+        color: gold;
+      }
+      .test-aug-non-inheritance [augmented-ui] > [augmented-ui] > [augmented-ui] > [augmented-ui] {
+        --aug-border-bg: gold;
+        --aug-inset-bg: gold;
+        color: black;
+      }
+      .test-aug-non-inheritance [augmented-ui] > [augmented-ui] > [augmented-ui] > [augmented-ui] > [augmented-ui] {
+        --aug-border-bg: black;
+        --aug-inset-bg: black;
+        color: gold;
+      }
+
+      .cheat-sheet {
+        width: calc(100% - 800px);
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      }
+      .cheat-sheet section {
+        border-radius: 5px;
+        border: 5px solid black;
+        margin: 20px;
+        position: relative;
+        padding: 20px;
+      }
+      .cheat-sheet section label {
+        background: white;
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        height: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
     </style>
   </head>
   <body>
     <div class="ua">Platform: <b><script>document.write(platform.description)</script></b></div>
+
+    <div class="cheat-sheet">
+      <section>
+        <label>Augs*:</label>
+        augmented-ui=" tl-clip t-clip tr-clip r-clip br-clip b-clip bl-clip l-clip <b>exe</b> "<br>
+        augmented-ui=" tl-round tr-round  br-round  bl-round <b>exe</b> "<br>
+        augmented-ui=" tl-rect t-rect tr-rect r-rect br-rect b-rect bl-rect l-rect <b>exe</b> "<br>
+        augmented-ui=" tl-clip-x t-clip-x tr-clip-x r-clip-x br-clip-x b-clip-x bl-clip-x l-clip-x <b>exe</b> "<br>
+        augmented-ui=" tl-clip-y t-clip-y tr-clip-y r-clip-y br-clip-y b-clip-y bl-clip-y l-clip-y <b>exe</b> "<br>
+        augmented-ui=" tl-inherit t-inherit tr-inherit r-inherit br-inherit b-inherit bl-inherit l-inherit <b>exe</b> "<br>
+        (cannot inherit from inherit currently. inherit only works if the augmented-ui element is a direct descendant of the augmented-ui element that it's inheriting from)<br>
+      </section>
+      <section>
+        <label>Custom Properties for Augs:</label>
+        <b>--aug-tl, --aug-t, --aug-tr, --aug-r, --aug-br, --aug-b, --aug-bl, --aug-l</b><br>
+        Default: 15px<br>
+        Accepts: base size/radius in px / any fixed units<br>
+        Works on Augs: All<br>
+        <br>
+        <b>--aug-tl-width, --aug-t-width, --aug-tr-width, --aug-r-width, --aug-br-width, --aug-b-width, --aug-bl-width, --aug-l-width</b><br>
+        Default: varied<br>
+        Accepts: px / any fixed units<br>
+        on Augs: *-rect, *-clip-x, *-clip-y<br>
+        <br>
+        Accepts: %<br>
+        on Augs: *-rect, *-clip-x<br>
+        <br>
+        <b>--aug-tl-height, --aug-t-height, --aug-tr-height, --aug-r-height, --aug-br-height, --aug-b-height, --aug-bl-height, --aug-l-height</b><br>
+        Default: varied<br>
+        Accepts: px / any fixed units<br>
+        on Augs: *-rect, *-clip-x, *-clip-y<br>
+        <br>
+        Accepts: %<br>
+        on Augs: *-rect, *-clip-y<br>
+        <br>
+      </section>
+      <section>
+        <label>Custom Properties for elements with the <b>exe</b> augmented-ui option:</label>
+        <b>--aug-border</b><br>
+        Default: 0px<br>
+        Accepts: width in px / any fixed units<br>
+        This is the border's size<br>
+        <br>
+        <b>--aug-border-bg</b><br>
+        Default: none<br>
+        Accepts: same as css background<br>
+        <br>
+        <b>--aug-border-opacity</b><br>
+        Default: 1<br>
+        Accepts: number between 0 and 1 inclusive with no unit<br>
+        <br>
+        <b>--aug-inset</b><br>
+        Default: 0px<br>
+        Accepts: distance in px / any fixed units<br>
+        This is the distance between the inner edge of the border and the inset bg itself<br>
+        <br>
+        <b>--aug-inset-bg</b><br>
+        Default: none<br>
+        Accepts: same as css background<br>
+        <br>
+        <b>--aug-inset-opacity</b><br>
+        Default: 1<br>
+        Accepts: number between 0 and 1 inclusive with no unit<br>
+        <br>
+        /// fallback values for browsers without clip-path or -webkit-clip-path (pre-chromium Edge) ///<br>
+        <b>--aug-border-radius-fallback</b><br>
+        Default: an automatic calculation based on size of any corresponding corner aug equipped to the element.<br>
+        Accepts: same as css border-radius<br>
+        Note: augs along the edges are not rendered or considered in pre-chromium Edge at all, only corner augs are simulated<br>
+        <br>
+        <b>--aug-border-radius-fallback-inset</b><br>
+        Default: an automatic calculation based on size of any corresponding corner aug equipped to the element, minus the (border width + inset distance).<br>
+        Accepts: same as css border-radius<br>
+        <br>
+        <b>--aug-border-fallback-color</b><br>
+        Default: the value of --aug-border-bg, else transparent<br>
+        Accepts: color value<br>
+        Note: if --aug-border-bg is not suitable as a border-color value, the border will not draw unless this fallback is set<br>
+        The border is drawn on a pseudo element like the full-support one is, so it will not upset layout if it is drawn or not<br>
+      </section>
+      <br>
+      TODO: notes about other executable** modes on an augmented element<br>
+      TODO: notes about clipping delegated elements within an augmented element (border-el, inset-el, etc)<br>
+      <br>
+      * "augs" in augmented-ui are partial clip path polygons, named after "augs" in the cyberpunk genra (large pieces of technology integrated into the squishy human body)<br>
+      ** "executable" augmented-ui options (like <b>exe</b>) are responsible for stitching together the path partials and setting an actual final clip-path polygon
+    </div>
+
     <div class="tests">
       <div style="">div</div>
       <div augmented-ui="exe" style="">aug</div>
@@ -259,11 +429,172 @@
                 <br>
                 --aug-border-bg: green;
                 --aug-border 10px;<br><br>
-                <div augmented-ui="exe" style="--aug-border-bg: black; --aug-border: 1px;">
+                <div augmented-ui="exe" style="--aug-border-bg: #ce5; --aug-border: 2px; width: 25px; margin-left: 12px; float: left;">
                   <br>
-                  --aug-border-bg: black;
-                  --aug-border 1px;
+                  2px; #ce5;
+                </div>
+                <div augmented-ui="exe" style="--aug-border-bg: inherit; --aug-border: 3px;">
+                  <br>
+                  --aug-border-bg: <b>inherit</b>;
+                  --aug-border 3px;
                   (Max augmented depth for pre-chromium Edge Fallbacks)
+                </div>
+                <div augmented-ui="exe" style="--aug-border-bg: cyan; --aug-border: 2px; width: 25px; margin-right: 12px; float: right;">
+                  <br>
+                  2px; cyan;
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Non-Inheritance: --aug-inset, --aug-inset-bg</b>
+    <div class="tests test-inheritance border-all">
+      <div augmented-ui="exe" style="--aug-inset: 5px;">
+        --aug-inset 15px;
+        <div augmented-ui="exe" style="--aug-inset-bg: #ce5;">
+          --aug-inset-bg: #ce5;
+        </div>
+      </div>
+      <div augmented-ui="exe" style="--aug-inset: 5px; --aug-inset-bg: #ce5;">
+        --aug-inset 5px;
+        --aug-inset-bg: #ce5;
+        <div augmented-ui="exe" style="--aug-inset-bg: blue;">
+          --aug-inset-bg: blue;
+        </div>
+      </div>
+      <div augmented-ui="exe" style="--aug-inset: 10px;">
+        --aug-inset 10px;
+        <div augmented-ui="exe" style="--aug-inset-bg: blue;">
+          --aug-inset-bg: blue;
+        </div>
+      </div>
+      <div augmented-ui="exe" style="--aug-inset: 10px;">
+        --aug-inset 20px;
+        <div augmented-ui="exe" style="--aug-inset: 5px; --aug-inset-bg: blue;">
+          --aug-inset 5px;
+          --aug-inset-bg: blue;
+        </div>
+      </div>
+    </div>
+    <div class="tests test-inheritance test-multiple-inheritance border-all">
+      <div augmented-ui="exe" style="--aug-inset: 5px;">
+        --aug-inset 5px;
+        <div augmented-ui="exe" style="--aug-inset-bg: blue;">
+          --aug-inset-bg: blue;
+          <div augmented-ui="exe" style="">
+            no aug settings
+          </div>
+        </div>
+      </div>
+      <div augmented-ui="exe" style="--aug-inset: 5px; --aug-inset-bg: black; color: white;">
+        --aug-inset 5px;
+        --aug-inset-bg: black;
+        <div augmented-ui="exe" style="--aug-inset-bg: blue;">
+          --aug-inset-bg: blue;
+          <div augmented-ui="exe" style="--aug-inset-bg: red;">
+            --aug-inset-bg: red;
+          </div>
+        </div>
+      </div>
+      <div augmented-ui="exe" style="--aug-inset: 10px;">
+        --aug-inset 10px;
+        <div augmented-ui="exe" style="--aug-inset-bg: blue; --aug-inset: 5px;">
+          --aug-inset-bg: blue;
+          --aug-inset 5px;
+          <div augmented-ui="exe" style="--aug-inset-bg: red;">
+            --aug-inset-bg: red;
+          </div>
+        </div>
+      </div>
+      <div augmented-ui="exe" style="--aug-inset: 10px;">
+        --aug-inset 10px;
+        <div augmented-ui="exe" style="--aug-inset: 5px; --aug-inset-bg: blue;">
+          --aug-inset 5px;
+          --aug-inset-bg: blue;
+          <div augmented-ui="exe" style="--aug-inset-bg: red; --aug-inset: 1px;">
+            --aug-inset-bg: red;
+            --aug-inset 1px;
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tests test-inheritance test-deep-inheritance border-all">
+      <div augmented-ui="exe" style="--aug-inset: 10px;">
+        <br>
+        --aug-inset 10px;<br><br>
+        <div augmented-ui="exe" style="--aug-inset: 5px; --aug-inset-bg: blue;">
+          <br>
+          --aug-inset 5px;
+          --aug-inset-bg: blue;<br><br>
+          <div augmented-ui="exe" style="--aug-inset-bg: red; --aug-inset: 1px;">
+            <br>
+            --aug-inset-bg: red;
+            --aug-inset 1px;<br><br>
+            <div augmented-ui="exe" style="--aug-inset-bg: none; --aug-inset: 14px;">
+              <br>
+              --aug-inset-bg: none;
+              --aug-inset 14px;<br><br>
+              <div augmented-ui="exe" style="--aug-inset-bg: green; --aug-inset: 10px;">
+                <br>
+                --aug-inset-bg: green;
+                --aug-inset 10px;<br><br>
+                <div augmented-ui="exe" style="--aug-inset-bg: #ce5; width: 25px; margin-left: 12px; float: left;">
+                  <br>
+                  --aug-inset-bg: #ce5;
+                </div>
+                <div augmented-ui="exe" style="background: purple; --aug-inset-bg: inherit; --aug-inset: 2px;">
+                  <br>
+                  background: purple;
+                  --aug-inset-bg: <b>inherit</b>;
+                  --aug-inset 2px;
+                  (Max augmented depth for pre-chromium Edge Fallbacks)
+                </div>
+                <div augmented-ui="exe" style="--aug-inset-bg: cyan; width: 25px; margin-right: 12px; float: right;">
+                  <br>
+                  --aug-inset-bg: cyan;
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Non-Inheritance: --aug-border-opacity, --aug-inset-opacity</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Test base: { background: black; --aug-border: 5px; --aug-border-bg: blue; --aug-inset-bg: #2a2; }</b>
+    <div class="tests test-inheritance test-deep-inheritance opacity-tests">
+      <div augmented-ui="exe" style="--aug-border-opacity: initial; --aug-inset-opacity: initial;">
+        <br>
+        [border opacity, inset opacity]:<br>
+        [initial, initial]
+        <br><br>
+        <div augmented-ui="exe" style="--aug-border-opacity: 0.25; --aug-inset-opacity: 0.5;">
+          <br>
+          [0.25, 0.5]<br><br>
+          <div augmented-ui="exe" style="">
+            <br>
+            [,]<br><br>
+            <div augmented-ui="exe" style="--aug-border-opacity: 0.33; --aug-inset-opacity: initial;">
+              <br>
+              [0.33, initial]<br><br>
+              <div augmented-ui="exe" style="--aug-border-opacity: inherit; --aug-inset-opacity: 0.75;">
+                <br>
+                [inherit, 0.75]<br><br>
+                <div augmented-ui="exe" style="--aug-border-opacity: 1; --aug-inset-opacity: 1; width: 25px; margin-left: 12px; float: left;">
+                  <br>
+                  [1, 1]
+                </div>
+                <div augmented-ui="exe" style="--aug-border-opacity: 0.5; --aug-inset-opacity: inherit;">
+                  <br>
+                  [0.5, inherit]<br>
+                  (Max augmented depth for pre-chromium Edge Fallbacks)
+                </div>
+                <div augmented-ui="exe" style="--aug-border-opacity: 0; --aug-inset-opacity: 0; width: 25px; margin-right: 12px; float: right;">
+                  <br>
+                  [0, 0]
                 </div>
               </div>
             </div>
@@ -541,6 +872,15 @@
       <div augmented-ui="tl-clip-y t-clip-y tr-clip-y r-clip-y br-clip-y b-clip-y bl-clip-y l-clip-y exe" style="">inset only</div>
       <div augmented-ui="tl-clip-y t-clip-y tr-clip-y r-clip-y br-clip-y b-clip-y bl-clip-y l-clip-y exe" style="">inset only</div>
       <div augmented-ui="tl-clip-y t-clip-y tr-clip-y r-clip-y br-clip-y b-clip-y bl-clip-y l-clip-y tl-inset-clean tr-inset-clean br-inset-clean bl-inset-clean exe" style="">inset only<br>clean</div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Aug Non-Inheritance</b>
+    <div class="test-aug-non-inheritance">
+      <div augmented-ui="tl-clip r-clip-y b-clip-y bl-round l-clip-x exe" style="--aug-tl: 15px; --aug-t: 20px; --aug-r-width: 5px; --aug-bl: 20px;">
+        <div augmented-ui="exe bl-inherit t-clip-x" style="--aug-bl: 40px; --aug-t: 25px; --aug-r: 90px;">
+          <div augmented-ui="exe bl-inherit l-inherit r-rect" style="--aug-r-height: 50px;"></div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

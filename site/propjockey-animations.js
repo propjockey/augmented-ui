@@ -65,6 +65,7 @@ const classNameSetter = (obj, propName, newVal, prop) => {
     prop.__oldValue && obj.classList.remove(...prop.__oldValue.split(" "))
     prop.__oldValue = newVal
     newVal && obj.classList.add(...newVal.split(" "))
+    obj.setAttribute("augmented-ui", obj.className.replace(/(?:^| +)aug-/g, " ")) // this is lazy, class names aren't needed but the api is nice
   }
 }
 const objPropChangedSetter = (obj, propName, newVal, prop) => {

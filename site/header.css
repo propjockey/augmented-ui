@@ -38,6 +38,18 @@ body.anti-aug .aug-exe:after {
   --aug-bl: 0px;
   --aug-bl-height: 0px;
   --aug-bl-width: 0px;
+  --aug-t: 0px;
+  --aug-t-height: 0px;
+  --aug-t-width: 0px;
+  --aug-r: 0px;
+  --aug-r-height: 0px;
+  --aug-r-width: 0px;
+  --aug-b: 0px;
+  --aug-b-height: 0px;
+  --aug-b-width: 0px;
+  --aug-l: 0px;
+  --aug-l-height: 0px;
+  --aug-l-width: 0px;
 }
 .header-animation-container {
   position: absolute;
