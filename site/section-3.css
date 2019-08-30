@@ -3,3 +3,16 @@
   height: 600px;
   position: relative;
 }
+
+.monitor {
+  width: calc(100% - 600px);
+  height: 500px;
+  --aug-border: 20px;
+  --aug-border-bg: #ffd700;
+  --aug-tl: 40px;
+  --aug-tr: 40px;
+  --aug-br: 40px;
+  --aug-bl: 40px;
+  --aug-inset: 20px;
+  --aug-inset-bg: orange;
+}

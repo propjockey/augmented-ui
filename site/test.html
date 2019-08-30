@@ -301,11 +301,11 @@
         Default: 1<br>
         Accepts: number between 0 and 1 inclusive with no unit<br>
         <br>
-        /// fallback values for browsers without clip-path or -webkit-clip-path (pre-chromium Edge) ///<br>
+        /// fallback values for browsers without clip-path (-webkit-clip-path is unreliable) (Safari, pre-chromium Edge, Old Opera) ///<br>
         <b>--aug-border-radius-fallback</b><br>
         Default: an automatic calculation based on size of any corresponding corner aug equipped to the element.<br>
         Accepts: same as css border-radius<br>
-        Note: augs along the edges are not rendered or considered in pre-chromium Edge at all, only corner augs are simulated<br>
+        Note: augs along the edges are not rendered or considered for these browsers, only corner augs are simulated<br>
         <br>
         <b>--aug-border-radius-fallback-inset</b><br>
         Default: an automatic calculation based on size of any corresponding corner aug equipped to the element, minus the (border width + inset distance).<br>
