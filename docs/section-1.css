@@ -52,6 +52,17 @@
   font-size: 13px;
   line-height: 15px;
 }
+
+[data-highlight-info="info-fallback"] .code-left .info-fallback,
+[data-highlight-info="info-settings"] .code-left .info-settings,
+[data-highlight-info="info-augs"] .code-left .info-augs,
+[data-highlight-info="info-props"] .code-left .info-props,
+[data-highlight-info="info-clip"] .code-left .info-clip,
+[data-highlight-info="info-augmented"] .code-left .info-augmented,
+[data-highlight-info="info-border"] .code-left .info-border,
+[data-highlight-info="info-html"] .code-left .info-html,
+[data-highlight-info="info-inset"] .code-left .info-inset,
+[data-highlight-info="info-background"] .code-left .info-background,
 .code-css span:hover,
 .code-html span:hover {
   background: #ebdcc0;
@@ -75,6 +86,56 @@
 .code-css::before {
   content: "CSS";
 }
+
+.highlighted-info {
+  position: absolute;
+  left: 34vw;
+  top: 140px;
+  width: 12.5vw;
+  height: 250px;
+  color: #ebdcc0;
+  font-family: monospace;
+  padding: 15px;
+  font-size: 1.5vw;
+  line-height: 30px;
+  --aug-border: 2px;
+  --aug-border-bg: radial-gradient(circle at top left, #b1ffff, #b1ffff 30px, transparent 30px),
+                   radial-gradient(circle at top right, #b1ffff, #b1ffff 30px, transparent 30px),
+                   radial-gradient(circle at bottom left, #b1ffff, #b1ffff 30px, transparent 30px),
+                   radial-gradient(circle at bottom right, #b1ffff, #b1ffff 30px, transparent 30px);
+  opacity: 1;
+  transition: opacity 0.25s ease, width 0.33s ease;
+  transition-delay: 0.33s;
+}
+
+[data-highlight-info=""] .highlighted-info {
+  width: 0px;
+  opacity: 0;
+  transition: opacity 0.25s ease, width 0.33s ease;
+  transition-delay: 0s;
+}
+
+.highlighted-info > div {
+  display: none;
+}
+
+[data-highlight-info="info-fallback"] .highlighted-info .show-fallback,
+[data-highlight-info="info-settings"] .highlighted-info .show-settings,
+[data-highlight-info="info-augs"] .highlighted-info .show-augs,
+[data-highlight-info="info-props"] .highlighted-info .show-props,
+[data-highlight-info="info-clip"] .highlighted-info .show-clip,
+[data-highlight-info="info-augmented"] .highlighted-info .show-augmented,
+[data-highlight-info="info-border"] .highlighted-info .show-border,
+[data-highlight-info="info-html"] .highlighted-info .show-html,
+[data-highlight-info="info-inset"] .highlighted-info .show-inset,
+[data-highlight-info="info-background"] .highlighted-info .show-background {
+  display: block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
 .group-3d {
   height: 400px;
   position: relative;

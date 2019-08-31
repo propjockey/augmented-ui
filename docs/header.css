@@ -98,24 +98,91 @@ body.background-haulted .header-animation-container {
   transform: translate(-50%, -50%) translateZ(-250px);
 }
 
-.test {
+/* .demo-presentation houses all the --pjAnim vars */
+.presentation-el {
   text-align: center;
   display: inline-block;
   box-sizing: border-box;
-  height: 220px;
-  width: 530px;
   padding: 70px;
+  height:               var( --pjAnim-height,         350px   );
+  width:                var( --pjAnim-width,          550px   );
+  --aug-inset:          var( --pjAnim-inset,          7px     );
+  --aug-inset-bg:       var( --pjAnim-inset-bg,       #ffd700 );
+  --aug-border:         var( --pjAnim-border,         5px     );
+  --aug-border-bg:      var( --pjAnim-border-bg,      #ffd700 );
+  --aug-border-opacity: var( --pjAnim-border-opacity, 0.5     );
+  --aug-l-offset:       var( --pjAnim-l-offset,       0px     );
+  --aug-b-offset:       var( --pjAnim-b-offset,       0px     );
+  --aug-tl:             var( --pjAnim-tl,             10px    );
+  --aug-tl-height:      var( --pjAnim-tl-height,      0px     );
+  --aug-tl-width:       var( --pjAnim-tl-width,       0px     );
+  --aug-tr:             var( --pjAnim-tr,             20px    );
+  --aug-tr-height:      var( --pjAnim-tr-height,      20px    );
+  --aug-tr-width:       var( --pjAnim-tr-width,       160px   );
+  --aug-br:             var( --pjAnim-br,             20px    );
+  --aug-br-height:      var( --pjAnim-br-height,      0px     );
+  --aug-br-width:       var( --pjAnim-br-width,       0px     );
+  --aug-bl:             var( --pjAnim-bl,             30px    );
+  --aug-bl-height:      var( --pjAnim-bl-height,      30px    );
+  --aug-bl-width:       var( --pjAnim-bl-width,       30px    );
+  --aug-t:              var( --pjAnim-t,              0px     );
+  --aug-t-height:       var( --pjAnim-t-height,       0px     );
+  --aug-t-width:        var( --pjAnim-t-width,        0px     );
+  --aug-r:              var( --pjAnim-r,              0px     );
+  --aug-r-height:       var( --pjAnim-r-height,       0px     );
+  --aug-r-width:        var( --pjAnim-r-width,        0px     );
+  --aug-b:              var( --pjAnim-b,              15px    );
+  --aug-b-height:       var( --pjAnim-b-height,       15px    );
+  --aug-b-width:        var( --pjAnim-b-width,        120px   );
+  --aug-l:              var( --pjAnim-l,              20px    );
+  --aug-l-height:       var( --pjAnim-l-height,       210px   );
+  --aug-l-width:        var( --pjAnim-l-width,        20px    );
+}
+.presentation-text {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 35px;
   text-shadow: 0px 0px 32px rgba(0, 0, 0, 0.8);
   color: white;
-  --aug-border: 5px;
-  --aug-border-bg: linear-gradient(to bottom right, #333726, var(--gold), #333726);
-  --aug-inset: 5px;
-  --aug-inset-bg: linear-gradient(to left, #ff2, var(--gold) 25%);
-  --aug-br-height: 110px;
+  width: 420px;
 }
-.sadNormalDiv {
-  background: #9b9988;
+
+.definitions-container {
+  pointer-events: all;
+  position: absolute;
+  bottom: 45px;
+  right: 25px;
+  height: 150px;
+  width: 300px;
+  transform-origin: 100% 50%;
+  transform: rotateY(-5deg);
+}
+.definitions-container .def {
+  padding: 10px;
+  --aug-inset: 3px;
+  --aug-inset-bg: rgba(0, 0, 0, 0.25);
+  --aug-border: 2px;
+  --aug-border-bg: var(--gold88);
+  --aug-border-fallback-color: #ffd700;
+  --aug-tr: 6px;
+  --aug-bl: 6px;
+  --aug-br: 25px;
+  --aug-tl: 25px;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  line-height: 15px;
+}
+.definitions-container .def b,
+.definitions-container .def em {
+  font-size: 16px;
+}
+.definitions-container .def span {
+  font-size: 12px;
 }
 
 .bg-controls-container {

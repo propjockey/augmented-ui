@@ -3,8 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>augmented-ui - Integrate your apps with technology</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#c4aa22">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="theme-color" content="#ffd700">
     <script src="https://unpkg.com/platform@1.3.5/platform.js"></script>
-    <link rel="stylesheet" type="text/css" href="../augmented.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146833088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-146833088-1');
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="./augmented.css">
     <style>
       .ua {
         margin-bottom: 10px;
@@ -248,72 +266,92 @@
         augmented-ui=" tl-clip-y t-clip-y tr-clip-y r-clip-y br-clip-y b-clip-y bl-clip-y l-clip-y <b>exe</b> "<br>
         augmented-ui=" tl-inherit t-inherit tr-inherit r-inherit br-inherit b-inherit bl-inherit l-inherit <b>exe</b> "<br>
         (cannot inherit from inherit currently. inherit only works if the augmented-ui element is a direct descendant of the augmented-ui element that it's inheriting from)<br>
+        <br>
+        Note: must include an executable** aug (typically <b>exe</b>) for aug clipping to occur.<br>
       </section>
       <section>
         <label>Custom Properties for Augs:</label>
         <b>--aug-tl, --aug-t, --aug-tr, --aug-r, --aug-br, --aug-b, --aug-bl, --aug-l</b><br>
         Default: 15px<br>
-        Accepts: base size/radius in px / any fixed units<br>
-        Works on Augs: All<br>
+        Supports: base size/radius in px or any fixed units<br>
+        on Augs: All<br>
         <br>
         <b>--aug-tl-width, --aug-t-width, --aug-tr-width, --aug-r-width, --aug-br-width, --aug-b-width, --aug-bl-width, --aug-l-width</b><br>
         Default: varied<br>
-        Accepts: px / any fixed units<br>
+        Supports: px or any fixed units<br>
         on Augs: *-rect, *-clip-x, *-clip-y<br>
         <br>
-        Accepts: %<br>
+        Supports: %<br>
         on Augs: *-rect, *-clip-x<br>
         <br>
         <b>--aug-tl-height, --aug-t-height, --aug-tr-height, --aug-r-height, --aug-br-height, --aug-b-height, --aug-bl-height, --aug-l-height</b><br>
         Default: varied<br>
-        Accepts: px / any fixed units<br>
+        Supports: px or any fixed units<br>
         on Augs: *-rect, *-clip-x, *-clip-y<br>
         <br>
-        Accepts: %<br>
+        Supports: %<br>
         on Augs: *-rect, *-clip-y<br>
+        <br>
+        <b>--aug-t-origin-x, --aug-b-origin-x</b><br>
+        Default: half way between the innermost point of the left and right corner augs, along the same edge<br>
+        Supports: any unit<br>
+        on Augs: t-*, b-* respectively<br>
+        Ex: 50% to center it in the middle of the element instead of centered between the corner augs<br>
+        <br>
+        <b>--aug-l-origin-y, --aug-r-origin-y</b><br>
+        Default: half way between the innermost point of the top and bottom corner augs, along the same edge<br>
+        Supports: any unit<br>
+        on Augs: l-*, r-* respectively<br>
+        Ex: 50% to center it in the middle of the element instead of centered between the corner augs<br>
+        <br>
+        <b>--aug-t-offset, --aug-r-offset, --aug-b-offset, --aug-l-offset</b><br>
+        Default: 0px<br>
+        Supports: any unit<br>
+        on Augs: t-*, r-*, b-*, l-* respectively<br>
+        Ex: -25px to shift the aug position -25px from its origin. (on top/bottom a negative value shifts left, on right/left it shifts up)<br>
         <br>
       </section>
       <section>
         <label>Custom Properties for elements with the <b>exe</b> augmented-ui option:</label>
         <b>--aug-border</b><br>
         Default: 0px<br>
-        Accepts: width in px / any fixed units<br>
+        Supports: width in px or any fixed units<br>
         This is the border's size<br>
         <br>
         <b>--aug-border-bg</b><br>
         Default: none<br>
-        Accepts: same as css background<br>
+        Supports: same as css background<br>
         <br>
         <b>--aug-border-opacity</b><br>
         Default: 1<br>
-        Accepts: number between 0 and 1 inclusive with no unit<br>
+        Supports: number between 0 and 1 inclusive with no unit<br>
         <br>
         <b>--aug-inset</b><br>
         Default: 0px<br>
-        Accepts: distance in px / any fixed units<br>
+        Supports: distance in px or any fixed units<br>
         This is the distance between the inner edge of the border and the inset bg itself<br>
         <br>
         <b>--aug-inset-bg</b><br>
         Default: none<br>
-        Accepts: same as css background<br>
+        Supports: same as css background<br>
         <br>
         <b>--aug-inset-opacity</b><br>
         Default: 1<br>
-        Accepts: number between 0 and 1 inclusive with no unit<br>
+        Supports: number between 0 and 1 inclusive with no unit<br>
         <br>
         /// fallback values for browsers without clip-path (-webkit-clip-path is unreliable) (Safari, pre-chromium Edge, Old Opera) ///<br>
         <b>--aug-border-radius-fallback</b><br>
         Default: an automatic calculation based on size of any corresponding corner aug equipped to the element.<br>
-        Accepts: same as css border-radius<br>
+        Supports: same as css border-radius<br>
         Note: augs along the edges are not rendered or considered for these browsers, only corner augs are simulated<br>
         <br>
         <b>--aug-border-radius-fallback-inset</b><br>
         Default: an automatic calculation based on size of any corresponding corner aug equipped to the element, minus the (border width + inset distance).<br>
-        Accepts: same as css border-radius<br>
+        Supports: same as css border-radius<br>
         <br>
         <b>--aug-border-fallback-color</b><br>
         Default: the value of --aug-border-bg, else transparent<br>
-        Accepts: color value<br>
+        Supports: color value<br>
         Note: if --aug-border-bg is not suitable as a border-color value, the border will not draw unless this fallback is set<br>
         The border is drawn on a pseudo element like the full-support one is, so it will not upset layout if it is drawn or not<br>
       </section>
@@ -321,7 +359,7 @@
       TODO: notes about other executable** modes on an augmented element<br>
       TODO: notes about clipping delegated elements within an augmented element (border-el, inset-el, etc)<br>
       <br>
-      * "augs" in augmented-ui are partial clip path polygons, named after "augs" in the cyberpunk genra (large pieces of technology integrated into the squishy human body)<br>
+      * "augs" in augmented-ui are partial clip path polygons, named after "augs" in the cyberpunk genera (often large pieces of technology integrated into the squishy human body)<br>
       ** "executable" augmented-ui options (like <b>exe</b>) are responsible for stitching together the path partials and setting an actual final clip-path polygon
     </div>
 
@@ -882,5 +920,88 @@
         </div>
       </div>
     </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Top/Bottom Aug Offset Non-Inheritance</b>
+    <div class="test-aug-non-inheritance">
+      <div augmented-ui="t-clip-x b-clip-y exe" style="--aug-t: 20px; --aug-b: 30px; --aug-t-offset: -150px; --aug-b-offset: 25%;">
+        <br>
+        t -150px, b 25%<br>
+        <div augmented-ui="t-clip-x b-clip-y exe" style="--aug-t: 20px; --aug-b: 30px;">
+          <br>
+          t default, b default<br>
+          <div augmented-ui="t-clip-y b-clip-x exe" style="--aug-t: 25px; --aug-b: 15px; --aug-t-offset: 50px; --aug-b-offset: -50px;">
+            <br>
+            t 50px, b -50px<br>
+            <div augmented-ui="t-clip-y b-clip-x exe" style="--aug-t: 25px; --aug-b: 15px; --aug-t-offset: -50px; --aug-b-offset: 50px;">
+              <br>
+              t -50px, b 50px<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Right/Left Aug Offset Non-Inheritance</b>
+    <div class="test-aug-non-inheritance">
+      <div augmented-ui="r-clip-x l-clip-y exe" style="--aug-t: 20px; --aug-b: 30px; --aug-r-offset: -150px; --aug-l-offset: 25%;">
+        <br>
+        r -150px, l 25%<br>
+        <div augmented-ui="r-clip-x l-clip-y exe" style="--aug-t: 20px; --aug-b: 30px;">
+          <br>
+          r default, l default<br>
+          <div augmented-ui="r-clip-y l-clip-x exe" style="--aug-t: 25px; --aug-b: 15px; --aug-r-offset: 50px; --aug-l-offset: -50px;">
+            <br>
+            r 50px, l -50px<br>
+            <div augmented-ui="r-clip-y l-clip-x exe" style="--aug-t: 25px; --aug-b: 15px; --aug-r-offset: -50px; --aug-l-offset: 50px;">
+              <br>
+              r -50px, l 50px<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Top/Bottom Aug Origin X Non-Inheritance</b>
+    <div class="test-aug-non-inheritance">
+      <div augmented-ui="t-clip-x b-clip-y tr-round exe" style="--aug-t: 20px; --aug-b: 30px; --aug-tr: 50px; --aug-t-origin-x: 50%; --aug-b-origin-x: 70px;">
+        <br>
+        t 50%, b 70px<br>
+        <div augmented-ui="t-clip-x b-clip-y tr-round exe" style="--aug-t: 20px; --aug-b: 30px; --aug-tr: 50px;">
+          <br>
+          t default, b default<br>
+          <div augmented-ui="t-clip-y b-clip-x exe" style="--aug-t: 25px; --aug-b: 15px; --aug-t-origin-x: 25%; --aug-b-origin-x: 75%;">
+            <br>
+            t 25%, b 75%<br>
+            <div augmented-ui="t-clip-y b-clip-x exe" style="--aug-t: 25px; --aug-b: 15px; --aug-t-origin-x: 75%; --aug-b-origin-x: 25%;">
+              <br>
+              t 75%, b 25%<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Right/Left Aug Origin Y Non-Inheritance</b>
+    <div class="test-aug-non-inheritance">
+      <div augmented-ui="r-clip-x l-clip-y tr-round exe" style="--aug-t: 20px; --aug-b: 30px; --aug-tr: 50px; --aug-r-origin-y: 50%; --aug-l-origin-y: 70px;">
+        <br>
+        l 70px, r 50%<br>
+        <div augmented-ui="r-clip-x l-clip-y tr-round exe" style="--aug-t: 20px; --aug-b: 30px; --aug-tr: 50px;">
+          <br>
+          l default, r default<br>
+          <div augmented-ui="r-clip-y l-clip-x exe" style="--aug-t: 25px; --aug-b: 15px; --aug-r-origin-y: 25%; --aug-l-origin-y: 75%;">
+            <br>
+            l 75%, r 25%<br>
+            <div augmented-ui="r-clip-y l-clip-x exe" style="--aug-t: 25px; --aug-b: 15px; --aug-r-origin-y: 75%; --aug-l-origin-y: 25%;">
+              <br>
+              l 25%, r 75%<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
