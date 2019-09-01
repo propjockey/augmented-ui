@@ -1,0 +1,232 @@
+@media (max-width: 768px) {
+  .header-animation-container,
+  .demo-presentation,
+  .header-gap,
+  .section-1,
+  .section-2,
+  .section-3,
+  .section-4 {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .header-animation-container,
+  .demo-presentation {
+    max-height: none;
+  }
+  .header-gap {
+    height: calc(var(--headerHeight, 500px) - 20px);
+  }
+
+  .presentation-focus {
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+  }
+  .presentation-el {
+    left: 50%;
+    transform: translate(-50%, -20%) scale(0.5);
+  }
+  .presentation-text {
+    font-size: 24px;
+  }
+  .bg-controls-container {
+    display: none;
+  }
+  .definitions-container {
+    transform: none;
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-1 {
+    grid-template-areas: "top" "bottom";
+    grid-template-columns: initial;
+    height: auto;
+  }
+  .section-info {
+    grid-area: top;
+    width: 100%;
+    max-width: 100%;
+  }
+  .code-display-group {
+    grid-area: bottom;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    padding-top: 0px;
+    margin-bottom: 50px;
+  }
+  .code-display-group::after {
+    content: "See desktop site for interactive code details!";
+    display: block;
+    padding: 20px;
+    text-align: center;
+    color: #ebdcc0;
+    font-size: 20px;
+  }
+  .group-3d {
+    grid-area: top;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+  }
+  .code-left {
+    grid-area: code;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    padding: 50px;
+    margin: 10px;
+    transform: scale(0.75);
+    display: none;
+  }
+  .highlighted-info {
+    grid-area: info;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    left: auto;
+    width: 90%;
+    display: none;
+  }
+
+  .expanded-labels {
+    font-size: 16px;
+  }
+
+  .section-2 {
+    height: auto;
+  }
+  .section-2 .left-side,
+  .section-2 .right-side {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .section-2 .left-side > *,
+  .section-2 .right-side > * {
+    position: relative;
+    top: initial;
+    width: 90%;
+    left: initial;
+    right: initial;
+  }
+  .section-2 .step-html .glitch, .section-2 .step-html .glitch::before, .section-2 .step-html .glitch::after {
+    font-size: 16px;
+  }
+
+  .section-2 .left-side h2 {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    left: 0px;
+  }
+
+  .section-2 .right-side {
+    perspective: initial;
+    left: auto;
+    right: auto;
+    width: 90%;
+    padding: 0px;
+    margin: 0px;
+  }
+  .section-2 .left-side > .plugin-available-container {
+    display: inline-block;
+    width: auto;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .section-2-text,
+  .section-2-free {
+    padding: 20px;
+    padding-top: 0px;
+  }
+  .load-panel,
+  .hover-panel {
+    height: 600px;
+    margin-bottom: 50px;
+    width: 100%!important;
+    left: 3%!important;
+    margin-bottom: 50px;
+  }
+  .result-detail,
+  .my-spliced-augs,
+  .section-2 .step {
+    font-size: 16px;
+  }
+  .load-panel > *,
+  .hover-panel > * {
+    opacity: 1;
+  }
+
+  .section-3 > :first-child {
+    perspective: initial!important;
+    display: block!important;
+  }
+  .monitor {
+    width: 100%;
+    transform: none;
+    margin: 0px;
+  }
+  .monitor .image-frame {
+    width: 70%;
+    left: 30px;
+    min-height: 300px;
+  }
+  .monitor .image-frame pre {
+    font-size: 10px;
+    overflow-x: auto;
+  }
+  .image-frame .title {
+    font-size: 13px;
+  }
+  .monitor-secret-icon {
+    width: 77px!important;
+    top: 30%;
+  }
+  .monitor-icons {
+    margin-right: 0;
+    right: 30px;
+    width: 70px;
+    display: block;
+  }
+  .monitor-icon {
+    width: 110%;
+  }
+  .monitor-icon span {
+    font-size: 16px;
+  }
+  .monitor-icon [augmented-ui] {
+    font-size: 16px;
+  }
+  .section-3 h2 {
+    width: 100%;
+  }
+  .section-3-info {
+    left: 5%;
+    width: 90%;
+  }
+
+  .section-4 > [augmented-ui] {
+    grid-template-columns: 90%;
+    padding-left: 5%;
+  }
+
+  .section-4 h3 {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .crypto-address {
+    font-size: 13px;
+  }
+}

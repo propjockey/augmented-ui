@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta id="vp" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>augmented-ui - Integrate your apps with technology</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/section-2.css">
     <link rel="stylesheet" type="text/css" href="/section-3.css">
     <link rel="stylesheet" type="text/css" href="/section-4.css">
+    <link rel="stylesheet" type="text/css" href="/mobile.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146833088-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -40,6 +42,12 @@
         }
         window.addEventListener("resize", informCSS)
         informCSS()
+
+        window.onload = function () {
+          if (b.clientWidth < 450) {
+            document.getElementById("vp").setAttribute("content","user-scalable=no,width=450");
+          }
+        }
       })()
     </script>
     <div class="demo-presentation" data-attr-spliced-ignore>

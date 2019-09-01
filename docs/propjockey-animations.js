@@ -533,7 +533,9 @@ const presentationAnim = new PropJockey({
     }
   }
 })
-presentationAnim.play(presetnationContainer)
+if (document.body.clientWidth > 768) {
+  presentationAnim.play(presetnationContainer)
+}
 
 
 /* code animation */
