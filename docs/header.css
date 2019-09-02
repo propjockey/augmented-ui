@@ -51,6 +51,10 @@ body.anti-aug .aug-exe:after {
   --aug-l-height: 0px;
   --aug-l-width: 0px;
 }
+body.anti-aug .presentation-el {
+  --aug-border-bg: var(--gold88);
+  --aug-inset-bg: var(--gold);
+}
 .header-animation-container {
   position: absolute;
   top: 0px;
@@ -144,8 +148,7 @@ body.background-haulted .header-animation-container {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 35px;
-  text-shadow: 0px 0px 32px rgba(0, 0, 0, 0.8);
-  color: white;
+  color: #442200;
   width: 420px;
 }
 
@@ -291,4 +294,23 @@ h1.top-left {
   width: 170px;
   height: 30px;
   --aug-br: 30px;
+}
+
+.header-fallback-info {
+  position: absolute;
+  left: 170px;
+  top: 0px;
+  padding: 7px;
+  padding-left: 15px;
+  color: gold;
+  width: calc(100% - 170px);
+  height: 30px;
+  opacity: 0.5;
+  font-size: 14px;
+  display: none;
+}
+@supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) {
+  .header-fallback-info {
+    display: block;
+  }
 }

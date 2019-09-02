@@ -160,8 +160,8 @@ const presentationAnim = new PropJockey({
       setter: "setter.element.cssVar",
       slide: "slide.color.hex",
       keyframes: [
-        { position: 0, value: "#9b9988" },
-        { position: 2500, value: "#9b9988" },
+        { position: 0, value: "#9c9258" },
+        { position: 2500, value: "#9c9258" },
         { position: 2500 + 2000, value: "#ffd700" }
       ]
     },
@@ -539,19 +539,23 @@ if (document.body.clientWidth > 768) {
 
 
 /* code animation */
+  const hexaToRgba = (obj, propName, newVal, prop) => {
+    const rgba = newVal.replace(/#?(..)/g, (_, x) => parseInt(x, 16) + ", ").replace(/(\d+), $/, (_, x) => parseInt(x) / 255)
+    obj.style.setProperty(propName, `rgba(${rgba})`)
+  }
   const antiAugColorAnimation = new PropJockey({
     defaultSetter: "setter.element.cssVar",
     props: {
       "--gold":     { slide: "slide.color.hex",  keyframes: [ { position: 0, value: "#ffd700"   }, { position: 5000, value: "#d0d0d0"   } ] },
-      "--gold88":   { slide: "slide.color.hexa", keyframes: [ { position: 0, value: "#ffd70088" }, { position: 5000, value: "#d0d0d088" } ] },
+      "--gold88":   { slide: "slide.color.hexa", keyframes: [ { position: 0, value: "#ffd70088" }, { position: 5000, value: "#d0d0d088" } ], setter: hexaToRgba },
       "--goldDark": { slide: "slide.color.hex",  keyframes: [ { position: 0, value: "#eda725"   }, { position: 5000, value: "#acacac"   } ] },
     }
   })
 
   const antiAugScum = () => {
-    introAnimation.stop(demoEl)
+    presentationAnim.stop(presetnationContainer)
     setTimeout(() => {
-      demoEl.innerHTML = "You monster."
+      presentationText.innerHTML = "You monster."
       document.body.classList.add("anti-aug-transitions")
     }, 250)
     setTimeout(() => {
@@ -560,14 +564,14 @@ if (document.body.clientWidth > 768) {
     }, 1500)
   }
   const proAugHero = () => {
-    demoEl.innerHTML = "The augmented are elments too.<br>#proAug"
+    presentationText.innerHTML = "The augmented are elments too.<br>#proAug"
     setTimeout(() => {
       document.body.classList.remove("anti-aug")
       antiAugColorAnimation.play(document.body, { speed: -1 })
     }, 250)
     setTimeout(() => {
       document.body.classList.remove("anti-aug-transitions")
-      introAnimation.play(demoEl)
+      presentationAnim.play(presetnationContainer)
     }, 10500)
   }
 
