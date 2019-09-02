@@ -3,15 +3,32 @@
   border-top: 20px solid #c89373;
   padding-top: 50px;
   background: #000000;
+  display: grid;
+  grid-template-areas: "s3-monitor s3-info-top"
+                       "s3-info-bottom s3-info-bottom";
+  grid-template-columns: 55% 1fr;
+  padding: 50px;
+}
+
+@media (max-width: 1024px) {
+  .section-3 {
+    grid-template-areas: "s3-info-top" "s3-monitor" "s3-info-bottom";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+  }
 }
 
 .monitor {
-  width: 55vw;
+  grid-area: s3-monitor;
   max-width: 925px;
-  margin-left: 75px;
   height: 500px;
+  margin-top: 60px;
   transform-origin: 50% 100%;
-  transform: rotateY(30deg);
+  transform: perspective(2077px) rotateY(24deg);
   --aug-border: 10px;
   --aug-border-bg: var(--aug-inset-bg);
   --aug-border-opacity: 0.75;
@@ -51,6 +68,22 @@
   --aug-inset: 5px;
   --aug-inset-bg: #222;
   --aug-inset-opacity: 0.87;
+}
+@media (max-width: 1024px) {
+  .monitor {
+    transform: none;
+    max-width: 700px;
+    max-height: 500px;
+    margin-bottom: 50px;
+  }
+  .monitor .image-frame {
+    width: 70%
+  }
+}
+@media (max-width: 750px) {
+  .monitor {
+    display: none;
+  }
 }
 
 .image-frame .title {
@@ -105,7 +138,7 @@
   position: absolute;
   right: 40px;
   top: 40px;
-  margin-right: 3vw;
+  margin-right: 30px;
   display: grid;
   grid-template-columns: 6vw;
   grid-row-gap: 15px;
@@ -173,18 +206,23 @@
 .section-3 h2 {
   color: gold;
   padding-top: 50px;
-  font-size: 30px;
-  width: 25vw;
+  font-size: 2rem;
   text-align: center;
   white-space: nowrap;
-  margin-left: auto;
-  margin-right: 8vw;
+}
+@media (max-width: 1024px) {
+  .section-3 h2 {
+    white-space: normal;
+  }
+}
+
+.section-3-first-info {
+  grid-area: s3-info-top;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .section-3-info {
-  position: relative;
-  right: 1vw;
-  width: 38vw;
   color: #eeeecc;
   padding-top: 20px;
 }
@@ -203,8 +241,16 @@
 }
 
 .section-3-info-continued {
-  margin-left: 10vw;
-  margin-right: 5vw;
+  grid-area: s3-info-bottom;
   color: #eeeecc;
+  padding-left: 10vw;
+  padding-right: 5vw;
   padding-bottom: 50px;
+}
+
+@media (max-width: 1024px) {
+  .section-3-info-continued {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }

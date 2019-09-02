@@ -5,16 +5,76 @@
               repeating-linear-gradient(to bottom, transparent, transparent 24px, rgba(235, 220, 192, 0.05) 25px, transparent 26px, transparent 100px),
               #4b362f;
   background-size: auto auto, 50px 50px, 100px 100px, 100px 100px, auto auto;
-  height: 650px;
+  min-height: 650px;
   border-bottom: 25px solid #c89373;
+  margin-top: -20px;
   display: grid;
   grid-template-columns: 65% 35%;
 }
+
+@media (max-width: 768px) {
+  .section-1 {
+    grid-template-areas: "top" "bottom";
+    grid-template-columns: initial;
+    height: auto;
+  }
+}
+
+.section-info {
+  padding: 20px;
+  color: #ebdcc0;
+  max-width: 415px;
+}
+@media (max-width: 768px) {
+  .section-info {
+    grid-area: top;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.section-info ul {
+  list-style: disc;
+  position: relative;
+  left: 15px;
+  margin-bottom: 20px;
+}
+.section-info li {
+  margin-top: 5px;
+}
+.section-info a {
+  color: #ebdcc0;
+  text-decoration: underline;
+}
+.section-1 h2 {
+  margin-top: 50px;
+  font-size: 2.5rem;
+  font-weight: normal;
+  text-shadow: 0px 0px 2px #444444;
+  text-transform: lowercase;
+  color: #c89373;
+}
+
 .code-display-group {
   display: grid;
   grid-template-columns: 50% 50%;
   perspective: 2077px;
   padding-top: 20px;
+}
+@media (max-width: 768px) {
+  .code-display-group {
+    grid-area: bottom;
+    display: block;
+    padding-top: 0px;
+    margin-bottom: 50px;
+  }
+  .code-display-group::after {
+    content: "See desktop site for interactive code details!";
+    display: block;
+    padding: 20px;
+    text-align: center;
+    color: #ebdcc0;
+    font-size: 1.25rem;
+  }
 }
 .code-left {
   height: 500px;
@@ -32,10 +92,15 @@
   --aug-r-offset: -30px;
   --aug-r-width: 10px;
 }
+@media (max-width: 768px) {
+  .code-left {
+    display: none;
+  }
+}
 .code-css,
 .code-html {
   font-family: monospace;
-  font-size: 13px;
+  font-size: 0.75rem;
   line-height: 15px;
   position: relative;
   left: 5%;
@@ -49,7 +114,7 @@
 .code-css span,
 .code-html span {
   font-family: monospace;
-  font-size: 13px;
+  font-size: 0.75rem;
   line-height: 15px;
 }
 
@@ -107,6 +172,11 @@
   transition: opacity 0.25s ease, width 0.33s ease;
   transition-delay: 0.33s;
 }
+@media (max-width: 768px) {
+  .highlighted-info {
+    display: none;
+  }
+}
 
 [data-highlight-info=""] .highlighted-info {
   width: 0px;
@@ -144,6 +214,13 @@
   transform-origin: 50% 100%;
   transform: scale(0.75) rotateY(-30deg) rotateX(45deg);
   transition: transform 0.5s ease, left 0.5s ease;
+}
+@media (max-width: 768px) {
+  .group-3d {
+    width: 90%;
+    max-width: 500px;
+    margin-top: -50px;
+  }
 }
 .my-augfiguration {
   position: absolute;
@@ -201,6 +278,11 @@
   transition: transform 250ms ease, width 250ms ease;
   transition-delay: 0s;
 }
+@media (max-width: 768px) {
+  .expanded-labels {
+    font-size: 1rem;
+  }
+}
 .group-3d:not(.compressed) .expanded-labels {
   width: 50%;
   transform: rotateX(-45deg) translateY(-110px);
@@ -212,30 +294,4 @@
   height: 10px;
   width: 100%;
   margin-bottom: 50px;
-}
-.section-info {
-  padding: 20px;
-  color: #ebdcc0;
-  max-width: 415px;
-}
-.section-info ul {
-  list-style: disc;
-  position: relative;
-  left: 15px;
-  margin-bottom: 20px;
-}
-.section-info li {
-  margin-top: 5px;
-}
-.section-info a {
-  color: #ebdcc0;
-  text-decoration: underline;
-}
-.section-1 h2 {
-  margin-top: 50px;
-  font-size: 40px;
-  font-weight: normal;
-  text-shadow: 0px 0px 2px #444444;
-  text-transform: lowercase;
-  color: #c89373;
 }

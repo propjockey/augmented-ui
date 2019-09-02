@@ -61,7 +61,7 @@ const fpsCallback = (function () {
 
 
 // --pjAnim-
-const presetnationContainer = document.querySelector(".demo-presentation")
+const presetnationContainer = document.querySelector(".header-presentation")
 const presetnationEl = document.querySelector(".presentation-el")
 const presentationText = document.querySelector(".presentation-text")
 const presentationAnim = new PropJockey({
@@ -533,7 +533,7 @@ const presentationAnim = new PropJockey({
     }
   }
 })
-if (document.body.clientWidth > 768) {
+if (document.body.clientWidth > 1024) {
   presentationAnim.play(presetnationContainer)
 }
 

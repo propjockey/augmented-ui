@@ -1,21 +1,35 @@
 .section-2 {
   background: linear-gradient(to bottom right, #13242c 40%, #0b1519 70%);
-  height: 600px;
+  min-height: 600px;
   position: relative;
+  display: grid;
+  grid-template-areas: "s2-plugin s2-load s2-hover"
+                       "s2-title s2-load s2-hover"
+                       "s2-info s2-load s2-hover";
+  grid-template-columns: 30% 1fr 1fr;
+  grid-template-rows: 120px 30px auto;
+  padding-top: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 50px;
+  perspective: 2077px;
 }
 
-.section-2 .left-side {
- width: 30%;
- position: relative;
+@media (max-width: 1024px) {
+  .section-2 {
+    grid-template-areas: "s2-plugin" "s2-title" "s2-info" "s2-load" "s2-hover";
+    grid-template-columns: 1fr;
+    grid-template-rows: 120px 30px auto 600px 600px;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+  }
 }
 
 .plugin-available-container {
-  position: absolute;
-  top: 40px;
-  left: 40px;
+  grid-area: s2-plugin;
   padding: 5px;
-  width: 70%;
-  min-width: 400px;
   height: 80px;
   font-weight: bold;
   color: #fefcfe;
@@ -64,26 +78,34 @@
   --aug-l-height: 42px;
   text-shadow: 0 0 20px #fefcfe;
 }
+@media (max-width: 425px) {
+  .plugin-header {
+    font-size: 1rem;
+    width: auto;
+  }
+}
 
-.section-2 .left-side h2 {
-  position: absolute;
-  top: 150px;
-  left: 50px;
+.section-2 h2 {
+  grid-area: s2-title;
   font-size: 35px;
   color: #fefcfe;
   white-space: nowrap;
 }
 
-.section-2 .left-side h2 em {
+.section-2 h2 em {
   font-size: 40px;
   position: relative;
 }
+@media (max-width: 1024px) {
+  .section-2 h2,
+  .section-2 h2 em {
+    font-size: 2rem;
+  }
+}
 
 .section-2-text {
-  width: 400px;
-  position: absolute;
-  top: 235px;
-  left: 50px;
+  grid-area: s2-info;
+  padding-top: 50px;
   color: #5da1c6;
   font-size: 20px;
   line-height: 35px;
@@ -99,16 +121,7 @@
   font-weight: bold;
 }
 
-.section-2-free {
-  width: 400px;
-  position: absolute;
-  top: 465px;
-  left: 50px;
-  color: #5da1c6;
-  font-size: 15px;
-  line-height: 30px;
-}
-.section-2-free a {
+.section-2-text a {
   color: #5da1c6;
   font-size: 15px;
   line-height: 30px;
@@ -121,19 +134,10 @@
   font-family: monospace;
 }
 
-.section-2 .right-side {
- width: calc(70% - 100px);
- position: absolute;
- right: calc((100% - 400px - (70% - 100px)) / 2);
- top: 0px;
- height: 100%;
- padding: 50px;
- perspective: 2077px;
-}
-
 .load-panel {
-  position: absolute;
-  left: 50px;
+  grid-area: s2-load;
+  margin-left: 50px;
+  margin-right: 5px;
   --aug-l: 10px;
   --aug-l-height: 40%;
   --aug-tr: 25px;
@@ -142,8 +146,6 @@
   --aug-tl-width: 80px;
   --aug-border: 5px;
   --aug-border-bg: #5da1c6;
-  height: calc(100% - 100px);
-  width: calc(50% - 55px);
   transform-origin: 100% 50%;
   transform: rotateY(15deg);
 }
@@ -152,8 +154,9 @@
   transition: opacity 0.25s ease;
 }
 .hover-panel {
-  position: absolute;
-  right: 50px;
+  grid-area: s2-hover;
+  margin-right: 50px;
+  margin-left: 5px;
   --aug-r: 10px;
   --aug-r-height: 40%;
   --aug-tr: 25px;
@@ -162,8 +165,6 @@
   --aug-tl-width: 80px;
   --aug-border: 5px;
   --aug-border-bg: #5da1c6;
-  height: calc(100% - 100px);
-  width: calc(50% - 55px);
   transform-origin: 0px 50%;
   transform: rotateY(-15deg);
 }
@@ -173,6 +174,17 @@
 }
 .hover-panel:hover > * {
   opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .load-panel,
+  .hover-panel {
+    transform: none;
+    max-width: 750px;
+    margin: 5px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
 }
 
 .loading-bar {
@@ -219,7 +231,7 @@
   --aug-tr-height: 20px;
   --aug-tr-width: 50px;
   color: #5da1c6;
-  font-size: 0.65vw;
+  font-size: 0.75rem;
   padding-top: 20px;
   padding-left: 5vw;
   font-family: monospace;
@@ -229,14 +241,14 @@
   padding-top: 20px;
   padding-left: 5vw;
   color: #5da1c6;
-  font-size: 0.65vw;
+  font-size: 0.75rem;
   font-family: monospace;
 }
 .section-2 .step-html .glitch,
 .section-2 .step-html .glitch::before,
 .section-2 .step-html .glitch::after {
   color: #fefcfe;
-  font-size: 0.65vw;
+  font-size: 0.75rem;
   font-family: monospace;
   white-space: pre;
 }
@@ -325,6 +337,23 @@ input.my-spliced-augs {
   mask-image: repeating-linear-gradient(black, black 2px, rgba(0, 0, 0, 0.5) 3px);
 }
 
+
+@media (max-width: 1024px) {
+  .result-detail,
+  .my-spliced-augs,
+  .section-2 .step {
+    font-size: 0.75rem;
+  }
+  .load-panel > *,
+  .hover-panel > * {
+    opacity: 1;
+  }
+  .section-2 .step-html .glitch,
+  .section-2 .step-html .glitch::before,
+  .section-2 .step-html .glitch::after {
+    font-size: 0.75rem;
+  }
+}
 
 
 /* Glitch CSS (modified and masked), from css-tricks: https://css-tricks.com/glitch-effect-text-images-svg/ */

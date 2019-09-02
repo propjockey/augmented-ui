@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta id="vp" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>augmented-ui - Integrate your apps with technology</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -15,12 +15,11 @@
     <meta name="theme-color" content="#ffd700">
     <link rel="stylesheet" type="text/css" href="/augmented.css">
     <script type="module" src="/propjockey-animations.js"></script>
-    <link rel="stylesheet" type="text/css" href="/header.css">
+    <link rel="stylesheet" type="text/css" href="/section-0.css">
     <link rel="stylesheet" type="text/css" href="/section-1.css">
     <link rel="stylesheet" type="text/css" href="/section-2.css">
     <link rel="stylesheet" type="text/css" href="/section-3.css">
     <link rel="stylesheet" type="text/css" href="/section-4.css">
-    <link rel="stylesheet" type="text/css" href="/mobile.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146833088-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -31,30 +30,9 @@
     </script>
   </head>
   <body>
-    <div class="header-animation-container" augmented-ui="tl-clip-x bl-clip-x br-clip-x exe"></div>
-    <script>
-      (function () {
-        const b = document.body
-        const h = b.querySelector(".header-animation-container")
-        const informCSS = () => {
-          b.style.setProperty("--clientWidth", b.clientWidth)
-          b.style.setProperty("--headerHeight", h.clientHeight + "px")
-        }
-        window.addEventListener("resize", informCSS)
-        informCSS()
-
-        window.onload = function () {
-          if (b.clientWidth < 450) {
-            document.getElementById("vp").setAttribute("content","user-scalable=no,width=450");
-          }
-        }
-      })()
-    </script>
-    <div class="demo-presentation" data-attr-spliced-ignore>
-      <div class="presentation-focus">
-        <div class="presentation-el" augmented-ui="tr-clip-x l-clip-y bl-clip tl-round br-round b-clip-x exe">
-          <div class="presentation-text">augmented-ui</div>
-        </div>
+    <div class="header-presentation" augmented-ui="tl-clip-x bl-clip-x br-clip-x exe">
+      <div class="presentation-el" augmented-ui="tr-clip-x l-clip-y bl-clip tl-round br-round b-clip-x exe">
+        <div class="presentation-text">augmented-ui</div>
       </div>
       <div class="bg-controls-container">
         <div class="bg-controls" augmented-ui="tl-round tr-clip br-round bl-clip exe">
@@ -75,7 +53,8 @@
         </div>
       </div>
     </div>
-    <div class="header-gap">
+
+    <div class="header-top">
       <h1 class="top-left" augmented-ui="br-clip exe">augmented-ui</h1>
       <div class="header-fallback-info">Your browser doesn't support clip-path yet so you're seeing the softer, automatic elliptical border-radius fallback!</div>
     </div>
@@ -114,7 +93,7 @@
               --aug-inset-bg: #fbe806;
               background: linear-gradient(#ff604d, #b1ffff);
               color: #b1ffff;
-              font-size: 5vw;
+              font-size: 2rem;
               text-align: center;
               text-shadow: 0px 0px 10px #1c414c;
               line-height: 200px;
@@ -243,110 +222,106 @@
     </div>
 
     <div class="section-2">
-      <div class="left-side">
-        <div class="plugin-available-container">
-          <div class="hex-indicator" augmented-ui="tl-clip tr-clip br-clip bl-clip exe"></div>
-          <div class="plugin-header" augmented-ui="l-clip-y br-clip exe">PLUGIN AVAILABLE</div>
-          <div class="beta-label">BETA</div>
-        </div>
-
-        <h2>aug-attr-<em class="glitch" data-text="spliced">spliced</em>.js</h2>
-
-        <div class="section-2-text">
-          Skip the attribute, stick to {CSS}<br>
-          Import <em>aug-attr-spliced.js</em> to have the<br>
-          <em>augmented-ui</em> attributes automatically
-          added and updated, live, from your CSS to
-          your HTML with a new custom property:<br>
-          <span class="custom-prop">--augmented-ui</span>
-        </div>
-        <div class="section-2-free">
-          <h3>Use aug-attr-spliced.js in any project, for free.</h3>
-          &middot; Free :: BSD 2-Clause License<br>
-          &middot; Open Source :: <a href="https://www.npmjs.com/package/aug-attr-spliced">NPM</a>&nbsp;&nbsp;<a href="https://github.com/propjockey/aug-attr-spliced.js">GitHub</a>
-        </div>
+      <div class="plugin-available-container">
+        <div class="hex-indicator" augmented-ui="tl-clip tr-clip br-clip bl-clip exe"></div>
+        <div class="plugin-header" augmented-ui="l-clip-y br-clip exe">PLUGIN AVAILABLE</div>
+        <div class="beta-label">BETA</div>
       </div>
 
-      <div class="right-side">
-        <div class="load-panel" augmented-ui="tl-clip-x tr-clip-x br-clip l-clip-y exe">
-          <div class="loading-bar" augmented-ui="exe"></div>
-          <div class="step step-css" augmented-ui="tl-clip-x tr-clip-x bl-clip-x br-clip-x exe">
-            .my-spliced-augs {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--augmented-ui: tr-clip exe;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--aug-br: 25px;<br>
-            }
-          </div>
-          <div class="step step-html" augmented-ui="t-clip bl-clip-x br-clip-x exe">
-            &lt;span class="my-spliced-augs" <span class="glitch" data-text='  augmented-ui="br-clip exe"'>&nbsp;&nbsp;augmented-ui="br-clip exe"</span>&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;NAME:<br>
-            &lt;/span&gt;<br>
-            &lt;input class="my-spliced-augs" <span class="glitch" data-text='  augmented-ui="br-clip exe"'>&nbsp;&nbsp;augmented-ui="br-clip exe"</span> /&gt;
-          </div>
-          <div class="step step-result" augmented-ui="t-clip bl-clip br-clip exe">
-            <span class="my-spliced-augs" augmented-ui="br-clip exe">NAME:</span>
-            <input class="my-spliced-augs" augmented-ui="br-clip exe">
-            <div class="result-detail">augmented as soon as the page loads, based on the CSS</div>
-          </div>
+      <h2>aug-attr-<em class="glitch" data-text="spliced">spliced</em>.js</h2>
+
+      <div class="section-2-text">
+        Skip the attribute, stick to {CSS}<br>
+        Import <em>aug-attr-spliced.js</em> to have the<br>
+        <em>augmented-ui</em> attributes automatically
+        added and updated, live, from your CSS to
+        your HTML with a new custom property:<br>
+        <span class="custom-prop">--augmented-ui</span>
+        <br>
+        <h3>Use <em>aug-attr-spliced.js</em> in any project, for free.</h3>
+        &middot; Free :: BSD 2-Clause License<br>
+        &middot; Open Source :: <a href="https://www.npmjs.com/package/aug-attr-spliced">NPM</a>&nbsp;&nbsp;<a href="https://github.com/propjockey/aug-attr-spliced.js">GitHub</a>
+      </div>
+
+      <div class="load-panel" augmented-ui="tl-clip-x tr-clip-x br-clip l-clip-y exe">
+        <div class="loading-bar" augmented-ui="exe"></div>
+        <div class="step step-css" augmented-ui="tl-clip-x tr-clip-x bl-clip-x br-clip-x exe">
+          .my-spliced-augs {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;--augmented-ui: tr-clip exe;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;--aug-br: 25px;<br>
+          }
         </div>
-        <div onmouseenter="this.previousElementSibling.style.setProperty('--load-panel-opacity', 0.25)"
-             onmouseleave="this.previousElementSibling.style.setProperty('--load-panel-opacity', 1)"
-             class="hover-panel" augmented-ui="tr-clip-x tl-clip-x bl-clip r-clip-y exe"
-        >
-          <div class="step step-css" augmented-ui="tl-clip-x tr-clip-x bl-clip-x br-clip-x exe">
-            input:hover {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--augmented-ui: l-clip r-clip exe;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;--aug-l: 10px; --aug-r: 10px;<br>
-            }
-          </div>
-          <div class="step step-html" augmented-ui="t-clip bl-clip-x br-clip-x exe">
-            &lt;span class="my-spliced-augs" augmented-ui="br-clip exe"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;NAME:<br>
-            &lt;/span&gt;<br>
-            &lt;input class="my-spliced-augs"<br>
-            &nbsp;&nbsp;
-            <span class="show-on-input-hover">augmented-ui="l-clip r-clip exe"</span>
-            <span class="hide-on-input-hover">augmented-ui="br-clip exe"</span> /&gt;
-          </div>
-          <div class="step step-result" augmented-ui="t-clip bl-clip br-clip exe">
-            <span class="my-spliced-augs" augmented-ui="br-clip exe">NAME:</span>
-            <input class="my-spliced-augs" augmented-ui="br-clip exe" 
-              onmouseenter="this.parentNode.parentNode.classList.add('input-hover'); this.setAttribute('augmented-ui', 'l-clip r-clip exe');"
-              onmouseleave="this.parentNode.parentNode.classList.remove('input-hover'); this.setAttribute('augmented-ui', 'br-clip exe');"
-              value=" hover"
-            />
-            <div class="result-detail">augs applied on :hover in/out, as defined in the CSS</div>
-          </div>
+        <div class="step step-html" augmented-ui="t-clip bl-clip-x br-clip-x exe">
+          &lt;span class="my-spliced-augs" <span class="glitch" data-text='  augmented-ui="br-clip exe"'>&nbsp;&nbsp;augmented-ui="br-clip exe"</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;NAME:<br>
+          &lt;/span&gt;<br>
+          &lt;input class="my-spliced-augs" <span class="glitch" data-text='  augmented-ui="br-clip exe"'>&nbsp;&nbsp;augmented-ui="br-clip exe"</span> /&gt;
+        </div>
+        <div class="step step-result" augmented-ui="t-clip bl-clip br-clip exe">
+          <span class="my-spliced-augs" augmented-ui="br-clip exe">NAME:</span>
+          <input class="my-spliced-augs" augmented-ui="br-clip exe">
+          <div class="result-detail">augmented as soon as the page loads, based on the CSS</div>
+        </div>
+      </div>
+      <div onmouseenter="this.previousElementSibling.style.setProperty('--load-panel-opacity', 0.25)"
+           onmouseleave="this.previousElementSibling.style.setProperty('--load-panel-opacity', 1)"
+           class="hover-panel" augmented-ui="tr-clip-x tl-clip-x bl-clip r-clip-y exe"
+      >
+        <div class="step step-css" augmented-ui="tl-clip-x tr-clip-x bl-clip-x br-clip-x exe">
+          input:hover {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;--augmented-ui: l-clip r-clip exe;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;--aug-l: 10px; --aug-r: 10px;<br>
+          }
+        </div>
+        <div class="step step-html" augmented-ui="t-clip bl-clip-x br-clip-x exe">
+          &lt;span class="my-spliced-augs" augmented-ui="br-clip exe"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;NAME:<br>
+          &lt;/span&gt;<br>
+          &lt;input class="my-spliced-augs"<br>
+          &nbsp;&nbsp;
+          <span class="show-on-input-hover">augmented-ui="l-clip r-clip exe"</span>
+          <span class="hide-on-input-hover">augmented-ui="br-clip exe"</span> /&gt;
+        </div>
+        <div class="step step-result" augmented-ui="t-clip bl-clip br-clip exe">
+          <span class="my-spliced-augs" augmented-ui="br-clip exe">NAME:</span>
+          <input class="my-spliced-augs" augmented-ui="br-clip exe" 
+            onmouseenter="this.parentNode.parentNode.classList.add('input-hover'); this.setAttribute('augmented-ui', 'l-clip r-clip exe');"
+            onmouseleave="this.parentNode.parentNode.classList.remove('input-hover'); this.setAttribute('augmented-ui', 'br-clip exe');"
+            value=" hover"
+          />
+          <div class="result-detail">augs applied on :hover in/out, as defined in the CSS</div>
         </div>
       </div>
     </div>
+
     <div class="section-3">
-      <div style="display: flex; min-height: 650px; perspective: 2077px;">
-        <div style="display: inline-block; vertical-align: top; margin-top: 50px;" class="monitor select-old" augmented-ui="tl-clip tr-clip br-clip bl-clip b-clip-x exe">
-          <div class="recent-browsers image-frame" augmented-ui="tl-clip br-clip exe">
-            <span class="title">Same screenshot in browsers with clip-path</span>
-            <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
-            <a href="/recent-browsers.png"><img src="/recent-browsers.png"
-              title="As of August 31, 2019 ~70% of global users would experience this fully supported version according to data from caniuse.com"
-            /></a>
-          </div>
-          <div class="old-browsers image-frame" augmented-ui="tl-clip br-clip exe">
-            <span class="title">Screenshot of old browser fallbacks</span>
-            <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
-            <a href="/old-browsers.png"><img src="/old-browsers.png"
-              title="As of August 31, 2019 ~22% of global users would experience this fallback supported version according to data from caniuse.com"
-            /></a>
-          </div>
-          <div class="ancient-browsers image-frame" augmented-ui="tl-clip br-clip exe">
-            <span class="title">Ancient browsers don't hate it (IE11 screenshot)</span>
-            <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
-            <a href="/ancient-browsers.png"><img src="/ancient-browsers.png"
-              title="As of August 31, 2019 ~8% of global users would see this minimal interference version according to data from caniuse.com"
-            /></a>
-          </div>
-          <div class="top-secret image-frame" augmented-ui="tl-clip br-clip exe">
-            <span class="title">Future Ideas</span>
-            <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
-            <pre>
+
+      <div class="monitor select-old" augmented-ui="tl-clip tr-clip br-clip bl-clip b-clip-x exe">
+        <div class="recent-browsers image-frame" augmented-ui="tl-clip br-clip exe">
+          <span class="title">Same screenshot in browsers with clip-path</span>
+          <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
+          <a href="/recent-browsers.png"><img src="/recent-browsers.png"
+            title="As of August 31, 2019 ~70% of global users would experience this fully supported version according to data from caniuse.com"
+          /></a>
+        </div>
+        <div class="old-browsers image-frame" augmented-ui="tl-clip br-clip exe">
+          <span class="title">Screenshot of old browser fallbacks</span>
+          <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
+          <a href="/old-browsers.png"><img src="/old-browsers.png"
+            title="As of August 31, 2019 ~22% of global users would experience this fallback supported version according to data from caniuse.com"
+          /></a>
+        </div>
+        <div class="ancient-browsers image-frame" augmented-ui="tl-clip br-clip exe">
+          <span class="title">Ancient browsers don't hate it (IE11 screenshot)</span>
+          <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
+          <a href="/ancient-browsers.png"><img src="/ancient-browsers.png"
+            title="As of August 31, 2019 ~8% of global users would see this minimal interference version according to data from caniuse.com"
+          /></a>
+        </div>
+        <div class="top-secret image-frame" augmented-ui="tl-clip br-clip exe">
+          <span class="title">Future Ideas</span>
+          <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
+          <pre>
 ---------------------------------,--------------------------------------------------------
    FUTURE AUGS?                  |   FUTURE OPTIONS?
 ---------------------------------+--------------------------------------------------------
@@ -372,48 +347,47 @@
    * scoop-hd                    |   --aug-*-custom-inset: custom polygon partials
                                  |   
 ---------------------------------'--------------------------------------------------------
-            </pre>
-          </div>
-
-          <div class="monitor-icon monitor-secret-icon" onclick="this.parentNode.className='monitor select-secret'">
-            <div augmented-ui="bl-clip tr-clip exe">.TXT</div>
-            <span>Top-Secret</span>
-          </div>
-
-          <div class="monitor-icons">
-            <div class="monitor-icon monitor-recent-icon" onclick="this.parentNode.parentNode.className='monitor select-recent'">
-              <div augmented-ui="bl-clip tr-clip exe">.PNG</div>
-              <span>Recent-Browsers</span>
-            </div>
-            <div class="monitor-icon monitor-old-icon" onclick="this.parentNode.parentNode.className='monitor select-old'">
-              <div augmented-ui="bl-clip tr-clip exe">.PNG</div>
-              <span>Old-Browsers</span>
-            </div>
-            <div class="monitor-icon monitor-ancient-icon" onclick="this.parentNode.parentNode.className='monitor select-ancient'">
-              <div augmented-ui="bl-clip tr-clip exe">.PNG</div>
-              <span>Ancient-Browsers</span>
-            </div>
-          </div>
+          </pre>
         </div>
 
-        <div style="display: inline-block;">
-          <h2>Automatic Fallbacks,<br>Browser Support, &amp; Options</h2>
-          <div class="section-3-info">
-            <br>
-            <h3>Full support requires unprefixed clip-path</h3>
-            <ul>
-              <li>As of August 31, 2019 <b>~70%</b> of global users would experience the fully supported version according to data from caniuse.com</li>
-              <li>-webkit-clip-path works with augmented-ui in some browsers (ex: Opera 41) but doesn't in others (ex: Safari 12.1 on iOS) so no webkit fallbacks are included at this time. More precise feature detection could extend full support to specific webkit browsers in the near future.</li>
-            </ul>
-            <h3>Automatic fallbacks use elliptical border-radius</h3>
-            <ul>
-              <li>When clip-path is not supported, if custom properties are supported, augmented-ui constructs an elliptical border radius for the element.</li>
-              <li>The effective width and height of each corner aug is used to determine the border shape - producing a softer, almost melted, version of your augmented element.</li>
-              <li>The --aug-inset options still work the same, creating a background behind the content, inset the same distance from the outer edge. The inset background performs a similar construction of an elliptical border-radius, with appropriately smaller sizes just like the full version.</li>
-              <li>Augmented elements will have <b>overflow:hidden;</b> and <b>transform:translateZ(0px);</b> applied to simulate clip-path's overflow clipping and its new stacking context so layout differences are avoided.</li>
-              <li>The fully supported reach, plus the added reach of the full featured fallback, puts total global user reach around <b>~92%</b> according to data from caniuse.com</li>
-            </ul>
+        <div class="monitor-icon monitor-secret-icon" onclick="this.parentNode.className='monitor select-secret'">
+          <div augmented-ui="bl-clip tr-clip exe">.TXT</div>
+          <span>Top-Secret</span>
+        </div>
+
+        <div class="monitor-icons">
+          <div class="monitor-icon monitor-recent-icon" onclick="this.parentNode.parentNode.className='monitor select-recent'">
+            <div augmented-ui="bl-clip tr-clip exe">.PNG</div>
+            <span>Recent-Browsers</span>
           </div>
+          <div class="monitor-icon monitor-old-icon" onclick="this.parentNode.parentNode.className='monitor select-old'">
+            <div augmented-ui="bl-clip tr-clip exe">.PNG</div>
+            <span>Old-Browsers</span>
+          </div>
+          <div class="monitor-icon monitor-ancient-icon" onclick="this.parentNode.parentNode.className='monitor select-ancient'">
+            <div augmented-ui="bl-clip tr-clip exe">.PNG</div>
+            <span>Ancient-Browsers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-3-first-info">
+        <h2>Automatic Fallbacks,<br>Browser Support, &amp; Options</h2>
+        <div class="section-3-info">
+          <br>
+          <h3>Full support requires unprefixed clip-path</h3>
+          <ul>
+            <li>As of August 31, 2019 <b>~70%</b> of global users would experience the fully supported version according to data from caniuse.com</li>
+            <li>-webkit-clip-path works with augmented-ui in some browsers (ex: Opera 41) but doesn't in others (ex: Safari 12.1 on iOS) so no webkit fallbacks are included at this time. More precise feature detection could extend full support to specific webkit browsers in the near future.</li>
+          </ul>
+          <h3>Automatic fallbacks use elliptical border-radius</h3>
+          <ul>
+            <li>When clip-path is not supported, if custom properties are supported, augmented-ui constructs an elliptical border radius for the element.</li>
+            <li>The effective width and height of each corner aug is used to determine the border shape - producing a softer, almost melted, version of your augmented element.</li>
+            <li>The --aug-inset options still work the same, creating a background behind the content, inset the same distance from the outer edge. The inset background performs a similar construction of an elliptical border-radius, with appropriately smaller sizes just like the full version.</li>
+            <li>Augmented elements will have <b>overflow:hidden;</b> and <b>transform:translateZ(0px);</b> applied to simulate clip-path's overflow clipping and its new stacking context so layout differences are avoided.</li>
+            <li>The fully supported reach, plus the added reach of the full featured fallback, puts total global user reach around <b>~92%</b> according to data from caniuse.com</li>
+          </ul>
         </div>
       </div>
 
@@ -431,6 +405,7 @@
           <li>An earlier screenshot of part of this site rendered in IE11 is available above. The biggest issues pictured are from when display:grid was used (nothing to do with augmented-ui) but most of the augmented elements still show up in the correct spot, with text readable, correct layering, and size maintained.</li>
         </ul>
       </div>
+
 
     </div>
 
