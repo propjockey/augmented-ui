@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>augmented-ui documentation</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#c4aa22">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="theme-color" content="#ffd700">
+    <link rel="stylesheet" type="text/css" href="/augmented.css">
+    <link rel="stylesheet" type="text/css" href="/docs/docs.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146833088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-146833088-1');
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js" data-manual></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-css.min.js"></script>
+  </head>
+  <body>
+    <form style="display:none;" name="fiddleform" method="post" action="http://jsfiddle.net/api/post/library/pure/" target="_blank">
+      <textarea name="css"></textarea>
+      <textarea name="html"></textarea>
+      <input type="hidden" name="resources" value="https://unpkg.com/augmented-ui/augmented.css">
+    </form>
+    <form style="display:none;" name="codepenform" method="post" action="https://codepen.io/pen/define/" target="_blank">
+      <input type="hidden" name="data" value="">
+    </form>
+    <script>
+      function getExampleParts (el) {
+        const demos = el.querySelectorAll("div.demo")
+        const code = []
+        const css = [ document.getElementById("default-demo-styles").innerHTML.replace(/ {8}|\s+$/g, "").replace(/  /g, "    ") ]
+        demos.forEach((demoEl, x) => {
+          code.push(demoEl.outerHTML.replace("demo", "demo demo" + x).replace(/ style="([^"]+)"/, (_, s) => {
+            css.push("    div.demo" + x + " {\n        " + (s.replace(/; ?/g, ";\n        ").trim()) + "\n    }\n")
+            return ""
+          }))
+        })
+        const html = code.join("\n")
+        return { css: css.join("\n"), html }
+      }
+      function getExampleMarkup (el) {
+        const parts = getExampleParts(el)
+        const markup = `<style>${parts.css}\n</style>\n${parts.html}`
+        return markup
+      }
+      function expandExampleCode (ev) {
+        const el = ev.target
+        if (el.className === "expand-full-code") {
+          const markup = getExampleMarkup(el.parentNode)
+          const highlighted = Prism.highlight(markup, Prism.languages.markup)
+          el.className = "full-code"
+          el.removeAttribute("augmented-ui")
+          el.innerHTML = `<pre><code class="language-html">${highlighted}</code></pre>`
+        }
+      }
+      function postToJsfiddle (el) {
+        const parts = getExampleParts(el.parentNode)
+        const fiddleform = document.forms["fiddleform"]
+        fiddleform.querySelector("[name='css']").value = parts.css
+        fiddleform.querySelector("[name='html']").value = parts.html
+        fiddleform.submit()
+        return false
+      }
+      function postToCodepen (el) {
+        const parts = getExampleParts(el.parentNode)
+        const codepenform = document.forms["codepenform"]
+        const codpenData = {
+          editors: "110", // hide js panel
+          html: parts.html,
+          css: parts.css,
+          css_external: "https://unpkg.com/augmented-ui/augmented.css"
+        }
+        codepenform.querySelector("[name='data']").value = JSON.stringify(codpenData)
+        codepenform.submit()
+        return false
+      }
+      document.body.addEventListener("click", expandExampleCode)
+    </script>
+    <div class="docs">
+      <header augmented-ui="t-clip-x br-clip exe">
+        <a class="anchor" id="top" href="#top">#</a><h1>augmented-ui docs</h1><br>
+        <p><dfn>augmented-ui</dfn> enables you to create cyberpunk inspired ui for any size element, on any web page or app, with very little effort and is free to use in any project</p>
+        <section>
+          <b>Resources:</b><br>
+          <a href="http://augmented-ui.com/">Home</a> |
+          <a href="http://augmented-ui.com/docs/">Docs</a> |
+          <a href="http://augmented-ui.com/test.html">Informal Tests</a> |
+          <a href="https://www.npmjs.com/package/augmented-ui">NPM</a> |
+          <a href="https://github.com/propjockey/augmented-ui">GitHub</a>
+        </section>
+      </header>
+
+      <nav class="nav" augmented-ui="l-clip-y r-clip-y exe">
+        <span>Doc Nav</span>
+        <a href="#top">augmented-ui docs</a>
+        <a href="#install">Installing augmented-ui</a>
+        <a href="#basics">Basics of augmented-ui</a>
+        <a href="#notes-on-doc-examples">Notes on the examples in this documentation</a>
+        <span>Border properties</span>
+        <a href="#--aug-border">--aug-border</a>
+        <a href="#--aug-border-bg">--aug-border-bg</a>
+        <a href="#--aug-border-fallback-color">--aug-border-fallback-color</a>
+        <a href="#--aug-border-opacity">--aug-border-opacity</a>
+        <span>Inset properties</span>
+        <a href="#--aug-inset">--aug-inset</a>
+        <a href="#--aug-inset-bg">--aug-inset-bg</a>
+        <a href="#--aug-inset-opacity">--aug-inset-opacity</a>
+        <span>Augs</span>
+        <a href="#*-clip">*-clip</a>
+        <a href="#*-round">*-round</a>
+        <a href="#*-rect">*-rect</a>
+        <a href="#*-clip-x">*-clip-x</a>
+        <a href="#*-clip-y">*-clip-y</a>
+        <span>Alignment of augs in an edge position</span>
+        <a href="#--aug-*-origin-x">--aug-t-origin-x, --aug-b-origin-x</a>
+        <a href="#--aug-*-origin-y">--aug-l-origin-y, --aug-r-origin-y</a>
+        <a href="#--aug-*-offset">--aug-t-offset, --aug-r-offset, --aug-b-offset, --aug-l-offset</a>
+        <span>Adjusting the size of equipped augs</span>
+        <a href="#--aug-*">--aug-*</a>
+        <a href="#--aug-*-width">--aug-*-width</a>
+        <a href="#--aug-*-height">--aug-*-height</a>
+        <span>Fallback properties for older browsers</span>
+        <a href="#--aug-border-fallback-color">--aug-border-fallback-color</a>
+        <a href="#--aug-border-radius-fallback">--aug-border-radius-fallback</a>
+        <a href="#--aug-border-radius-fallback-inset">--aug-border-radius-fallback-inset</a>
+        <span>Other</span>
+        <a href="#supporting-augmented-ui">Supporting augmented-ui</a>
+      </nav>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <a class="anchor" id="install" href="#install">#</a><h2>Installing augmented-ui</h2><br>
+        <p>
+          Install with NPM:<br>
+          <code>$ npm install augmented-ui</code><br>
+          Then include the <code>/node_modules/augmented-ui/augmented.css</code> file once, before any stylesheets that use it.<br>
+          <br>
+          OR<br>
+          <br>
+          Use your favorite NPM CDN and include it on your page before other stylesheets for small projects. Like so:<br>
+          <code>&lt;link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css"&gt;</code>
+        </p>
+      </article>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <a class="anchor" id="basics" href="#basics">#</a><h2>Basics of augmented-ui</h2><br>
+        <ul>
+          <li>
+            augmented-ui uses an attribute selector for all defaults and styling, which has the same weight as a class selector. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#Selector_Types">CSS Selector Specificity</a> on MDN for more information.<br>
+            <b>tl;dr:</b> <code>div { --aug-t: 50px; }</code> uses a type selector and will NOT override the default, but <code>.divclass { --aug-t: 50px; }</code> would.
+          </li>
+          <li>augs are the individual features/shapes assigned to a specific corner or edge. ex: br-clip (bottom right clip)</li>
+          <li>
+            Short designations for each position will be found on every aug and every aug property. There are 8 positions:<br>
+            <ol>
+              <li><b>tl</b> = top left corner</li>
+              <li><b>t</b> = top edge</li>
+              <li><b>tr</b> = top right corner</li>
+              <li><b>r</b> = right edge</li>
+              <li><b>br</b> = bottom right corner</li>
+              <li><b>b</b> = bottom edge</li>
+              <li><b>bl</b> = bottom left corner</li>
+              <li><b>l</b> = left edge</li>
+            </ol>
+          </li>
+          <li>augs are equipped to an element by putting them in the value of the <b>augmented-ui</b> attribute (&lt;div augmented-ui="br-clip exe"&gt;&lt;/div&gt;)</li>
+          <li>an "executable" option is required in the value of the augmented-ui attribute and is what creates the actual clip-path polygons. For basics, only <b>exe</b> will be used.</li>
+          <li>
+            The <b>exe</b> executable option does:
+            <ol>
+              <li>clipping of the element itself</li>
+              <li>creation and clipping of the border on the ::after pseudo element</li>
+              <li>creation and clipping of the inset on the ::before pseudo element</li>
+            </ol>
+            So without it, augmented-ui may appear to do nothing.
+          </li>
+        </ul>
+      </article>
+
+      <div id="notes-on-doc-examples" class="style-notes">
+        <div>
+          Note: to help facilitate learning, all examples on this page start with the same base "demo" figure so the only changes between examples are to help demonstrate the feature being documented.<br>
+          <b>All examples on this page are displayed with:</b>
+        </div>
+        1) &lt;div class="demo" <b>augmented-ui="tl-clip br-clip exe"</b>&gt;&lt;/div&gt;<br>
+        2) and the following default css:<br>
+        <style id="default-demo-styles" contenteditable="true" style="cursor: pointer;">
+          div.demo {
+            display: inline-block;
+            width: 110px;
+            height: 110px;
+            margin: 10px;
+            --aug-border: 5px;
+            --aug-inset: 5px;
+            padding: 10px; /* mind the gap */
+            text-align: center;
+            --aug-border-bg: gold;
+            --aug-inset-bg: gold;
+          }
+        </style>
+        <div>As a baseline, this is what it looks like when nothing is changed further:</div>
+        <div class="demo" augmented-ui="tl-clip br-clip exe"></div><br>
+        <div>
+          Additional styles or overrides added to any example are shown below the figure.<br>
+          Every set of examples has an option to show the full code that produced the figures and will include this base style.<br>
+          Additionally, options to show the full code in jsfiddle or codepen are provided so you can more easily learn a feature hands-on.
+        </div>
+      </div>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <h2>Border properties for augmented-ui</h2>
+        <p>A border in augmented-ui is a background applied to an element that has its own clip path where the center is removed. It exists on the ::after pseudo element when the <b>exe</b> executable option is used. A border may be delegated to a child element with advanced executable options. The background is only applied when CSS feature detection knows the center can be clipped away to avoid obstructing visibility of content in older browsers.</p>
+
+        <section>
+          <a class="anchor" id="--aug-border" href="#--aug-border">#</a><h3>--aug-border</h3><br>
+          <span class="default-value">Default Value: 0px</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span>
+          <p><dfn>--aug-border</dfn> specifies the width of the border on an augmented element. Independent border sizes for top/right/bottom/left are not currently supported.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border: 1px;"></div>
+              <figcaption>--aug-border: <b>1px</b>;</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border: 8px;"></div>
+              <figcaption>--aug-border: <b>8px</b>;</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-border-bg" href="#--aug-border-bg">#</a><h3>--aug-border-bg</h3><br>
+          <span class="default-value">Default Value: none</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background">&lt;background&gt;</a></span>
+          <p><dfn>--aug-border-bg</dfn> specifies the background that will be used for the border.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border-bg: purple;"></div>
+              <figcaption>--aug-border-bg: <b>purple</b>;</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border-bg: linear-gradient(red, transparent), linear-gradient(to right, blue, transparent), black;"></div>
+              <figcaption>--aug-border-bg: <b>linear-gradient(red, transparent), linear-gradient(to right, blue, transparent), black;</b></figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-border-fallback-color" href="#--aug-border-fallback-color">#</a><h3>--aug-border-fallback-color</h3><br>
+          <span class="default-value">Default Value: the value of --aug-border-bg, else transparent</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">&lt;color&gt;</a></span>
+          <p><dfn>--aug-border-fallback-color</dfn> specifies the border color that will be used in older browsers (which will use actual borders). If <span style="white-space: nowrap;">--aug-border-bg</span> is not suitable as a color value for the border property, the border will not draw unless this fallback is set. The border is drawn on a pseudo element (like the full-support one is), so it will not upset layout if it is drawn or not.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border-fallback-color: purple; --aug-border-bg: linear-gradient(purple, cyan);"></div>
+              <figcaption>--aug-border-fallback-color: <b>purple</b>; --aug-border-bg: linear-gradient(purple, cyan);</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border-fallback-color: red; --aug-border-bg: purple;"></div>
+              <figcaption>--aug-border-fallback-color: <b>red</b>; --aug-border-bg: purple;</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border-bg: linear-gradient(purple, cyan);"></div>
+              <figcaption>(--aug-border-fallback-color not specified) --aug-border-bg: linear-gradient(purple, cyan);</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border-bg: purple;"></div>
+              <figcaption>(--aug-border-fallback-color not specified) --aug-border-bg: purple;</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-border-opacity" href="#--aug-border-opacity">#</a><h3>--aug-border-opacity</h3><br>
+          <span class="default-value">Default Value: 1</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/opacity#Values">&lt;alpha-value&gt;</a></span>
+          <p><dfn>--aug-border-opacity</dfn> specifies the opacity of the border.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border-opacity: 0.5; --aug-border-bg: purple;"></div>
+              <figcaption>--aug-border-opacity: <b>0.5</b>; --aug-border-bg: purple;</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-border-opacity: 0.125; --aug-border-bg: purple;"></div>
+              <figcaption>--aug-border-opacity: <b>0.125</b>; --aug-border-bg: purple;</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+      </article>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <h2>Inset properties for augmented-ui</h2>
+        <p>An inset in augmented-ui is a background on an element that has its own clip path, inset a specified distance from the inner edge of the border or containing element. It exists on the ::before pseudo element when the <b>exe</b> executable option is used. An inset may be delegated to a child element with advanced executable options.</p>
+
+        <section>
+          <a class="anchor" id="--aug-inset" href="#--aug-inset">#</a><h3>--aug-inset</h3><br>
+          <span class="default-value">Default Value: 0px</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span>
+          <p><dfn>--aug-inset</dfn> specifies the distance of the inset on an augmented element. Independent inset sizes for top/right/bottom/left are not currently supported.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-inset: 1px;"></div>
+              <figcaption>--aug-inset: <b>1px</b>;</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-inset: 8px;"></div>
+              <figcaption>--aug-inset: <b>8px</b>;</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-inset-bg" href="#--aug-inset-bg">#</a><h3>--aug-inset-bg</h3><br>
+          <span class="default-value">Default Value: none</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background">&lt;background&gt;</a></span>
+          <p><dfn>--aug-inset-bg</dfn> specifies the background that will be used for the inset.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-inset-bg: purple;"></div>
+              <figcaption>--aug-inset-bg: <b>purple</b>;</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-inset-bg: linear-gradient(red, transparent), linear-gradient(to right, blue, transparent), black;"></div>
+              <figcaption>--aug-inset-bg: <b>linear-gradient(red, transparent), linear-gradient(to right, blue, transparent), black;</b></figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-inset-opacity" href="#--aug-inset-opacity">#</a><h3>--aug-inset-opacity</h3><br>
+          <span class="default-value">Default Value: 1</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/opacity#Values">&lt;alpha-value&gt;</a></span>
+          <p><dfn>--aug-inset-opacity</dfn> specifies the opacity of the inset.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-inset-opacity: 0.5; --aug-inset-bg: purple;"></div>
+              <figcaption>--aug-inset-opacity: <b>0.5</b>; --aug-inset-bg: purple;</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe" style="--aug-inset-opacity: 0.125; --aug-inset-bg: purple;"></div>
+              <figcaption>--aug-inset-opacity: <b>0.125</b>; --aug-inset-bg: purple;</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+      </article>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <h2>Augs available in augmented-ui</h2>
+        <p>augs are the individual features/shapes assigned to a specific corner or edge; Such as br-clip (bottom right clip). Technically, they are clip-path partials integrated into an app's flexible ui elements. The name is from the Cyberpunk genre where augs are pieces of technology, often large, integrated into the human body.</p>
+
+        <section>
+          <a class="anchor" id="*-clip" href="#*-clip">#</a><h3>tl-clip, t-clip, tr-clip, r-clip, br-clip, b-clip, bl-clip, l-clip</h3><br>
+          <span class="aug-supports">Supported properties: <a href="#--aug-*">--aug-*</a></span><br>
+          <span class="value-type">where * is the corresponding corner or edge position: tl, t, tr, r, br, b, bl, or l</span><br>
+          <span class="value-type">Type Support for --aug-*: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span>
+          <p>Equip augs by placing them in the value of the augmented-ui attribute along with an executable option: &lt;div <b>augmented-ui="tl-clip exe"</b>&gt;&lt;/div&gt;</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-clip exe"></div>
+              <figcaption>augmented-ui="tl-clip br-clip exe"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="r-clip bl-clip exe" style="--aug-bl: 25px;"></div>
+              <figcaption>augmented-ui="r-clip bl-clip exe" style="--aug-bl: 25px;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="*-round" href="#*-round">#</a><h3>tl-round, tr-round, br-round, bl-round</h3><br>
+          <span class="aug-supports">Supported properties: <a href="#--aug-*">--aug-*</a></span><br>
+          <span class="value-type">where * is the corresponding corner position: tl, tr, br, or bl</span><br>
+          <span class="value-type">Type Support for --aug-*: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span>
+          <p>Equip augs by placing them in the value of the augmented-ui attribute along with an executable option: &lt;div <b>augmented-ui="tl-round exe"</b>&gt;&lt;/div&gt;</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-round br-round exe"></div>
+              <figcaption>augmented-ui="tl-round br-round exe"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="t-round r-round bl-round exe" style="--aug-bl: 10px;"></div>
+              <figcaption>augmented-ui="bl-round exe" style="--aug-bl: 10px;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="*-rect" href="#*-rect">#</a><h3>tl-rect, t-rect, tr-rect, r-rect, br-rect, b-rect, bl-rect, l-rect</h3><br>
+          <span class="aug-supports">Supported properties: <a href="#--aug-*">--aug-*</a>, <a href="#--aug-*-width">--aug-*-width</a>, <a href="#--aug-*-height">--aug-*-height</a></span><br>
+          <span class="value-type">where * is the corresponding corner or edge position: tl, t, tr, r, br, b, bl, or l</span><br>
+          <span class="value-type">Type Support for --aug-*: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span>
+          <span class="value-type">Type Support for --aug-*-width, --aug-*-height: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">&lt;length-percentage&gt;</a></span>
+          <p>Equip augs by placing them in the value of the augmented-ui attribute along with an executable option: &lt;div <b>augmented-ui="tl-rect exe"</b>&gt;&lt;/div&gt;</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-rect br-rect exe" style="--aug-tl-width: 50%;"></div>
+              <figcaption>augmented-ui="tl-rect br-rect exe" style="--aug-tl-width: 50%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="r-rect bl-rect exe" style="--aug-bl: 25px; --aug-r-width: 10%; --aug-r-height: 25%;"></div>
+              <figcaption>augmented-ui="r-rect bl-rect exe" style="--aug-bl: 25px; --aug-r-width: 10%; --aug-r-height: 25%;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="*-clip-x" href="#*-clip-x">#</a><h3>tl-clip-x, t-clip-x, tr-clip-x, r-clip-x, br-clip-x, b-clip-x, bl-clip-x, l-clip-x</h3><br>
+          <span class="aug-supports">Supported properties: <a href="#--aug-*">--aug-*</a>, <a href="#--aug-*-width">--aug-*-width</a>, <a href="#--aug-*-height">--aug-*-height</a></span><br>
+          <span class="value-type">where * is the corresponding corner or edge position: tl, t, tr, r, br, b, bl, or l</span><br>
+          <span class="value-type">Type Support for --aug-*, --aug-*-height: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span>
+          <span class="value-type">Type Support for --aug-*-width: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">&lt;length-percentage&gt;</a></span>
+          <p>Similar to clip, extended rectangularly along the x axis. Equip augs by placing them in the value of the augmented-ui attribute along with an executable option: &lt;div <b>augmented-ui="tl-clip-x exe"</b>&gt;&lt;/div&gt;</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip-x br-clip-x exe" style="--aug-tl-width: 50%;"></div>
+              <figcaption>augmented-ui="tl-clip-x br-clip-x exe" style="--aug-tl-width: 50%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="r-clip-x bl-clip-x exe" style="--aug-bl: 25px; --aug-r-width: 33%; --aug-r-height: 10px;"></div>
+              <figcaption>augmented-ui="r-clip-x bl-clip-x exe" style="--aug-bl: 25px; --aug-r-width: 33%; --aug-r-height: 10px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="b-clip-x exe" style="--aug-b-width: 65%; --aug-b-height: 10px;"></div>
+              <figcaption>augmented-ui="b-clip-x exe" style="--aug-b-width: 65%; --aug-b-height: 10px;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="*-clip-y" href="#*-clip-y">#</a><h3>tl-clip-y, t-clip-y, tr-clip-y, r-clip-y, br-clip-y, b-clip-y, bl-clip-y, l-clip-y</h3><br>
+          <span class="aug-supports">Supported properties: <a href="#--aug-*">--aug-*</a>, <a href="#--aug-*-width">--aug-*-width</a>, <a href="#--aug-*-height">--aug-*-height</a></span><br>
+          <span class="value-type">where * is the corresponding corner or edge position: tl, t, tr, r, br, b, bl, or l</span><br>
+          <span class="value-type">Type Support for --aug-*, --aug-*-width: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span>
+          <span class="value-type">Type Support for --aug-*-height: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">&lt;length-percentage&gt;</a></span>
+          <p>Similar to clip, extended rectangularly along the y axis. Equip augs by placing them in the value of the augmented-ui attribute along with an executable option: &lt;div <b>augmented-ui="tl-clip-y exe"</b>&gt;&lt;/div&gt;</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip-y br-clip-y exe" style="--aug-tl-height: 50%;"></div>
+              <figcaption>augmented-ui="tl-clip-y br-clip-y exe" style="--aug-tl-height: 50%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="r-clip-y bl-clip-y exe" style="--aug-bl: 25px; --aug-r-height: 57%; --aug-r-width: 10px;"></div>
+              <figcaption>augmented-ui="r-clip-y bl-clip-y exe" style="--aug-bl: 25px; --aug-r-height: 57%; --aug-r-width: 10px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="b-clip-y exe" style="--aug-b-height: 65%; --aug-b-width: 10px;"></div>
+              <figcaption>augmented-ui="b-clip-y exe" style="--aug-b-height: 65%; --aug-b-width: 10px;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+      </article>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <h2>Alignment of augs in edge positions</h2>
+        <p>augmented-ui provides options to fine-tune the position of augs equpped to edge positions (top, right, bottom, left)</p>
+        <section>
+          <a class="anchor" id="--aug-*-origin-x" href="#--aug-*-origin-x">#</a><h3>--aug-t-origin-x, --aug-b-origin-x</h3><br>
+          <span class="default-value">Default Value: half way between the innermost point of the left and right corner augs along the same edge</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">&lt;length-percentage&gt;</a></span>
+          <p>Specifies the center placement of augs equipped to the top and bottom positions, respectively. Ex: set it to 50% to center it in the middle of the element instead of centering between the corner augs</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip t-rect exe" style="--aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"></div>
+              <figcaption>(--aug-t-origin-x not set) augmented-ui="tl-clip t-rect exe" style="--aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip t-rect exe" style="--aug-t-origin-x: 50%; --aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"></div>
+              <figcaption>augmented-ui="tl-clip t-rect exe" style="<b>--aug-t-origin-x: 50%;</b> --aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip t-rect exe" style="--aug-t-origin-x: 75%; --aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"></div>
+              <figcaption>augmented-ui="tl-clip t-rect exe" style="<b>--aug-t-origin-x: 75%;</b> --aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-*-origin-y" href="#--aug-*-origin-y">#</a><h3>--aug-l-origin-y, --aug-r-origin-y</h3><br>
+          <span class="default-value">Default Value: half way between the innermost point of the top and bottom corner augs along the same edge</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">&lt;length-percentage&gt;</a></span>
+          <p>Specifies the center placement of augs equipped to the left and right positions, respectively. Ex: set it to 50% to center it in the middle of the element instead of centering between the corner augs.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip l-rect exe" style="--aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"></div>
+              <figcaption>(--aug-l-origin-y not set) augmented-ui="tl-clip l-rect exe" style="--aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip l-rect exe" style="--aug-l-origin-y: 50%; --aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"></div>
+              <figcaption>augmented-ui="tl-clip l-rect exe" style="<b>--aug-l-origin-y: 50%;</b> --aug-tl: 25px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip l-rect exe" style="--aug-l-origin-y: 75%; --aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"></div>
+              <figcaption>augmented-ui="tl-clip l-rect exe" style="<b>--aug-l-origin-y: 75%;</b> --aug-tl: 25px; --aug-inset: 2px; --aug-border: 2px;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-*-offset" href="#--aug-*-offset">#</a><h3>--aug-t-offset, --aug-r-offset, --aug-b-offset, --aug-l-offset</h3><br>
+          <span class="default-value">Default Value: 0px</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">&lt;length-percentage&gt;</a>)</span>
+          <p>Specifies an offset from the origin of the aug in the corresponding position. On top/bottom a negative value shifts left, on right/left it shifts up.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip t-rect exe" style="--aug-t-offset: 0px; --aug-tl: 25px;"></div>
+              <figcaption>augmented-ui="tl-clip t-rect exe" style="<b>--aug-t-offset: 0px;</b> --aug-tl: 25px;" (default position, centered between the corner augs)</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip t-rect exe" style="--aug-t-offset: -12px; --aug-tl: 25px;"></div>
+              <figcaption>augmented-ui="tl-clip t-rect exe" style="<b>--aug-t-offset: -12px;</b> --aug-tl: 25px;" (--aug-t-origin-x is not set so this is offset from the center point between the corner augs)</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip t-rect exe" style="--aug-t-offset: 10px; --aug-t-origin-x: 50%; --aug-tl: 25px;"></div>
+              <figcaption>augmented-ui="tl-clip t-rect exe" style="<b>--aug-t-offset: 10px;</b> --aug-t-origin-x: <b>50%</b>; --aug-tl: 25px; (10px past the center of the element)"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+      </article>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <h2>Adjusting the size of equipped augs</h2>
+        <p>augmented-ui provides sizing properties corresponding to the position an aug is assigned to.</p>
+
+        <section>
+          <a class="anchor" id="--aug-*" href="#--aug-*">#</a><h3>--aug-tl, --aug-t, --aug-tr, --aug-r, --aug-br, --aug-b, --aug-bl, --aug-l</h3><br>
+          <span class="default-value">Default Value: 15px</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span><br>
+          <span class="value-type">Supported on augs: All</span>
+          <p>Specifies the base-size of an aug in the corresponding position, acting as a sort of radius for drawing each part of an aug from an outside edge or corner point of the element. The border and inset maintain consistent width/distance around an aug and may make an aug effectively larger.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-rect exe" style="--aug-tl: 25px; --aug-br: 20px;"></div>
+              <figcaption>augmented-ui="tl-clip br-rect exe" style="--aug-tl: 25px; --aug-br: 20px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="t-clip r-rect exe" style="--aug-t: 25px; --aug-r: 20px;"></div>
+              <figcaption>augmented-ui="t-clip r-rect exe" style="--aug-t: 25px; --aug-r: 20px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="bl-clip-y r-clip-x exe"></div>
+              <figcaption>augmented-ui="bl-clip-y r-clip-x exe" (default sizes, 15px)</figcaption>
+            </figure>
+            <br>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip br-rect exe" style="--aug-tl: 25px; --aug-br: 20px; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="tl-clip br-rect exe" style="--aug-tl: 25px; --aug-br: 20px; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="t-clip r-rect exe" style="--aug-t: 25px; --aug-r: 20px; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="t-clip r-rect exe" style="--aug-t: 25px; --aug-r: 20px; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="bl-clip-y r-clip-x exe" style="--aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="bl-clip-y r-clip-x exe" style="--aug-border-bg: none; --aug-inset-bg: none; background: gold;" (default sizes, 15px)</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-*-width" href="#--aug-*-width">#</a><h3>--aug-tl-width, --aug-t-width, --aug-tr-width, --aug-r-width, --aug-br-width, --aug-b-width, --aug-bl-width, --aug-l-width</h3><br>
+          <span class="default-value">Default Value: varied</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span><br>
+          <span class="value-type">Supported on augs: *-rect, *-clip-x, *-clip-y</span><br>
+          <span class="value-type">Additionally, % values are supported only on *-rect and *-clip-x</span>
+          <p>Specifies the width of an aug in the corresponding position. The border and inset maintain consistent width/distance around an aug and may make an aug effectively larger.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-rect exe" style="--aug-tl: 25px; --aug-tl-width: 50%;"></div>
+              <figcaption>augmented-ui="tl-rect exe" style="--aug-tl: 25px; --aug-tl-width: 50%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="t-clip-x exe" style="--aug-t: 10px; --aug-t-width: 33%;"></div>
+              <figcaption>augmented-ui="t-clip-x exe" style="--aug-t: 10px; --aug-t-width: 33%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="b-clip-y exe" style="--aug-b-width: 10px;"></div>
+              <figcaption>augmented-ui="b-clip-y exe" style="--aug-b-width: 10px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="r-clip-x exe" style="--aug-r-width: 50%;"></div>
+              <figcaption>augmented-ui="r-clip-x exe" style="--aug-r-width: 50%;"</figcaption>
+            </figure>
+            <br>
+            <figure>
+              <div class="demo" augmented-ui="tl-rect exe" style="--aug-tl: 25px; --aug-tl-width: 50%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="tl-rect exe" style="--aug-tl: 25px; --aug-tl-width: 50%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="t-clip-x exe" style="--aug-t: 10px; --aug-t-width: 33%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="t-clip-x exe" style="--aug-t: 10px; --aug-t-width: 33%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="b-clip-y exe" style="--aug-b-width: 10px; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="b-clip-y exe" style="--aug-b-width: 10px; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="r-clip-x exe" style="--aug-r-width: 50%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="r-clip-x exe" style="--aug-r-width: 50%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-*-height" href="#--aug-*-height">#</a><h3>--aug-tl-height, --aug-t-height, --aug-tr-height, --aug-r-height, --aug-br-height, --aug-b-height, --aug-bl-height, --aug-l-height</h3><br>
+          <span class="default-value">Default Value: varied</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a> (Typically px and does not support %)</span><br>
+          <span class="value-type">Supported on augs: *-rect, *-clip-x, *-clip-y</span><br>
+          <span class="value-type">Additionally, % values are supported only on *-rect and *-clip-y</span>
+          <p>Specifies the height of an aug in the corresponding position. The border and inset maintain consistent width/distance around an aug and may make an aug effectively larger.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-rect exe" style="--aug-tl: 25px; --aug-tl-height: 50%;"></div>
+              <figcaption>augmented-ui="tl-rect exe" style="--aug-tl: 25px; --aug-tl-height: 50%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="t-clip-y exe" style="--aug-t: 10px; --aug-t-height: 33%;"></div>
+              <figcaption>augmented-ui="t-clip-y exe" style="--aug-t: 10px; --aug-t-height: 33%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="b-clip-x exe" style="--aug-b-height: 10px;"></div>
+              <figcaption>augmented-ui="b-clip-x exe" style="--aug-b-height: 10px;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="r-clip-y exe" style="--aug-r-height: 50%;"></div>
+              <figcaption>augmented-ui="r-clip-y exe" style="--aug-r-height: 50%;"</figcaption>
+            </figure>
+            <br>
+            <figure>
+              <div class="demo" augmented-ui="tl-rect exe" style="--aug-tl: 25px; --aug-tl-height: 50%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="tl-rect exe" style="--aug-tl: 25px; --aug-tl-height: 50%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="t-clip-y exe" style="--aug-t: 10px; --aug-t-height: 33%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="t-clip-y exe" style="--aug-t: 10px; --aug-t-height: 33%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="b-clip-x exe" style="--aug-b-height: 10px; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="b-clip-x exe" style="--aug-b-height: 10px; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="r-clip-y exe" style="--aug-r-height: 50%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"></div>
+              <figcaption>augmented-ui="r-clip-y exe" style="--aug-r-height: 50%; --aug-border-bg: none; --aug-inset-bg: none; background: gold;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+      </article>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <h2>Fallback properties for older browsers</h2>
+        <p>augmented-ui includes automatic fallbacks for older browsers, these properties will override default fallbacks</p>
+        <br>
+        <div>
+          &nbsp;&nbsp;See the borders section for details about <a href="#--aug-border-fallback-color">--aug-border-fallback-color</a>
+        </div>
+        <br>
+        <section>
+          <a class="anchor" id="--aug-border-radius-fallback" href="#--aug-border-radius-fallback">#</a><h3>--aug-border-radius-fallback</h3><br>
+          <span class="default-value">Default Value: an automatic calculation based on size of any corresponding corner aug equipped to the element.</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius">&lt;border-radius&gt;</a></span>
+          <p><dfn>--aug-border-radius-fallback</dfn> specifies the border radius applied to both the main element and the border element when clipping is not available in the browser. Note: in the automatic fallback, augs along the edges are not rendered or considered for these browsers, only corner augs are simulated. The automatic appearance is a softer, almost cyberpunk-melted version of the full support augmented element.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip-y br-clip exe" style="--aug-tr-height: 30%;"></div>
+              <figcaption>(no fallback) augmented-ui="tl-clip-y br-clip exe" style="--aug-tr-height: 30%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip-y br-clip exe" style="--aug-tr-height: 30%; --aug-border-radius-fallback: 5px 0px 15px 0px;"></div>
+              <figcaption>augmented-ui="tl-clip-y br-clip exe" style="--aug-tr-height: 30%; --aug-border-radius-fallback: 5px 0px 15px 0px;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+
+        <section>
+          <a class="anchor" id="--aug-border-radius-fallback-inset" href="#--aug-border-radius-fallback-inset">#</a><h3>--aug-border-radius-fallback-inset</h3><br>
+          <span class="default-value">Default Value: an automatic calculation based on size of any corresponding corner aug equipped to the element, minus the (border width + inset distance)</span><br>
+          <span class="value-type">Type: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius">&lt;border-radius&gt;</a></span>
+          <p><dfn>--aug-border-radius-fallback-inset</dfn> specifies the border radius applied to the inset element when clipping is not available in the browser. Note: in the automatic fallback, augs along the edges are not rendered or considered for these browsers, only corner augs are simulated. The automatic appearance is a softer, almost cyberpunk-melted version of the full support augmented element.</p>
+          <div class="examples">
+            <figure>
+              <div class="demo" augmented-ui="tl-clip-y br-clip exe" style="--aug-tr-height: 30%;"></div>
+              <figcaption>(no fallback) augmented-ui="tl-clip-y br-clip exe" style="--aug-tr-height: 30%;"</figcaption>
+            </figure>
+            <figure>
+              <div class="demo" augmented-ui="tl-clip-y br-clip exe" style="--aug-tr-height: 30%; --aug-border-radius-fallback-inset: 20px 0px 5px 0px;"></div>
+              <figcaption>augmented-ui="tl-clip-y br-clip exe" style="--aug-tr-height: 30%; --aug-border-radius-fallback-inset: 20px 0px 5px 0px;"</figcaption>
+            </figure>
+          </div>
+          <div class="expand-full-code" augmented-ui="br-clip-y exe">Show Full Code</div>
+          <div class="fiddle-link" augmented-ui="br-clip-y exe" onclick="postToJsfiddle(this)">Show in jsfiddle</div>
+          <div class="codepen-link" augmented-ui="br-clip-y exe" onclick="postToCodepen(this)">Show in codepen</div>
+          <a class="jump-top" href="#top">augmented-ui docs</a>
+        </section>
+      </article>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <br>
+        TODO: notes about advanced executable modes on an augmented element<br>
+        TODO: notes about clipping delegated elements within an augmented element (border-el, inset-el, etc)<br>
+      </article>
+
+      <article augmented-ui="t-clip-x br-clip exe">
+        <a class="anchor" id="supporting-augmented-ui" href="#supporting-augmented-ui">#</a><h2>Supporting augmented-ui</h2><br>
+        <p style="margin: 1.5rem;">
+          augmented-ui is open source and free to use in any project. <a href="https://www.npmjs.com/package/augmented-ui">NPM</a> | <a href="https://github.com/propjockey/augmented-ui">GitHub</a> | <a href="https://github.com/propjockey/augmented-ui/blob/master/LICENSE">BSD 2-Clause License</a><br>
+          Monetary support isn't necessary but it would be very very much appreciated. (Full transparency: There were only a couple costs in development up to now, less than $250 total aside from the time, but my laptop is unlikely to meet minimum specs for Cyberpunk 2077 in April 2020 sooo that's the big dream)<br>
+          Above all else though, I just want help make awesome cyberpunk inspired UI as common on the web as it is in the games and movies.<br>
+          If you use augmented-ui in your project, I would love to see it! I'm not much of a designer so I can't wait to see it in the hands of someone skilled!<br>
+          Find me @James0x57 on <a href="https://twitter.com/James0x57">twitter</a> and <a href="https://www.reddit.com/user/James0x57">Reddit</a> :)<br>
+        </p>
+        <div class="paypal">
+          <h3>Support With Paypal</h3>
+          <img class="qr-code-img" src="/paypalqr.png"><br>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="9Z925L3SJJ8BS" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+          </form>
+        </div>
+        <div class="bitcoin">
+          <h3>Support With Bitcoin</h3>
+          <img class="qr-code-img" src="/btc.png"><br>
+          <span class="crypto-address">1CdjKJ5wmio74bnzGkFqUpCi7mjJzwfb4U</span>
+        </div>
+        <div><a class="jump-top" href="#top">augmented-ui docs</a><br><br><br></div>
+      </article>
+
+    </div><!-- /div.docs -->
+    <script>
+      document.querySelectorAll(".jump-top").forEach(el => el.innerHTML = "Top")
+    </script>
+  </body>
+</html>

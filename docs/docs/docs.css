@@ -1,0 +1,227 @@
+html {
+  font-size: 16px;
+  background: #fbfbfb;
+}
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 1rem;
+  color: #101010;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  line-height: 1.5rem;
+}
+
+h1 {
+  display: block;
+  font-size: 2.5rem;
+  color: black;
+  line-height: 2.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  display: block;
+  font-size: 2.0rem;
+  color: black;
+  line-height: 2.0rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+h3 {
+  display: block;
+  font-size: 1.5rem;
+  color: black;
+  line-height: 1.5rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 + p,
+h3 ~ * {
+  margin-left: 1rem;
+}
+
+p {
+  line-height: 1.5rem;
+}
+
+.anchor {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  opacity: 0.25;
+}
+.anchor + h1,
+.anchor + h2,
+.anchor + h3 {
+  display: inline-block;
+}
+
+.docs {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.docs > * {
+  padding: 10px;
+  padding-bottom: 40px;
+  --aug-border: 1px;
+  --aug-border-bg: #000000;
+  --aug-border-opacity: 0.125;
+  --aug-t-width: 50%;
+  --aug-t-height: 10px;
+  --aug-br: 40px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: #fefefe;
+}
+
+.nav {
+  --aug-r-width: 10px;
+  --aug-r-height: 50%;
+  --aug-l-width: 10px;
+  --aug-l-height: 50%;
+  padding: 10px 40px 20px 40px;
+}
+nav a {
+  display: block;
+  margin-left: 20px;
+}
+nav span {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.style-notes {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: #f0f0f4;
+  padding: 5px;
+  border: 1px solid black;
+}
+.style-notes style {
+  display: block;
+  white-space: pre;
+}
+
+code,
+.default-value,
+.aug-supports,
+.value-type {
+  line-height: inherit;
+  background: #f0f0f4;
+  padding: 5px;
+}
+.value-type {
+  margin-top: 5px;
+  display: inline-block;
+}
+
+article ul {
+  list-style: disc inside;
+}
+article ol {
+  list-style: number inside;
+}
+article li {
+  margin-left: 10px;
+  padding-left: 20px;
+}
+
+section .examples {
+  margin-left: 0px;
+  text-align: center;
+}
+
+.examples figure {
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  max-width: calc(50% - 12px);
+  vertical-align: top;
+  padding: 5px;
+}
+.examples figcaption {
+  text-align: center;
+  display: block;
+}
+
+.full-code,
+.expand-full-code,
+.fiddle-link,
+.codepen-link {
+  line-height: inherit;
+  background: #fafafa;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 1rem;
+}
+
+.full-code {
+  display: block;
+}
+.full-code pre code {
+  white-space: pre-wrap;
+}
+.expand-full-code,
+.fiddle-link,
+.codepen-link {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  border: none;
+  padding-right: 14px;
+  --aug-border: 1px;
+  --aug-border-bg: black;
+  --aug-br-width: 4px;
+  --aug-br-height: 57%;
+}
+.expand-full-code + .fiddle-link {
+  margin-left: 0.5rem;
+}
+.codepen-link {
+  margin-left: 0.5rem;
+}
+
+.jump-top {
+  float: right;
+  padding: 1rem;
+  margin-top: 10px;
+  opacity: 0.5;
+}
+
+.paypal,
+.bitcoin {
+  display: inline-block;
+  width: calc(50% - 20px);
+  min-width: 290px;
+  text-align: center;
+  vertical-align: top;
+  margin-top: 20px;
+}
+.qr-code-img {
+  display: inline-block;
+  width: 200px;
+  margin: 0px;
+}
+
+.paypal .qr-code-img {
+  margin: 10px;
+  width: 180px;
+}
+.crypto-address {
+  font-size: 0.75rem;
+}
+

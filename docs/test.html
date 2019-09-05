@@ -230,7 +230,6 @@
       }
 
       .cheat-sheet {
-        width: calc(100% - 800px);
         position: absolute;
         right: 0px;
         top: 0px;
@@ -242,15 +241,6 @@
         position: relative;
         padding: 20px;
       }
-      .cheat-sheet section label {
-        background: white;
-        position: absolute;
-        top: -10px;
-        left: 10px;
-        height: 20px;
-        padding-left: 5px;
-        padding-right: 5px;
-      }
     </style>
   </head>
   <body>
@@ -258,109 +248,8 @@
 
     <div class="cheat-sheet">
       <section>
-        <label>Augs*:</label>
-        augmented-ui=" tl-clip t-clip tr-clip r-clip br-clip b-clip bl-clip l-clip <b>exe</b> "<br>
-        augmented-ui=" tl-round tr-round  br-round  bl-round <b>exe</b> "<br>
-        augmented-ui=" tl-rect t-rect tr-rect r-rect br-rect b-rect bl-rect l-rect <b>exe</b> "<br>
-        augmented-ui=" tl-clip-x t-clip-x tr-clip-x r-clip-x br-clip-x b-clip-x bl-clip-x l-clip-x <b>exe</b> "<br>
-        augmented-ui=" tl-clip-y t-clip-y tr-clip-y r-clip-y br-clip-y b-clip-y bl-clip-y l-clip-y <b>exe</b> "<br>
-        augmented-ui=" tl-inherit t-inherit tr-inherit r-inherit br-inherit b-inherit bl-inherit l-inherit <b>exe</b> "<br>
-        (cannot inherit from inherit currently. inherit only works if the augmented-ui element is a direct descendant of the augmented-ui element that it's inheriting from)<br>
-        <br>
-        Note: must include an executable** aug (typically <b>exe</b>) for aug clipping to occur.<br>
+        <a href="/docs/">Docs moved here!</a>
       </section>
-      <section>
-        <label>Custom Properties for Augs:</label>
-        <b>--aug-tl, --aug-t, --aug-tr, --aug-r, --aug-br, --aug-b, --aug-bl, --aug-l</b><br>
-        Default: 15px<br>
-        Supports: base size/radius in px or any fixed units<br>
-        on Augs: All<br>
-        <br>
-        <b>--aug-tl-width, --aug-t-width, --aug-tr-width, --aug-r-width, --aug-br-width, --aug-b-width, --aug-bl-width, --aug-l-width</b><br>
-        Default: varied<br>
-        Supports: px or any fixed units<br>
-        on Augs: *-rect, *-clip-x, *-clip-y<br>
-        <br>
-        Supports: %<br>
-        on Augs: *-rect, *-clip-x<br>
-        <br>
-        <b>--aug-tl-height, --aug-t-height, --aug-tr-height, --aug-r-height, --aug-br-height, --aug-b-height, --aug-bl-height, --aug-l-height</b><br>
-        Default: varied<br>
-        Supports: px or any fixed units<br>
-        on Augs: *-rect, *-clip-x, *-clip-y<br>
-        <br>
-        Supports: %<br>
-        on Augs: *-rect, *-clip-y<br>
-        <br>
-        <b>--aug-t-origin-x, --aug-b-origin-x</b><br>
-        Default: half way between the innermost point of the left and right corner augs, along the same edge<br>
-        Supports: any unit<br>
-        on Augs: t-*, b-* respectively<br>
-        Ex: 50% to center it in the middle of the element instead of centered between the corner augs<br>
-        <br>
-        <b>--aug-l-origin-y, --aug-r-origin-y</b><br>
-        Default: half way between the innermost point of the top and bottom corner augs, along the same edge<br>
-        Supports: any unit<br>
-        on Augs: l-*, r-* respectively<br>
-        Ex: 50% to center it in the middle of the element instead of centered between the corner augs<br>
-        <br>
-        <b>--aug-t-offset, --aug-r-offset, --aug-b-offset, --aug-l-offset</b><br>
-        Default: 0px<br>
-        Supports: any unit<br>
-        on Augs: t-*, r-*, b-*, l-* respectively<br>
-        Ex: -25px to shift the aug position -25px from its origin. (on top/bottom a negative value shifts left, on right/left it shifts up)<br>
-        <br>
-      </section>
-      <section>
-        <label>Custom Properties for elements with the <b>exe</b> augmented-ui option:</label>
-        <b>--aug-border</b><br>
-        Default: 0px<br>
-        Supports: width in px or any fixed units<br>
-        This is the border's size<br>
-        <br>
-        <b>--aug-border-bg</b><br>
-        Default: none<br>
-        Supports: same as css background<br>
-        <br>
-        <b>--aug-border-opacity</b><br>
-        Default: 1<br>
-        Supports: number between 0 and 1 inclusive with no unit<br>
-        <br>
-        <b>--aug-inset</b><br>
-        Default: 0px<br>
-        Supports: distance in px or any fixed units<br>
-        This is the distance between the inner edge of the border and the inset bg itself<br>
-        <br>
-        <b>--aug-inset-bg</b><br>
-        Default: none<br>
-        Supports: same as css background<br>
-        <br>
-        <b>--aug-inset-opacity</b><br>
-        Default: 1<br>
-        Supports: number between 0 and 1 inclusive with no unit<br>
-        <br>
-        /// fallback values for browsers without clip-path (-webkit-clip-path is unreliable) (Safari, pre-chromium Edge, Old Opera) ///<br>
-        <b>--aug-border-radius-fallback</b><br>
-        Default: an automatic calculation based on size of any corresponding corner aug equipped to the element.<br>
-        Supports: same as css border-radius<br>
-        Note: augs along the edges are not rendered or considered for these browsers, only corner augs are simulated<br>
-        <br>
-        <b>--aug-border-radius-fallback-inset</b><br>
-        Default: an automatic calculation based on size of any corresponding corner aug equipped to the element, minus the (border width + inset distance).<br>
-        Supports: same as css border-radius<br>
-        <br>
-        <b>--aug-border-fallback-color</b><br>
-        Default: the value of --aug-border-bg, else transparent<br>
-        Supports: color value<br>
-        Note: if --aug-border-bg is not suitable as a border-color value, the border will not draw unless this fallback is set<br>
-        The border is drawn on a pseudo element like the full-support one is, so it will not upset layout if it is drawn or not<br>
-      </section>
-      <br>
-      TODO: notes about other executable** modes on an augmented element<br>
-      TODO: notes about clipping delegated elements within an augmented element (border-el, inset-el, etc)<br>
-      <br>
-      * "augs" in augmented-ui are partial clip path polygons, named after "augs" in the cyberpunk genera (often large pieces of technology integrated into the squishy human body)<br>
-      ** "executable" augmented-ui options (like <b>exe</b>) are responsible for stitching together the path partials and setting an actual final clip-path polygon
     </div>
 
     <div class="tests">
