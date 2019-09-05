@@ -5,7 +5,10 @@
 Home:
 http://augmented-ui.com/
 
-Docs / Tests:
+Docs:
+http://augmented-ui.com/docs/
+
+Informal/Visual Tests:
 http://augmented-ui.com/test.html
 
 NPM:
