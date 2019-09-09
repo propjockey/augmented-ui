@@ -1244,7 +1244,7 @@
   );
 }
 
-/* Full featured webkit support: Chrome 49-54, Safari 9.1+, iOS Safari > 12.1, Opera 36-41, Opera mobile 46+, UC Browser 12+, Samsung Internet 5+ */
+/* Full featured webkit support: Chrome 51-54, Safari 9.1+, iOS Safari >= 11, Opera 38-41, Opera mobile 46+, UC Browser 12+, Samsung Internet 5+ */
 @supports (--foo: , 0 0) and (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%)) and (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) {
   [augmented-ui~="border-el"],
   [augmented-ui~="exe"]::after {
@@ -1295,7 +1295,7 @@
 }
 
 /* Eliptical border radius fallback. (browsers without (-webkit-)clip-path or browsers that don't supprot css vars with leading or trailing commas) */
-/* pre chromium Edge and safari iOS <= 12.1 */
+/* pre chromium Edge and safari iOS < 11 */
 @supports (not ((--foo: , 0 0) and ((clip-path: polygon(0 0, 100% 0, 50% 50%)) or (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%))))) {
   /* vvv almost all of the code here avoids this: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17410857/ for 5 layers of inheritance vvv */
 
