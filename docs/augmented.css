@@ -1173,7 +1173,7 @@
   );
 }
 /* This renders a background in an element (or pseudo element) on top of the content. If it can't be clipped, it must not happen. Fallbacks add a css border to it. */
-@supports (clip-path: polygon(0 0, 100% 0, 50% 50%)) {
+@supports (--foo: , 0 0) and ((clip-path: polygon(0 0, 100% 0, 50% 50%)) or (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%))) {
   [augmented-ui~="border-el"],
   [augmented-ui~="exe"]::after {
     background: var(--aug-border-bg, none);
@@ -1244,9 +1244,59 @@
   );
 }
 
-/* -webkit-clip-path is unreliable as a css supports test, fallback removed. Worked on Opera 41 but not in Safari 12.1 on iOS */
-/* pre chromium Edge, safari, old Opera */
-@supports (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) {
+/* Full featured webkit support: Chrome 49-54, Safari 9.1+, iOS Safari > 12.1, Opera 36-41, Opera mobile 46+, UC Browser 12+, Samsung Internet 5+ */
+@supports (--foo: , 0 0) and (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%)) and (not (clip-path: polygon(0 0, 100% 0, 50% 50%))) {
+  [augmented-ui~="border-el"],
+  [augmented-ui~="exe"]::after {
+    -webkit-clip-path: polygon(
+      var(--aug-_TlPathInset1, var(--aug-_W) var(--aug-_W))
+      var(--aug-_TPathInset1, ),
+      var(--aug-_TrPathInset1, var(--aug-_100W) var(--aug-_W))
+      var(--aug-_RPathInset1, ),
+      var(--aug-_BrPathInset1, var(--aug-_100W) var(--aug-_100W))
+      var(--aug-_BPathInset1, ),
+      var(--aug-_BlPathInset1, var(--aug-_W) var(--aug-_100W))
+      var(--aug-_LPathInset1, ),
+      var(--aug-_TlInset1JoinBX, var(--aug-_W)) var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+      0px var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+      0px 100%, 100% 100%, 100% 0px, 0px 0px,
+      0px var(--aug-_TlInset1JoinBY, var(--aug-_W)),
+      var(--aug-_TlInset1JoinBX, var(--aug-_W)) var(--aug-_TlInset1JoinBY, var(--aug-_W))
+    );
+  }
+  [augmented-ui~="inset-el"],
+  [augmented-ui~="exe"]::before {
+    -webkit-clip-path: polygon(
+      var(--aug-_TlPathInset2, var(--aug-_WD) var(--aug-_WD))
+      var(--aug-_TPathInset2, ),
+      var(--aug-_TrPathInset2, var(--aug-_100WD) var(--aug-_WD))
+      var(--aug-_RPathInset2, ),
+      var(--aug-_BrPathInset2, var(--aug-_100WD) var(--aug-_100WD))
+      var(--aug-_BPathInset2, ),
+      var(--aug-_BlPathInset2, var(--aug-_WD) var(--aug-_100WD))
+      var(--aug-_LPathInset2, )
+    );
+  }
+  [augmented-ui~="exe"],
+  [augmented-ui~="exe-lite"],
+  [augmented-ui~="before"]::before,
+  [augmented-ui~="after"]::after {
+    -webkit-clip-path: polygon(
+      var(--aug-_TlPath, 0px 0px)
+      var(--aug-_TPath, ),
+      var(--aug-_TrPath, 100% 0px)
+      var(--aug-_RPath, ),
+      var(--aug-_BrPath, 100% 100%)
+      var(--aug-_BPath, ),
+      var(--aug-_BlPath, 0px 100%)
+      var(--aug-_LPath, )
+    );
+  }
+}
+
+/* Eliptical border radius fallback. (browsers without (-webkit-)clip-path or browsers that don't supprot css vars with leading or trailing commas) */
+/* pre chromium Edge and safari iOS <= 12.1 */
+@supports (not ((--foo: , 0 0) and ((clip-path: polygon(0 0, 100% 0, 50% 50%)) or (-webkit-clip-path: polygon(0 0, 100% 0, 50% 50%))))) {
   /* vvv almost all of the code here avoids this: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17410857/ for 5 layers of inheritance vvv */
 
   /* Step 1: set up any pseduo-level vars on main elements first (setup for any el that uses them to avoid repeat, not just pseudo parents) */

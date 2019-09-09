@@ -27,3 +27,15 @@ Use your favorite NPM CDN and include it on your page before other stylesheets f
 ```html
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css">
 ```
+
+
+CHANGELOG:
+
+v1.1.0 - September 9th, 2019:
+* Increased full support global user reach from ~70% to ~91% with -webkit-clip-path
+* Bought an old iPhone to isolate and feature detect the iOS issue found before launch, enabling -webkit-clip-path to be used everywhere else
+* Better docs: http://augmented-ui.com/docs/
+
+v1.0.0 - August 31st, 2019:
+* Initial release
+* -webkit-clip-path support removed before release due to breaking issues on older iOS versions used by ~2% of global users

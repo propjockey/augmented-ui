@@ -8,11 +8,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#c4aa22">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a88d00">
     <meta name="msapplication-TileColor" content="#ffc40d">
-    <meta name="msapplication-config" content="/browserconfig.xml">
-    <meta name="theme-color" content="#ffd700">
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" type="text/css" href="/augmented.css">
     <script type="module" src="/propjockey-animations.js"></script>
     <link rel="stylesheet" type="text/css" href="/section-0.css">
@@ -56,7 +54,7 @@
 
     <div class="header-top">
       <h1 class="top-left" augmented-ui="br-clip exe">augmented-ui</h1>
-      <div class="header-fallback-info">Your browser doesn't support clip-path yet so you're seeing the softer, automatic elliptical border-radius fallback!</div>
+      <div class="header-fallback-info">This browser is using the automatic elliptical border-radius fallback.</div>
     </div>
 
     <div class="section-1" data-attr-spliced-ignore>
@@ -210,8 +208,8 @@
         </ul>
         <h3>Automatic fallbacks and feature detection.</h3>
         <ul>
-          <li>Requires unprefixed clip-path for full support (today's global reach ~70%)</li>
-          <li>Great automatic fallback for older browsers (+ ~22% global reach). More details below!</li>
+          <li>Full support with v1.1.0+ has a global user reach of ~91%!</li>
+          <li>Great automatic fallback for older browsers (+ ~3.5% global reach). More details below!</li>
         </ul>
         <h3>Use augmented-ui in any project, for free.</h3>
         <ul>
@@ -301,21 +299,21 @@
           <span class="title">Same screenshot in browsers with clip-path</span>
           <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
           <a href="/recent-browsers.png"><img src="/recent-browsers.png"
-            title="As of August 31, 2019 ~70% of global users would experience this fully supported version according to data from caniuse.com"
+            title="As of September 9th, 2019 ~91% of global users would experience this fully supported version according to data from caniuse.com"
           /></a>
         </div>
         <div class="old-browsers image-frame" augmented-ui="tl-clip br-clip exe">
           <span class="title">Screenshot of old browser fallbacks</span>
           <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
           <a href="/old-browsers.png"><img src="/old-browsers.png"
-            title="As of August 31, 2019 ~22% of global users would experience this fallback supported version according to data from caniuse.com"
+            title="As of August 31, 2019 ~3.5% of global users would experience this fallback supported version according to data from caniuse.com"
           /></a>
         </div>
         <div class="ancient-browsers image-frame" augmented-ui="tl-clip br-clip exe">
           <span class="title">Ancient browsers don't hate it (IE11 screenshot)</span>
           <div class="close-button" onclick="this.parentNode.parentNode.className='monitor select-none'">X</div>
           <a href="/ancient-browsers.png"><img src="/ancient-browsers.png"
-            title="As of August 31, 2019 ~8% of global users would see this minimal interference version according to data from caniuse.com"
+            title="As of August 31, 2019 ~6% of global users would see this minimal interference version according to data from caniuse.com"
           /></a>
         </div>
         <div class="top-secret image-frame" augmented-ui="tl-clip br-clip exe">
@@ -375,18 +373,18 @@
         <h2>Automatic Fallbacks,<br>Browser Support, &amp; Options</h2>
         <div class="section-3-info">
           <br>
-          <h3>Full support requires unprefixed clip-path</h3>
+          <h3>Full support for ~91% of global users!</h3>
           <ul>
-            <li>As of August 31, 2019 <b>~70%</b> of global users would experience the fully supported version according to data from caniuse.com</li>
-            <li>-webkit-clip-path works with augmented-ui in some browsers (ex: Opera 41) but doesn't in others (ex: Safari 12.1 on iOS) so no webkit fallbacks are included at this time. More precise feature detection could extend full support to specific webkit browsers in the near future.</li>
+            <li>As of Sept 9th, 2019 with v1.1.0, <b>~91%</b> of global users would experience the fully supported version according to data from caniuse.com</li>
+            <li>Automatic -webkit-clip-path fallback brings full support as far back as: Chrome 49-54, Safari 9.1+, iOS Safari 11+, Opera 36-41, Opera mobile 46+, UC Browser 12+, Samsung Internet 5+</li>
           </ul>
           <h3>Automatic fallbacks use elliptical border-radius</h3>
           <ul>
-            <li>When clip-path is not supported, if custom properties are supported, augmented-ui constructs an elliptical border radius for the element.</li>
+            <li>On browsers without a clip-path option, and on older iOS versions with only partial support of custom properties, augmented-ui automatically constructs an elliptical border radius for the element.</li>
             <li>The effective width and height of each corner aug is used to determine the border shape - producing a softer, almost melted, version of your augmented element.</li>
             <li>The --aug-inset options still work the same, creating a background behind the content, inset the same distance from the outer edge. The inset background performs a similar construction of an elliptical border-radius, with appropriately smaller sizes just like the full version.</li>
             <li>Augmented elements will have <b>overflow:hidden;</b> and <b>transform:translateZ(0px);</b> applied to simulate clip-path's overflow clipping and its new stacking context so layout differences are avoided.</li>
-            <li>The fully supported reach, plus the added reach of the full featured fallback, puts total global user reach around <b>~92%</b> according to data from caniuse.com</li>
+            <li>This elliptical fallback will be seen by about <b>3.5%</b> of global users according to data from caniuse.com - primarily pre-chromium Edge and older iOS users.</li>
           </ul>
         </div>
       </div>
@@ -399,14 +397,12 @@
         </ul>
         <h3>Ancient Browsers without custom properties (ex: IE11)</h3>
         <ul>
-          <li>Usable, but not dressed up. The remaining ~8% of global users would experience this (if they're in your target audience).</li>
+          <li>Usable, but not dressed up. The remaining ~6% of global users would experience this (if they're in your target audience).</li>
           <li>Additional considerations for this are left to the user. (No automatic fallbacks provided since these browsers do not support CSS feature detection either.)</li>
           <li>Main issues may be: visibility of text (no inset bg is present), and the new stacking context that clip path creates will not happen (set a transformation other than none to simulate this).</li>
           <li>An earlier screenshot of part of this site rendered in IE11 is available above. The biggest issues pictured are from when display:grid was used (nothing to do with augmented-ui) but most of the augmented elements still show up in the correct spot, with text readable, correct layering, and size maintained.</li>
         </ul>
       </div>
-
-
     </div>
 
     <div class="section-4">

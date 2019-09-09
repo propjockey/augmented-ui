@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>augmented-ui - v1.1.0 release</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a88d00">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#000000">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146833088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-146833088-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="/augmented.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <style>
+      html {
+        font-size: 16px;
+        overflow-x: hidden;
+        background: radial-gradient(circle at 75% 100%, #1a4e54, transparent 50%),
+                    radial-gradient(at 25% 0%, #1a4e54, transparent 25%),
+                    linear-gradient(to right, #293546, #4d1b5d, #160f2d 60%, #051120, #215064);
+        height: 100%;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+        font-size: 1rem;
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        background: radial-gradient(purple, purple 2px, transparent 2px);
+        background-size: 100px 100px;
+        height: 615px;
+        position: relative;
+      }
+      .header {
+        position: absolute;
+        left: 50%;
+        top: 10%;
+        transform: translateX(-50%);
+      }
+      .header h1 {
+        height: 50px;
+        font-size: 30px;
+        font-weight: bold;
+        --aug-tl: 50px;
+        --aug-br: 50px;
+        text-align: center;
+        padding: 7px 50px 10px 50px;
+        --aug-border: 2px;
+        --aug-border-bg: skyblue;
+        --aug-inset: 3px;
+        --aug-inset-bg: black;
+        color: gold;
+        display: inline-block;
+      }
+      .header h1 + span {
+        height: 25px;
+        padding: 3px 30px 5px 30px;
+        font-weight: bold;
+        margin-left: -40px;
+        vertical-align: bottom;
+        --aug-tl: 25px;
+        --aug-br: 25px;
+        --aug-border: 2px;
+        --aug-border-bg: skyblue;
+        --aug-inset: 1px;
+        --aug-inset-bg: black;
+        color: gold;
+        display: inline-block;
+      }
+      .version {
+        position: absolute;
+        left: 50%;
+        top: 25%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 30px;
+      }
+      .percent {
+        position: absolute;
+        left: 50%;
+        top: 35%;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-areas: "fs percent"
+                             "gur percent"
+                             "loading-bar loading-bar"
+                             "evenmore evenmore";
+        grid-template-columns: 280px 1fr;
+        grid-template-rows: 40px 30px 60px;
+        grid-row-gap: 10px;
+      }
+
+      .full-support {
+        font-size: 42px;
+        font-weight: bold;
+        color: deepskyblue;
+        grid-area: fs;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .gur {
+        font-size: 30px;
+        font-weight: bold;
+        color: deepskyblue;
+        grid-area: gur;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .percent91 {
+        font-size: 60px;
+        font-weight: bold;
+        color: gold;
+        grid-area: percent;
+        align-self: center;
+      }
+
+      .loading-bar {
+        grid-area: loading-bar;
+        height: 60px;
+        --aug-border: 2px;
+        --aug-border-bg: skyblue;
+        --aug-inset: 5px;
+        --aug-inset-bg: linear-gradient(
+            to right,
+            gold,
+            skyblue 87%,
+            skyblue calc(91% - 7px),
+            violet calc(91% - 7px),
+            violet calc(94.5% - 7px),
+            transparent calc(94.5% - 7px)
+        );
+        --aug-t-origin-x: calc(91% - 7px);
+        --aug-b-origin-x: calc(91% - 7px);
+        --aug-b: 2px;
+        --aug-t: 2px;
+        --aug-bl: 8px;
+        --aug-tr: 8px;
+      }
+      .evenmore {
+        grid-area: evenmore;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        color: violet;
+      }
+
+
+
+      /* copy pasted from main site */
+        .group-3d {
+          height: 400px;
+          position: relative;
+          left: 0px;
+          transform-style: preserve-3d;
+          transform-origin: 50% 100%;
+          transform: scale(0.75) rotateY(-30deg) rotateX(45deg);
+          transition: transform 0.5s ease, left 0.5s ease;
+        }
+
+        .my-augfiguration {
+          position: absolute;
+          height: 100%;
+          width: 50%;
+          top: 0px;
+          left: 0px;
+          transition: transform 0.5s ease;
+          transition-delay: 0.5s;
+        }
+        .my-augfiguration:nth-child(1) {
+          transform: translateZ(225px);
+        }
+        .my-augfiguration:nth-child(2) {
+          transform: translateZ(150px);
+        }
+        .my-augfiguration:nth-child(3) {
+          transform: translateZ(75px);
+        }
+        .my-augfiguration:nth-child(4) {
+          transform: translateZ(0px);
+        }
+
+        .expanded-labels {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          text-align: right;
+          color: #ebdcc0;
+          font-family: monospace;
+          font-size: 1.5vw;
+          line-height: 30px;
+          overflow: hidden;
+          width: 50%;
+          transform: rotateX(-45deg) translateY(-110px);
+        }
+        .label-line {
+          --aug-bl-width: 75%;
+          --aug-bl-height: 8px;
+          height: 10px;
+          width: 100%;
+          margin-bottom: 50px;
+        }
+        .my-augfiguration {
+          --aug-tr: 25px;
+          --aug-br-width: 25px;
+          --aug-br-height: 50%;
+          --aug-bl: 57px;
+          --aug-border: 10px;
+          --aug-border-bg: linear-gradient(to bottom right, #b1ffff, #ff604d);
+          --aug-border-fallback-color: #d8aea4;
+          --aug-inset: 10px;
+          --aug-inset-bg: #fbe806;
+          background: linear-gradient(#ff604d, #b1ffff);
+          color: #b1ffff;
+          font-size: 2rem;
+          text-align: center;
+          text-shadow: 0px 0px 10px #1c414c;
+          line-height: 200px;
+        }
+        .my-augfiguration.info-border {
+          --aug-inset-bg: transparent;
+          background: none;
+        }
+        .my-augfiguration.info-html {
+          --aug-inset-bg: transparent;
+          --aug-border-bg: transparent;
+          --aug-border-fallback-color: transparent;
+          background: none;
+        }
+        .my-augfiguration.info-inset {
+          --aug-border-bg: transparent;
+          --aug-border-fallback-color: transparent;
+          background: none;
+        }
+        .my-augfiguration.info-background {
+          --aug-inset-bg: transparent;
+          --aug-border-bg: transparent;
+          --aug-border-fallback-color: transparent;
+        }
+      /* end copy pasted from main site */
+      .panel3d-container {
+        width: 500px;
+        height: 330px;
+        position: absolute;
+        left: 100px;
+        bottom: 5%;
+        --aug-border: 2px;
+        --aug-border-bg: skyblue;
+        --aug-tr: 50px;
+        --aug-tl: 10px;
+        --aug-bl: 10px;
+        --aug-l-width: 10px;
+        --aug-l-height: 50%;
+        --aug-inset-bg: radial-gradient(at top left, mediumturquoise, transparent 75%);
+        --aug-inset-opacity: 0.77;
+      }
+      .panel3d {
+        width: 600px;
+        height: 400px;
+        position: absolute;
+        left: 50%;
+        bottom: 60%;
+        transform-origin: 0 100%;
+        transform: scale(0.65) translate(-50%, 50%);
+        perspective: 2077px;
+      }
+      .info-html {
+        font-size: 60px;
+        font-weight: bold;
+      }
+      .blog-panel-container {
+        left: 40px;
+        top: 5%;
+        width: 360px;
+        height: 400px;
+        position: absolute;
+      }
+      .social-icons {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 70px;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .social-icons > i {
+        font-size: 18px;
+        color: skyblue;
+        opacity: 0.8;
+      }
+      .blog-panel {
+        height: 100%;
+        --aug-border: 2px;
+        --aug-border-bg: linear-gradient(to bottom right, skyblue, transparent 75%);
+        --aug-bl: 40px;
+        --aug-tr-width: 90px;
+        --aug-tr-height: 25px;
+        --aug-inset-bg: radial-gradient(at top left, mediumturquoise, transparent 75%);
+        --aug-inset-opacity: 0.5;
+      }
+      .blog-headline {
+        display: inline-block;
+        padding: 8px;
+        color: skyblue;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .blog-content {
+        padding: 8px;
+        color: #4d1b5d;
+        font-size: 16px;
+        white-space: nowrap;
+      }
+
+      .cell-phone {
+        position: absolute;
+        right: 410px;
+        top: 60px;
+        width: 200px;
+        height: 320px;
+        --aug-border: 1px;
+        --aug-border-bg: skyblue;
+        --aug-l: 5px;
+        --aug-r: 5px;
+        --aug-l-origin-y: 25%;
+        --aug-l-height: 20%;
+        --aug-r-height: 50%;
+        --aug-tl: 10px;
+        --aug-tr: 10px;
+        --aug-bl: 5px;
+        --aug-br: 5px;
+        --aug-bl-height: 10px;
+        --aug-br-height: 10px;
+      }
+      .cell-top {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        height: 10%;
+        background: linear-gradient(skyblue, transparent 150%);
+        opacity: 0.5;
+        --aug-bl-height: 5px;
+        --aug-br-height: 5px;
+        --aug-bl-width: 18%;
+        --aug-br-width: 68%;
+      }
+      .cell-camera {
+        position: absolute;
+        left: 21%;
+        top: 25%;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: violet;
+      }
+      .cell-status {
+        position: absolute;
+        top: calc(10% - 2px);
+        left: 10px;
+        right: 10px;
+        opacity: 0.5;
+      }
+      .cell-status > * {
+        color: skyblue;
+        font-size: 13px;
+        float: right;
+        margin-left: 7px;
+      }
+      .cell-status .fa-battery-full {
+        float: left;
+        margin-left: 0px;
+      }
+      .cell-weather {
+        position: absolute;
+        top: calc(10% + 15px);
+        left: 0px;
+        right: 0px;
+        height: 20%;
+        opacity: 0.75;
+      }
+      .cell-weather > * {
+        color: skyblue;
+        position: absolute;
+      }
+      .weather-time {
+        font-size: 30px;
+        left: 10px;
+        top: 0px;
+      }
+      .ampm {
+        font-size: 12px;
+      }
+      .weather-city {
+        font-size: 18px;
+        top: 30px;
+        left: 15px;
+      }
+      .weather-date {
+        bottom: 2px;
+        left: 15px;
+        font-size: 11px;
+      }
+      .cell-weather .fa-cloud-moon-rain {
+        font-size: 40px;
+        right: 12px;
+        top: 2px;
+      }
+      .weather-temp {
+        right: 15px;
+        bottom: 2px;
+        font-weight: bold;
+      }
+      .search-bar {
+        position: absolute;
+        top: 35%;
+        left: 10px;
+        right: 10px;
+        height: 20px;
+        opacity: 0.7;
+      }
+      .search-bar .fa-microphone {
+        background: skyblue;
+        color: teal;
+        transform: scaleY(0.75);
+        height: 22.5px;
+        width: 15px;
+        text-align: center;
+        padding-top: 7.5px;
+        font-size: 8px;
+        --aug-tl: 7.5px;
+        --aug-tr: 7.5px;
+        --aug-bl: 7.5px;
+        --aug-br: 7.5px;
+      }
+      .search-bar .fa-microphone::before {
+        transform: scaleY(1.5);
+        display: inline-block;
+      }
+      .search-bar .fa-search {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: skyblue;
+        font-size: 12px;
+      }
+      .search-underline {
+        width: 80%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 4px;
+        height: 100%;
+        --aug-border: 1px;
+        --aug-border-bg: linear-gradient(to top, skyblue, skyblue 4px, transparent 4px);
+        --aug-border-opacity: 0.5;
+        --aug-bl: 5px;
+        --aug-br: 5px;
+      }
+      .phone-apps {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        top: 140px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .phone-apps > * {
+        align-self: center;
+        text-align: center;
+        font-size: 25px;
+        color: skyblue;
+        opacity: 0.57;
+      }
+
+      .the-other-mothership-in-my-dreams {
+        perspective: 2077px;
+        width: 800px;
+        height: 450px;
+        bottom: 40px;
+        right: 40px;
+        position: absolute;
+      }
+      .monitor {
+        --aug-l-width: 5px;
+        --aug-r-width: 5px;
+        --aug-l-height: 50%;
+        --aug-r-height: 50%;
+        transform-origin: 100% 100%;
+        transform: rotateY(-30deg) rotateX(10deg);
+        --aug-border: 2px;
+        --aug-border-bg: skyblue;
+        --aug-inset: 4px;
+        --aug-inset-bg: skyblue;
+        --aug-inset-opacity: 0.25;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 50%;
+        height: 50%;
+      }
+      .keyboard {
+        position: absolute;
+        bottom: 0px;
+        right: 20px;
+        transform-origin: 100% 100%;
+        transform: rotateY(-10deg) rotateX(77deg) translateY(100%) translateZ(20px) translateX(-35%);
+        --aug-border: 4px;
+        --aug-border-bg: skyblue;
+        --aug-inset: 4px;
+        --aug-inset-bg: 0 0 / 8px 8px radial-gradient(#3485a0, #3485a0 3px, transparent 3px), linear-gradient(to top left, violet, skyblue, mediumaquamarine, gold);
+        --aug-inset-opacity: 0.75;
+        width: 50%;
+        height: 25%;
+        --aug-l-width: 4px;
+        --aug-r-width: 4px;
+        --aug-l-height: 50%;
+        --aug-r-height: 50%;
+        --aug-tl-height: 4px;
+        --aug-tr-height: 4px;
+        --aug-bl: 4px;
+        --aug-br: 4px;
+        opacity: 0.75;
+      }
+      .speaker-bar {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        height: 20px;
+        background: linear-gradient(to right, gold, violet);
+        -webkit-mask-image: repeating-linear-gradient(-45deg, black, black 1px, transparent 1px, transparent 3px);
+        mask-image: repeating-linear-gradient(-45deg, black, black 1px, transparent 1px, transparent 3px);
+      }
+      .window {
+        position: absolute;
+        top: 18px;
+        left: 22px;
+        right: 22px;
+        bottom: 42px;
+        background: linear-gradient(to top left, #3485a0, mediumaquamarine);
+        opacity: 0.75;
+      }
+      .window * {
+        font-size: 10px;
+        color: teal;
+      }
+      .window > * {
+        opacity: 0.5;
+      }
+      .left-app-bar {
+        position: absolute;
+        top: 0px;
+        bottom: 20px;
+        left: 0px;
+        width: 60px;
+        white-space: nowrap;
+        padding: 5px;
+        background: linear-gradient(to bottom right, transparent, skyblue);
+        --aug-tr: 5px;
+        --aug-r-width: 3px;
+        --aug-r-height: 50%;
+        --aug-br-height: 5px;
+        --aug-br-width: 40%;
+        --aug-bl-height: 5px;
+        --aug-bl-width: 40%;
+      }
+      .playlists,
+      .playlists ~ div {
+        font-size: 8px;
+        font-weight: bold;
+        margin-bottom: 2px;
+      }
+      .bottom-app-bar {
+        position: absolute;
+        bottom: 0px;
+        height: 25px;
+        left: 0px;
+        right: 0px;
+        background: linear-gradient(to right, transparent, skyblue);
+      }
+      .album-icon {
+        background: #fbe806;
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        text-align: center;
+        padding-top: 4px;
+        opacity: 0.5;
+      }
+      .song-title,
+      .song-artist {
+        position: absolute;
+        left: 27px;
+        top: 8px;
+        font-size: 6px;
+      }
+      .song-artist {
+        top: 15px;
+      }
+      .playlist-icon {
+        width: 48px;
+        height: 44px;
+        position: absolute;
+        top: 4px;
+        left: 80px;
+        --aug-tr: 4px;
+        --aug-bl: 4px;
+        --aug-l-width: 2px;
+        --aug-r-width: 2px;
+        --aug-l-height: 25px;
+        --aug-r-height: 25px;
+        --aug-border: 1px;
+        --aug-border-bg: teal;
+        --aug-inset: 5px;
+        --aug-inset-bg: linear-gradient(to top, violet, violet 40%, transparent 40%), radial-gradient(gold, gold 15%, transparent 30%), deepskyblue;
+        -webkit-mask-image: repeating-linear-gradient(black, black 2px, transparent 2px, transparent 3px);
+        mask-image: repeating-linear-gradient(black, black 2px, transparent 2px, transparent 3px);
+      }
+      .playlist-name {
+        font-size: 17px;
+        font-weight: bold;
+        position: absolute;
+        left: 135px;
+        top: 15px;
+      }
+      .minresclose {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        transform-origin: 100% 0px;
+        transform: scale(0.667);
+      }
+      .minresclose > i {
+        --aug-tl: 8px;
+        --aug-br: 8px;
+        --aug-inset-bg: teal;
+        --aug-inset-opacity: 0.75;
+        --aug-border: 1px;
+        --aug-border-bg: skyblue;
+        text-align: center;
+        color: skyblue;
+        line-height: 17px;
+        font-weight: normal;
+        height: 16px;
+        width: 34px;
+      }
+      .media-controls {
+        position: absolute;
+        left: 135px;
+        top: 5px;
+        width: 100px;
+        height: 15px;
+        border-bottom: 1px solid teal;
+        text-align: center;
+      }
+      .media-controls .fa-pause {
+        position: relative;
+        top: -4px;
+        background: teal;
+        color: skyblue;
+        transform-origin: 50% 0px;
+        transform: scaleY(0.75);
+        height: 22.5px;
+        width: 15px;
+        text-align: center;
+        padding-top: 7.5px;
+        font-size: 6px;
+        --aug-tl: 7.5px;
+        --aug-tr: 7.5px;
+        --aug-bl: 7.5px;
+        --aug-br: 7.5px;
+      }
+      .media-controls > i {
+        vertical-align: top;
+        margin-right: 2px;
+        margin-left: 2px;
+      }
+      .media-controls .fa-pause::before {
+        transform: scaleY(1.5);
+        display: inline-block;
+      }
+      .song-list {
+        position: absolute;
+        left: 70px;
+        top: 55px;
+      }
+
+      .free {
+        position: absolute;
+        left: 34%;
+        top: 50px;
+        transform: translateX(-50%) rotateZ(-15deg);
+        color: black;
+        width: 200px;
+        height: 200px;
+        font-size: 14px;
+        text-align: center;
+        padding-top: 75px;
+        --aug-border-bg: gold;
+        --aug-border: 2px;
+        --aug-inset: 5px;
+        --aug-inset-bg: gold;
+        --aug-tl: 55px;
+        --aug-tr: 55px;
+        --aug-bl: 55px;
+        --aug-br: 55px;
+        --aug-t: 35px;
+        --aug-r: 35px;
+        --aug-b: 35px;
+        --aug-l: 35px;
+        opacity: 0.5;
+      }
+      .logo-container {
+        position: absolute;
+        left: 50%;
+        bottom: 50px;
+        filter: drop-shadow(0px 0px 16px violet);
+        transform-origin: 50% 100%;
+        transform: translateX(-50%) scale(0.25);
+        opacity: 0.5;
+      }
+
+      .wow {
+        font-size: 70px;
+        font-weight: bold;
+        position: absolute;
+        right: 150px;
+        top: 150px;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(#1656aa, #dad3d0 55%, black 55%, black 56%, #b3262e 56%, gold, white);
+        filter: drop-shadow(0 0 4px black);
+        opacity: 0.75;
+        transform: perspective(200px) rotateZ(15deg) rotateY(-45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1 augmented-ui="tl-clip br-clip exe">augmented-ui</h1>
+      <span augmented-ui="tl-clip br-clip exe">.com</span>
+    </div>
+    <div class="version">v1.1.0</div>
+    <div class="percent">
+      <span class="full-support">Full-Support</span>
+      <span class="gur">Global User Reach</span>
+      <b class="percent91">~91%</b>
+      <div class="loading-bar" augmented-ui="bl-clip tr-clip t-clip b-clip exe"></div>
+      <div class="evenmore">+ automatic fallbacks for old iOS and Edge browsers!</div>
+    </div>
+
+    <div class="blog-panel-container">
+      <div class="social-icons">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-github"></i>
+      </div>
+      <div class="blog-panel" augmented-ui="tr-clip-x bl-clip exe">
+        <span class="blog-headline">augmented-ui reshapes the web!</span>
+        <div class="blog-content">
+          &nbsp;&nbsp;&nbsp;High Tech web design just got a whole lot<br>
+          easier. ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒ Free to use in any project! ▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒ augmented-ui v1.1.0 ▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒<br>
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+        </div>
+      </div>
+    </div>
+
+    <div class="panel3d-container" augmented-ui="tl-round tr-clip bl-round l-clip-y exe">
+      <div class="panel3d">
+        <div id="group3d" class="group-3d compressed" onmouseenter="expandGroup3d()">
+          <div class="info-border my-augfiguration" augmented-ui="tr-clip bl-clip br-clip-y exe"></div>
+          <div class="info-html my-augfiguration" augmented-ui="tr-clip bl-clip br-clip-y exe">&lt; / &gt;</div>
+          <div class="info-inset my-augfiguration" augmented-ui="tr-clip bl-clip br-clip-y exe"></div>
+          <div class="info-background my-augfiguration" augmented-ui="tr-clip bl-clip br-clip-y exe"></div>
+          <div class="expanded-labels">
+            ::after
+            <div class="label-line" augmented-ui="bl-clip-x exe" style="background: #d8aea4;"></div>
+            innerHTML
+            <div class="label-line" augmented-ui="bl-clip-x exe" style="background: #b1ffff;"></div>
+            ::before
+            <div class="label-line" augmented-ui="bl-clip-x exe" style="background: #fbe806;"></div>
+            style.background
+            <div class="label-line" augmented-ui="bl-clip-x exe" style="background: #ff604d;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="the-other-mothership-in-my-dreams">
+      <div class="monitor" augmented-ui="l-rect r-rect tl-clip tr-clip exe">
+        <div class="window">
+          <div class="minresclose">
+            <i augmented-ui="tl-clip br-clip exe" class="fa fa-window-minimize"></i>
+            <i augmented-ui="tl-clip br-clip exe" class="fa fa-window-restore"></i>
+            <i augmented-ui="tl-clip br-clip exe" class="fa fa-times" style="font-weight: bold;"></i>
+          </div>
+          <div class="bottom-app-bar">
+            <div class="album-icon fa fa-ankh"></div>
+            <div class="song-title">▓▓▓▓▓▓▓▓▓▓</div>
+            <div class="song-artist">▒▒▒ ▒▒▒▒</div>
+            <div class="media-controls">
+              <i class="fa fa-step-backward"></i>
+              <i augmented-ui="exe-lite tl-clip tr-clip br-clip bl-clip" class="fa fa-pause"></i>
+              <i class="fa fa-step-forward"></i>
+            </div>
+          </div>
+          <div class="song-list">
+            ▒▒▒▒▒ ▒▒▒▒▒▒ ▒▒▒▒▒ ▒▒▒▒▒▒ ▒▒▒▒▒<br>
+            ▒▒▒ ▒▒▒▒▒▒ ▒▒▒ ▒▒▒▒▒▒ ▒▒▒<br>
+            ▒▒ ▒▒▒▒▒▒▒▒▒ ▒▒ ▒▒▒▒▒▒▒▒▒ ▒▒ ▒▒<br>
+            ▒▒▒▒▒▒ ▒▒▒ ▒▒▒▒▒▒ ▒▒▒ ▒▒▒▒▒<br>
+            ▒▒▒▒▒▒▒ ▒▒▒▒▒▒ ▒▒▒▒▒▒▒ ▒▒▒▒▒▒ ▒▒▒▒▒▒▒<br>
+            ▒▒▒ ▒▒▒▒▒▒▒▒ ▒▒▒ ▒▒▒▒▒▒▒▒ ▒▒▒▒<br>
+            ▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒ ▒▒<br>
+          </div>
+          <div class="playlist-icon" augmented-ui="l-clip-y r-clip-y bl-clip tr-clip exe"></div>
+          <div class="playlist-name">
+            Retrowave / Synthwave
+            <div class="byline">by Cheerzo</div>
+          </div>
+          <div class="left-app-bar" augmented-ui="exe-lite tr-clip-y br-clip-x bl-clip-x r-rect">
+            <span class="fa fa-home"></span> Home<br>
+            <span class="fa fa-th-list"></span> Browse<br>
+            <span class="fa fa-broadcast-tower"></span> Radio<br>
+            <br>
+            <div class="playlists">PLAYLISTS</div>
+            <div>Retrowave</div>
+            <div>Cyberpunk</div>
+            <div>Synthwave</div>
+            <div>Meditation</div>
+            <div>Silverhand</div>
+            <div>B. Eilish</div>
+            <div>DSI</div>
+          </div>
+        </div>
+        <div class="speaker-bar"></div>
+      </div>
+      <div class="keyboard" augmented-ui="tl-clip-x tr-clip-x bl-clip br-clip r-clip-y l-clip-y exe"></div>
+    </div>
+
+    <div class="cell-phone" augmented-ui="l-clip-y r-clip-y bl-clip-y br-clip-y tl-round tr-round exe">
+      <div class="cell-top" augmented-ui="exe-lite bl-clip-x br-clip-x">
+        <div class="cell-camera"></div>
+      </div>
+      <div class="cell-status">
+        <span class="fa fa-battery-full"></span>
+        <span>12:32 AM</span>
+        <span class="fa fa-wifi"></span>
+        <span class="fa fa-signal"></span>
+      </div>
+      <div class="cell-weather">
+        <span class="weather-time">12:32 <span class="ampm">AM</span></span>
+        <span class="weather-city">Night City</span>
+        <span class="weather-date">Thur, April 16, 2020</span>
+        <span class="fa fa-cloud-moon-rain"></span>
+        <span class="weather-temp">22.2&#8451;</span>
+      </div>
+      <div class="search-bar">
+        <span class="fa fa-microphone" augmented-ui="exe-lite tl-clip tr-clip br-clip bl-clip"></span>
+        <span class="search-underline" augmented-ui="exe bl-clip br-clip"></span>
+        <span class="fa fa-search"></span>
+      </div>
+      <div class="phone-apps">
+        <span class="fa fa-cogs"></span>
+        <span class="fa fa-biohazard"></span>
+        <span class="fa fa-capsules"></span>
+        <span class="fa fa-ambulance"></span>
+        <span class="fa fa-at"></span>
+        <span class="fa fa-ankh"></span>
+        <span class="fa fa-hamburger"></span>
+        <span class="fa fa-level-up-alt"></span>
+        <span class="fa fa-chart-line"></span>
+        <span class="fa fa-bell"></span>
+        <span class="fa fa-dice-d20"></span>
+        <span class="fa fa-eye"></span>
+        <span class="fab fa-bitcoin"></span>
+        <span class="fa fa-phone-square"></span>
+        <span class="fa fa-comments"></span>
+        <span class="fa fa-camera"></span>
+      </div>
+    </div>
+
+    <div class="free" augmented-ui="tl-rect tr-rect bl-rect br-rect t-clip r-clip b-clip l-clip exe">
+      <b>FREE!!</b><br>
+      BSD 2-Clause<br>
+      License
+    </div>
+
+    <div class="logo-container">
+      <div class="logo" augmented-ui="b-clip-x tl-clip tr-clip exe" style="box-sizing: border-box;background: #ffd700;width: 400px;height: 400px;padding-top: 120px;font-family: sans-serif;font-size: 100px;font-weight: bold;text-align: center;--aug-border: 20px;--aug-border-bg: black;--aug-tr: 120px;--aug-tl: 120px;--aug-b-width: 220px;--aug-b-height: 40px;">
+        &lt;aug&gt;
+      </div>
+    </div>
+
+    <div class="wow">Wow!</div>
+  </body>
+</html>
