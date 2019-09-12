@@ -33,7 +33,7 @@ Use your favorite NPM CDN and include it on your page before other stylesheets f
 
 ### Sponsors
 
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/augmented-ui)]
+Become a sponsor and get your logo on this README with a link to your site. [[Become a sponsor](https://opencollective.com/augmented-ui)]
 
 <a href="https://opencollective.com/augmented-ui/sponsor/0/website" target="_blank"><img src="https://opencollective.com/augmented-ui/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/augmented-ui/sponsor/1/website" target="_blank"><img src="https://opencollective.com/augmented-ui/sponsor/1/avatar.svg"></a>
