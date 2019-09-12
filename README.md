@@ -68,7 +68,7 @@ Become a sponsor and get your logo on this README with a link to your site. [[Be
 
 ### Backers
 
-Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/augmented-ui)]
+Help the developer follow his excitement and support augmented-ui with a monthly donation. [[Become a backer](https://opencollective.com/augmented-ui)]
 
 <a href="https://opencollective.com/augmented-ui/backer/0/website" target="_blank"><img src="https://opencollective.com/augmented-ui/backer/0/avatar.svg"></a>
 <a href="https://opencollective.com/augmented-ui/backer/1/website" target="_blank"><img src="https://opencollective.com/augmented-ui/backer/1/avatar.svg"></a>
