@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>augmented-ui - v1.1.0 release</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a88d00">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#000000">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146833088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-146833088-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="/augmented.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <style>
+      html {
+        font-size: 16px;
+        overflow-x: hidden;
+        background: black;
+        height: 100%;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+        font-size: 1rem;
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(#ffffff, #ffffff 50%, #17181a 50%);
+        height: 544px;
+        width: 1360px;
+      }
+      .trim {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: 377px;
+        width: 100%;
+        --aug-tl-width: 15%;
+        --aug-tr-width: 15%;
+        --aug-bl-width: 25%;
+        --aug-br-width: 25%;
+        --aug-l-height: 15px;
+        --aug-l-origin-y: calc(100% - 37px);
+        background: radial-gradient(purple, purple 2px, transparent 2px),
+                    radial-gradient(circle at 75% 100%, #1a4e54, transparent 50%),
+                    radial-gradient(at 25% 0%, #1a4e54, transparent 25%),
+                    linear-gradient(60deg, #293546, #4d1b5d, #160f2d 60%, #051120, #215064);
+        background-size: 68px 68px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+        background-position: 0px 10px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="trim" augmented-ui="tl-clip-x tr-clip-x bl-clip-x br-clip-x b-clip l-rect exe">
+
+    </div>
+  </body>
+</html>
