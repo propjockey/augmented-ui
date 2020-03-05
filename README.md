@@ -106,7 +106,7 @@ Help the developer follow his excitement and support augmented-ui with a monthly
 
 ## CHANGELOG:
 
-v1.1.2 - March 5th, 2019:
+v1.1.2 - March 5th, 2020:
 * Added data-augmented.css option for data- prefixed augmented-ui attribute.
 * Added compatibility notes for specific frameworks/libraries at the bottom of this README
 
