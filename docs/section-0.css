@@ -58,7 +58,7 @@ body.anti-aug .presentation-el {
   --aug-border-bg: var(--gold88);
   --aug-inset-bg: var(--gold);
 }
-body.background-haulted .header-presentation {
+body.background-halted .header-presentation {
   --aug-inset-bg: linear-gradient(to bottom, #ff000033, rgba(0, 0, 0, 0.8), #ff000033), rgba(0, 0, 0, 0.8);
 }
 
@@ -231,7 +231,7 @@ body.background-haulted .header-presentation {
 .fair-fps .performance-detail:after { content: "FAIR"; }
 .bad-fps .performance-detail:after { content: "BAD"; color: #ffaaaa; }
 .awful-fps .performance-detail:after { content: "AWFUL"; color: #ff8888; }
-.awful-fps-hault .performance-detail:after { content: "HAULTED"; color: #ff0000; }
+.awful-fps-halt .performance-detail:after { content: "HALTED"; color: #ff0000; }
 .performance-detail {
   font-size: 0.75rem;
   opacity: 0.65;
@@ -254,7 +254,7 @@ body.background-haulted .header-presentation {
   text-align: center;
   padding-top: 10px;
 }
-.awful-fps-hault #bgFPS {
+.awful-fps-halt #bgFPS {
   background: linear-gradient(to right, #ff000033, #ff000033), var(--gold);
 }
 

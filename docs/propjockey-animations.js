@@ -14,11 +14,11 @@ const fpsCallback = (function () {
   let lastFPS = 0
   let lastClass = "init-fps"
   let awfulCount = 0
-  let haulted = false
+  let halted = false
   // let lastMS = Date.now()
   const bgFPSEl = document.getElementById("bgFPS")
   return (animation, objectInProgress, animationInstanceState) => {
-    if (haulted) {
+    if (halted) {
       return
     }
     // const deltaTime = Date.now() - lastMS
@@ -50,10 +50,10 @@ const fpsCallback = (function () {
     if (fpsAvg < 20) {
       awfulCount++
       if (awfulCount > 50) {
-        bgFPSEl.parentNode.classList.add("awful-fps-hault")
-        document.body.classList.add("background-haulted")
+        bgFPSEl.parentNode.classList.add("awful-fps-halt")
+        document.body.classList.add("background-halted")
         animation.pause(objectInProgress)
-        haulted = true
+        halted = true
       }
     }
   }
