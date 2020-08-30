@@ -2,37 +2,43 @@
 
 # augmented-ui from PropJockey
 
-Home:
-http://augmented-ui.com/
+Resources:
+* Home: http://augmented-ui.com/
+* Docs: http://augmented-ui.com/docs/
+* WYSIWYG Mixin Mixer: http://augmented-ui.com/mixinmixer/
+* NPM: https://www.npmjs.com/package/augmented-ui
+* GitHub: https://github.com/propjockey/augmented-ui
+* Twitter: https://twitter.com/James0x57
 
-Docs:
-http://augmented-ui.com/docs/
-
-Informal/Visual Tests:
-http://augmented-ui.com/test.html
-
-NPM:
-https://www.npmjs.com/package/augmented-ui
-
-GitHub:
-https://github.com/propjockey/augmented-ui
+Old v1 Links:
+* Home: http://augmented-ui.com/v1/
+* Docs: http://augmented-ui.com/v1/docs/
+* Test: http://augmented-ui.com/v1/test.html
+* unpkg: https://unpkg.com/augmented-ui@1/augmented.css
 
 Install:
 `$ npm install augmented-ui`
-Then include the `/node_modules/augmented-ui/augmented.css` file before any stylesheets that use it.
+Then include the `/node_modules/augmented-ui/augmented-ui.min.css` file before any stylesheets that use it.
 
 OR
 
 Use your favorite NPM CDN and include it on your page before other stylesheets for small projects. Like so:
 ```html
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui@2/augmented-ui.min.css">
 ```
 
-### data-augmented.css
+## Files
 
-You may, optionally, use data-augmented.css instead of augmented.css if you prefer to stick to standard markup. They are not interchangeable, please only use one or the other. The API is exactly the same, just instead of the `augmented-ui="tl-clip exe"` attributes, you'll use `data-augmented-ui="tl-clip exe"` instead. data-augmented.css is currently incompatible with aug-attr-spliced.js
+* **augmented-ui.css** - Everything, not minified (core, border and inlay mixins, individual-region mixins, all-region shape mixins)
+* **augmented-ui.min.css** - Everything, minified (core, border and inlay mixins, individual-region mixins, all-region shape mixins)
+* **aug-core.min.css** - core only, minified
+* **border-inlay-mixins.min.css** - border and inlay mixins (and their delegate options) only, minified. Requires aug-core.min.css
+* **region-mixins.min.css** - individual-region mixins only, minified. Requires aug-core.min.css
+* **shape-mixins.min.css** - all-region mixins only, minified. Requires aug-core.min.css
 
 ## Support
+
+http://augmented-ui.com/docs/#supporting-augmented-ui
 
 ### Sponsors
 
@@ -71,7 +77,7 @@ Become a sponsor and get your logo on this README with a link to your site. [[Be
 
 ### Backers
 
-Help the developer follow his excitement and support augmented-ui with a monthly donation. [[Become a backer](https://opencollective.com/augmented-ui)]
+Help the developer follow their excitement and support augmented-ui with a monthly donation. [[Become a backer](https://opencollective.com/augmented-ui)]
 
 <a href="https://opencollective.com/augmented-ui/backer/0/website" target="_blank"><img src="https://opencollective.com/augmented-ui/backer/0/avatar.svg"></a>
 <a href="https://opencollective.com/augmented-ui/backer/1/website" target="_blank"><img src="https://opencollective.com/augmented-ui/backer/1/avatar.svg"></a>
@@ -106,6 +112,16 @@ Help the developer follow his excitement and support augmented-ui with a monthly
 
 ## CHANGELOG:
 
+v2.0.0 - August 30, 2020:
+* Complete rewrite
+* Over 200 aug mixins built on top of a new core feature set
+* Mixin Mixer: http://augmented-ui.com/
+* Properties that enable clip augs at any angle, not just 45deg
+* Optionally equip augs dynamically from CSS using core, without DOM attribute mixins and without JavaScript (no more aug-attr-spliced.js!)
+* Border size and Inlay (previously "Inset") distance gained individual top/right/bottom/left options
+* Full support global user reach at 92.96%
+* Automatic elliptical border-radius fallbacks removed to simplify adding augmented-ui to projects with legacy browser support
+
 v1.1.2 - March 5th, 2020:
 * Added data-augmented.css option for data- prefixed augmented-ui attribute.
 * Added compatibility notes for specific frameworks/libraries at the bottom of this README
@@ -118,39 +134,3 @@ v1.1.0 - September 9th, 2019:
 v1.0.0 - August 31st, 2019:
 * Initial release
 * -webkit-clip-path support removed before release due to breaking issues on older iOS versions used by ~2% of global users
-
-## Cross Compatibility
-
-augmented-ui relies on dynamic and optional composition of standard comma-separated CSS properties. This requires a leading comma in a custom property + an empty fallback in var(). Here is a minimal example of how that works: https://jsbin.com/cemujarozo/1/edit?html,css,output
-
-A common problem in CSS parsers is to erroneously give meaning to commas in custom properties, and then complain about having a leading comma. Even old versions of safari on iOS ran into this issue and they have since fixed it. Fortunately it can be safely feature detected to avoid problems in those versions of iOS: `@supports (--foo: , 0 0)`
-
-### Compatibility with Create React App
-
-Create React App depends on PostCSS and cssnano. Both of these libraries have parsing bugs that block augmented-ui so you'll need to copy augmented.css (or data-augmented.css) into the public folder and manually include it in the index.html file to avoid them until they're fixed.
-
-You can read more about using the public folder here: https://create-react-app.dev/docs/using-the-public-folder/
-
-You can read more about the Post CSS bug here (issue has been open for about 1 year): https://github.com/postcss/postcss-calc/issues/77
-
-You can read more about the cssnano bug here (solved, but there hasn't been a release in over a year): https://github.com/cssnano/cssnano/issues/822
-
-### Compatibility with styled-components in React
-
-styled-components strips non-standard attributes so make sure to use `data-augmented.css`
-
-### Compatibility in VSCode
-
-VSCode complains about the leading comma and currently the only way to avoid it is to disable its CSS Validation.
-
-You can read more about disabling it here: https://github.com/propjockey/augmented-ui/issues/2#issuecomment-540184111
-
-You can read more about the issue here: https://github.com/microsoft/vscode/issues/82178
-
-### Compatibility with SASS
-
-SASS has multiple implementations/compilers, some have parsing bugs related to the leading comma in custom properties. The compiler used on sassmeister.com handles the leading comma correctly in custom properties (by ignoring it), but trips up when it's used in a supports statement `@supports (--foo: , 0 0)` If you run into trouble, include augmented.css separately from your SASS ecosystem.
-
-### Other notes?
-
-Please feel free to file an issue if you run into any trouble, I'll be glad to take a look and work on a path forward for you!

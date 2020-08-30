@@ -1,10 +1,10 @@
 {
   "name": "augmented-ui",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "Integrate your apps with technology",
-  "main": "augmented.css",
+  "main": "augmented-ui.css",
   "scripts": {
-    "test": "echo \"Error: no test specified. See http://augmented-ui.com/test.html for visual/unscripted tests\" && exit 1"
+    "test": "echo \"Error: no test specified.\" && exit 1"
   },
   "repository": {
     "type": "git",
