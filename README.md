@@ -2,6 +2,8 @@
 
 # augmented-ui from PropJockey
 
+<img src="https://augmented-ui.com/img/v2intro.gif">
+
 Resources:
 * Home: http://augmented-ui.com/
 * Docs: http://augmented-ui.com/docs/
@@ -115,7 +117,7 @@ Help the developer follow their excitement and support augmented-ui with a month
 v2.0.0 - August 30, 2020:
 * Complete rewrite
 * Over 200 aug mixins built on top of a new core feature set
-* Mixin Mixer: http://augmented-ui.com/
+* Mixin Mixer: http://augmented-ui.com/mixinmixer
 * Properties that enable clip augs at any angle, not just 45deg
 * Optionally equip augs dynamically from CSS using core, without DOM attribute mixins and without JavaScript (no more aug-attr-spliced.js!)
 * Border size and Inlay (previously "Inset") distance gained individual top/right/bottom/left options
