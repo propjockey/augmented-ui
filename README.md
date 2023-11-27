@@ -1,4 +1,4 @@
-![James0x57](https://img.shields.io/badge/James0x57%20%F0%9F%91%BD-I%20made%20a%20thing!-blueviolet.svg?labelColor=222222)
+[![Jane Ori - PropJockey.io](https://img.shields.io/badge/Jane%20Ori%20%F0%9F%91%BD-%F0%9F%A4%8D%20PropJockey.io-7300E6.svg?labelColor=FB04C2&style=plastic)](http://jane.propjockey.io/)
 
 # augmented-ui from PropJockey
 
@@ -10,7 +10,7 @@ Resources:
 * WYSIWYG Mixin Mixer: http://augmented-ui.com/mixinmixer/
 * NPM: https://www.npmjs.com/package/augmented-ui
 * GitHub: https://github.com/propjockey/augmented-ui
-* Twitter: https://twitter.com/James0x57
+* Twitter: https://twitter.com/Jane0ri
 
 Old v1 Links:
 * Home: http://augmented-ui.com/v1/
